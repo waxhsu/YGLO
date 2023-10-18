@@ -27,7 +27,7 @@ function updateShop() {
     autoApplicationsElement.innerHTML = "";
     for (const app of autoApplications) {
         const buyButton = document.createElement("button");
-        buyButton.textContent = `${app.name} - Cost: ${app.cost} Job Applications - CPS: ${app.clicksPerSecond}`;
+        buyButton.textContent = `${app.name} || Cost: ${app.cost} Job Applications || CPS: ${app.clicksPerSecond}`;
         buyButton.addEventListener("click", () => buyAutoApplication(app));
         autoApplicationsElement.appendChild(buyButton);
     }

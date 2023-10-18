@@ -1,5 +1,5 @@
 body {
-  text-align: center;
+  display: flex;
   font-family: Arial, sans-serif;
 }
 
@@ -19,4 +19,26 @@ h1 {
   color: white;
   border: none;
   cursor: pointer;
+}
+
+#leftUI {
+  border: solid red 1px;
+  min-width: 50%;
+}
+
+#rightUI {
+  border: solid blue 2px;
+  min-width: 50%;
+}
+
+
+
+#shop {
+  border: solid red 1px;
+}
+
+#autoApplications {
+  display: flex;
+  flex-direction: column;
+
 }
