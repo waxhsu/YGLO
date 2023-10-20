@@ -4,16 +4,35 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-    <h1>Job Application Clicker</h1>
-	<div id="cps-display">CPS: 0</div>
-    <div id="job-applications">0 Job Applications</div>
-    <button id="click-button">Click for Job Applications</button>
-    
-	<div id="shop">
-        <h2>Shop</h2>
-        <div id="autoApplications"></div>
-    </div>
+	
+	<div id="leftUI">
+		<h1>Job postings</h1>
+		<div id="job-postings">
+			<div id="job-posting">Job Posting: Executive Intern at Interns Collective</div>
+
+			<!-- <div id="logo">LOGO</div>
+			<div id="jobDetails">	
+				<div id="job-title">Job Title</div>
+				<div id="job-company">Company</div>
+			</div> -->
+		</div>
+
+		
+	</div>
+	<div id="rightUI">
+		<div id="job-applications">0</div>
+		<div id="job-applications-text">Job Applications</div>
+		<div id="cps-display">CPS: 0</div>
+		<button id="click-button">Apply Here</button>
+		
+		<div id="shop">
+			<h2>Shop</h2>
+			<div id="autoApplications"></div>
+		</div>
+	</div>
 
     <script src="index.js"></script>
+	<script src="jobPostingCycle.js"></script>
+
 </body>
 </html>

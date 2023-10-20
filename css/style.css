@@ -8,17 +8,22 @@ h1 {
 }
 
 #job-applications {
-  font-size: 24px;
+  font-size: 150px;
+  margin: 20px;
+}
+#job-applications-text {
+  font-size: 25px;
   margin: 20px;
 }
 
 #click-button {
-  padding: 10px 20px;
-  font-size: 18px;
-  background-color: #4CAF50;
+  padding: 20px 30px;
+  font-size: 45px;
+  background-color: #5055ee;
   color: white;
   border: none;
   cursor: pointer;
+  border-radius: 25px;
 }
 
 #leftUI {
@@ -40,5 +45,65 @@ h1 {
 #autoApplications {
   display: flex;
   flex-direction: column;
-
 }
+
+/* job posting */
+.job-posting-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f9f9f9;
+}
+
+.job-title {
+  font-weight: bold;
+}
+
+.job-company {
+  color: #555;
+}
+
+#job-postings {
+  margin-top: 20px;
+}
+
+
+/* update shop */
+.shop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  background-color: #f9f9f9;
+}
+
+.item-name {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.item-cost {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.item-cps {
+  font-size: 14px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.item-count {
+  font-size: 25px;
+  font-weight: bold;
+  text-align: right;
+  margin-top: 5px;
+  align-self: flex-end;
+}
+
