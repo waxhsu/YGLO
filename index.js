@@ -1,15 +1,17 @@
 // Initialize variables
 let jobApplications = 0;
+let motivation = 0
 let autoApplications = [];
 let clickValue = 1;
 let totalClicksPerSecond = 0;
 
 
 // Get HTML elements
-const clickButton = document.getElementById("click-button");
 const jobApplicationsElement = document.getElementById("job-applications");
-const autoApplicationsElement = document.getElementById("autoApplications");
+const motivationElement = document.getElementById("motivation");
+const clickButton = document.getElementById("click-button");
 const shop = document.getElementById("shop");
+const autoApplicationsElement = document.getElementById("autoApplications");
 const jobPostingElement = document.getElementById("job-postings");
 
 // Function to update the job application count on the screen
@@ -17,12 +19,16 @@ function updateJobApplications() {
     jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
 }
 
+// Function to update the motivation count on the screen
+function updateMotivation() {
+  motivationElement.textContent = `Motivation:asdf ${Math.round(motivation)}`;
+}
+
 // Function to update the CPS (Clicks Per Second) display
 function updateCPSDisplay() {
   const cpsDisplay = document.getElementById("cps-display");
   cpsDisplay.textContent = `CPS: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
 }
-
 
 // Function to update the AutoApplications in the shop
 function updateShop() {
@@ -98,7 +104,7 @@ clickButton.addEventListener("click", () => {
 autoApplications = [
     {
         id: 1,
-        name: "Try Harder",
+        name: "Trying Harder",
         cost: 10,
         clicksPerSecond: 0.1,
         count: 0,
@@ -139,9 +145,6 @@ autoApplications = [
         count: 0,
     },
 ];
-
-
-
 
 
 // Initialize variables
