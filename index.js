@@ -57,7 +57,7 @@ function updateShop() {
 
       const clicksPerSecondElement = document.createElement("div");
       clicksPerSecondElement.className = "item-cps";
-      clicksPerSecondElement.textContent = `CPS: ${app.clicksPerSecond}`;
+      clicksPerSecondElement.textContent = `Apps/sec: ${app.clicksPerSecond}`;
 
       const countElement = document.createElement("div");
       countElement.className = "item-count";
@@ -347,38 +347,36 @@ jobPostingCycle = [
 
 
 // START MUSIC
-// Get the audio element
-const bgMusic = document.getElementById("background-music");
-const muteButton = document.getElementById("mute-button");
-const volumeSlider = document.getElementById("volume-slider");
+  const bgMusic = document.getElementById("background-music");
+  const muteButton = document.getElementById("mute-button");
+  const volumeSlider = document.getElementById("volume-slider");
 
-
-// Function to start playing the background music
-function playBackgroundMusic() {
-    bgMusic.play();
-}
-
-// Function to toggle the background music (mute/unmute)
-function toggleMute() {
-  if (bgMusic.muted) {
-      bgMusic.muted = false;
-      muteButton.textContent = "Mute";
-  } else {
-      bgMusic.muted = true;
-      muteButton.textContent = "Unmute";
+  // Function to start playing the background music
+  function playBackgroundMusic() {
+      bgMusic.play();
   }
-}
 
-// Function to handle volume change
-function changeVolume() {
-  bgMusic.volume = volumeSlider.value;
-}
+  // Function to toggle the background music (mute/unmute)
+  function toggleMute() {
+    if (bgMusic.muted) {
+        bgMusic.muted = false;
+        muteButton.textContent = "Mute";
+    } else {
+        bgMusic.muted = true;
+        muteButton.textContent = "Unmute";
+    }
+  }
 
-volumeSlider.addEventListener("input", changeVolume);
-muteButton.addEventListener("click", toggleMute);
+  // Function to handle volume change
+  function changeVolume() {
+    bgMusic.volume = volumeSlider.value;
+  }
 
-// Add an event listener to start playing the music when the page loads
-window.addEventListener("load", playBackgroundMusic);
+  volumeSlider.addEventListener("input", changeVolume);
+  muteButton.addEventListener("click", toggleMute);
+
+  // Add an event listener to start playing the music when the page loads
+  window.addEventListener("load", playBackgroundMusic);
 
 
 // Initialize the game
