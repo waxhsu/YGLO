@@ -4,6 +4,7 @@ let motivation = 0
 let autoApplications = [];
 let clickValue = 1;
 let totalClicksPerSecond = 0;
+let motivationPerSecond = 0;
 
 
 // Get HTML elements
@@ -14,20 +15,27 @@ const shop = document.getElementById("shop");
 const autoApplicationsElement = document.getElementById("autoApplications");
 const jobPostingElement = document.getElementById("job-postings");
 
+
 // Function to update the job application count on the screen
 function updateJobApplications() {
     jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
 }
 
-// Function to update the motivation count on the screen
-function updateMotivation() {
-  motivationElement.textContent = `Motivation:asdf ${Math.round(motivation)}`;
-}
-
 // Function to update the CPS (Clicks Per Second) display
 function updateCPSDisplay() {
   const cpsDisplay = document.getElementById("cps-display");
-  cpsDisplay.textContent = `CPS: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+  cpsDisplay.textContent = `Apps per second: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+}
+
+// Function to update the motivation count on the screen
+function updateMotivation() {
+  motivationElement.textContent = `Motivation: ${Math.floor(motivation)}`;
+}
+
+// Function to update the motivation per second display
+function updateMotivationPerSecond() {
+  const mpsDisplay = document.getElementById("mps-display");
+  mpsDisplay.textContent = `Motivation per second: ${motivationPerSecond.toFixed(1)}`; // Display MPS rounded to 2 decimal places
 }
 
 // Function to update the AutoApplications in the shop
@@ -45,7 +53,7 @@ function updateShop() {
 
       const costElement = document.createElement("div");
       costElement.className = "item-cost";
-      costElement.textContent = `Cost: ${app.cost} Job Applications`;
+      costElement.textContent = `Cost: ${app.cost} Motivation`;
 
       const clicksPerSecondElement = document.createElement("div");
       clicksPerSecondElement.className = "item-cps";
@@ -68,11 +76,11 @@ function updateShop() {
 
 // Function to buy an AutoApplication
 function buyAutoApplication(app) {
-  if (jobApplications >= app.cost) {
-      jobApplications -= app.cost;
+  if (motivation >= app.cost) {
+      motivation -= app.cost;
       app.count += 1;
       app.cost = Math.floor(app.cost * 1.1); // Cost scales exponentially
-      updateJobApplications();
+      updateMotivation();
       updateShop();
       calculateTotalClicksPerSecond();
       updateCPSDisplay(); // Update CPS when purchasing
@@ -82,14 +90,22 @@ function buyAutoApplication(app) {
 // Function to calculate the total clicks per second
 function calculateTotalClicksPerSecond() {
     totalClicksPerSecond = 0;
+    motivationPerSecond = 0; // Initialize motivation per second
     for (const app of autoApplications) {
         totalClicksPerSecond += app.count * app.clicksPerSecond;
+        motivationPerSecond += app.count * (0.1 * app.clicksPerSecond); // Increase motivation per second based on AutoApplications
+
     }
+    updateMotivationPerSecond(); // Update the MPS display
+
 }
+
 
 // Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
+  motivation += 0.1 * totalClicksPerSecond; // Increase motivation based on job applications clicked
+  updateMotivation();
   updateJobApplications();
   updateCPSDisplay(); // Update CPS when generating
 }
@@ -186,7 +202,9 @@ function updateJobPostings() {
 
 // Function to handle clicking and adding job applications
 function clickForJobApplications() {
+    motivation += 0.317 * clickValue; // Increase motivation based on job applications clicked
     updateJobApplications();
+    updateMotivation();
     cycleJobPostings(); // Cycle job postings on each click
     updateJobPostings();
 }
@@ -326,6 +344,41 @@ jobPostingCycle = [
     company: "Hilarious Hijinks, Inc.",
   },
 ];
+
+
+// START MUSIC
+// Get the audio element
+const bgMusic = document.getElementById("background-music");
+const muteButton = document.getElementById("mute-button");
+const volumeSlider = document.getElementById("volume-slider");
+
+
+// Function to start playing the background music
+function playBackgroundMusic() {
+    bgMusic.play();
+}
+
+// Function to toggle the background music (mute/unmute)
+function toggleMute() {
+  if (bgMusic.muted) {
+      bgMusic.muted = false;
+      muteButton.textContent = "Mute";
+  } else {
+      bgMusic.muted = true;
+      muteButton.textContent = "Unmute";
+  }
+}
+
+// Function to handle volume change
+function changeVolume() {
+  bgMusic.volume = volumeSlider.value;
+}
+
+volumeSlider.addEventListener("input", changeVolume);
+muteButton.addEventListener("click", toggleMute);
+
+// Add an event listener to start playing the music when the page loads
+window.addEventListener("load", playBackgroundMusic);
 
 
 // Initialize the game

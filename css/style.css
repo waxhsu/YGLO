@@ -1,5 +1,6 @@
 body {
   display: flex;
+  flex-direction: column;
   font-family: Arial, sans-serif;
 }
 
@@ -24,6 +25,10 @@ h1 {
   border: none;
   cursor: pointer;
   border-radius: 25px;
+}
+
+#mainUI {
+  display: flex;
 }
 
 #leftUI {

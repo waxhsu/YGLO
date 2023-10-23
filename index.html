@@ -4,7 +4,19 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 <body>
-	
+	<div id="topUI">
+
+		<div id="music-controls">
+			<label for="volume-slider">Volume:</label>
+			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
+			<button id="mute-button">Mute</button>
+		</div>
+		<audio id="background-music" autoplay loop>
+			<source src="./YGLOv3.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+
+<div id="mainUI">
 	<div id="leftUI">
 		<h1>Job postings</h1>
 		<div id="job-postings">
@@ -20,11 +32,12 @@
 		
 	</div>
 	<div id="rightUI">
+
 		<div id="job-applications">0</div>
-		<div id="job-applications-text">Job Applications</div>
-		<div id="cps-display">Applications/S: 0</div>
+		<div id="job-applications-text">Jobs Applied</div>
+		<div id="cps-display">Applications: 0</div>
 		<div id="motivation">Motivation: 0</div>
-		<div id="mps-display">Motivation/S: 0</div>
+		<div id="mps-display">Motivation per second: 0</div>
 		<button id="click-button">Apply Here</button>
 		
 		<div id="shop">
@@ -32,6 +45,7 @@
 			<div id="autoApplications"></div>
 		</div>
 	</div>
+</div>
 
     <script src="index.js"></script>
 	<script src="jobPostingCycle.js"></script>
