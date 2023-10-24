@@ -1,8 +1,7 @@
 /* @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 
-
-.cover-art {
+/* .cover-art {
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeOut 2s linear forwards;
+  animation: fadeOut 5s linear forwards;
   z-index: 9999;
 }
 
@@ -23,6 +22,11 @@
   to {
       opacity: 0;
   }
+} */
+
+.icon {
+  max-height: 100px;
+  padding: 2%;
 }
 
 
@@ -39,13 +43,36 @@ h1 {
   color: #333;
 }
 
-#job-applications {
-  font-size: 150px;
-  margin: 20px;
+
+
+
+#topUI {
+  min-height: 85px;
+  display: flex;
+  justify-content: space-between;
 }
-#job-applications-text {
-  font-size: 25px;
-  margin: 20px;
+
+#notification {
+  display: flex;
+  border: black solid 2px;
+  font-size: 35px;
+}
+
+
+#mainUI {
+  display: flex;
+}
+#leftUI {
+  border: solid red 1px;
+  min-width: 50%;
+}
+
+
+
+
+#rightUI {
+  border: solid blue 2px;
+  min-width: 50%;
 }
 
 #click-button {
@@ -57,39 +84,26 @@ h1 {
   cursor: pointer;
   border-radius: 25px;
   font-family: 'Pixelify Sans', sans-serif; /* Use 'Pixelify Sans' as the preferred font */
-
 }
 
-#topUI {
-  min-height: 85px;
-}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@ motivation + stats @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#mainUI {
-  display: flex;
-}
+  #job-applications {
+    font-size: 150px;
+    margin: 20px;
+  }
+  #job-applications-text {
+    font-size: 25px;
+    margin: 20px;
+  }
+  
 
-#leftUI {
-  border: solid red 1px;
-  min-width: 50%;
-}
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@ job posting @@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#rightUI {
-  border: solid blue 2px;
-  min-width: 50%;
-}
-
-
-
-#shop {
-  border: solid red 1px;
-}
-
-#autoApplications {
-  display: flex;
-  flex-direction: column;
-}
-
-/* job posting */
 .job-posting-item {
   display: flex;
   flex-direction: column;
@@ -112,7 +126,20 @@ h1 {
 }
 
 
-/* update shop */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@ update shop @@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+#shop {
+  border: solid red 1px;
+}
+
+#autoApplications {
+  display: flex;
+  flex-direction: column;
+}
+
 .shop-item {
   display: flex;
   flex-direction: column;
@@ -124,19 +151,13 @@ h1 {
 }
 
 .item-name {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: bold;
   text-align: center;
 }
 
-.item-cost {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 5px;
-}
-
-.item-cps {
-  font-size: 14px;
+.item-cost, .item-cps  {
+  font-size: 25px;
   text-align: center;
   margin-top: 5px;
 }

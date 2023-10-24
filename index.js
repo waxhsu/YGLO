@@ -379,6 +379,67 @@ jobPostingCycle = [
   window.addEventListener("load", playBackgroundMusic);
 
 
+
+
+
+/// REJECTION NOTIFICATIONS
+rejection = [
+  {
+    id: 1,
+    msgName: "Tech Innovators",
+    msgBody: "Thank you for applying! Unfortunately...",
+  },
+  {
+    id: 2,
+    msgName: "InnovateCorp",
+    msgBody: "We regret to inform...",
+  },
+  {
+    id: 3,
+    msgName: "FutureTech Co.",
+    msgBody: "Your application was impressive, but...",
+  },
+  {
+    id: 4,
+    msgName: "MegaSoft Solutions",
+    msgBody: "While we appreciate your interest...",
+  },
+  {
+    id: 5,
+    msgName: "Digital Visionaries",
+    msgBody: "We had many strong candidates, but...",
+  },
+  {
+    id: 6,
+    msgName: "InnovateTech Group",
+    msgBody: "We had a competitive pool, but...",
+  },
+  {
+    id: 7,
+    msgName: "FutureGrowth Inc.",
+    msgBody: "Thank you for your interest, but...",
+  },
+  {
+    id: 8,
+    msgName: "NexaSoft Solutions",
+    msgBody: "Your application was considered, but...",
+  },
+  {
+    id: 9,
+    msgName: "Digital Dynamics",
+    msgBody: "We regret to say...",
+  },
+  {
+    id: 10,
+    msgName: "Progressive Innovations",
+    msgBody: "While your qualifications are notable...",
+  },
+]
+
+
+
+
+
 // Initialize the game
 updateShop();
 updateJobApplications();
