@@ -5,6 +5,7 @@ let autoApplications = [];
 let clickValue = 1;
 let totalClicksPerSecond = 0;
 let motivationPerSecond = 0;
+let manualClick = 0;
 
 
 // Get HTML elements
@@ -15,6 +16,10 @@ const shop = document.getElementById("shop");
 const autoApplicationsElement = document.getElementById("autoApplications");
 const jobPostingElement = document.getElementById("job-postings");
 
+
+///////////////////////////////////////////////////////////
+/////////////////  UPDATE STATS INFO  /////////////////////
+///////////////////////////////////////////////////////////
 
 // Function to update the job application count on the screen
 function updateJobApplications() {
@@ -38,6 +43,22 @@ function updateMotivationPerSecond() {
   mpsDisplay.textContent = `Motivation per second: ${motivationPerSecond.toFixed(1)}`; // Display MPS rounded to 2 decimal places
 }
 
+// Function to calculate the total clicks per second
+function calculateTotalClicksPerSecond() {
+  totalClicksPerSecond = 0;
+  motivationPerSecond = 0; // Initialize motivation per second
+  for (const app of autoApplications) {
+      totalClicksPerSecond += app.count * app.clicksPerSecond;
+      motivationPerSecond += app.count * (0.1 * app.clicksPerSecond); // Increase motivation per second based on AutoApplications
+  }
+  updateMotivationPerSecond(); // Update the MPS display
+}
+
+////////////////////////////////////////////////////////////
+///////////////////     SHOP STUFF    //////////////////////
+////////////////////////////////////////////////////////////
+
+
 // Function to update the AutoApplications in the shop
 function updateShop() {
   const shopElement = document.getElementById("shop");
@@ -53,11 +74,11 @@ function updateShop() {
 
       const costElement = document.createElement("div");
       costElement.className = "item-cost";
-      costElement.textContent = `Cost: ${app.cost} Motivation`;
+      costElement.textContent = `Cost: -${app.cost} Motivation`;
 
       const clicksPerSecondElement = document.createElement("div");
       clicksPerSecondElement.className = "item-cps";
-      clicksPerSecondElement.textContent = `Apps/sec: ${app.clicksPerSecond}`;
+      clicksPerSecondElement.textContent = `Apps/sec: +${app.clicksPerSecond}`;
 
       const countElement = document.createElement("div");
       countElement.className = "item-count";
@@ -87,18 +108,10 @@ function buyAutoApplication(app) {
   }
 }
 
-// Function to calculate the total clicks per second
-function calculateTotalClicksPerSecond() {
-    totalClicksPerSecond = 0;
-    motivationPerSecond = 0; // Initialize motivation per second
-    for (const app of autoApplications) {
-        totalClicksPerSecond += app.count * app.clicksPerSecond;
-        motivationPerSecond += app.count * (0.1 * app.clicksPerSecond); // Increase motivation per second based on AutoApplications
 
-    }
-    updateMotivationPerSecond(); // Update the MPS display
-
-}
+////////////////////////////////////////////////////////////
+///////////////////    AUTOCLICKER    //////////////////////
+////////////////////////////////////////////////////////////
 
 
 // Function to add job applications automatically based on CPS
@@ -162,6 +175,9 @@ autoApplications = [
     },
 ];
 
+////////////////////////////////////////////////////////////
+////////////////////   JOB POSTINGS   //////////////////////
+////////////////////////////////////////////////////////////
 
 // Initialize variables
 let jobPostingsIndex = 0; // Track the current job posting index
@@ -179,34 +195,172 @@ function updateJobPostings() {
     const jobPostingsElement = document.getElementById("job-postings");
     jobPostingsElement.innerHTML = ""; // Clear the previous job postings
     jobPostingCycle.forEach((posting, index) => {
-        const jobPostingItem = document.createElement("div");
-        jobPostingItem.className = "job-posting-item";
-        if (index === 0) {
-            jobPostingItem.classList.add("first-posting");
-        }
-
-        const titleElement = document.createElement("div");
-        titleElement.className = "job-title";
-        titleElement.textContent = posting.title;
-
-        const companyElement = document.createElement("div");
-        companyElement.className = "job-company";
-        companyElement.textContent = posting.company;
-
-        jobPostingItem.appendChild(titleElement);
-        jobPostingItem.appendChild(companyElement);
-
-        jobPostingsElement.appendChild(jobPostingItem);
+      const jobPostingItem = document.createElement("div");
+      jobPostingItem.className = "job-posting-item";
+      if (index === 0) {
+        jobPostingItem.classList.add("first-posting");
+      }
+      
+      const titleElement = document.createElement("div");
+      titleElement.className = "job-title";
+      titleElement.textContent = posting.title;
+      
+      const companyElement = document.createElement("div");
+      companyElement.className = "job-company";
+      companyElement.textContent = posting.company;
+      
+      jobPostingItem.appendChild(titleElement);
+      jobPostingItem.appendChild(companyElement);
+      
+      jobPostingsElement.appendChild(jobPostingItem);
     });
-}
+  }
+  
+  jobPostingCycle = [
+    {
+      id: 1,
+      title: "Executive Intern",
+      company: "Interns Collective",
+    },
+    {
+      id: 2,
+      title: "Superb Internment",
+      company: "Superb Owl Inc.",
+    },
+    {
+      id: 3,
+      title: "Junior Analyst [UNPAID]",
+      company: "Boaty McBoatface",
+    },
+    {
+      id: 4,
+      title: "Analist Jr.",
+      company: "Plug-In Solutions",
+    },
+    {
+      id: 5,
+      title: "Totally Real Role",
+      company: "Indian Recruiter with American Name",
+    },
+    {
+      id: 6,
+      title: "Master of Improbable Events",
+      company: "Infinite Improbability Corp.",
+    },
+    {
+      id: 7,
+      title: "Absurdity Apprentice",
+      company: "Absurdity Architects, Inc.",
+    },
+    {
+      id: 8,
+      title: "Chief Penguin Plunger",
+      company: "Penguin Plunge Productions",
+    },
+    {
+      id: 9,
+      title: "Chaos Coordinator",
+      company: "Chaos Coasters, Ltd.",
+    },
+    {
+      id: 10,
+      title: "Wizarding Intern of Whimsy",
+      company: "Whimsical Widget Wizards",
+    },
+    // Add more entries here
+    {
+      id: 11,
+      title: "Lord of Laughter",
+      company: "Giggle Galaxy, LLC",
+    },
+    {
+      id: 12,
+      title: "Surreal Sales Shaman",
+      company: "Dreamscape Dealers",
+    },
+    {
+      id: 13,
+      title: "Crazy Cat-herder",
+      company: "Feline Folly, Inc.",
+    },
+    {
+      id: 14,
+      title: "Master of Mischief",
+      company: "Prankster Paradise Ltd.",
+    },
+    {
+      id: 15,
+      title: "Executive Eccentric",
+      company: "Absurd Adventures, LLC",
+    },
+    {
+      id: 16,
+      title: "Clownish Content Creator",
+      company: "Silly Stream Studios",
+    },
+    {
+      id: 17,
+      title: "Captain of Nonsense",
+      company: "Ridiculous Realms Co.",
+    },
+    {
+      id: 18,
+      title: "Llama Lama Leader",
+      company: "Llama Lovers United",
+    },
+    {
+      id: 19,
+      title: "Whacky Wizard of Woo",
+      company: "Bizarre Business Wizards",
+    },
+    {
+      id: 20,
+      title: "Director of Doodles",
+      company: "Artistic Antics, Inc.",
+    },
+    {
+      id: 21,
+      title: "Supreme Silly Scientist",
+      company: "Absurd Alchemy Labs",
+    },
+    {
+      id: 22,
+      title: "Nonsensical Number Cruncher",
+      company: "Chaos Calculations, Ltd.",
+    },
+    {
+      id: 23,
+      title: "Mirthful Marketing Maestro",
+      company: "Comedy Campaign Creators",
+    },
+    {
+      id: 24,
+      title: "Jester of Jargon",
+      company: "Witty Wordsmiths, LLC",
+    },
+    {
+      id: 25,
+      title: "Chuckle Captain",
+      company: "Hilarious Hijinks, Inc.",
+    },
+  ];
 
+
+
+////////////////////////////////////////////////////////////
+///////////////////    MAIN GAMEPLAY   /////////////////////
+////////////////////////////////////////////////////////////
+  
+  
 // Function to handle clicking and adding job applications
 function clickForJobApplications() {
     motivation += 0.317 * clickValue; // Increase motivation based on job applications clicked
+    manualClick += 1;
     updateJobApplications();
     updateMotivation();
     cycleJobPostings(); // Cycle job postings on each click
     updateJobPostings();
+    checkAchievements();
 }
 
 // Add a click event listener to the button
@@ -214,138 +368,10 @@ clickButton.addEventListener("click", clickForJobApplications);
 
 
 
-
-// Populate jobPostings with the objects below
-jobPostingCycle = [
-  {
-    id: 1,
-    title: "Executive Intern",
-    company: "Interns Collective",
-  },
-  {
-    id: 2,
-    title: "Superb Internment",
-    company: "Superb Owl Inc.",
-  },
-  {
-    id: 3,
-    title: "Junior Analyst [UNPAID]",
-    company: "Boaty McBoatface",
-  },
-  {
-    id: 4,
-    title: "Analist Jr.",
-    company: "Plug-In Solutions",
-  },
-  {
-    id: 5,
-    title: "Totally Real Role",
-    company: "Indian Recruiter with American Name",
-  },
-  {
-    id: 6,
-    title: "Master of Improbable Events",
-    company: "Infinite Improbability Corp.",
-  },
-  {
-    id: 7,
-    title: "Absurdity Apprentice",
-    company: "Absurdity Architects, Inc.",
-  },
-  {
-    id: 8,
-    title: "Chief Penguin Plunger",
-    company: "Penguin Plunge Productions",
-  },
-  {
-    id: 9,
-    title: "Chaos Coordinator",
-    company: "Chaos Coasters, Ltd.",
-  },
-  {
-    id: 10,
-    title: "Wizarding Intern of Whimsy",
-    company: "Whimsical Widget Wizards",
-  },
-  // Add more entries here
-  {
-    id: 11,
-    title: "Lord of Laughter",
-    company: "Giggle Galaxy, LLC",
-  },
-  {
-    id: 12,
-    title: "Surreal Sales Shaman",
-    company: "Dreamscape Dealers",
-  },
-  {
-    id: 13,
-    title: "Crazy Cat-herder",
-    company: "Feline Folly, Inc.",
-  },
-  {
-    id: 14,
-    title: "Master of Mischief",
-    company: "Prankster Paradise Ltd.",
-  },
-  {
-    id: 15,
-    title: "Executive Eccentric",
-    company: "Absurd Adventures, LLC",
-  },
-  {
-    id: 16,
-    title: "Clownish Content Creator",
-    company: "Silly Stream Studios",
-  },
-  {
-    id: 17,
-    title: "Captain of Nonsense",
-    company: "Ridiculous Realms Co.",
-  },
-  {
-    id: 18,
-    title: "Llama Lama Leader",
-    company: "Llama Lovers United",
-  },
-  {
-    id: 19,
-    title: "Whacky Wizard of Woo",
-    company: "Bizarre Business Wizards",
-  },
-  {
-    id: 20,
-    title: "Director of Doodles",
-    company: "Artistic Antics, Inc.",
-  },
-  {
-    id: 21,
-    title: "Supreme Silly Scientist",
-    company: "Absurd Alchemy Labs",
-  },
-  {
-    id: 22,
-    title: "Nonsensical Number Cruncher",
-    company: "Chaos Calculations, Ltd.",
-  },
-  {
-    id: 23,
-    title: "Mirthful Marketing Maestro",
-    company: "Comedy Campaign Creators",
-  },
-  {
-    id: 24,
-    title: "Jester of Jargon",
-    company: "Witty Wordsmiths, LLC",
-  },
-  {
-    id: 25,
-    title: "Chuckle Captain",
-    company: "Hilarious Hijinks, Inc.",
-  },
-];
-
-
+////////////////////////////////////////////////////////////
+////////////////////////    MUSIC   ////////////////////////
+////////////////////////////////////////////////////////////
+  
 // START MUSIC
   const bgMusic = document.getElementById("background-music");
   const muteButton = document.getElementById("mute-button");
@@ -379,62 +405,104 @@ jobPostingCycle = [
   window.addEventListener("load", playBackgroundMusic);
 
 
+////////////////////////////////////////////////////////////
+////////////////////    NOTIFICATIONS   ////////////////////
+////////////////////////////////////////////////////////////
+  
+const notificationBox = document.getElementById("notification-box"); // Add notification box
+
+// Function to show a notification
+function showNotification(message) {
+  notificationText.textContent = message;
+  notificationBox.style.display = "block";
+}
+
+// Function to close the notification
+function closeNotification() {
+  notificationBox.style.display = "none";
+}
 
 
+///////////////////////////////////////////////////////////
+/////////////////////  ACHIEVEMENTS  //////////////////////
+///////////////////////////////////////////////////////////
 
-/// REJECTION NOTIFICATIONS
-rejection = [
-  {
-    id: 1,
-    msgName: "Tech Innovators",
-    msgBody: "Thank you for applying! Unfortunately...",
+
+// Define achievement conditions as an array of objects
+const achievements = [
+  { 
+    threshold: 10, 
+    message1: "You manually applied to 10 jobs!",
+    message2: "You feel really good :)" 
   },
-  {
-    id: 2,
-    msgName: "InnovateCorp",
-    msgBody: "We regret to inform...",
+  { threshold: 100,
+    message1: "100 Manual Clicks Achieved!",
+    message2: "message2" 
   },
-  {
-    id: 3,
-    msgName: "FutureTech Co.",
-    msgBody: "Your application was impressive, but...",
-  },
-  {
-    id: 4,
-    msgName: "MegaSoft Solutions",
-    msgBody: "While we appreciate your interest...",
-  },
-  {
-    id: 5,
-    msgName: "Digital Visionaries",
-    msgBody: "We had many strong candidates, but...",
-  },
-  {
-    id: 6,
-    msgName: "InnovateTech Group",
-    msgBody: "We had a competitive pool, but...",
-  },
-  {
-    id: 7,
-    msgName: "FutureGrowth Inc.",
-    msgBody: "Thank you for your interest, but...",
-  },
-  {
-    id: 8,
-    msgName: "NexaSoft Solutions",
-    msgBody: "Your application was considered, but...",
-  },
-  {
-    id: 9,
-    msgName: "Digital Dynamics",
-    msgBody: "We regret to say...",
-  },
-  {
-    id: 10,
-    msgName: "Progressive Innovations",
-    msgBody: "While your qualifications are notable...",
-  },
-]
+  { threshold: 1000, 
+    message1: "1000 Manual Clicks Achieved!", 
+    message2: "message2" 
+  }
+  // Add more achievements as needed
+];
+
+// Function to check for achievements
+function checkAchievements() {
+  for (const achievement of achievements) {
+      if (manualClick === achievement.threshold) {
+          showAchievement(achievement.message1, achievement.message2);
+      }
+  }
+}
+
+// Function to display achievements in the notification box
+function showAchievement(message1, message2) {
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  
+  const message1Element = document.createElement("div");
+  message1Element.textContent = message1;
+  message1Element.className = "achievement-message1";
+  
+  const message2Element = document.createElement("div");
+  message2Element.textContent = message2;
+  message2Element.className = "achievement-message2";
+  
+  notification.appendChild(message1Element);
+  notification.appendChild(message2Element);
+  
+  notificationBox.appendChild(notification);
+  setTimeout(() => {
+      notificationBox.removeChild(notification);
+  }, 3000); // Remove the notification after 3 seconds
+}
+
+// const achievements = [
+//   {
+//       id: 1,
+//       title: "Manual Applier",
+//       desc: "You applied to 10 jobs!",
+//       prereq: { jobApplications: 10 },
+//   },
+//   {
+//       id: 2,
+//       title: "Very Manual Applier",
+//       desc: "You applied to 20 jobs!",
+//       prereq: { jobApplications: 20 },
+//   },
+//   // Add more achievements as needed
+// ];
+
+
+///////////////////////////////////////////////////////////
+/////////////////////  RANDOM EVENT  //////////////////////
+///////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////
+//////////////////////   REJECTIONS   //////////////////////
+////////////////////////////////////////////////////////////
+
 
 
 
