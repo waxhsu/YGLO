@@ -6,7 +6,7 @@ let clickValue = 1;
 let totalClicksPerSecond = 0;
 let motivationPerSecond = 0;
 let manualClick = 0;
-
+let totalRejections = 0
 
 // Get HTML elements
 const jobApplicationsElement = document.getElementById("job-applications");
@@ -354,7 +354,7 @@ function updateJobPostings() {
   
 // Function to handle clicking and adding job applications
 function clickForJobApplications() {
-    motivation += 0.317 * clickValue; // Increase motivation based on job applications clicked
+    motivation += 0.217 * clickValue; // Increase motivation based on job applications clicked
     manualClick += 1;
     updateJobApplications();
     updateMotivation();
@@ -430,27 +430,61 @@ function closeNotification() {
 
 // Define achievement conditions as an array of objects
 const achievements = [
+  // manual click achievements
   { 
-    threshold: 10, 
+    clicks: 10, 
     message1: "You manually applied to 10 jobs!",
-    message2: "You feel really good :)" 
+    message2: "You feel good about yourself!" 
   },
-  { threshold: 100,
-    message1: "100 Manual Clicks Achieved!",
-    message2: "message2" 
+  { clicks: 100,
+    message1: "You manually applied to 100 jobs!",
+    message2: "You're kinda tired, but it's okay!" 
   },
-  { threshold: 1000, 
-    message1: "1000 Manual Clicks Achieved!", 
-    message2: "message2" 
-  }
+  { clicks: 1000, 
+    message1: "You manually applied to 1000 jobs!", 
+    message2: "You wonder if you'll hear back from any of them" 
+  },
+
+
+  // rejection achievements
+  { 
+    rejections: 1, 
+    message1: "You first rejection letter!",
+    message2: "Frickin whatever!" 
+  },
+  { rejections: 5,
+    message1: "5 rejection letters!",
+    message2: "All good, it's a numbers game!" 
+  },
+
+  // upgrade achievements
+  { 
+    upgrade1: 1, 
+    message1: "Your first time actually trying!",
+    message2: "Owning 1 Trying Harder"
+  },
+  { upgrade1: 5,
+    message1: "Are you even trying?",
+    message2: "Owning 5 Trying Harders" 
+  },
+
+
+
   // Add more achievements as needed
 ];
 
 // Function to check for achievements
 function checkAchievements() {
   for (const achievement of achievements) {
-      if (manualClick === achievement.threshold) {
+      if (manualClick === achievement.clicks) {
           showAchievement(achievement.message1, achievement.message2);
+      } if (totalRejections === achievements.rejections) {
+          showAchievement(achievement.message1, achievement.message2);
+
+          // try harder
+      } if (autoApplications[0].count === achievements.upgrade1) {
+        showAchievement(achievement.message1, achievement.message2);
+
       }
   }
 }
@@ -468,43 +502,157 @@ function showAchievement(message1, message2) {
   message2Element.textContent = message2;
   message2Element.className = "achievement-message2";
   
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+  
+  closeButton.addEventListener("click", () => {
+      notificationBox.removeChild(notification);
+  });
+  
   notification.appendChild(message1Element);
   notification.appendChild(message2Element);
+  notification.appendChild(closeButton);
   
   notificationBox.appendChild(notification);
-  setTimeout(() => {
-      notificationBox.removeChild(notification);
-  }, 3000); // Remove the notification after 3 seconds
 }
 
-// const achievements = [
-//   {
-//       id: 1,
-//       title: "Manual Applier",
-//       desc: "You applied to 10 jobs!",
-//       prereq: { jobApplications: 10 },
-//   },
-//   {
-//       id: 2,
-//       title: "Very Manual Applier",
-//       desc: "You applied to 20 jobs!",
-//       prereq: { jobApplications: 20 },
-//   },
-//   // Add more achievements as needed
-// ];
 
 
 ///////////////////////////////////////////////////////////
 /////////////////////  RANDOM EVENT  //////////////////////
 ///////////////////////////////////////////////////////////
 
+// Define random events as an array of objects
+const randomEvents = [
+  { 
+      color: "red",
+      effect_motivation: -10,
+      message1: "You spilled coffee on yourself",
+      message2: "-10 motivation"
+  },
+  { 
+      color: "green",
+      effect_motivation: 10,
+      message1: "You find $2 on the floor",
+      message2: "+10 motivation"
+  }
+];
+
+let timer = null; // Initialize timer
+
+// Function to trigger random events
+function randomEvent() {
+  const randomIndex = Math.floor(Math.random() * randomEvents.length);
+  const event = randomEvents[randomIndex];
+  showRandomEvent(event);
+  applyRandomEventEffects(event);
+}
+
+// Function to display random events in the notification box
+function showRandomEvent(event) {
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  notification.style.backgroundColor = event.color;
+
+  const message1Element = document.createElement("div");
+  message1Element.textContent = event.message1;
+  message1Element.className = "event-message1";
+
+  const message2Element = document.createElement("div");
+  message2Element.textContent = event.message2;
+  message2Element.className = "event-message2";
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+
+  closeButton.addEventListener("click", () => {
+      notificationBox.removeChild(notification);
+  });
+
+  notification.appendChild(message1Element);
+  notification.appendChild(message2Element);
+  notification.appendChild(closeButton);
+
+  notificationBox.appendChild(notification);
+}
+
+// Function to apply the effects of the random event
+function applyRandomEventEffects(event) {
+  motivation += event.effect_motivation;
+  updateMotivation();
+}
+
+// Set an interval to trigger random events every 60 seconds
+setInterval(randomEvent, 60000);
+
 
 ////////////////////////////////////////////////////////////
 //////////////////////   REJECTIONS   //////////////////////
 ////////////////////////////////////////////////////////////
 
+// Define rejections with color, totalApps, and messages
+const rejections = [
+  {
+      color: "grey",
+      totalApps: 100,
+      message1: "REJECTION",
+      message2: "Thank you for your interest, unfortunately..",
+  },
+  {
+      color: "grey",
+      totalApps: 500,
+      message1: "REJECTION",
+      message2: "Your app was impressive, but..",
+  }
+  // Add more rejection events as needed
+];
 
+// Initialize the rejection counter
+let rejectionsCount = 0;
 
+// Function to check for rejections
+function checkRejections() {
+  for (const rejection of rejections) {
+      if (jobApplications >= rejection.totalApps && rejectionsCount < rejection.totalApps) {
+          showRejection(rejection);
+          rejectionsCount = rejection.totalApps;
+      }
+  }
+}
+
+// Function to display rejection notifications in the notification box
+function showRejection(rejection) {
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  notification.style.backgroundColor = rejection.color;
+
+  const message1Element = document.createElement("div");
+  message1Element.textContent = rejection.message1;
+  message1Element.className = "event-message1";
+
+  const message2Element = document.createElement("div");
+  message2Element.textContent = rejection.message2;
+  message2Element.className = "event-message2";
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+
+  closeButton.addEventListener("click", () => {
+      notificationBox.removeChild(notification);
+  });
+
+  notification.appendChild(message1Element);
+  notification.appendChild(message2Element);
+  notification.appendChild(closeButton);
+
+  notificationBox.appendChild(notification);
+}
+
+// Set an interval to check for rejections
+setInterval(checkRejections, 1000); // Adjust the interval as needed
 
 
 
