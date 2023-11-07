@@ -1,16 +1,19 @@
 // Initialize variables
-let jobApplications = 0;
+// let jobApplications = 0;
 let motivation = 0
 let autoApplications = [];
 let clickValue = 1;
 let totalClicksPerSecond = 0;
 let motivationPerSecond = 0;
+let jobApplications = 0;
 let manualClick = 0;
 let totalRejections = 0
+// let manualClick = 0;
 
 // Get HTML elements
 const jobApplicationsElement = document.getElementById("job-applications");
 const motivationElement = document.getElementById("motivation");
+const rejectionElement = document.getElementById("rejection-display");
 const clickButton = document.getElementById("click-button");
 const shop = document.getElementById("shop");
 const autoApplicationsElement = document.getElementById("autoApplications");
@@ -23,7 +26,7 @@ const jobPostingElement = document.getElementById("job-postings");
 
 // Function to update the job application count on the screen
 function updateJobApplications() {
-    jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
+  jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
 }
 
 // Function to update the CPS (Clicks Per Second) display
@@ -37,10 +40,10 @@ function updateMotivation() {
   motivationElement.textContent = `Motivation: ${Math.floor(motivation)}`;
 }
 
-// Function to update the motivation per second display
-function updateMotivationPerSecond() {
-  const mpsDisplay = document.getElementById("mps-display");
-  mpsDisplay.textContent = `Motivation per second: ${motivationPerSecond.toFixed(1)}`; // Display MPS rounded to 2 decimal places
+// Function to update the rejection display
+function updateRejection() {
+  const rejectionDisplay = document.getElementById("rejection-display");
+  rejectionDisplay.textContent = `Rejections: ${Math.floor(totalRejections/100)}`; // Display MPS rounded to 2 decimal places
 }
 
 // Function to calculate the total clicks per second
@@ -117,8 +120,10 @@ function buyAutoApplication(app) {
 // Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
+  totalRejections += 1 * totalClicksPerSecond;
   motivation += 0.1 * totalClicksPerSecond; // Increase motivation based on job applications clicked
   updateMotivation();
+  updateRejection();
   updateJobApplications();
   updateCPSDisplay(); // Update CPS when generating
 }
@@ -356,8 +361,10 @@ function updateJobPostings() {
 function clickForJobApplications() {
     motivation += 0.217 * clickValue; // Increase motivation based on job applications clicked
     manualClick += 1;
+    totalRejections += 1;
     updateJobApplications();
     updateMotivation();
+    updateRejection();
     cycleJobPostings(); // Cycle job postings on each click
     updateJobPostings();
     checkAchievements();
@@ -368,9 +375,9 @@ clickButton.addEventListener("click", clickForJobApplications);
 
 
 
-////////////////////////////////////////////////////////////
-////////////////////////    MUSIC   ////////////////////////
-////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////    MUSIC   ////////////////////////
+////////////////////////////////////////////////////////
   
 // START MUSIC
   const bgMusic = document.getElementById("background-music");
@@ -432,62 +439,79 @@ function closeNotification() {
 const achievements = [
   // manual click achievements
   { 
-    clicks: 10, 
+    clicks: 100, 
     message1: "You manually applied to 10 jobs!",
-    message2: "You feel good about yourself!" 
+    message2: "test1" 
   },
-  { clicks: 100,
+  { clicks: 101,
     message1: "You manually applied to 100 jobs!",
-    message2: "You're kinda tired, but it's okay!" 
+    message2: "test2" 
   },
-  { clicks: 1000, 
+  { clicks: 102, 
     message1: "You manually applied to 1000 jobs!", 
-    message2: "You wonder if you'll hear back from any of them" 
+    message2: "test3" 
   },
 
+  // job application achievements
+  { 
+    apps: 69, 
+    message1: "You applied to 69 jobs!",
+    message2: "Nice" 
+  },
+  { apps: 6969,
+    message1: "You applied to 6969 jobs!",
+    message2: "Very nice" 
+  },
+  { apps: 10000,
+    message1: "You applied to 10000 jobs!",
+    message2: "You feel kinda empty inside" 
+  },
+  { apps: 42069, 
+    message1: "You applied to 42069 jobs!", 
+    message2: "You blow a small puff of air out of your nostrils" 
+  },
 
   // rejection achievements
   { 
-    rejections: 1, 
-    message1: "You first rejection letter!",
-    message2: "Frickin whatever!" 
+    rejections: 100, 
+    message1: "rejection 1",
+    message2: "100 apps = 1 rejection" 
   },
-  { rejections: 5,
+  { rejections: 250,
     message1: "5 rejection letters!",
     message2: "All good, it's a numbers game!" 
   },
 
-  // upgrade achievements
-  { 
-    upgrade1: 1, 
-    message1: "Your first time actually trying!",
-    message2: "Owning 1 Trying Harder"
-  },
-  { upgrade1: 5,
-    message1: "Are you even trying?",
-    message2: "Owning 5 Trying Harders" 
-  },
+  // // upgrade achievements
+  // { 
+  //   upgrade1: 1, 
+  //   message1: "Your first time actually trying!",
+  //   message2: "Owning 1 Trying Harder"
+  // },
+  // { upgrade1: 5,
+  //   message1: "Are you even trying?",
+  //   message2: "Owning 5 Trying Harders" 
+  // },
 
 
 
   // Add more achievements as needed
 ];
 
+// Initialize an array to store achieved conditions
+const achievedConditions = [];
+//////////////////////////////////////////////////
+
 // Function to check for achievements
 function checkAchievements() {
   for (const achievement of achievements) {
-      if (manualClick === achievement.clicks) {
-          showAchievement(achievement.message1, achievement.message2);
-      } if (totalRejections === achievements.rejections) {
-          showAchievement(achievement.message1, achievement.message2);
-
-          // try harder
-      } if (autoApplications[0].count === achievements.upgrade1) {
+      if ((manualClick >= achievement.clicks || jobApplications >= achievement.apps || totalRejections === achievement.rejections) &&
+        !achievedConditions.includes(achievement.message1)) {
         showAchievement(achievement.message1, achievement.message2);
-
+        achievedConditions.push(achievement.message1);
       }
+    }
   }
-}
 
 // Function to display achievements in the notification box
 function showAchievement(message1, message2) {
@@ -596,7 +620,7 @@ setInterval(randomEvent, 60000);
 const rejections = [
   {
       color: "grey",
-      totalApps: 100,
+      totalApps: 15,
       message1: "REJECTION",
       message2: "Thank you for your interest, unfortunately..",
   },
@@ -609,52 +633,33 @@ const rejections = [
   // Add more rejection events as needed
 ];
 
-// Initialize the rejection counter
-let rejectionsCount = 0;
-
-// Function to check for rejections
-function checkRejections() {
-  for (const rejection of rejections) {
-      if (jobApplications >= rejection.totalApps && rejectionsCount < rejection.totalApps) {
-          showRejection(rejection);
-          rejectionsCount = rejection.totalApps;
-      }
-  }
-}
-
-// Function to display rejection notifications in the notification box
-function showRejection(rejection) {
+// Function to display achievements in the notification box
+function showRejection(message1, message2) {
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = rejection.color;
-
+  
   const message1Element = document.createElement("div");
-  message1Element.textContent = rejection.message1;
-  message1Element.className = "event-message1";
-
+  message1Element.textContent = message1;
+  message1Element.className = "rejection-message1";
+  
   const message2Element = document.createElement("div");
-  message2Element.textContent = rejection.message2;
-  message2Element.className = "event-message2";
-
+  message2Element.textContent = message2;
+  message2Element.className = "rejection-message2";
+  
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.className = "close-button";
-
+  
   closeButton.addEventListener("click", () => {
       notificationBox.removeChild(notification);
   });
-
+  
   notification.appendChild(message1Element);
   notification.appendChild(message2Element);
   notification.appendChild(closeButton);
-
+  
   notificationBox.appendChild(notification);
 }
-
-// Set an interval to check for rejections
-setInterval(checkRejections, 1000); // Adjust the interval as needed
-
-
 
 // Initialize the game
 updateShop();

@@ -56,8 +56,15 @@ h1 {
 /* @@@@@@@ notification @@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
+#notification-box {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999; /* Ensure it's on top */
+}
+
 .notification {
-  background-color: #4CAF50;
+  background-color: lightskyblue;
   color: white;
   padding: 10px;
   margin: 5px;
@@ -65,6 +72,8 @@ h1 {
   text-align: center;
   position: relative;
   padding-right: 25px; /* Adjust the value as needed */
+  z-index: 9998; /* Ensure it's on top */
+
 }
 .achievement-message1 {
   font-weight: bold;
@@ -86,9 +95,9 @@ h1 {
   font-weight: bold;
   border: none;
   padding: 5px 10px;
-  border-radius: 50%;
+  border-radius: 50px;
   cursor: pointer;
-  z-index: 1; /* Ensure it's on top of the notification */
+  z-index: 9999; /* Ensure it's on top of the notification */
 }
 
 
