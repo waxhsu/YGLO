@@ -32,7 +32,7 @@ function updateJobApplications() {
 // Function to update the CPS (Clicks Per Second) display
 function updateCPSDisplay() {
   const cpsDisplay = document.getElementById("cps-display");
-  cpsDisplay.textContent = `Apps per second: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+  cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
 }
 
 // Function to update the motivation count on the screen
@@ -43,7 +43,7 @@ function updateMotivation() {
 // Function to update the rejection display
 function updateRejection() {
   const rejectionDisplay = document.getElementById("rejection-display");
-  rejectionDisplay.textContent = `Rejections: ${Math.floor(totalRejections/100)}`; // Display MPS rounded to 2 decimal places
+  rejectionDisplay.textContent = `Rejections: ${Math.floor(totalRejections)}`; // Display MPS rounded to 2 decimal places
 }
 
 // Function to calculate the total clicks per second
@@ -473,13 +473,16 @@ const achievements = [
 
   // rejection achievements
   { 
-    rejections: 100, 
+    color: "yellow",
+    rejections: 1, 
     message1: "rejection 1",
-    message2: "100 apps = 1 rejection" 
+    message2: "condition 1" 
   },
-  { rejections: 250,
-    message1: "5 rejection letters!",
-    message2: "All good, it's a numbers game!" 
+  {
+    color: "yellow",
+    rejections: 2,
+    message1: "rejection 2",
+    message2: "condition 2" 
   },
 
   // // upgrade achievements
@@ -498,10 +501,6 @@ const achievements = [
   // Add more achievements as needed
 ];
 
-// Initialize an array to store achieved conditions
-const achievedConditions = [];
-//////////////////////////////////////////////////
-
 // Function to check for achievements
 function checkAchievements() {
   for (const achievement of achievements) {
@@ -514,9 +513,10 @@ function checkAchievements() {
   }
 
 // Function to display achievements in the notification box
-function showAchievement(message1, message2) {
+function showAchievement(message1, message2, color) {
   const notification = document.createElement("div");
   notification.className = "notification";
+  notification.style.backgroundColor = color;
   
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
@@ -592,7 +592,7 @@ function showRandomEvent(event) {
   closeButton.className = "close-button";
 
   closeButton.addEventListener("click", () => {
-      notificationBox.removeChild(notification);
+  notificationBox.removeChild(notification);
   });
 
   notification.appendChild(message1Element);
@@ -600,6 +600,10 @@ function showRandomEvent(event) {
   notification.appendChild(closeButton);
 
   notificationBox.appendChild(notification);
+
+  setTimeout(() => {
+    notificationBox.removeChild(notification);
+}, 5000);
 }
 
 // Function to apply the effects of the random event
@@ -637,6 +641,8 @@ const rejections = [
 function showRejection(message1, message2) {
   const notification = document.createElement("div");
   notification.className = "notification";
+  notification.style.backgroundColor = rejections.color;
+
   
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
