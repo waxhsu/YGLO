@@ -120,7 +120,7 @@ function buyAutoApplication(app) {
 // Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
-  totalRejections += 1 * totalClicksPerSecond;
+  // totalRejections += 1 * totalClicksPerSecond;
   motivation += 0.1 * totalClicksPerSecond; // Increase motivation based on job applications clicked
   updateMotivation();
   updateRejection();
@@ -361,12 +361,12 @@ function updateJobPostings() {
 function clickForJobApplications() {
     motivation += 0.217 * clickValue; // Increase motivation based on job applications clicked
     manualClick += 1;
-    totalRejections += 1;
+    // totalRejections += 1;
     updateJobApplications();
     updateMotivation();
-    updateRejection();
     cycleJobPostings(); // Cycle job postings on each click
     updateJobPostings();
+    updateRejection();
     checkAchievements();
 }
 
@@ -473,16 +473,16 @@ const achievements = [
 
   // rejection achievements
   { 
-    color: "yellow",
+    // color: "yellow",
     rejections: 1, 
-    message1: "rejection 1",
-    message2: "condition 1" 
+    message1: "1 rejection",
+    message2: "your 1st rejection!" 
   },
-  {
-    color: "yellow",
-    rejections: 2,
-    message1: "rejection 2",
-    message2: "condition 2" 
+  { 
+    // color: "yellow",
+    rejections: 10,
+    message1: "10 rejections",
+    message2: "frick" 
   },
 
   // // upgrade achievements
@@ -501,6 +501,10 @@ const achievements = [
   // Add more achievements as needed
 ];
 
+// Initialize an array to store achieved conditions
+const achievedConditions = [];
+//////////////////////////////////////////////////
+
 // Function to check for achievements
 function checkAchievements() {
   for (const achievement of achievements) {
@@ -516,31 +520,30 @@ function checkAchievements() {
 function showAchievement(message1, message2, color) {
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = color;
-  
+  notification.style.backgroundColor = color; // Set background color based on the 'color' parameter
+
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
   message1Element.className = "achievement-message1";
-  
+
   const message2Element = document.createElement("div");
   message2Element.textContent = message2;
   message2Element.className = "achievement-message2";
-  
+
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.className = "close-button";
-  
+
   closeButton.addEventListener("click", () => {
       notificationBox.removeChild(notification);
   });
-  
+
   notification.appendChild(message1Element);
   notification.appendChild(message2Element);
   notification.appendChild(closeButton);
-  
+
   notificationBox.appendChild(notification);
 }
-
 
 
 ///////////////////////////////////////////////////////////
@@ -621,35 +624,45 @@ setInterval(randomEvent, 60000);
 ////////////////////////////////////////////////////////////
 
 // Define rejections with color, totalApps, and messages
-const rejections = [
+const randomRejections = [
   {
-      color: "grey",
-      totalApps: 15,
-      message1: "REJECTION",
-      message2: "Thank you for your interest, unfortunately..",
+    color: "grey",
+    effect_motivation: -3,
+    message1: "REJECTION",
+    message2: "Thank you for your interest, unfortunately..",
   },
   {
-      color: "grey",
-      totalApps: 500,
-      message1: "REJECTION",
-      message2: "Your app was impressive, but..",
+    color: "grey",
+    effect_motivation: -2,
+    message1: "REJECTION",
+    message2: "Your app was impressive, but..",
   }
   // Add more rejection events as needed
 ];
 
+// Function to trigger random REJECTION events
+function randomRejection() {
+  const randomIndex = Math.floor(Math.random() * randomRejections.length);
+  const rejectionEvent = randomRejections[randomIndex];
+  showRandomRejection(rejectionEvent);
+  applyRandomRejectionEffects(rejectionEvent);
+}
+
+
 // Function to display achievements in the notification box
-function showRejection(message1, message2) {
+function showRandomRejection(rejectionEvent) {
+  totalRejections += 1;
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = rejections.color;
+  notification.style.backgroundColor = rejectionEvent.color;
 
   
   const message1Element = document.createElement("div");
-  message1Element.textContent = message1;
+  message1Element.textContent = rejectionEvent.message1;
   message1Element.className = "rejection-message1";
   
   const message2Element = document.createElement("div");
-  message2Element.textContent = message2;
+  message2Element.textContent = rejectionEvent.message2;
   message2Element.className = "rejection-message2";
   
   const closeButton = document.createElement("button");
@@ -667,9 +680,19 @@ function showRejection(message1, message2) {
   notificationBox.appendChild(notification);
 }
 
+// Function to apply the effects of the rejection event
+function applyRandomRejectionEffects(rejectionEvent) {
+  motivation += rejectionEvent.effect_motivation;
+  updateMotivation();
+}
+
+// Set an interval to trigger random events every 120 seconds
+setInterval(randomRejection, 120000);
+
+
 // Initialize the game
 updateShop();
-updateJobApplications();
+updateJobApplications();;
 updateCPSDisplay(); // Display initial CPS
 updateJobPostings(); // Display initial job posting
 setInterval(autoGenerateJobApplications, 1000);
