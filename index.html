@@ -8,6 +8,10 @@
 
 <body>
 	<div id="topUI">
+
+		<button id="trigger-random-event-button">Trigger Random Event</button>
+
+
 		<div id="music-controls">
 			<label for="volume-slider">Volume:</label>
 			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1">
@@ -24,8 +28,11 @@
 				<div id="msgBody">Thanks for your interest, but..</div>
 			</div>
 		</div> -->
-		<div id="notification-box"></div>
-
+		
+		<div id="notification-box">
+			<span id="notification-text"></span>
+			<button onclick="closeNotification()">X</button>
+		</div>
 		
 	</div>
 
