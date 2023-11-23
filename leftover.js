@@ -136,12 +136,6 @@ function showAchievement(message1, message2, color) {
 /////////////////////  RANDOM EVENT  //////////////////////
 ///////////////////////////////////////////////////////////
 
-const triggerRandomEventButton = document.getElementById("trigger-random-event-button");
-triggerRandomEventButton.addEventListener("click", randomEvent);
-
-
-
-
 // Define random events as an array of objects
 const randomEventPool = [
   { 
@@ -323,3 +317,27 @@ muteButton.addEventListener("click", toggleMute);
 
 // Add an event listener to start playing the music when the page loads
 window.addEventListener("load", playBackgroundMusic);
+
+
+
+
+/////// Create a function `randomEvent` and randomEvent will pull from the object below:
+
+const randomEventPool = [
+  { 
+      color: "red",
+      effect_motivation: -10,
+      effect_apps: 0,
+      message1: "You spilled coffee on yourself",
+      message2: "-10 motivation"
+  },
+  { 
+      color: "green",
+      effect_motivation: 10,
+      effect_apps: 0,
+      message1: "You find $2 on the floor",
+      message2: "+10 motivation"
+  }
+];
+
+// randomEvent will be funneled into the showNotification function to show. make sure that the color in the object is used to change the color of the notification box

@@ -435,15 +435,15 @@ function closeNotification() {
 const achievements = [
   // manual click achievements
   { 
-    clicks: 100, 
+    clicks: 10, 
     message1: "You manually applied to 10 jobs!",
     message2: "test1" 
   },
-  { clicks: 101,
+  { clicks: 100,
     message1: "You manually applied to 100 jobs!",
     message2: "test2" 
   },
-  { clicks: 102, 
+  { clicks: 1000, 
     message1: "You manually applied to 1000 jobs!", 
     message2: "test3" 
   },
@@ -546,8 +546,8 @@ function showAchievement(message1, message2, color) {
 /////////////////////  RANDOM EVENT  //////////////////////
 ///////////////////////////////////////////////////////////
 
-// Define random events as an array of objects
 const randomEventPool = [
+// Random motivation modifiers
   { 
     color: "red",
     effect_motivation: -10,
@@ -562,13 +562,23 @@ const randomEventPool = [
     message1: "You find $2 on the floor",
     message2: "+10 motivation"
   },
+
+
+// Random application modifiers
   { 
     color: "pink",
     effect_motivation: -2,
-    effect_apps: -20,
-    message1: "your applications were never sent",
-    message2: "-20 applications"
-},
+    effect_apps: -10,
+    message1: "your apps were never actually sent",
+    message2: "-10 applications"
+  },
+  { 
+    color: "lightgreen",
+    effect_motivation: 4,
+    effect_apps: 2,
+    message1: "you found more apps in your old jacket",
+    message2: "+2 apps"
+  },
 ];
 
 let timer = null; // Initialize timer
