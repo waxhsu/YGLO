@@ -688,10 +688,10 @@ function showAchievement(message1, message2, icon) {
   message2Element.textContent = message2;
   message2Element.className = "achievement-message2";
   
-  const notificationIcon = document.createElement("img");
-  notificationIcon.src = icon;
-  notificationIcon.alt = "圖";
-  notificationIcon.className = "notification-icon";
+  const iconElement = document.createElement("img");
+  iconElement.src = "./img/icon1.png";
+  iconElement.alt = "圖";
+  iconElement.className = "notification-icon";
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -701,7 +701,7 @@ function showAchievement(message1, message2, icon) {
       notificationBox.removeChild(notification);
   });
 
-  notification.appendChild(notificationIcon);
+  notification.appendChild(iconElement);
   notification.appendChild(message1Element);
   notification.appendChild(message2Element);
   notification.appendChild(closeButton);
