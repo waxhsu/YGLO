@@ -7,7 +7,7 @@ let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
 let totalRejections = 0
-// let manualClick = 0;
+
 
 // Get HTML elements
 const jobApplicationsElement = document.getElementById("job-applications");
@@ -105,8 +105,20 @@ function buyAutoApplication(app) {
       updateShop();
       calculateTotalClicksPerSecond();
       updateCPSDisplay(); // Update CPS when purchasing
+      updateShopUpgrades(); // Update the shop upgrade variables
   }
 }
+
+// Create an array to store the shop upgrade variables
+let shopUpgradeCount = autoApplications.map(app => app.count);
+
+// Function to update shop upgrade variables
+function updateShopUpgrades() {
+  autoApplications.forEach((app, index) => {
+    shopUpgradeCount[index] = app.count;
+  });
+}
+
 
 
 ////////////////////////////////////////////////////////////
@@ -432,7 +444,7 @@ function closeNotification() {
 
 
 // Define achievement conditions as an array of objects
-const achievements = [
+const mainAchievements = [
   // manual click achievements
   { 
     clicks: 10, 
@@ -469,54 +481,75 @@ const achievements = [
 
   // rejection achievements
   { 
-    color: "yellow",
     rejections: 1, 
     message1: "1 rejection",
     message2: "your 1st rejection!" 
   },
   { 
-    color: "yellow",
     rejections: 10,
     message1: "10 rejections",
     message2: "frick" 
   },
-
-  // // upgrade achievements
-  // { 
-  //   upgrade1: 1, 
-  //   message1: "Your first time actually trying!",
-  //   message2: "Owning 1 Trying Harder"
-  // },
-  // { upgrade1: 5,
-  //   message1: "Are you even trying?",
-  //   message2: "Owning 5 Trying Harders" 
-  // },
-
-
-
   // Add more achievements as needed
 ];
 
+const upgradeAchievements = [
+    // TRY HARDER
+    { 
+      upgrade0: 1, 
+      message1: "Your first time actually trying!",
+      message2: "Own 1 Trying Harder"
+    },
+    { upgrade0: 2,
+      message1: "Are you even trying?",
+      message2: "Own 2 Trying Harders" 
+    },
+
+    // LINKEDIN PREMIUM
+    { 
+      upgrade1: 1, 
+      message1: "$40 a month huh?",
+      message2: "Own 1 LinkedIn Premium"
+    },
+    { upgrade1: 2,
+      message1: "Are you even trying?",
+      message2: "Own 2 LinkedIn Premiums" 
+    },
+]
+
+
 // Initialize an array to store achieved conditions
-const achievedConditions = [];
+const achievedMainConditions = [];
+const achievedUpgradeConditions = [];
 //////////////////////////////////////////////////
 
-// Function to check for achievements
-function checkAchievements() {
-  for (const achievement of achievements) {
+// Function to check for MAINachievements
+function checkMainAchievements() {
+  for (const achievement of mainAchievements) {
       if ((manualClick >= achievement.clicks || jobApplications >= achievement.apps || totalRejections === achievement.rejections) &&
-        !achievedConditions.includes(achievement.message1)) {
+        !achievedMainConditions.includes(achievement.message1)) {
         showAchievement(achievement.message1, achievement.message2);
-        achievedConditions.push(achievement.message1);
+        achievedMainConditions.push(achievement.message1);
       }
-    }
   }
+}
+
+function checkUpgradeAchievements() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[0] >= achievement.upgrade0) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2);
+        achievedMainConditions.push(achievement.message1);
+      }
+  }
+}
+
+
 
 // Function to display achievements in the notification box
-function showAchievement(message1, message2, color) {
+function showAchievement(message1, message2) {
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = color; // Set background color based on the 'color' parameter
 
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
@@ -720,4 +753,5 @@ updateJobApplications();
 updateCPSDisplay(); // Display initial CPS
 updateJobPostings(); // Display initial job posting
 setInterval(autoGenerateJobApplications, 1000);
-setInterval(checkAchievements, 1000);
+setInterval(checkMainAchievements, 1000);
+setInterval(checkUpgradeAchievements, 1000);
