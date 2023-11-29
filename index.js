@@ -2,7 +2,7 @@
 // let jobApplications = 0;
 let motivation = 0
 let autoApplications = [];
-let clickValue = 100;
+let clickValue = 100000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -383,41 +383,41 @@ clickButton.addEventListener("click", clickForJobApplications);
 
 
 
-////////////////////////////////////////////////////////
-////////////////////    MUSIC   ////////////////////////
-////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////
+// ////////////////////    MUSIC   ////////////////////////
+// ////////////////////////////////////////////////////////
   
-// START MUSIC
-  const bgMusic = document.getElementById("background-music");
-  const muteButton = document.getElementById("mute-button");
-  const volumeSlider = document.getElementById("volume-slider");
+// // START MUSIC
+//   const bgMusic = document.getElementById("background-music");
+//   const muteButton = document.getElementById("mute-button");
+//   const volumeSlider = document.getElementById("volume-slider");
 
-  // Function to start playing the background music
-  function playBackgroundMusic() {
-      bgMusic.play();
-  }
+//   // Function to start playing the background music
+//   function playBackgroundMusic() {
+//       bgMusic.play();
+//   }
 
-  // Function to toggle the background music (mute/unmute)
-  function toggleMute() {
-    if (bgMusic.muted) {
-        bgMusic.muted = false;
-        muteButton.textContent = "Mute";
-    } else {
-        bgMusic.muted = true;
-        muteButton.textContent = "Unmute";
-    }
-  }
+//   // Function to toggle the background music (mute/unmute)
+//   function toggleMute() {
+//     if (bgMusic.muted) {
+//         bgMusic.muted = false;
+//         muteButton.textContent = "Mute";
+//     } else {
+//         bgMusic.muted = true;
+//         muteButton.textContent = "Unmute";
+//     }
+//   }
 
-  // Function to handle volume change
-  function changeVolume() {
-    bgMusic.volume = volumeSlider.value;
-  }
+//   // Function to handle volume change
+//   function changeVolume() {
+//     bgMusic.volume = volumeSlider.value;
+//   }
 
-  volumeSlider.addEventListener("input", changeVolume);
-  muteButton.addEventListener("click", toggleMute);
+//   volumeSlider.addEventListener("input", changeVolume);
+//   muteButton.addEventListener("click", toggleMute);
 
-  // Add an event listener to start playing the music when the page loads
-  window.addEventListener("load", playBackgroundMusic);
+//   // Add an event listener to start playing the music when the page loads
+//   window.addEventListener("load", playBackgroundMusic);
 
 
 ////////////////////////////////////////////////////////////
@@ -447,15 +447,20 @@ function closeNotification() {
 const mainAchievements = [
   // manual click achievements
   { 
-    clicks: 10, 
-    message1: "You manually applied to 10 jobs!",
-    message2: "test1" 
+    icon: "./img/icon1.png",
+    clicks: 1, 
+    message1: "message1",
+    message2: "message2" 
   },
-  { clicks: 100,
+  { 
+    icon: "./img/icon1.png",
+    clicks: 100,
     message1: "You manually applied to 100 jobs!",
     message2: "test2" 
   },
-  { clicks: 1000, 
+  { 
+    icon: "./img/icon1.png",
+    clicks: 1000, 
     message1: "You manually applied to 1000 jobs!", 
     message2: "test3" 
   },
@@ -490,32 +495,121 @@ const mainAchievements = [
     message1: "10 rejections",
     message2: "frick" 
   },
-  // Add more achievements as needed
 ];
 
 const upgradeAchievements = [
-    // TRY HARDER
+    // TRY HARDER [0]
     { 
       upgrade0: 1, 
       message1: "Your first time actually trying!",
       message2: "Own 1 Trying Harder"
     },
     { upgrade0: 2,
-      message1: "Are you even trying?",
+      message1: "condition met",
       message2: "Own 2 Trying Harders" 
     },
+    { upgrade0: 25,
+      message1: "condition met",
+      message2: "Own 25 Trying Harders" 
+    },
+    { upgrade0: 100,
+      message1: "condition met",
+      message2: "Own 100 Trying Harders" 
+    },
+    { upgrade0: 500,
+      message1: "condition met",
+      message2: "Own 500 Trying Harders" 
+    },
+    { upgrade0: 1000,
+      message1: "condition met",
+      message2: "Own 1000 Trying Harders" 
+    },
 
-    // LINKEDIN PREMIUM
+    // LINKEDIN PREMIUM [1]
     { 
       upgrade1: 1, 
       message1: "$40 a month huh?",
       message2: "Own 1 LinkedIn Premium"
     },
     { upgrade1: 2,
-      message1: "Are you even trying?",
+      message1: "Bill Gates thanks you",
       message2: "Own 2 LinkedIn Premiums" 
     },
-]
+    { upgrade1: 25,
+      message1: "condition met",
+      message2: "Own 25 LinkedIn Premiums" 
+    },
+    { upgrade1: 100,
+      message1: "condition met",
+      message2: "Own 100 LinkedIn Premiums" 
+    },
+    { upgrade1: 500,
+      message1: "condition met",
+      message2: "Own 500 LinkedIn Premiums" 
+    },
+    { upgrade1: 1000,
+      message1: "condition met",
+      message2: "Own 1000 LinkedIn Premiums" 
+    },
+
+    // OUTSOURCE TO FIVERR [2]
+    { 
+      upgrade2: 1, 
+      message1: "Thank you Mr. Patel!",
+      message2: "First outsourced applier"
+    },
+    { upgrade2: 2,
+      message1: "TEST 2",
+      message2: "Own 2 outsourced worker" 
+    },
+    { upgrade2: 25,
+      message1: "condition met",
+      message2: "Own 25 Fiverr outsources" 
+    },
+    { upgrade2: 100,
+      message1: "condition met",
+      message2: "Own 100 Fiverr outsources" 
+    },
+    { upgrade2: 500,
+      message1: "condition met",
+      message2: "Own 500 Fiverr outsources" 
+    },
+    { upgrade2: 1000,
+      message1: "condition met",
+      message2: "Own 1000 Fiverr outsources" 
+    },
+
+
+    //  SEVERANCES [3]
+    { 
+      upgrade3: 1, 
+      message1: "condition met",
+      message2: "Own 1 upgrade"
+    },
+    { upgrade3: 2,
+      message1: "condition met",
+      message2: "Own 2 upgrades" 
+    },
+    { upgrade3: 25,
+      message1: "condition met",
+      message2: "Own 25 upgrades" 
+    },
+    { upgrade3: 100,
+      message1: "condition met",
+      message2: "Own 100 upgrades" 
+    },
+    { upgrade3: 500,
+      message1: "condition met",
+      message2: "Own 500 upgrades" 
+    },
+    { upgrade3: 1000,
+      message1: "condition met",
+      message2: "Own 1000 upgrades" 
+    },
+
+  // ADD MORE WHEN NEEDED
+
+];
 
 
 // Initialize an array to store achieved conditions
@@ -534,30 +628,70 @@ function checkMainAchievements() {
   }
 }
 
-function checkUpgradeAchievements() {
+function checkUpgradeAchievements0() {
   for (const achievement of upgradeAchievements) {
       if ((shopUpgradeCount[0] >= achievement.upgrade0) &&
         !achievedUpgradeConditions.includes(achievement.message1)) {
         showAchievement(achievement.message1, achievement.message2);
-        achievedMainConditions.push(achievement.message1);
+        achievedUpgradeConditions.push(achievement.message1);
       }
   }
 }
 
+function checkUpgradeAchievements1() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[1] >= achievement.upgrade1) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2);
+        achievedUpgradeConditions.push(achievement.message1);
+      }
+  }
+}
+
+function checkUpgradeAchievements2() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[2] >= achievement.upgrade2) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2);
+        achievedUpgradeConditions.push(achievement.message1);
+      }
+  }
+}
+
+function checkUpgradeAchievements3() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[3] >= achievement.upgrade3) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2);
+        achievedUpgradeConditions.push(achievement.message1);
+      }
+  }
+}
+
+setInterval(checkUpgradeAchievements0, 1000);
+setInterval(checkUpgradeAchievements1, 1000);
+setInterval(checkUpgradeAchievements2, 1000);
+setInterval(checkUpgradeAchievements3, 1000);
 
 
 // Function to display achievements in the notification box
-function showAchievement(message1, message2) {
+function showAchievement(message1, message2, icon) {
   const notification = document.createElement("div");
   notification.className = "notification";
 
+  
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
   message1Element.className = "achievement-message1";
-
+  
   const message2Element = document.createElement("div");
   message2Element.textContent = message2;
   message2Element.className = "achievement-message2";
+  
+  const notificationIcon = document.createElement("img");
+  notificationIcon.src = icon;
+  notificationIcon.alt = "圖";
+  notificationIcon.className = "notification-icon";
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -567,6 +701,7 @@ function showAchievement(message1, message2) {
       notificationBox.removeChild(notification);
   });
 
+  notification.appendChild(notificationIcon);
   notification.appendChild(message1Element);
   notification.appendChild(message2Element);
   notification.appendChild(closeButton);
@@ -754,4 +889,3 @@ updateCPSDisplay(); // Display initial CPS
 updateJobPostings(); // Display initial job posting
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievements, 1000);
-setInterval(checkUpgradeAchievements, 1000);
