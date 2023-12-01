@@ -2,7 +2,7 @@
 // let jobApplications = 0;
 let motivation = 0
 let autoApplications = [];
-let clickValue = 100000;
+let clickValue = 1;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -365,17 +365,28 @@ function updateJobPostings() {
 ///////////////////    MAIN GAMEPLAY   /////////////////////
 ////////////////////////////////////////////////////////////
   
-  
+const soundClips = ['./YGLOclick1.mov', 
+// './YGLOclick2.mov'
+];
+
+function playRandomSound() {
+  const randomIndex = Math.floor(Math.random() * soundClips.length);
+  const audio = new Audio(soundClips[randomIndex]);
+  audio.play();
+}
+
 // Function to handle clicking and adding job applications
 function clickForJobApplications() {
     motivation += 0.217 * clickValue; // Increase motivation based on job applications clicked
     manualClick += 1;
-    // totalRejections += 1;
     updateJobApplications();
     updateMotivation();
     updateRejection();
     cycleJobPostings(); // Cycle job postings on each click
     updateJobPostings();
+
+
+    playRandomSound();
 }
 
 // Add a click event listener to the button
