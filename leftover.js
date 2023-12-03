@@ -341,3 +341,50 @@ const randomEventPool = [
 ];
 
 // randomEvent will be funneled into the showNotification function to show. make sure that the color in the object is used to change the color of the notification box
+
+
+
+
+
+// TRYNA FIGURE OUT HOW OT PUT ICON ON THE LEFT
+
+function updateJobPostings() {
+    const jobPostingsElement = document.getElementById("job-postings");
+    jobPostingsElement.innerHTML = ""; // Clear the previous job postings
+    jobPostingCycle.forEach((posting, index) => {
+      const jobPostingItem = document.createElement("div");
+      jobPostingItem.className = "job-posting-item";
+      if (index === 0) {
+        jobPostingItem.classList.add("first-posting");
+      }
+
+
+      const jobInfoContainer = document.createElement("div"); // New div for messages
+      jobInfoContainer.className = "job-text-container";
+
+
+      
+      const titleElement = document.createElement("div");
+      titleElement.className = "job-title";
+      titleElement.textContent = posting.title;
+      
+      const companyElement = document.createElement("div");
+      companyElement.className = "job-company";
+      companyElement.textContent = posting.company;
+      
+      const locationElement = document.createElement("div");
+      locationElement.className = "job-location";
+      locationElement.textContent = posting.location;
+      
+      const payElement = document.createElement("div");
+      payElement.className = "job-pay";
+      payElement.textContent = posting.pay;
+      
+      jobInfoContainer.appendChild(titleElement);
+      jobInfoContainer.appendChild(companyElement);
+      jobInfoContainer.appendChild(locationElement);
+      jobInfoContainer.appendChild(payElement);
+      
+      jobPostingsElement.appendChild(jobInfoContainer);
+    });
+  }

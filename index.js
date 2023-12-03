@@ -2,7 +2,7 @@
 // let jobApplications = 0;
 let motivation = 0
 let autoApplications = [];
-let clickValue = 1;
+let clickValue = 10000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -208,23 +208,48 @@ function cycleJobPostings() {
 function updateJobPostings() {
     const jobPostingsElement = document.getElementById("job-postings");
     jobPostingsElement.innerHTML = ""; // Clear the previous job postings
+
     jobPostingCycle.forEach((posting, index) => {
       const jobPostingItem = document.createElement("div");
       jobPostingItem.className = "job-posting-item";
       if (index === 0) {
         jobPostingItem.classList.add("first-posting");
       }
-      
-      const titleElement = document.createElement("div");
-      titleElement.className = "job-title";
-      titleElement.textContent = posting.title;
-      
-      const companyElement = document.createElement("div");
-      companyElement.className = "job-company";
-      companyElement.textContent = posting.company;
-      
-      jobPostingItem.appendChild(titleElement);
-      jobPostingItem.appendChild(companyElement);
+
+        // Left column for icon
+        const iconElement = document.createElement("img");
+
+        // Set the path to your icon image file
+        iconElement.src = posting.icon;
+        iconElement.className = "icon";
+
+        // Right column for job details
+        const detailsElement = document.createElement("div");
+        // detailsElement.className = "job-details";
+
+        const titleElement = document.createElement("div");
+        titleElement.className = "job-title";
+        titleElement.textContent = posting.title;
+
+        const companyElement = document.createElement("div");
+        companyElement.className = "job-company";
+        companyElement.textContent = posting.company;
+
+        const locationElement = document.createElement("div");
+        locationElement.className = "job-location";
+        locationElement.textContent = posting.location;
+
+        const payElement = document.createElement("div");
+        payElement.className = "job-pay";
+        payElement.textContent = posting.pay;
+
+        detailsElement.appendChild(titleElement);
+        detailsElement.appendChild(companyElement);
+        detailsElement.appendChild(locationElement);
+        detailsElement.appendChild(payElement);
+
+        jobPostingItem.appendChild(iconElement);
+        jobPostingItem.appendChild(detailsElement);
       
       jobPostingsElement.appendChild(jobPostingItem);
     });
@@ -232,130 +257,74 @@ function updateJobPostings() {
   
   jobPostingCycle = [
     {
-      id: 1,
+      icon: "./img/icon4.png",
       title: "Executive Intern",
       company: "Interns Collective",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 2,
+      icon: "./img/icon4.png",
       title: "Superb Internment",
       company: "Superb Owl Inc.",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 3,
+      icon: "./img/icon4.png",
       title: "Junior Analyst [UNPAID]",
       company: "Boaty McBoatface",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 4,
+      icon: "./img/icon4.png",
       title: "Analist Jr.",
       company: "Plug-In Solutions",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 5,
+      icon: "./img/icon4.png",
       title: "Totally Real Role",
       company: "Indian Recruiter with American Name",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 6,
+      icon: "./img/icon4.png",
       title: "Master of Improbable Events",
       company: "Infinite Improbability Corp.",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 7,
+      icon: "./img/icon4.png",
       title: "Absurdity Apprentice",
       company: "Absurdity Architects, Inc.",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 8,
+      icon: "./img/icon4.png",
       title: "Chief Penguin Plunger",
       company: "Penguin Plunge Productions",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 9,
+      icon: "./img/icon4.png",
       title: "Chaos Coordinator",
       company: "Chaos Coasters, Ltd.",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      id: 10,
+      icon: "./img/icon4.png",
       title: "Wizarding Intern of Whimsy",
       company: "Whimsical Widget Wizards",
-    },
-    // Add more entries here
-    {
-      id: 11,
-      title: "Lord of Laughter",
-      company: "Giggle Galaxy, LLC",
-    },
-    {
-      id: 12,
-      title: "Surreal Sales Shaman",
-      company: "Dreamscape Dealers",
-    },
-    {
-      id: 13,
-      title: "Crazy Cat-herder",
-      company: "Feline Folly, Inc.",
-    },
-    {
-      id: 14,
-      title: "Master of Mischief",
-      company: "Prankster Paradise Ltd.",
-    },
-    {
-      id: 15,
-      title: "Executive Eccentric",
-      company: "Absurd Adventures, LLC",
-    },
-    {
-      id: 16,
-      title: "Clownish Content Creator",
-      company: "Silly Stream Studios",
-    },
-    {
-      id: 17,
-      title: "Captain of Nonsense",
-      company: "Ridiculous Realms Co.",
-    },
-    {
-      id: 18,
-      title: "Llama Lama Leader",
-      company: "Llama Lovers United",
-    },
-    {
-      id: 19,
-      title: "Whacky Wizard of Woo",
-      company: "Bizarre Business Wizards",
-    },
-    {
-      id: 20,
-      title: "Director of Doodles",
-      company: "Artistic Antics, Inc.",
-    },
-    {
-      id: 21,
-      title: "Supreme Silly Scientist",
-      company: "Absurd Alchemy Labs",
-    },
-    {
-      id: 22,
-      title: "Nonsensical Number Cruncher",
-      company: "Chaos Calculations, Ltd.",
-    },
-    {
-      id: 23,
-      title: "Mirthful Marketing Maestro",
-      company: "Comedy Campaign Creators",
-    },
-    {
-      id: 24,
-      title: "Jester of Jargon",
-      company: "Witty Wordsmiths, LLC",
-    },
-    {
-      id: 25,
-      title: "Chuckle Captain",
-      company: "Hilarious Hijinks, Inc.",
+      location: "random city",
+      pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
   ];
 
@@ -460,8 +429,8 @@ const mainAchievements = [
   { 
     icon: "./img/icon1.png",
     clicks: 1, 
-    message1: "message1",
-    message2: "message2" 
+    message1: "Your first click!",
+    message2: "Hopefully this will lead to somewhere.. eventually" 
   },
   { 
     icon: "./img/icon1.png",
@@ -478,30 +447,39 @@ const mainAchievements = [
 
   // job application achievements
   { 
+    icon: "./img/icon2.png",
     apps: 69, 
     message1: "You applied to 69 jobs!",
     message2: "Nice" 
   },
-  { apps: 6969,
+  { 
+    icon: "./img/icon2.png",
+    apps: 6969,
     message1: "You applied to 6969 jobs!",
-    message2: "Very nice" 
+    message2: "Nice x 101" 
   },
-  { apps: 10000,
+  { 
+    icon: "./img/icon2.png",
+    apps: 10000,
     message1: "You applied to 10000 jobs!",
     message2: "You feel kinda empty inside" 
   },
-  { apps: 42069, 
+  { 
+    icon: "./img/icon2.png",
+    apps: 42069, 
     message1: "You applied to 42069 jobs!", 
     message2: "You blow a small puff of air out of your nostrils" 
   },
 
   // rejection achievements
   { 
+    icon: "./img/icon3.png",
     rejections: 1, 
     message1: "1 rejection",
     message2: "your 1st rejection!" 
   },
   { 
+    icon: "./img/icon3.png",
     rejections: 10,
     message1: "10 rejections",
     message2: "frick" 
@@ -515,23 +493,28 @@ const upgradeAchievements = [
       message1: "Your first time actually trying!",
       message2: "Own 1 Trying Harder"
     },
-    { upgrade0: 2,
+    { 
+      upgrade0: 2,
       message1: "condition met",
       message2: "Own 2 Trying Harders" 
     },
-    { upgrade0: 25,
+    { 
+      upgrade0: 25,
       message1: "condition met",
       message2: "Own 25 Trying Harders" 
     },
-    { upgrade0: 100,
+    { 
+      upgrade0: 100,
       message1: "condition met",
       message2: "Own 100 Trying Harders" 
     },
-    { upgrade0: 500,
+    { 
+      upgrade0: 500,
       message1: "condition met",
       message2: "Own 500 Trying Harders" 
     },
-    { upgrade0: 1000,
+    { 
+      upgrade0: 1000,
       message1: "condition met",
       message2: "Own 1000 Trying Harders" 
     },
@@ -542,23 +525,28 @@ const upgradeAchievements = [
       message1: "$40 a month huh?",
       message2: "Own 1 LinkedIn Premium"
     },
-    { upgrade1: 2,
+    { 
+      upgrade1: 2,
       message1: "Bill Gates thanks you",
       message2: "Own 2 LinkedIn Premiums" 
     },
-    { upgrade1: 25,
+    { 
+      upgrade1: 25,
       message1: "condition met",
       message2: "Own 25 LinkedIn Premiums" 
     },
-    { upgrade1: 100,
+    { 
+      upgrade1: 100,
       message1: "condition met",
       message2: "Own 100 LinkedIn Premiums" 
     },
-    { upgrade1: 500,
+    { 
+      upgrade1: 500,
       message1: "condition met",
       message2: "Own 500 LinkedIn Premiums" 
     },
-    { upgrade1: 1000,
+    { 
+      upgrade1: 1000,
       message1: "condition met",
       message2: "Own 1000 LinkedIn Premiums" 
     },
@@ -633,7 +621,7 @@ function checkMainAchievements() {
   for (const achievement of mainAchievements) {
       if ((manualClick >= achievement.clicks || jobApplications >= achievement.apps || totalRejections === achievement.rejections) &&
         !achievedMainConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2);
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
         achievedMainConditions.push(achievement.message1);
       }
   }
@@ -643,7 +631,7 @@ function checkUpgradeAchievements0() {
   for (const achievement of upgradeAchievements) {
       if ((shopUpgradeCount[0] >= achievement.upgrade0) &&
         !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2);
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
         achievedUpgradeConditions.push(achievement.message1);
       }
   }
@@ -653,7 +641,7 @@ function checkUpgradeAchievements1() {
   for (const achievement of upgradeAchievements) {
       if ((shopUpgradeCount[1] >= achievement.upgrade1) &&
         !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2);
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
         achievedUpgradeConditions.push(achievement.message1);
       }
   }
@@ -663,7 +651,7 @@ function checkUpgradeAchievements2() {
   for (const achievement of upgradeAchievements) {
       if ((shopUpgradeCount[2] >= achievement.upgrade2) &&
         !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2);
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
         achievedUpgradeConditions.push(achievement.message1);
       }
   }
@@ -673,7 +661,7 @@ function checkUpgradeAchievements3() {
   for (const achievement of upgradeAchievements) {
       if ((shopUpgradeCount[3] >= achievement.upgrade3) &&
         !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2);
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
         achievedUpgradeConditions.push(achievement.message1);
       }
   }
@@ -690,36 +678,42 @@ function showAchievement(message1, message2, icon) {
   const notification = document.createElement("div");
   notification.className = "notification";
 
-  
+  const iconElement = document.createElement("img");
+  iconElement.className = "icon";
+  iconElement.src = icon;
+  iconElement.alt = "圖";
+  // iconElement.className = "notification-icon";
+
+  const messageContainer = document.createElement("div"); // New div for messages
+  messageContainer.className = "message-container";
+
   const message1Element = document.createElement("div");
   message1Element.textContent = message1;
-  message1Element.className = "achievement-message1";
-  
+  message1Element.className = "message1";
+
   const message2Element = document.createElement("div");
   message2Element.textContent = message2;
-  message2Element.className = "achievement-message2";
-  
-  const iconElement = document.createElement("img");
-  iconElement.src = "./img/icon1.png";
-  iconElement.alt = "圖";
-  iconElement.className = "notification-icon";
+  message2Element.className = "message2";
+
+  // Append message1 and message2 to messageContainer
+  messageContainer.appendChild(message1Element);
+  messageContainer.appendChild(message2Element);
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.className = "close-button";
 
   closeButton.addEventListener("click", () => {
-      notificationBox.removeChild(notification);
+    notificationBox.removeChild(notification);
   });
 
+  // Append elements to notification
   notification.appendChild(iconElement);
-  notification.appendChild(message1Element);
-  notification.appendChild(message2Element);
+  notification.appendChild(messageContainer); // Append the messageContainer
   notification.appendChild(closeButton);
 
   notificationBox.appendChild(notification);
 }
-
 
 ///////////////////////////////////////////////////////////
 /////////////////////  RANDOM EVENT  //////////////////////
@@ -728,6 +722,7 @@ function showAchievement(message1, message2, icon) {
 const randomEventPool = [
 // Random motivation modifiers
   { 
+    icon: "./img/icon2",
     color: "red",
     effect_motivation: -10,
     effect_apps: 0,
@@ -735,6 +730,7 @@ const randomEventPool = [
     message2: "-10 motivation"
   },
   { 
+    icon: "./img/icon2",
     color: "green",
     effect_motivation: 10,
     effect_apps: 0,
@@ -745,6 +741,7 @@ const randomEventPool = [
 
 // Random application modifiers
   { 
+    icon: "./img/icon2",
     color: "pink",
     effect_motivation: -2,
     effect_apps: -10,
@@ -752,6 +749,7 @@ const randomEventPool = [
     message2: "-10 applications"
   },
   { 
+    icon: "./img/icon2",
     color: "lightgreen",
     effect_motivation: 4,
     effect_apps: 2,
@@ -772,18 +770,29 @@ function randomEvent() {
 }
 
 // Function to display random events in the notification box
-function showRandomEvent(event) {
+function showRandomEvent(randomEvent) {
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = event.color;
+  notification.style.backgroundColor = randomEvent.color;
+
+
+/// ADD ICON TO RANDOM EVENT
+
+
+  const messageContainer = document.createElement("div"); // New div for messages
+  messageContainer.className = "message-container";
 
   const message1Element = document.createElement("div");
-  message1Element.textContent = event.message1;
-  message1Element.className = "event-message1";
+  message1Element.textContent = randomEvent.message1;
+  message1Element.className = "message1";
 
   const message2Element = document.createElement("div");
-  message2Element.textContent = event.message2;
-  message2Element.className = "event-message2";
+  message2Element.textContent = randomEvent.message2;
+  message2Element.className = "message2";
+
+  // Append message1 and message2 to messageContainer
+  messageContainer.appendChild(message1Element);
+  messageContainer.appendChild(message2Element);
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -793,10 +802,8 @@ function showRandomEvent(event) {
   notificationBox.removeChild(notification);
   });
 
-  notification.appendChild(message1Element);
-  notification.appendChild(message2Element);
   notification.appendChild(closeButton);
-
+  notification.appendChild(messageContainer); // Append the messageContainer
   notificationBox.appendChild(notification);
 
   setTimeout(() => {
@@ -821,14 +828,16 @@ setInterval(randomEvent, 60000);
 ////////////////////////////////////////////////////////////
 
 // Define rejections with color, totalApps, and messages
-const randomRejections = [
+const randomRejectionPool = [
   {
+    icon: "./img/email.png",
     color: "grey",
     effect_motivation: -2,
     message1: "REJECTION",
     message2: "Thank you for your interest, unfortunately..",
   },
   {
+    icon: "./img/email.png",
     color: "grey",
     effect_motivation: -1,
     message1: "REJECTION",
@@ -840,8 +849,8 @@ const randomRejections = [
 // Function to trigger random REJECTION events
 function randomRejection() {
   if (jobApplications >= 100){
-  const randomIndex = Math.floor(Math.random() * randomRejections.length);
-  const rejectionEvent = randomRejections[randomIndex];
+  const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
+  const rejectionEvent = randomRejectionPool[randomIndex];
   showRandomRejection(rejectionEvent);
   applyRandomRejectionEffects(rejectionEvent);
   }
@@ -855,33 +864,40 @@ function showRandomRejection(rejectionEvent) {
   notification.className = "notification";
   notification.style.backgroundColor = rejectionEvent.color;
 
-  
+// ADD ICON TO RANDOM EVENTSASDFASDFSADFSDAFDSFASDAFSDFAASDFSDAFSADFDSAF
+
+  const messageContainer = document.createElement("div"); // New div for messages
+  messageContainer.className = "message-container";
+
   const message1Element = document.createElement("div");
   message1Element.textContent = rejectionEvent.message1;
-  message1Element.className = "rejection-message1";
-  
+  message1Element.className = "message1";
+
   const message2Element = document.createElement("div");
   message2Element.textContent = rejectionEvent.message2;
-  message2Element.className = "rejection-message2";
-  
+  message2Element.className = "message2";
+
+  // Append message1 and message2 to messageContainer
+  messageContainer.appendChild(message1Element);
+  messageContainer.appendChild(message2Element);
+
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.className = "close-button";
-  
+
   closeButton.addEventListener("click", () => {
-      notificationBox.removeChild(notification);
+  notificationBox.removeChild(notification);
   });
-  
-  notification.appendChild(message1Element);
-  notification.appendChild(message2Element);
+
   notification.appendChild(closeButton);
-  
+  notification.appendChild(messageContainer); // Append the messageContainer
   notificationBox.appendChild(notification);
 
   setTimeout(() => {
     notificationBox.removeChild(notification);
 }, 5000);
 }
+
 
 // Function to apply the effects of the rejection event
 function applyRandomRejectionEffects(rejectionEvent) {

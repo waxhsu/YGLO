@@ -25,7 +25,8 @@
 } */
 
 .icon {
-  max-height: 100px;
+  max-height: 95px;
+  /* max-width: 95px; */
   padding: 2%;
 }
 
@@ -37,17 +38,20 @@ body {
   /* font-family: 'VT323', monospace; */
   font-family: 'Pixelify Sans', sans-serif; /* Use 'Pixelify Sans' as the preferred font */
   font-size: 40px;
+  overflow: hidden;
+  margin: 0;
 }
 
 h1 {
-  color: #333;
+  color: black;
+  padding: 0 10% 0 10%;
 }
 
 
 
 
 #topUI {
-  min-height: 85px;
+  min-height: 85%;
   display: flex;
   justify-content: space-between;
 }
@@ -58,13 +62,12 @@ h1 {
 
 #notification-box {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  max-width: 35%;
+  min-width: 35%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 9999; /* Ensure it's on top */
-}
-
-.notification-icon {
-  border: red solid 2px;
 }
 
 .notification {
@@ -74,17 +77,26 @@ h1 {
   padding: 10px;
   margin: 5px;
   border-radius: 5px;
-  text-align: center;
+  /* text-align: center; */
   position: relative;
-  padding-right: 25px; /* Adjust the value as needed */
-  z-index: 9998; /* Ensure it's on top */
-
+  padding-right: 25px;
+  z-index: 9998; 
 }
-.achievement-message1 {
+
+.message-container{
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* align-items: center; */
+}
+
+.message1 {
+  font-size: 32px;
   font-weight: bold;
 }
 
-.achievement-message2 {
+.message2 {
   font-style: italic;
   font-size: 24px;
   color: black;
@@ -99,11 +111,10 @@ h1 {
   color: white;
   font-size: 12px;
   font-weight: bold;
-  border: none;
   padding: 5px 10px;
   border-radius: 50px;
   cursor: pointer;
-  z-index: 9999; /* Ensure it's on top of the notification */
+  z-index: 9999;
 }
 
 
@@ -114,29 +125,41 @@ h1 {
 #mainUI {
   display: flex;
 }
-#leftUI {
+
+
+#leftUI, #rightUI {
   border: solid red 1px;
   min-width: 50%;
+  height: 100vh; 
+  overflow-y: auto; 
 }
 
-
-
-
-#rightUI {
-  border: solid blue 2px;
-  min-width: 50%;
+#theGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #click-button {
   padding: 20px 30px;
   font-size: 45px;
   background-color: #5055ee;
+  max-width: 40%;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 25px;
-  font-family: 'Pixelify Sans', sans-serif; /* Use 'Pixelify Sans' as the preferred font */
+  font-family: 'Pixelify Sans', sans-serif;
+  transition: transform 0.01s;
 }
+
+#click-button:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+  /* opacity: 50%; */
+  /* background: black; */
+}
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@ motivation + stats @@@@ */
@@ -158,12 +181,18 @@ h1 {
 
 .job-posting-item {
   display: flex;
-  flex-direction: column;
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px 0;
   background-color: #f9f9f9;
 }
+
+/* .job-details{
+  padding-left: 2%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+} */
 
 .job-title {
   font-weight: bold;
@@ -171,6 +200,14 @@ h1 {
 
 .job-company {
   color: #555;
+}
+.job-location {
+  color: #555;
+  font-size: 24px;
+}
+.job-pay {
+  color: #555;
+  font-size: 24px;
 }
 
 #job-postings {
@@ -201,6 +238,11 @@ h1 {
   margin: 10px;
   background-color: #f9f9f9;
 }
+
+.shop-item:active {
+  filter: brightness(85%);
+}
+
 
 .item-name {
   font-size: 40px;
