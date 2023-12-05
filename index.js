@@ -64,32 +64,37 @@ function updateShop() {
   const shopElement = document.getElementById("shop");
   shopElement.innerHTML = ""; // Clear the previous shop items
 
-  autoApplications.forEach(app => {
+  autoApplications.forEach(shop => {
+      const iconElement = document.createElement("img");
+      iconElement.src = shop.icon;
+      iconElement.className = "icon";
+  
       const shopItem = document.createElement("div");
       shopItem.className = "shop-item";
 
       const nameElement = document.createElement("div");
       nameElement.className = "item-name";
-      nameElement.textContent = app.name;
+      nameElement.textContent = shop.name;
 
       const costElement = document.createElement("div");
       costElement.className = "item-cost";
-      costElement.textContent = `Cost: -${app.cost} Motivation`;
+      costElement.textContent = `Cost: -${shop.cost} Motivation`;
 
       const clicksPerSecondElement = document.createElement("div");
       clicksPerSecondElement.className = "item-cps";
-      clicksPerSecondElement.textContent = `Apps/sec: +${app.clicksPerSecond}`;
+      clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
 
       const countElement = document.createElement("div");
       countElement.className = "item-count";
-      countElement.textContent = `owned: ${app.count}`;
+      countElement.textContent = `owned: ${shop.count}`;
 
+      shopItem.appendChild(iconElement);
       shopItem.appendChild(nameElement);
       shopItem.appendChild(costElement);
       shopItem.appendChild(clicksPerSecondElement);
       shopItem.appendChild(countElement);
 
-      shopItem.addEventListener("click", () => buyAutoApplication(app));
+      shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
   });
 }
@@ -146,42 +151,42 @@ clickButton.addEventListener("click", () => {
 // Initialize the shop with AutoApplications
 autoApplications = [
     {
-        id: 1,
+        icon: "./img/icon_shop.png",
         name: "Trying Harder",
         cost: 10,
         clicksPerSecond: 0.1,
         count: 0,
     },
     {
-        id: 2,
+        icon: "./img/icon_shop.png",
         name: "LinkedIn Premium",
         cost: 50,
         clicksPerSecond: 1,
         count: 0,
     },
     {
-        id: 3,
+        icon: "./img/icon_shop.png",
         name: "Outsource to Fiverr",
         cost: 100,
         clicksPerSecond: 5,
         count: 0,
     },
     {
-        id: 4,
+        icon: "./img/icon_shop.png",
         name: "Severance",
         cost: 200,
         clicksPerSecond: 10,
         count: 0,
     },
     {
-        id: 5,
+        icon: "./img/icon_shop.png",
         name: "Umemployment Benefits",
         cost: 300,
         clicksPerSecond: 20,
         count: 0,
     },
     {
-        id: 4,
+        icon: "./img/icon_shop.png",
         name: "Some guy you know who works at career services",
         cost: 400,
         clicksPerSecond: 100,
@@ -257,70 +262,70 @@ function updateJobPostings() {
   
   jobPostingCycle = [
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Executive Intern",
       company: "Interns Collective",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Superb Internment",
       company: "Superb Owl Inc.",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Junior Analyst [UNPAID]",
       company: "Boaty McBoatface",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Analist Jr.",
       company: "Plug-In Solutions",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Totally Real Role",
       company: "Indian Recruiter with American Name",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Master of Improbable Events",
       company: "Infinite Improbability Corp.",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Absurdity Apprentice",
       company: "Absurdity Architects, Inc.",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Chief Penguin Plunger",
       company: "Penguin Plunge Productions",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Chaos Coordinator",
       company: "Chaos Coasters, Ltd.",
       location: "random city",
       pay: "$69k/yr - $69.7k/yr · 0 benefits",
     },
     {
-      icon: "./img/icon4.png",
+      icon: "./img/icon_jobposting.png",
       title: "Wizarding Intern of Whimsy",
       company: "Whimsical Widget Wizards",
       location: "random city",
@@ -427,45 +432,57 @@ function closeNotification() {
 const mainAchievements = [
   // manual click achievements
   { 
-    icon: "./img/icon1.png",
+    icon: "./img/icon_manualclick.png",
     clicks: 1, 
     message1: "Your first click!",
     message2: "Hopefully this will lead to somewhere.. eventually" 
   },
   { 
-    icon: "./img/icon1.png",
-    clicks: 100,
-    message1: "You manually applied to 100 jobs!",
+    icon: "./img/icon_manualclick.png",
+    clicks: 2,
+    message1: "You manually applied to 2 jobs!",
     message2: "test2" 
   },
   { 
-    icon: "./img/icon1.png",
-    clicks: 1000, 
-    message1: "You manually applied to 1000 jobs!", 
+    icon: "./img/icon_manualclick.png",
+    clicks: 3, 
+    message1: "You manually applied to 3 jobs!", 
     message2: "test3" 
+  },
+  { 
+    icon: "./img/icon_manualclick.png",
+    clicks: 4, 
+    message1: "You manually applied to 4 jobs!", 
+    message2: "test4" 
   },
 
   // job application achievements
   { 
-    icon: "./img/icon2.png",
+    icon: "./img/icon_jobapp.png",
     apps: 69, 
     message1: "You applied to 69 jobs!",
     message2: "Nice" 
   },
   { 
-    icon: "./img/icon2.png",
+    icon: "./img/icon_jobapp.png",
     apps: 6969,
     message1: "You applied to 6969 jobs!",
     message2: "Nice x 101" 
   },
   { 
-    icon: "./img/icon2.png",
+    icon: "./img/icon_jobapp.png",
+    apps: 8000,
+    message1: "You applied to 8000 jobs!",
+    message2: "You feel kinda empty inside" 
+  },
+  { 
+    icon: "./img/icon_jobapp.png",
     apps: 10000,
     message1: "You applied to 10000 jobs!",
     message2: "You feel kinda empty inside" 
   },
   { 
-    icon: "./img/icon2.png",
+    icon: "./img/icon_jobapp.png",
     apps: 42069, 
     message1: "You applied to 42069 jobs!", 
     message2: "You blow a small puff of air out of your nostrils" 
@@ -473,141 +490,222 @@ const mainAchievements = [
 
   // rejection achievements
   { 
-    icon: "./img/icon3.png",
+    icon: "./img/icon_rejection.png",
     rejections: 1, 
     message1: "1 rejection",
-    message2: "your 1st rejection!" 
+    message2: "your 1st rejection!",
   },
   { 
-    icon: "./img/icon3.png",
+    icon: "./img/icon_rejection.png",
+    rejections: 5,
+    message1: "5 rejections",
+    message2: "frick",
+  },
+  { 
+    icon: "./img/icon_rejection.png",
     rejections: 10,
     message1: "10 rejections",
-    message2: "frick" 
+    message2: "fricky frick", 
   },
 ];
 
 const upgradeAchievements = [
     // TRY HARDER [0]
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade0: 1, 
       message1: "Your first time actually trying!",
       message2: "Own 1 Trying Harder"
     },
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade0: 2,
       message1: "condition met",
       message2: "Own 2 Trying Harders" 
     },
     { 
-      upgrade0: 25,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade0: 3,
       message1: "condition met",
-      message2: "Own 25 Trying Harders" 
+      message2: "Own 3 Trying Harders" 
     },
     { 
-      upgrade0: 100,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade0: 4,
       message1: "condition met",
-      message2: "Own 100 Trying Harders" 
+      message2: "Own 4 Trying Harders" 
     },
     { 
-      upgrade0: 500,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade0: 5,
       message1: "condition met",
-      message2: "Own 500 Trying Harders" 
-    },
-    { 
-      upgrade0: 1000,
-      message1: "condition met",
-      message2: "Own 1000 Trying Harders" 
+      message2: "Own 5 Trying Harders" 
     },
 
     // LINKEDIN PREMIUM [1]
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade1: 1, 
       message1: "$40 a month huh?",
       message2: "Own 1 LinkedIn Premium"
     },
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade1: 2,
       message1: "Bill Gates thanks you",
       message2: "Own 2 LinkedIn Premiums" 
     },
     { 
-      upgrade1: 25,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade1: 3,
       message1: "condition met",
-      message2: "Own 25 LinkedIn Premiums" 
+      message2: "Own 3 LinkedIn Premiums" 
     },
     { 
-      upgrade1: 100,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade1: 4,
       message1: "condition met",
-      message2: "Own 100 LinkedIn Premiums" 
+      message2: "Own 4 LinkedIn Premiums" 
     },
     { 
-      upgrade1: 500,
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade1: 5,
       message1: "condition met",
-      message2: "Own 500 LinkedIn Premiums" 
+      message2: "Own 5 LinkedIn Premiums" 
     },
-    { 
-      upgrade1: 1000,
-      message1: "condition met",
-      message2: "Own 1000 LinkedIn Premiums" 
-    },
+
 
     // OUTSOURCE TO FIVERR [2]
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade2: 1, 
       message1: "Thank you Mr. Patel!",
       message2: "First outsourced applier"
     },
-    { upgrade2: 2,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade2: 2,
       message1: "TEST 2",
       message2: "Own 2 outsourced worker" 
     },
-    { upgrade2: 25,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade2: 3,
       message1: "condition met",
-      message2: "Own 25 Fiverr outsources" 
+      message2: "Own 3 Fiverr outsources" 
     },
-    { upgrade2: 100,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade2: 4,
       message1: "condition met",
       message2: "Own 100 Fiverr outsources" 
     },
-    { upgrade2: 500,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade2: 5,
       message1: "condition met",
       message2: "Own 500 Fiverr outsources" 
     },
-    { upgrade2: 1000,
-      message1: "condition met",
-      message2: "Own 1000 Fiverr outsources" 
-    },
+
 
 
     //  SEVERANCES [3]
     { 
+      icon: "./img/icon_upgradeachievement.png",
       upgrade3: 1, 
       message1: "condition met",
-      message2: "Own 1 upgrade"
+      message2: "Own 1 severance"
     },
-    { upgrade3: 2,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade3: 2,
       message1: "condition met",
-      message2: "Own 2 upgrades" 
+      message2: "Own 2 severances" 
     },
-    { upgrade3: 25,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade3: 3,
       message1: "condition met",
       message2: "Own 25 upgrades" 
     },
-    { upgrade3: 100,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade3: 4,
       message1: "condition met",
       message2: "Own 100 upgrades" 
     },
-    { upgrade3: 500,
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade3: 5,
       message1: "condition met",
       message2: "Own 500 upgrades" 
-    },
-    { upgrade3: 1000,
-      message1: "condition met",
-      message2: "Own 1000 upgrades" 
     },
 
   // ADD MORE WHEN NEEDED
 
+    //  UNEMPLOYMENT [4]
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade4: 1, 
+      message1: "condition met",
+      message2: "Own 1 unemployment"
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade4: 2,
+      message1: "condition met",
+      message2: "Own 2 unemployment" 
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade4: 3, 
+      message1: "condition met",
+      message2: "Own 3 unemployment"
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade4: 4,
+      message1: "condition met",
+      message2: "Own 4 unemployment" 
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade4: 5,
+      message1: "condition met",
+      message2: "Own 5 unemployment" 
+    },
+
+    //  SOME GUY [5]
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade5: 1, 
+      message1: "condition met",
+      message2: "Know 1 guy who work in the unemployment office"
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade5: 2,
+      message1: "condition met",
+      message2: "Know 2 guys who work in the unemployment office" 
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade5: 3, 
+      message1: "condition met",
+      message2: "Know 3 guys who work in the unemployment office"
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade5: 4,
+      message1: "condition met",
+      message2: "Know 4 guys who work in the unemployment office" 
+    },
+    { 
+      icon: "./img/icon_upgradeachievement.png",
+      upgrade5: 5, 
+      message1: "condition met",
+      message2: "Know 5 guys who work in the unemployment office"
+    },
 ];
 
 
@@ -626,6 +724,23 @@ function checkMainAchievements() {
       }
   }
 }
+
+// function checkUpgradeAchievements(index) {
+//   upgradeAchievements.forEach(achievement => {
+//     if (
+//       shopUpgradeCount[index] >= achievement[`upgrade${index}`] &&
+//       !achievedUpgradeConditions.includes(achievement.message1)
+//     ) {
+//       showAchievement(achievement.message1, achievement.message2, achievement.icon);
+//       achievedUpgradeConditions.push(achievement.message1);
+//     }
+//   });
+// }
+
+
+// [0, 1, 2, 3, 4, 5].forEach(index => {
+//   setInterval(() => checkUpgradeAchievements(index), 1000);
+// });
 
 function checkUpgradeAchievements0() {
   for (const achievement of upgradeAchievements) {
@@ -666,11 +781,31 @@ function checkUpgradeAchievements3() {
       }
   }
 }
+function checkUpgradeAchievements4() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[4] >= achievement.upgrade4) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
+        achievedUpgradeConditions.push(achievement.message1);
+      }
+  }
+}
+function checkUpgradeAchievements5() {
+  for (const achievement of upgradeAchievements) {
+      if ((shopUpgradeCount[5] >= achievement.upgrade5) &&
+        !achievedUpgradeConditions.includes(achievement.message1)) {
+        showAchievement(achievement.message1, achievement.message2, achievement.icon);
+        achievedUpgradeConditions.push(achievement.message1);
+      }
+  }
+}
 
 setInterval(checkUpgradeAchievements0, 1000);
 setInterval(checkUpgradeAchievements1, 1000);
 setInterval(checkUpgradeAchievements2, 1000);
 setInterval(checkUpgradeAchievements3, 1000);
+setInterval(checkUpgradeAchievements4, 1000);
+setInterval(checkUpgradeAchievements5, 1000);
 
 
 // Function to display achievements in the notification box
@@ -722,7 +857,7 @@ function showAchievement(message1, message2, icon) {
 const randomEventPool = [
 // Random motivation modifiers
   { 
-    icon: "./img/icon2",
+    icon: "./img/icon_randomevent.png",
     color: "red",
     effect_motivation: -10,
     effect_apps: 0,
@@ -730,7 +865,7 @@ const randomEventPool = [
     message2: "-10 motivation"
   },
   { 
-    icon: "./img/icon2",
+    icon: "./img/icon_randomevent.png",
     color: "green",
     effect_motivation: 10,
     effect_apps: 0,
@@ -741,7 +876,7 @@ const randomEventPool = [
 
 // Random application modifiers
   { 
-    icon: "./img/icon2",
+    icon: "./img/icon_randomevent.png",
     color: "pink",
     effect_motivation: -2,
     effect_apps: -10,
@@ -749,7 +884,7 @@ const randomEventPool = [
     message2: "-10 applications"
   },
   { 
-    icon: "./img/icon2",
+    icon: "./img/icon_randomevent.png",
     color: "lightgreen",
     effect_motivation: 4,
     effect_apps: 2,
@@ -775,12 +910,13 @@ function showRandomEvent(randomEvent) {
   notification.className = "notification";
   notification.style.backgroundColor = randomEvent.color;
 
-
-/// ADD ICON TO RANDOM EVENT
-
-
   const messageContainer = document.createElement("div"); // New div for messages
   messageContainer.className = "message-container";
+
+  // Left column for icon
+  const iconElement = document.createElement("img");
+  iconElement.src = randomEvent.icon;
+  iconElement.className = "icon";
 
   const message1Element = document.createElement("div");
   message1Element.textContent = randomEvent.message1;
@@ -802,6 +938,7 @@ function showRandomEvent(randomEvent) {
   notificationBox.removeChild(notification);
   });
 
+  notification.appendChild(iconElement);
   notification.appendChild(closeButton);
   notification.appendChild(messageContainer); // Append the messageContainer
   notificationBox.appendChild(notification);
@@ -864,10 +1001,13 @@ function showRandomRejection(rejectionEvent) {
   notification.className = "notification";
   notification.style.backgroundColor = rejectionEvent.color;
 
-// ADD ICON TO RANDOM EVENTSASDFASDFSADFSDAFDSFASDAFSDFAASDFSDAFSADFDSAF
-
   const messageContainer = document.createElement("div"); // New div for messages
   messageContainer.className = "message-container";
+
+  // Left column for icon
+  const iconElement = document.createElement("img");
+  iconElement.src = rejectionEvent.icon;
+  iconElement.className = "icon";
 
   const message1Element = document.createElement("div");
   message1Element.textContent = rejectionEvent.message1;
@@ -889,6 +1029,7 @@ function showRandomRejection(rejectionEvent) {
   notificationBox.removeChild(notification);
   });
 
+  notification.appendChild(iconElement);
   notification.appendChild(closeButton);
   notification.appendChild(messageContainer); // Append the messageContainer
   notificationBox.appendChild(notification);

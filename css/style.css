@@ -26,7 +26,8 @@
 
 .icon {
   max-height: 95px;
-  /* max-width: 95px; */
+  max-width: 95px;
+  min-width: 95px;
   padding: 2%;
 }
 
@@ -40,6 +41,7 @@ body {
   font-size: 40px;
   overflow: hidden;
   margin: 0;
+
 }
 
 h1 {
@@ -51,7 +53,7 @@ h1 {
 
 
 #topUI {
-  min-height: 85%;
+  min-height: 15%;
   display: flex;
   justify-content: space-between;
 }
@@ -132,6 +134,10 @@ h1 {
   min-width: 50%;
   height: 100vh; 
   overflow-y: auto; 
+}
+
+#footer {
+  min-height: 4%;
 }
 
 #theGame {
