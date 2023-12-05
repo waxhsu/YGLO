@@ -405,23 +405,6 @@ clickButton.addEventListener("click", clickForJobApplications);
 //   window.addEventListener("load", playBackgroundMusic);
 
 
-////////////////////////////////////////////////////////////
-////////////////////    NOTIFICATIONS   ////////////////////
-////////////////////////////////////////////////////////////
-  
-const notificationBox = document.getElementById("notification-box"); // Add notification box
-
-// Function to show a notification
-function showNotification(message) {
-  notificationText.textContent = message;
-  notificationBox.style.display = "block";
-}
-
-// Function to close the notification
-function closeNotification() {
-  notificationBox.style.display = "none";
-}
-
 
 ///////////////////////////////////////////////////////////
 /////////////////////  ACHIEVEMENTS  //////////////////////
@@ -515,31 +498,36 @@ const upgradeAchievements = [
       icon: "./img/icon_upgradeachievement.png",
       upgrade0: 1, 
       message1: "Your first time actually trying!",
-      message2: "Own 1 Trying Harder"
+      message2: "Own 1 Trying Harder",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade0: 2,
       message1: "condition met",
-      message2: "Own 2 Trying Harders" 
+      message2: "Own 2 Trying Harders",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade0: 3,
       message1: "condition met",
-      message2: "Own 3 Trying Harders" 
+      message2: "Own 3 Trying Harders",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade0: 4,
       message1: "condition met",
-      message2: "Own 4 Trying Harders" 
+      message2: "Own 4 Trying Harders",
+      displayed: false, 
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade0: 5,
       message1: "condition met",
-      message2: "Own 5 Trying Harders" 
+      message2: "Own 5 Trying Harders",
+      displayed: false,
     },
 
     // LINKEDIN PREMIUM [1]
@@ -547,64 +535,74 @@ const upgradeAchievements = [
       icon: "./img/icon_upgradeachievement.png",
       upgrade1: 1, 
       message1: "$40 a month huh?",
-      message2: "Own 1 LinkedIn Premium"
+      message2: "Own 1 LinkedIn Premium",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade1: 2,
       message1: "Bill Gates thanks you",
-      message2: "Own 2 LinkedIn Premiums" 
+      message2: "Own 2 LinkedIn Premiums",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade1: 3,
       message1: "condition met",
-      message2: "Own 3 LinkedIn Premiums" 
+      message2: "Own 3 LinkedIn Premiums",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade1: 4,
       message1: "condition met",
-      message2: "Own 4 LinkedIn Premiums" 
+      message2: "Own 4 LinkedIn Premiums",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade1: 5,
       message1: "condition met",
-      message2: "Own 5 LinkedIn Premiums" 
+      message2: "Own 5 LinkedIn Premiums",
+      displayed: false,
     },
-
+    
 
     // OUTSOURCE TO FIVERR [2]
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade2: 1, 
       message1: "Thank you Mr. Patel!",
-      message2: "First outsourced applier"
+      message2: "First outsourced applier",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade2: 2,
       message1: "TEST 2",
-      message2: "Own 2 outsourced worker" 
+      message2: "Own 2 outsourced worker",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade2: 3,
       message1: "condition met",
-      message2: "Own 3 Fiverr outsources" 
+      message2: "Own 3 Fiverr outsources",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade2: 4,
       message1: "condition met",
-      message2: "Own 100 Fiverr outsources" 
+      message2: "Own 100 Fiverr outsources",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade2: 5,
       message1: "condition met",
-      message2: "Own 500 Fiverr outsources" 
+      message2: "Own 500 Fiverr outsources",
+      displayed: false,
     },
 
 
@@ -614,31 +612,36 @@ const upgradeAchievements = [
       icon: "./img/icon_upgradeachievement.png",
       upgrade3: 1, 
       message1: "condition met",
-      message2: "Own 1 severance"
+      message2: "Own 1 severance",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade3: 2,
       message1: "condition met",
-      message2: "Own 2 severances" 
+      message2: "Own 2 severances",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade3: 3,
       message1: "condition met",
-      message2: "Own 25 upgrades" 
+      message2: "Own 25 upgrades",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade3: 4,
       message1: "condition met",
-      message2: "Own 100 upgrades" 
+      message2: "Own 100 upgrades",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade3: 5,
       message1: "condition met",
-      message2: "Own 500 upgrades" 
+      message2: "Own 500 upgrades",
+      displayed: false,
     },
 
   // ADD MORE WHEN NEEDED
@@ -648,31 +651,36 @@ const upgradeAchievements = [
       icon: "./img/icon_upgradeachievement.png",
       upgrade4: 1, 
       message1: "condition met",
-      message2: "Own 1 unemployment"
+      message2: "Own 1 unemployment",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade4: 2,
       message1: "condition met",
-      message2: "Own 2 unemployment" 
+      message2: "Own 2 unemployments",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade4: 3, 
       message1: "condition met",
-      message2: "Own 3 unemployment"
+      message2: "Own 3 unemployments",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade4: 4,
       message1: "condition met",
-      message2: "Own 4 unemployment" 
+      message2: "Own 4 unemployments",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade4: 5,
       message1: "condition met",
-      message2: "Own 5 unemployment" 
+      message2: "Own 5 unemployments",
+      displayed: false,
     },
 
     //  SOME GUY [5]
@@ -680,31 +688,36 @@ const upgradeAchievements = [
       icon: "./img/icon_upgradeachievement.png",
       upgrade5: 1, 
       message1: "condition met",
-      message2: "Know 1 guy who work in the unemployment office"
+      message2: "Know 1 guy who work in the unemployment office",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade5: 2,
       message1: "condition met",
-      message2: "Know 2 guys who work in the unemployment office" 
+      message2: "Know 2 guys who work in the unemployment office",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade5: 3, 
       message1: "condition met",
-      message2: "Know 3 guys who work in the unemployment office"
+      message2: "Know 3 guys who work in the unemployment office",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade5: 4,
       message1: "condition met",
-      message2: "Know 4 guys who work in the unemployment office" 
+      message2: "Know 4 guys who work in the unemployment office",
+      displayed: false,
     },
     { 
       icon: "./img/icon_upgradeachievement.png",
       upgrade5: 5, 
       message1: "condition met",
-      message2: "Know 5 guys who work in the unemployment office"
+      message2: "Know 5 guys who work in the unemployment office",
+      displayed: false,
     },
 ];
 
@@ -742,70 +755,92 @@ function checkMainAchievements() {
 //   setInterval(() => checkUpgradeAchievements(index), 1000);
 // });
 
+
+
 function checkUpgradeAchievements0() {
   for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[0] >= achievement.upgrade0) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
+    if (
+      shopUpgradeCount[0] >= achievement.upgrade0 &&
+      !achievement.displayed // Check if the achievement has not been displayed
+    ) {
+      showAchievement(
+        achievement.message1,
+        achievement.message2,
+        achievement.icon
+      );
+      achievement.displayed = true; // Set the displayed flag to true
+    }
   }
 }
 
 function checkUpgradeAchievements1() {
   for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[1] >= achievement.upgrade1) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
+    if (
+      shopUpgradeCount[1] >= achievement.upgrade1 &&
+      !achievement.displayed // Check if the achievement has not been displayed
+    ) {
+      showAchievement(
+        achievement.message1,
+        achievement.message2,
+        achievement.icon
+      );
+      achievement.displayed = true; // Set the displayed flag to true
+    }
   }
 }
 
 function checkUpgradeAchievements2() {
   for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[2] >= achievement.upgrade2) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
+    if (
+      shopUpgradeCount[2] >= achievement.upgrade2 &&
+      !achievement.displayed // Check if the achievement has not been displayed
+    ) {
+      showAchievement(
+        achievement.message1,
+        achievement.message2,
+        achievement.icon
+      );
+      achievement.displayed = true; // Set the displayed flag to true
+    }
   }
 }
 
-function checkUpgradeAchievements3() {
-  for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[3] >= achievement.upgrade3) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
-  }
-}
-function checkUpgradeAchievements4() {
-  for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[4] >= achievement.upgrade4) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
-  }
-}
-function checkUpgradeAchievements5() {
-  for (const achievement of upgradeAchievements) {
-      if ((shopUpgradeCount[5] >= achievement.upgrade5) &&
-        !achievedUpgradeConditions.includes(achievement.message1)) {
-        showAchievement(achievement.message1, achievement.message2, achievement.icon);
-        achievedUpgradeConditions.push(achievement.message1);
-      }
-  }
-}
+
+
+// function checkUpgradeAchievements3() {
+//   for (const achievement of upgradeAchievements) {
+//       if ((shopUpgradeCount[3] >= achievement.upgrade3) &&
+//         !achievedUpgradeConditions.includes(achievement.message1)) {
+//         showAchievement(achievement.message1, achievement.message2, achievement.icon);
+//         achievedUpgradeConditions.push(achievement.message1);
+//       }
+//   }
+// }
+// function checkUpgradeAchievements4() {
+//   for (const achievement of upgradeAchievements) {
+//       if ((shopUpgradeCount[4] >= achievement.upgrade4) &&
+//         !achievedUpgradeConditions.includes(achievement.message1)) {
+//         showAchievement(achievement.message1, achievement.message2, achievement.icon);
+//         achievedUpgradeConditions.push(achievement.message1);
+//       }
+//   }
+// }
+// function checkUpgradeAchievements5() {
+//   for (const achievement of upgradeAchievements) {
+//       if ((shopUpgradeCount[5] >= achievement.upgrade5) &&
+//         !achievedUpgradeConditions.includes(achievement.message1)) {
+//         showAchievement(achievement.message1, achievement.message2, achievement.icon);
+//         achievedUpgradeConditions.push(achievement.message1);
+//       }
+//   }
+// }
 
 setInterval(checkUpgradeAchievements0, 1000);
 setInterval(checkUpgradeAchievements1, 1000);
 setInterval(checkUpgradeAchievements2, 1000);
-setInterval(checkUpgradeAchievements3, 1000);
-setInterval(checkUpgradeAchievements4, 1000);
-setInterval(checkUpgradeAchievements5, 1000);
+// setInterval(checkUpgradeAchievements3, 1000);
+// setInterval(checkUpgradeAchievements4, 1000);
+// setInterval(checkUpgradeAchievements5, 1000);
 
 
 // Function to display achievements in the notification box
@@ -1048,6 +1083,26 @@ function applyRandomRejectionEffects(rejectionEvent) {
 
 // Set an interval to trigger random event
 setInterval(randomRejection, 60000);
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////   SHOW NOTIFICATIONS   ////////////////
+////////////////////////////////////////////////////////////
+  
+const notificationBox = document.getElementById("notification-box"); // Add notification box
+
+// Function to show a notification
+function showNotification(message) {
+  notificationText.textContent = message;
+  notificationBox.style.display = "block";
+}
+
+// Function to close the notification
+function closeNotification() {
+  notificationBox.style.display = "none";
+}
+
 
 
 // Initialize the game
