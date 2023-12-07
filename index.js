@@ -1196,7 +1196,7 @@ function showRandomEvent(randomEvent) {
 
   setTimeout(() => {
     notificationBox.removeChild(notification);
-}, 5000);
+}, 15000);
 }
 
 // Function to apply the effects of the random event
@@ -1412,7 +1412,7 @@ function showRandomRejection(rejectionEvent) {
 
   setTimeout(() => {
     notificationBox.removeChild(notification);
-}, 5000);
+}, 15000);
 }
 
 // Function to apply the effects of the rejection event
