@@ -1,7 +1,7 @@
 // Initialize variables
 let motivation = 0
 let autoApplications = [];
-let clickValue = 1;
+let clickValue = 100;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
