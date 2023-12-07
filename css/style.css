@@ -59,8 +59,49 @@ h1 {
 }
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@ achievements page @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+#achievements-trigger, #achievements-page {
+  border: blue 2px solid;
+  background-color: white;
+}
+
+#achievements-page {
+  position: fixed;
+  max-width: 80%;
+  min-width: 80%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; /* Ensure it's on top */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@ notification @@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 
 #notification-box {
   position: fixed;
@@ -83,6 +124,32 @@ h1 {
   position: relative;
   padding-right: 25px;
   z-index: 9998; 
+  animation: fadeFromBottom 1s ease-in-out;
+}
+
+.notification-close {
+  animation: fadeOut 1s ease-in-out;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Animation for fade effect from the bottom */
+@keyframes fadeFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px); /* Adjust distance from the bottom as needed */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .message-container{
@@ -190,15 +257,10 @@ h1 {
   border: 1px solid #ccc;
   padding: 10px;
   margin: 10px 0;
+  margin-top: 20px;
   background-color: #f9f9f9;
 }
 
-/* .job-details{
-  padding-left: 2%;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-} */
 
 .job-title {
   font-weight: bold;
@@ -214,10 +276,6 @@ h1 {
 .job-pay {
   color: #555;
   font-size: 24px;
-}
-
-#job-postings {
-  margin-top: 20px;
 }
 
 

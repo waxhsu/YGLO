@@ -8,7 +8,7 @@
 <body>
 	
 	<div id="topUI">
-asjfksa;dfjksadf;kjlasdfkasdfl;jsadkflsa
+<!-- asjfksa;dfjksadf;kjlasdfkasdfl;jsadkflsa -->
 		<!-- <div id="music-controls">
 			<label for="volume-slider">Volume:</label>
 			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input>
@@ -18,6 +18,23 @@ asjfksa;dfjksadf;kjlasdfkasdfl;jsadkflsa
 			<source src="./YGLOv3.mp3" type="audio/mpeg">
 		</audio> -->		
 		
+
+    <!-- Add the following div for the achievements page trigger -->
+    <div id="achievements-trigger" onclick="toggleAchievementsPage()">
+        Click here to view Achievements
+    </div>
+
+    <!-- Add the div for the achievements page -->
+    <div id="achievements-page" style="display: none;">
+        <!-- Populate this div with the achievements content dynamically -->
+        <!-- You can use JavaScript to update this content based on the player's achievements -->
+        <h2>Achievements Page</h2>
+        <!-- Add more content as needed -->
+    </div>
+
+
+
+
 		<div id="notification-box"></div>
 	</div>
 	

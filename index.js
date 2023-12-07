@@ -1,7 +1,7 @@
 // Initialize variables
 let motivation = 0
 let autoApplications = [];
-let clickValue = 1000;
+let clickValue = 1;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -72,7 +72,7 @@ function updateRejection() {
 function calculateTotalClicksPerSecond() {
   totalClicksPerSecond = 0;
   motivationPerSecond = 0; // Initialize motivation per second
-  for (const app of autoApplicationObj) {
+  for (const app of shopObj) {
       totalClicksPerSecond += app.count * app.clicksPerSecond;
   }
 }
@@ -88,7 +88,7 @@ function updateShop() {
   const shopElement = document.getElementById("shop");
   shopElement.innerHTML = ""; // Clear the previous shop items
 
-  autoApplicationObj.forEach(shop => {
+  shopObj.forEach(shop => {
       const iconElement = document.createElement("img");
       iconElement.src = shop.icon;
       iconElement.className = "icon";
@@ -143,7 +143,7 @@ let shopUpgradeCount = autoApplications.map(app => app.count);
 
 // Function to update shop upgrade variables
 function updateShopUpgrades() {
-  autoApplicationObj.forEach((app, index) => {
+  shopObj.forEach((app, index) => {
     shopUpgradeCount[index] = app.count;
   });
 }
@@ -167,7 +167,7 @@ function autoGenerateJobApplications() {
 
 
 // Initialize the shop with AutoApplications
-const autoApplicationObj = [
+const shopObj = [
   {
     id: 0,
     icon: "./img/icon_shop.png",
@@ -195,7 +195,7 @@ const autoApplicationObj = [
   {
     id: 3,
     icon: "./img/icon_shop.png",
-    name: "Severance",
+    name: "Job Portal",
     cost: 200,
     clicksPerSecond: 10,
     count: 0,
@@ -226,6 +226,7 @@ const jobPostingCycleObj = [
   {
     id: 0,
     icon: "./img/icon_jobposting.png",
+    // title: "111111111111111",
     title: "Executive Intern",
     company: "Interns Collective",
     location: "New York, NY",
@@ -234,14 +235,16 @@ const jobPostingCycleObj = [
   {
     id: 1,
     icon: "./img/icon_jobposting.png",
+    // title: "222222222222",
     title: "Totally Real Role",
     company: "Indian Recruiter with American Name",
-    location: "Nashville, TN",
+    location: "Springfield, MA",
     pay: "$69k/yr - $69.7k/yr · 10 benefits",
   },
   {
     id: 2,
     icon: "./img/icon_jobposting.png",
+    // title: "3333333333",
     title: "Analist Jr.",
     company: "Pen Island Solutions",
     location: "Taipei, Taiwan",
@@ -250,6 +253,7 @@ const jobPostingCycleObj = [
   {
     id: 3,
     icon: "./img/icon_jobposting.png",
+    // title: "444444444444",
     title: "Digital Dreamer",
     company: "Unicorn Innovations",
     location: "San Francisco, CA",
@@ -388,10 +392,10 @@ const jobPostingCycleObj = [
 let jobPostingsIndex = 0; // Track the current job posting index
 
 function cycleJobPostings() {
-    // Remove the first job posting from the array
-    const removedPosting = jobPostingCycleObj.shift();
-    // Add it back to the end of the array
-    jobPostingCycleObj.push(removedPosting);
+  // Remove the first job posting from the array
+  const removedPosting = jobPostingCycleObj.shift();
+  // Add it back to the end of the array
+  jobPostingCycleObj.push(removedPosting);
 }
 
 function updateJobPostings() {
@@ -435,9 +439,11 @@ function updateJobPostings() {
     jobPostingItem.appendChild(detailsElement);
   
     jobPostingsElement.appendChild(jobPostingItem);
+    
   });
 }
 
+updateJobPostings();
 
 // ////////////////////////////////////////////////////////
 // ////////////////////    MUSIC   ////////////////////////
@@ -924,6 +930,30 @@ function showAchievement(message1, message2, icon) {
   notificationBox.appendChild(notification);
 }
 
+
+////////////////////////////////////////////////////////////
+///////////////////   ACHIEVEMENTS PAGE   //////////////////
+////////////////////////////////////////////////////////////
+
+const achievementsPage = document.getElementById("achievements-page");
+
+// Add this function in your JavaScript file
+function toggleAchievementsPage() {
+  achievementsPage.style.display = (achievementsPage.style.display === "none") ? "block" : "none";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 ///////////////////////////////////////////////////////////
 /////////////////////  RANDOM EVENT  //////////////////////
 ///////////////////////////////////////////////////////////
@@ -1398,15 +1428,46 @@ function applyRandomRejectionEffects(rejectionEvent) {
 const notificationBox = document.getElementById("notification-box"); // Add notification box
 
 // Function to show a notification
-function showNotification(message) {
-  notificationText.textContent = message;
-  notificationBox.style.display = "block";
-}
+function showNotification(message, icon) {
+  const notification = document.createElement("div");
+  notification.className = "notification";
 
+  // Adding an icon if provided
+  if (icon) {
+    const iconElement = document.createElement("img");
+    iconElement.src = icon;
+    iconElement.className = "notification-icon";
+    notification.appendChild(iconElement);
+  }
+
+  const message1Element = document.createElement("div");
+  message1Element.textContent = message.message1;
+  message1Element.className = "event-message1";
+
+  const message2Element = document.createElement("div");
+  message2Element.textContent = message.message2;
+  message2Element.className = "event-message2";
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+  closeButton.addEventListener("click", () => {
+    notificationBox.removeChild(notification);
+  });
+
+  notification.appendChild(message1Element);
+  notification.appendChild(message2Element);
+  notification.appendChild(closeButton);
+
+  notificationBox.appendChild(notification);
+}
 // Function to close the notification
 function closeNotification() {
   notificationBox.style.display = "none";
+
 }
+
+
 
 
 
@@ -1414,7 +1475,7 @@ function closeNotification() {
 updateShop();
 updateJobApplications();
 updateCPSDisplay();
-updateJobPostings();
+// updateJobPostings();
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
