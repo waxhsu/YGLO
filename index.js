@@ -1481,6 +1481,6 @@ setInterval(checkMainAchievement, 1000);
 
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 60000);
+setInterval(randomRejection, 30000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 60000);
+setInterval(randomEvent, 30000);
