@@ -38,7 +38,7 @@ body {
   position: relative;
   /* font-family: 'VT323', monospace; */
   font-family: 'Pixelify Sans', sans-serif; /* Use 'Pixelify Sans' as the preferred font */
-  font-size: 40px;
+  font-size: 25px;
   overflow: hidden;
   margin: 0;
 
@@ -104,12 +104,12 @@ h1 {
 
 
 #notification-box {
-  position: fixed;
-  max-width: 35%;
-  min-width: 35%;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  /* position: fixed; */
+  /* max-width: 35%; */
+  /* min-width: 35%; */
+  /* top: 0; */
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
   z-index: 9999; /* Ensure it's on top */
 }
 
@@ -161,13 +161,13 @@ h1 {
 }
 
 .message1 {
-  font-size: 32px;
+  font-size: 22px;
   font-weight: bold;
 }
 
 .message2 {
   font-style: italic;
-  font-size: 24px;
+  font-size: 18px;
   color: black;
 }
 
@@ -195,9 +195,9 @@ h1 {
   display: flex;
 }
 
-#leftUI, #rightUI {
+#leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  min-width: 50%;
+  min-width: 33%;
   height: 100vh; 
   overflow-y: auto; 
 }
@@ -216,21 +216,28 @@ h1 {
   padding: 20px 30px;
   font-size: 45px;
   background-color: #5055ee;
-  max-width: 40%;
+  /* max-width: 40%; */
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 25px;
   font-family: 'Pixelify Sans', sans-serif;
-  transition: transform 0.01s;
+  transition: transform 0.1s;
+}
+
+#click-button:hover {
+  transform: scale(0.99);
+  filter: brightness(90%);
+  /* opacity: 50%; */
+  /* background: black; */
 }
 
 #click-button:active {
   transform: scale(0.96);
   filter: brightness(85%);
-  /* opacity: 50%; */
-  /* background: black; */
+
 }
+
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -300,11 +307,19 @@ h1 {
   padding: 10px;
   margin: 10px;
   background-color: #f9f9f9;
+  border-radius: 25px;
+  transition: transform 0.1s;
 }
 
 .shop-item:active {
-  filter: brightness(85%);
+  filter: brightness(70%);
+  transform: scale(0.96);
 }
+
+.shop-item:hover {
+  filter: brightness(90%);
+}
+
 
 
 .item-name {

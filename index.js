@@ -1,7 +1,7 @@
 // Initialize variables
 let motivation = 0
 let autoApplications = [];
-let clickValue = 100;
+let clickValue = 10000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -179,7 +179,7 @@ const shopObj = [
   {
     id: 1,
     icon: "./img/icon_shop.png",
-    name: "LinkedIn Premium",
+    name: "SinkedIn Premium",
     cost: 50,
     clicksPerSecond: 1,
     count: 0,
@@ -187,7 +187,7 @@ const shopObj = [
   {
     id: 2,
     icon: "./img/icon_shop.png",
-    name: "Outsource to Fiverr",
+    name: "Outsource to Sixerr",
     cost: 100,
     clicksPerSecond: 5,
     count: 0,
@@ -203,7 +203,7 @@ const shopObj = [
   {
     id: 4,
     icon: "./img/icon_shop.png",
-    name: "Umemployment Benefits",
+    name: "Funemployment Benefits",
     cost: 300,
     clicksPerSecond: 20,
     count: 0,
@@ -1190,13 +1190,13 @@ function showRandomEvent(randomEvent) {
   });
 
   notification.appendChild(iconElement);
-  notification.appendChild(closeButton);
   notification.appendChild(messageContainer);
+  notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
 
-  setTimeout(() => {
-    notificationBox.removeChild(notification);
-}, 15000);
+//   setTimeout(() => {
+//     notificationBox.removeChild(notification);
+// }, 15000);
 }
 
 // Function to apply the effects of the random event
@@ -1406,13 +1406,13 @@ function showRandomRejection(rejectionEvent) {
   });
 
   notification.appendChild(iconElement);
-  notification.appendChild(closeButton);
   notification.appendChild(messageContainer);
+  notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
 
-  setTimeout(() => {
-    notificationBox.removeChild(notification);
-}, 15000);
+//   setTimeout(() => {
+//     notificationBox.removeChild(notification);
+// }, 15000);
 }
 
 // Function to apply the effects of the rejection event
