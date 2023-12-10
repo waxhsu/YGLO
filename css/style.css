@@ -31,6 +31,9 @@
   padding: 2%;
 }
 
+.banner {
+  height: 3.5vh;
+}
 
 body {
   display: flex;
@@ -51,12 +54,116 @@ h1 {
 
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@ LAYOUT OF PAGE @@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #topUI {
-  min-height: 15%;
+  min-height: 5.5vh;
   display: flex;
   justify-content: space-between;
 }
+
+#mainUI {
+  display: flex;
+  min-height: 94.5vh;
+}
+
+#leftUI, #centerUI, #rightUI {
+  border: solid red 1px;
+  min-width: 33%;
+  max-height: 94.5vh; 
+}
+
+#leftUI, #rightUI  {
+  overflow-y: auto; 
+}
+
+#topCenterUI {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40.5vh;
+}
+
+#bottomCenterUI {
+  /* border: solid red 1px; */
+  height: 54vh; 
+  overflow-y: auto; 
+}
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@ stats & click button @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+#click-button {
+  margin-top: 1vh;
+  padding: 20px 30px;
+  font-size: 3.5vh;
+  background-color: #5055ee;
+  /* max-width: 40%; */
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: 'Pixelify Sans', sans-serif;
+  transition: transform 0.1s;
+}
+
+#click-button:hover {
+  transform: scale(0.99);
+  filter: brightness(90%);
+  /* opacity: 50%; */
+  /* background: black; */
+}
+
+#click-button:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+}
+
+#job-applied {
+  font-size: 15vh;
+  /* margin: 0 0 0.5vh; */
+}
+#job-applied-text {
+  font-size: 25px;
+  /* margin: 1.5vh; */
+}
+
+
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@ job postings @@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.first-posting{
+animation: blinker 1.75s infinite;
+/* color: red; */
+}
+
+@keyframes blinker {
+  0% {
+    background-color: #f9f9f9;
+  }
+  
+  50% {
+    background-color: lightgrey;
+  }
+  
+  100% {
+    background-color: #f9f9f9;
+  }
+}
+
+
+
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@ achievements page @@@@ */
@@ -187,71 +294,6 @@ h1 {
 }
 
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@ MAIN INTERFACE @@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-#mainUI {
-  display: flex;
-}
-
-#leftUI, #centerUI, #rightUI {
-  border: solid red 1px;
-  min-width: 33%;
-  height: 100vh; 
-  overflow-y: auto; 
-}
-
-#footer {
-  min-height: 4%;
-}
-
-#theGame {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#click-button {
-  padding: 20px 30px;
-  font-size: 45px;
-  background-color: #5055ee;
-  /* max-width: 40%; */
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  font-family: 'Pixelify Sans', sans-serif;
-  transition: transform 0.1s;
-}
-
-#click-button:hover {
-  transform: scale(0.99);
-  filter: brightness(90%);
-  /* opacity: 50%; */
-  /* background: black; */
-}
-
-#click-button:active {
-  transform: scale(0.96);
-  filter: brightness(85%);
-
-}
-
-
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@ motivation + stats @@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-  #job-applications {
-    font-size: 150px;
-    margin: 20px;
-  }
-  #job-applications-text {
-    font-size: 25px;
-    margin: 20px;
-  }
   
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -290,14 +332,10 @@ h1 {
 /* @@@@@@@ update shop @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#shop {
-  border: solid red 1px;
-}
-
-#autoApplications {
+/* #autoApplications {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .shop-item {
   display: flex;
@@ -311,19 +349,32 @@ h1 {
   transition: transform 0.1s;
 }
 
-.shop-item:active {
-  filter: brightness(70%);
-  transform: scale(0.96);
-}
 
 .shop-item:hover {
   filter: brightness(90%);
 }
 
+.shop-item:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+}
+
+
+#click-button:hover {
+  transform: scale(0.99);
+  /* filter: brightness(90%); */
+}
+
+#click-button:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+
+}
+
 
 
 .item-name {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
 }

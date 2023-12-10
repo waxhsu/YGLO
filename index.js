@@ -1,7 +1,7 @@
 // Initialize variables
 let motivation = 0
 let autoApplications = [];
-let clickValue = 10000;
+let clickValue = 1000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -12,15 +12,19 @@ let totalRejections = 0
 ///////////////////    MAIN GAMEPLAY   /////////////////////
 ////////////////////////////////////////////////////////////
   
-const soundClips = ['./YGLOclick1.mov', 
-// './YGLOclick2.mov'
+const clickSounds = [
+  './sound/YGLOclick1.mov', 
+  './sound/YGLOclick2.mp3',
+  './sound/YGLOclick3.mp3',
 ];
 
-function playRandomSound() {
-  const randomIndex = Math.floor(Math.random() * soundClips.length);
-  const audio = new Audio(soundClips[randomIndex]);
+function playRandomClickSound() {
+  const randomIndex = Math.floor(Math.random() * clickSounds.length);
+  const audio = new Audio(clickSounds[randomIndex]);
   audio.play();
 }
+// playRandomClickSound();
+
 
 // Function to handle clicking and adding job applications
 function clickForJobApplications() {
@@ -32,7 +36,7 @@ function clickForJobApplications() {
     updateRejection();
     cycleJobPostings(); 
     updateJobPostings();
-    playRandomSound();
+    playRandomClickSound();
 }
 
 // Add a click event listener to the button
@@ -46,7 +50,7 @@ clickButton.addEventListener("click", clickForJobApplications);
 
 // Function to update the job application count on the screen
 function updateJobApplications() {
-  const jobApplicationsElement = document.getElementById("job-applications");
+  const jobApplicationsElement = document.getElementById("job-applied");
   jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
 }
 
@@ -130,6 +134,7 @@ function buyAutoApplication(app) {
       motivation -= app.cost;
       app.count += 1;
       app.cost = Math.floor(app.cost * 1.1); // Cost scales exponentially
+      playRandomClickSound();
       updateMotivation();
       updateShop();
       calculateTotalClicksPerSecond();
@@ -171,7 +176,7 @@ const shopObj = [
   {
     id: 0,
     icon: "./img/icon_shop.png",
-    name: "Trying Harder",
+    name: "Try Harder",
     cost: 10,
     clicksPerSecond: 0.1,
     count: 0,
@@ -179,7 +184,7 @@ const shopObj = [
   {
     id: 1,
     icon: "./img/icon_shop.png",
-    name: "SinkedIn Premium",
+    name: "LinkedOut Premium",
     cost: 50,
     clicksPerSecond: 1,
     count: 0,
@@ -237,7 +242,7 @@ const jobPostingCycleObj = [
     icon: "./img/icon_jobposting.png",
     // title: "222222222222",
     title: "Totally Real Role",
-    company: "Indian Recruiter with American Name",
+    company: "Indian Guy named John Kyle",
     location: "Springfield, MA",
     pay: "$69k/yr - $69.7k/yr · 10 benefits",
   },
@@ -490,28 +495,28 @@ updateJobPostings();
 const mainAchievementsObj = [
   // manual click achievements
   { 
-    icon: "./img/icon_manualclick.png",
+    icon: "./img/icon_click_achievement.png",
     clicks: 1, 
     message1: "Your first click!",
     message2: "Hopefully this will lead to somewhere.. eventually",
     displayed: false,
   },
   { 
-    icon: "./img/icon_manualclick.png",
+    icon: "./img/icon_click_achievement.png",
     clicks: 2,
     message1: "You manually applied to 2 jobs!",
     message2: "test2",
     displayed: false,
   },
   { 
-    icon: "./img/icon_manualclick.png",
+    icon: "./img/icon_click_achievement.png",
     clicks: 3, 
     message1: "You manually applied to 3 jobs!", 
     message2: "test3",
     displayed: false,
   },
   { 
-    icon: "./img/icon_manualclick.png",
+    icon: "./img/icon_click_achievement.png",
     clicks: 4, 
     message1: "You manually applied to 4 jobs!", 
     message2: "test4",
@@ -520,49 +525,49 @@ const mainAchievementsObj = [
 
   // job application achievements
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 69, 
     message1: "You applied to 69 jobs!",
     message2: "Nice",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 420, 
     message1: "You applied to 420 jobs!",
     message2: "Nice",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 6969,
     message1: "You applied to 6969 jobs!",
     message2: "Nice x 101",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 8000,
     message1: "You applied to 8000 jobs!",
     message2: "You feel kinda empty inside",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 10000,
     message1: "You applied to 10000 jobs!",
     message2: "You feel kinda empty inside",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 42069, 
     message1: "You applied to 42069 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp.png",
+    icon: "./img/icon_jobapp_achievement.png",
     apps: 69420, 
     message1: "You applied to 69420 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
@@ -571,21 +576,21 @@ const mainAchievementsObj = [
 
   // rejection achievements
   { 
-    icon: "./img/icon_rejection.png",
+    icon: "./img/icon_rejection_achievement.png",
     rejections: 1, 
     message1: "1 rejection",
     message2: "your 1st rejection!",
     displayed: false,
   },
   { 
-    icon: "./img/icon_rejection.png",
+    icon: "./img/icon_rejection_achievement.png",
     rejections: 5,
     message1: "5 rejections",
     message2: "frick",
     displayed: false,
   },
   { 
-    icon: "./img/icon_rejection.png",
+    icon: "./img/icon_rejection_achievement.png",
     rejections: 10,
     message1: "10 rejections",
     message2: "fricky frick",
@@ -603,6 +608,7 @@ function checkMainAchievement() {
       !displayed
     ) {
       showAchievement(message1, message2, icon);
+      
       achievement.displayed = true;
     }
   }
@@ -612,138 +618,138 @@ function checkMainAchievement() {
 const upgradeAchievementsObj = [
   // TRY HARDER [0]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade0: 1, 
     message1: "Your first time actually trying!",
-    message2: "Own 1 Trying Harder",
+    message2: "Own 1 Try Harder",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 2,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 10,
     message1: "condition met",
-    message2: "Own 2 Trying Harders",
+    message2: "Own 10 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 3,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 50,
     message1: "condition met",
-    message2: "Own 3 Trying Harders",
+    message2: "Own 50 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 4,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 100,
     message1: "condition met",
-    message2: "Own 4 Trying Harders",
+    message2: "Own 100 Try Harders",
     displayed: false, 
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 5,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 500,
     message1: "condition met",
-    message2: "Own 5 Trying Harders",
+    message2: "Own 500 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 6,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 1000,
     message1: "condition met",
-    message2: "Own 6 Trying Harders",
+    message2: "Own 1000 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 7,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 2500,
     message1: "condition met",
-    message2: "Own 7 Trying Harders",
+    message2: "Own 2500 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 8,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 5000,
     message1: "condition met",
-    message2: "Own 8 Trying Harders",
+    message2: "Own 5000 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade0: 9,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade0: 10000,
     message1: "condition met",
-    message2: "Own 9 Trying Harders",
+    message2: "Own 10000 Try Harders",
     displayed: false,
   },
 
-  // LINKEDIN PREMIUM [1]
+  // LINKEDOUT PREMIUM [1]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade1: 1, 
     message1: "$40 a month huh?",
-    message2: "Own 1 LinkedIn Premium",
+    message2: "Own 1 LinkedOut Premium",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade1: 2,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade1: 10,
     message1: "Bill Gates thanks you",
-    message2: "Own 2 LinkedIn Premiums",
+    message2: "Own 10 LinkedOut Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade1: 3,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade1: 50,
     message1: "condition met",
-    message2: "Own 3 LinkedIn Premiums",
+    message2: "Own 50 LinkedOut Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade1: 4,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade1: 100,
     message1: "condition met",
-    message2: "Own 4 LinkedIn Premiums",
+    message2: "Own 100 LinkedOut Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
-    upgrade1: 5,
+    icon: "./img/icon_upgrade_achievement.png",
+    upgrade1: 500,
     message1: "condition met",
-    message2: "Own 5 LinkedIn Premiums",
+    message2: "Own 500 LinkedOut Premiums",
     displayed: false,
   },
   
 
   // OUTSOURCE TO FIVERR [2]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade2: 1, 
     message1: "Thank you Mr. Patel!",
     message2: "First outsourced applier",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade2: 2,
     message1: "TEST 2",
     message2: "Own 2 outsourced worker",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade2: 3,
     message1: "condition met",
     message2: "Own 3 Fiverr outsources",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade2: 4,
     message1: "condition met",
     message2: "Own 100 Fiverr outsources",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade2: 5,
     message1: "condition met",
     message2: "Own 500 Fiverr outsources",
@@ -754,35 +760,35 @@ const upgradeAchievementsObj = [
 
   //  SEVERANCES [3]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade3: 1, 
     message1: "condition met",
     message2: "Own 1 severance",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade3: 2,
     message1: "condition met",
     message2: "Own 2 severances",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade3: 3,
     message1: "condition met",
     message2: "Own 25 upgrades",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade3: 4,
     message1: "condition met",
     message2: "Own 100 upgrades",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade3: 5,
     message1: "condition met",
     message2: "Own 500 upgrades",
@@ -793,35 +799,35 @@ const upgradeAchievementsObj = [
 
   //  UNEMPLOYMENT [4]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade4: 1, 
     message1: "condition met",
     message2: "Own 1 unemployment",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade4: 2,
     message1: "condition met",
     message2: "Own 2 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade4: 3, 
     message1: "condition met",
     message2: "Own 3 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade4: 4,
     message1: "condition met",
     message2: "Own 4 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade4: 5,
     message1: "condition met",
     message2: "Own 5 unemployments",
@@ -830,35 +836,35 @@ const upgradeAchievementsObj = [
 
   //  SOME GUY [5]
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade5: 1, 
     message1: "condition met",
     message2: "Know 1 guy who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade5: 2,
     message1: "condition met",
     message2: "Know 2 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade5: 3, 
     message1: "condition met",
     message2: "Know 3 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade5: 4,
     message1: "condition met",
     message2: "Know 4 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgradeachievement.png",
+    icon: "./img/icon_upgrade_achievement.png",
     upgrade5: 5, 
     message1: "condition met",
     message2: "Know 5 guys who work in the unemployment office",
@@ -894,6 +900,7 @@ function checkUpgradeAchievement(index) {
 
 // Function to display achievements in the notification box
 function showAchievement(message1, message2, icon) {
+  playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
 
@@ -920,6 +927,7 @@ function showAchievement(message1, message2, icon) {
   closeButton.textContent = "X";
   closeButton.className = "close-button";
 
+  
   closeButton.addEventListener("click", () => {
     notificationBox.removeChild(notification);
   });
@@ -1076,7 +1084,7 @@ const randomEventPool = [
     color: "green",
     effect_motivation: 10,
     effect_apps: 0,
-    message1: "LinkedIn awarded you 'Most Employable Person' title",
+    message1: "LinkedOut awarded you 'Most Employable Person' title",
     message2: "+10 motivation",
   },
   {
@@ -1158,6 +1166,7 @@ function randomEvent() {
 
 // Function to display random events in the notification box
 function showRandomEvent(randomEvent) {
+  playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.style.backgroundColor = randomEvent.color;
@@ -1194,6 +1203,7 @@ function showRandomEvent(randomEvent) {
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
 
+
 //   setTimeout(() => {
 //     notificationBox.removeChild(notification);
 // }, 15000);
@@ -1216,7 +1226,7 @@ function applyRandomEventEffect(event) {
 const randomRejectionPool = [
   {
     id: 0,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "Thank you for your interest, unfortunately..",
@@ -1224,7 +1234,7 @@ const randomRejectionPool = [
   },
   {
     id: 1,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Your app was impressive, but..",
@@ -1232,7 +1242,7 @@ const randomRejectionPool = [
   },
   {
     id: 2,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We appreciate your effort, but..",
@@ -1240,7 +1250,7 @@ const randomRejectionPool = [
   },
   {
     id: 3,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Despite your skills, unfortunately..",
@@ -1248,7 +1258,7 @@ const randomRejectionPool = [
   },
   {
     id: 4,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Regrettably, your submission falls short..",
@@ -1256,7 +1266,7 @@ const randomRejectionPool = [
   },
   {
     id: 5,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "We regret to inform you, but..",
@@ -1264,7 +1274,7 @@ const randomRejectionPool = [
   },
   {
     id: 6,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Your application was considered, however..",
@@ -1272,7 +1282,7 @@ const randomRejectionPool = [
   },
   {
     id: 7,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Despite your potential, we must..",
@@ -1280,7 +1290,7 @@ const randomRejectionPool = [
   },
   {
     id: 8,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We regretfully inform you that..",
@@ -1288,7 +1298,7 @@ const randomRejectionPool = [
   },
   {
     id: 9,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Despite your efforts, we must..",
@@ -1296,7 +1306,7 @@ const randomRejectionPool = [
   },
   {
     id: 10,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "We appreciate your interest, however..",
@@ -1304,7 +1314,7 @@ const randomRejectionPool = [
   },
   {
     id: 11,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Your skills are commendable, but..",
@@ -1312,7 +1322,7 @@ const randomRejectionPool = [
   },
   {
     id: 12,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We regret to inform you that..",
@@ -1320,7 +1330,7 @@ const randomRejectionPool = [
   },
   {
     id: 13,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Despite your dedication, unfortunately..",
@@ -1328,7 +1338,7 @@ const randomRejectionPool = [
   },
   {
     id: 14,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Regrettably, your application did not meet..",
@@ -1336,7 +1346,7 @@ const randomRejectionPool = [
   },
   {
     id: 15,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "We regretfully inform you that..",
@@ -1344,7 +1354,7 @@ const randomRejectionPool = [
   },
   {
     id: 16,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "Despite your potential, we must..",
@@ -1352,7 +1362,7 @@ const randomRejectionPool = [
   },
   {
     id: 17,
-    icon: "./img/email.png",
+    icon: "./img/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "Thank you for your submission, unfortunately..",
@@ -1373,6 +1383,7 @@ function randomRejection() {
 
 // Function to display achievements in the notification box
 function showRandomRejection(rejectionEvent) {
+  playRandomInboxSound();
   totalRejections += 1;
   const notification = document.createElement("div");
   notification.className = "notification";
@@ -1424,11 +1435,24 @@ function applyRandomRejectionEffects(rejectionEvent) {
 ////////////////////////////////////////////////////////////
 ////////////////////   SHOW NOTIFICATIONS   ////////////////
 ////////////////////////////////////////////////////////////
-  
-const notificationBox = document.getElementById("notification-box"); // Add notification box
+
+const inboxSounds = [
+  './sound/YGLOnotification.mov', 
+  // './sound/YGLOclick2.mp3',
+  // './sound/YGLOclick3.mp3',
+];
+
+function playRandomInboxSound() {
+  const audio = new Audio(inboxSounds);
+  audio.play();
+}
+
+
+const notificationBox = document.getElementById("notification-box");
 
 // Function to show a notification
 function showNotification(message, icon) {
+  playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
 
@@ -1460,6 +1484,7 @@ function showNotification(message, icon) {
   notification.appendChild(closeButton);
 
   notificationBox.appendChild(notification);
+  
 }
 // Function to close the notification
 function closeNotification() {
@@ -1481,6 +1506,6 @@ setInterval(checkMainAchievement, 1000);
 
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 30000);
+setInterval(randomRejection, 15000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 30000);
+setInterval(randomEvent, 14000);
