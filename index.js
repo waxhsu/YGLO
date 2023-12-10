@@ -12,18 +12,50 @@ let totalRejections = 0
 ///////////////////    MAIN GAMEPLAY   /////////////////////
 ////////////////////////////////////////////////////////////
   
+// Define a variable to keep track of sound state (on or off)
+let isSoundOn = true;
+
+// Add an event listener to the sound toggle button
+document.getElementById('soundToggleBtn').addEventListener('click', toggleSound);
+
+// Function to toggle sound state and update button text
+function toggleSound() {
+  isSoundOn = !isSoundOn;
+  updateButtonText();
+
+  // You can add more logic here to stop playing sounds if the state is off
+}
+
+// Function to update button text based on sound state
+function updateButtonText() {
+  const buttonText = isSoundOn ? 'Sound On' : 'Sound Off';
+  document.getElementById('soundToggleBtn').textContent = buttonText;
+}
+
 const clickSounds = [
-  './sound/YGLOclick1.mov', 
+  './sound/YGLOclick1.mov',
   './sound/YGLOclick2.mp3',
   './sound/YGLOclick3.mp3',
 ];
 
 function playRandomClickSound() {
-  const randomIndex = Math.floor(Math.random() * clickSounds.length);
-  const audio = new Audio(clickSounds[randomIndex]);
-  audio.play();
+  if (isSoundOn) {
+    const randomIndex = Math.floor(Math.random() * clickSounds.length);
+    const audio = new Audio(clickSounds[randomIndex]);
+    audio.play();
+  }
 }
-// playRandomClickSound();
+
+const inboxSounds = [
+  './sound/YGLOnotification.mov',
+];
+
+function playRandomInboxSound() {
+  if (isSoundOn) {
+    const audio = new Audio(inboxSounds);
+    audio.play();
+  }
+}
 
 
 // Function to handle clicking and adding job applications
@@ -1435,18 +1467,6 @@ function applyRandomRejectionEffects(rejectionEvent) {
 ////////////////////////////////////////////////////////////
 ////////////////////   SHOW NOTIFICATIONS   ////////////////
 ////////////////////////////////////////////////////////////
-
-const inboxSounds = [
-  './sound/YGLOnotification.mov', 
-  // './sound/YGLOclick2.mp3',
-  // './sound/YGLOclick3.mp3',
-];
-
-function playRandomInboxSound() {
-  const audio = new Audio(inboxSounds);
-  audio.play();
-}
-
 
 const notificationBox = document.getElementById("notification-box");
 
