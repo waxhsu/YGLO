@@ -127,7 +127,7 @@ function updateShop() {
   shopObj.forEach(shop => {
       const iconElement = document.createElement("img");
       iconElement.src = shop.icon;
-      iconElement.className = "icon";
+      iconElement.className = "shop-icon";
   
       const shopItem = document.createElement("div");
       shopItem.className = "shop-item";
@@ -207,7 +207,7 @@ function autoGenerateJobApplications() {
 const shopObj = [
   {
     id: 0,
-    icon: "./img/icon_shop.png",
+    icon: "./img/shopIcons/0_tryHarder.png",
     name: "Try Harder",
     cost: 10,
     clicksPerSecond: 0.1,
@@ -215,15 +215,15 @@ const shopObj = [
   },
   {
     id: 1,
-    icon: "./img/icon_shop.png",
-    name: "LinkedOut Premium",
+    icon: "./img/shopIcons/1_LinkedIndeed.png",
+    name: "LinkedIndeed Premium",
     cost: 50,
     clicksPerSecond: 1,
     count: 0,
   },
   {
     id: 2,
-    icon: "./img/icon_shop.png",
+    icon: "./img/shopIcons/2_sixerr.png",
     name: "Outsource to Sixerr",
     cost: 100,
     clicksPerSecond: 5,
@@ -231,7 +231,7 @@ const shopObj = [
   },
   {
     id: 3,
-    icon: "./img/icon_shop.png",
+    icon: "./img/shopIcons/3_jobPortal.png",
     name: "Job Portal",
     cost: 200,
     clicksPerSecond: 10,
@@ -239,15 +239,15 @@ const shopObj = [
   },
   {
     id: 4,
-    icon: "./img/icon_shop.png",
-    name: "Funemployment Benefits",
+    icon: "./img/shopIcons/4_unemployment.png",
+    name: "Unemployed on a Monday",
     cost: 300,
     clicksPerSecond: 20,
     count: 0,
   },
   {
     id: 5,
-    icon: "./img/icon_shop.png",
+    icon: "./img/shopIcons/5_someGuy.png",
     name: "Some guy you know who works at career services",
     cost: 400,
     clicksPerSecond: 100,
@@ -262,7 +262,7 @@ const shopObj = [
 const jobPostingCycleObj = [
   {
     id: 0,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     // title: "111111111111111",
     title: "Executive Intern",
     company: "Interns Collective",
@@ -271,7 +271,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 1,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     // title: "222222222222",
     title: "Totally Real Role",
     company: "Indian Guy named John Kyle",
@@ -280,7 +280,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 2,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     // title: "3333333333",
     title: "Analist Jr.",
     company: "Pen Island Solutions",
@@ -289,7 +289,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 3,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     // title: "444444444444",
     title: "Digital Dreamer",
     company: "Unicorn Innovations",
@@ -298,7 +298,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 4,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Code Whisperer",
     company: "Pixel Perfectionists",
     location: "Seattle, WA",
@@ -306,7 +306,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 5,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Social Media Sorcerer",
     company: "Meme Magic Enterprises",
     location: "Los Angeles, CA",
@@ -314,7 +314,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 6,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "AI Wizard",
     company: "Quantum Quokka Technologies",
     location: "Sydney, Australia",
@@ -322,7 +322,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 7,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Space Explorer",
     company: "Galactic Gourmet Solutions",
     location: "Houston, TX",
@@ -330,7 +330,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 8,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Robot Wrangler",
     company: "Automaton Asylum",
     location: "Berlin, Germany",
@@ -338,7 +338,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 9,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Crypto Crusader",
     company: "Blockchain Buccaneers",
     location: "Singapore",
@@ -346,7 +346,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 10,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Data Diviner",
     company: "Byte Mystic Guild",
     location: "Toronto, Canada",
@@ -354,7 +354,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 11,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Virtual Visionary",
     company: "VR Wonderland Enterprises",
     location: "Tokyo, Japan",
@@ -362,7 +362,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 12,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "E-commerce Enchanter",
     company: "Magical Marketplace Co.",
     location: "London, UK",
@@ -370,7 +370,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 13,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Data Dinosaur Tamer",
     company: "Jurassic Analytics Ltd.",
     location: "Denver, CO",
@@ -378,7 +378,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 14,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Cybernetic Maestro",
     company: "Bit Symphony Solutions",
     location: "Austin, TX",
@@ -386,7 +386,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 15,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Augmented Reality Artisan",
     company: "Virtual Canvas Creations",
     location: "Barcelona, Spain",
@@ -394,7 +394,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 16,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Quantum Questmaster",
     company: "Nebula Navigators Inc.",
     location: "Mumbai, India",
@@ -402,7 +402,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 17,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Machine Learning Maven",
     company: "Algorithm Alchemists",
     location: "Paris, France",
@@ -410,7 +410,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 18,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Innovation Instigator",
     company: "Disruptive Dynamics Co.",
     location: "New York, NY",
@@ -418,7 +418,7 @@ const jobPostingCycleObj = [
   },
   {
     id: 19,
-    icon: "./img/icon_jobposting.png",
+    icon: "./img/jobPostingIcons/icon_jobposting.png",
     title: "Game Dev Guru",
     company: "Pixel Play Studios",
     location: "Osaka, Japan",
@@ -527,28 +527,28 @@ updateJobPostings();
 const mainAchievementsObj = [
   // manual click achievements
   { 
-    icon: "./img/icon_click_achievement.png",
+    icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
     clicks: 1, 
     message1: "Your first click!",
     message2: "Hopefully this will lead to somewhere.. eventually",
     displayed: false,
   },
   { 
-    icon: "./img/icon_click_achievement.png",
+    icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
     clicks: 2,
     message1: "You manually applied to 2 jobs!",
     message2: "test2",
     displayed: false,
   },
   { 
-    icon: "./img/icon_click_achievement.png",
+    icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
     clicks: 3, 
     message1: "You manually applied to 3 jobs!", 
     message2: "test3",
     displayed: false,
   },
   { 
-    icon: "./img/icon_click_achievement.png",
+    icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
     clicks: 4, 
     message1: "You manually applied to 4 jobs!", 
     message2: "test4",
@@ -557,49 +557,49 @@ const mainAchievementsObj = [
 
   // job application achievements
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 69, 
     message1: "You applied to 69 jobs!",
     message2: "Nice",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 420, 
     message1: "You applied to 420 jobs!",
     message2: "Nice",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 6969,
     message1: "You applied to 6969 jobs!",
     message2: "Nice x 101",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 8000,
     message1: "You applied to 8000 jobs!",
     message2: "You feel kinda empty inside",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 10000,
     message1: "You applied to 10000 jobs!",
     message2: "You feel kinda empty inside",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 42069, 
     message1: "You applied to 42069 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
     displayed: false,
   },
   { 
-    icon: "./img/icon_jobapp_achievement.png",
+    icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
     apps: 69420, 
     message1: "You applied to 69420 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
@@ -608,21 +608,21 @@ const mainAchievementsObj = [
 
   // rejection achievements
   { 
-    icon: "./img/icon_rejection_achievement.png",
+    icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
     rejections: 1, 
     message1: "1 rejection",
     message2: "your 1st rejection!",
     displayed: false,
   },
   { 
-    icon: "./img/icon_rejection_achievement.png",
+    icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
     rejections: 5,
     message1: "5 rejections",
     message2: "frick",
     displayed: false,
   },
   { 
-    icon: "./img/icon_rejection_achievement.png",
+    icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
     rejections: 10,
     message1: "10 rejections",
     message2: "fricky frick",
@@ -650,138 +650,138 @@ function checkMainAchievement() {
 const upgradeAchievementsObj = [
   // TRY HARDER [0]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 1, 
     message1: "Your first time actually trying!",
     message2: "Own 1 Try Harder",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 10,
     message1: "condition met",
     message2: "Own 10 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 50,
     message1: "condition met",
     message2: "Own 50 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 100,
     message1: "condition met",
     message2: "Own 100 Try Harders",
     displayed: false, 
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 500,
     message1: "condition met",
     message2: "Own 500 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 1000,
     message1: "condition met",
     message2: "Own 1000 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 2500,
     message1: "condition met",
     message2: "Own 2500 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 5000,
     message1: "condition met",
     message2: "Own 5000 Try Harders",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 10000,
     message1: "condition met",
     message2: "Own 10000 Try Harders",
     displayed: false,
   },
 
-  // LINKEDOUT PREMIUM [1]
+  // LinkedIndeed PREMIUM [1]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 1, 
     message1: "$40 a month huh?",
-    message2: "Own 1 LinkedOut Premium",
+    message2: "Own 1 LinkedIndeed Premium",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 10,
     message1: "Bill Gates thanks you",
-    message2: "Own 10 LinkedOut Premiums",
+    message2: "Own 10 LinkedIndeed Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 50,
     message1: "condition met",
-    message2: "Own 50 LinkedOut Premiums",
+    message2: "Own 50 LinkedIndeed Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 100,
     message1: "condition met",
-    message2: "Own 100 LinkedOut Premiums",
+    message2: "Own 100 LinkedIndeed Premiums",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 500,
     message1: "condition met",
-    message2: "Own 500 LinkedOut Premiums",
+    message2: "Own 500 LinkedIndeed Premiums",
     displayed: false,
   },
   
 
   // OUTSOURCE TO FIVERR [2]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 1, 
     message1: "Thank you Mr. Patel!",
     message2: "First outsourced applier",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 2,
     message1: "TEST 2",
     message2: "Own 2 outsourced worker",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 3,
     message1: "condition met",
     message2: "Own 3 Fiverr outsources",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 4,
     message1: "condition met",
     message2: "Own 100 Fiverr outsources",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 5,
     message1: "condition met",
     message2: "Own 500 Fiverr outsources",
@@ -792,35 +792,35 @@ const upgradeAchievementsObj = [
 
   //  SEVERANCES [3]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 1, 
     message1: "condition met",
     message2: "Own 1 severance",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 2,
     message1: "condition met",
     message2: "Own 2 severances",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 3,
     message1: "condition met",
     message2: "Own 25 upgrades",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 4,
     message1: "condition met",
     message2: "Own 100 upgrades",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 5,
     message1: "condition met",
     message2: "Own 500 upgrades",
@@ -831,35 +831,35 @@ const upgradeAchievementsObj = [
 
   //  UNEMPLOYMENT [4]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 1, 
     message1: "condition met",
     message2: "Own 1 unemployment",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 2,
     message1: "condition met",
     message2: "Own 2 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 3, 
     message1: "condition met",
     message2: "Own 3 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 4,
     message1: "condition met",
     message2: "Own 4 unemployments",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 5,
     message1: "condition met",
     message2: "Own 5 unemployments",
@@ -868,35 +868,35 @@ const upgradeAchievementsObj = [
 
   //  SOME GUY [5]
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 1, 
     message1: "condition met",
     message2: "Know 1 guy who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 2,
     message1: "condition met",
     message2: "Know 2 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 3, 
     message1: "condition met",
     message2: "Know 3 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 4,
     message1: "condition met",
     message2: "Know 4 guys who work in the unemployment office",
     displayed: false,
   },
   { 
-    icon: "./img/icon_upgrade_achievement.png",
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 5, 
     message1: "condition met",
     message2: "Know 5 guys who work in the unemployment office",
@@ -1002,100 +1002,100 @@ const randomEventPool = [
 // Random NEGATIVE events
   {
     id: 0,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -9,
     effect_apps: -2,
-    message1: "Squashed your favorite interview outfit with ketchup",
+    message1: "You spilled ketchup on your interview outfit",
     message2: "-9 motivation, -2 applications",
   },
   {
     id: 1,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -7,
     effect_apps: -4,
-    message1: "Accidentally sent a cat meme to recruiters",
+    message1: "You accidentally sent a cat meme to recruiters",
     message2: "-7 motivation, -4 applications",
   },
   {
     id: 2,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -8,
     effect_apps: -3,
-    message1: "Mistook the CEO for the janitor during networking",
+    message1: "You mistook the CEO for the janitor during a networking event",
     message2: "-8 motivation, -3 applications",
   },
   {
     id: 3,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -10,
     effect_apps: -1,
-    message1: "Used 'mic drop' after answering an interview question",
+    message1: "You said 'mic drop' after answering an interview question",
     message2: "-10 motivation, -1 application",
   },
   {
     id: 4,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -6,
     effect_apps: -5,
-    message1: "Applied for a job at your own company",
+    message1: "You applied for a job at your own company",
     message2: "-6 motivation, -5 applications",
   },
   {
     id: 5,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -9,
     effect_apps: -2,
-    message1: "Spoke in memes during a serious phone interview",
+    message1: "You spoke in memes during a serious phone interview",
     message2: "-9 motivation, -2 applications",
   },
   {
     id: 6,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -7,
     effect_apps: -4,
-    message1: "Mentioned your ex-boss's ghost as a reference",
+    message1: "You mentioned your ex-boss's ghost as a reference",
     message2: "-7 motivation, -4 applications",
   },
   {
     id: 7,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -8,
     effect_apps: -3,
-    message1: "Wore pajamas to a video job interview",
+    message1: "You wore pajamas to a video job interview",
     message2: "-8 motivation, -3 applications",
   },
   {
     id: 8,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -10,
     effect_apps: -1,
-    message1: "Dropped your resume into the virtual trash can",
+    message1: "You dropped your resume into the virtual trash can",
     message2: "-10 motivation, -1 application",
   },
   {
     id: 9,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -6,
     effect_apps: -5,
-    message1: "Mistakenly attached a cat video instead of resume",
+    message1: "You attached a cat video instead of a cover letter",
     message2: "-6 motivation, -5 applications",
   },
 
 // random POSITIVE events
   {
     id: 10,
-    icon: "./img/icon_randomevent.png",
-    color: "lightgreen",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
+    color: "green",
     effect_motivation: 3,
     effect_apps: 2,
     message1: "Recruiters mistook you for a genius prodigy",
@@ -1103,8 +1103,8 @@ const randomEventPool = [
   },
   {
     id: 11,
-    icon: "./img/icon_randomevent.png",
-    color: "lightgreen",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
+    color: "green",
     effect_motivation: 7,
     effect_apps: 3,
     message1: "Your resume became an internet sensation overnight",
@@ -1112,16 +1112,16 @@ const randomEventPool = [
   },
   {
     id: 12,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
     effect_motivation: 10,
     effect_apps: 0,
-    message1: "LinkedOut awarded you 'Most Employable Person' title",
+    message1: "LinkedIndeed awarded you 'Most Employable Person' title",
     message2: "+10 motivation",
   },
   {
     id: 13,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
     effect_motivation: 9,
     effect_apps: 1,
@@ -1130,7 +1130,7 @@ const randomEventPool = [
   },
   {
     id: 14,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
     effect_motivation: 6,
     effect_apps: 4,
@@ -1139,8 +1139,8 @@ const randomEventPool = [
   },
   {
     id: 15,
-    icon: "./img/icon_randomevent.png",
-    color: "lightgreen",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
+    color: "green",
     effect_motivation: 5,
     effect_apps: 5,
     message1: "Received fan mail for your incredible resume design",
@@ -1148,8 +1148,8 @@ const randomEventPool = [
   },
   {
     id: 16,
-    icon: "./img/icon_randomevent.png",
-    color: "lightgreen",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
+    color: "green",
     effect_motivation: 7,
     effect_apps: 3,
     message1: "Recruiters mistakenly thought you invented the internet",
@@ -1157,7 +1157,7 @@ const randomEventPool = [
   },
   {
     id: 17,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
     effect_motivation: 8,
     effect_apps: 2,
@@ -1166,8 +1166,8 @@ const randomEventPool = [
   },
   {
     id: 18,
-    icon: "./img/icon_randomevent.png",
-    color: "lightgreen",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
+    color: "green",
     effect_motivation: 6,
     effect_apps: 4,
     message1: "Your resume was declared a national treasure",
@@ -1175,7 +1175,7 @@ const randomEventPool = [
   },
   {
     id: 19,
-    icon: "./img/icon_randomevent.png",
+    icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
     effect_motivation: 9,
     effect_apps: 1,
@@ -1258,7 +1258,7 @@ function applyRandomEventEffect(event) {
 const randomRejectionPool = [
   {
     id: 0,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "Thank you for your interest, unfortunately..",
@@ -1266,7 +1266,7 @@ const randomRejectionPool = [
   },
   {
     id: 1,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Your app was impressive, but..",
@@ -1274,7 +1274,7 @@ const randomRejectionPool = [
   },
   {
     id: 2,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We appreciate your effort, but..",
@@ -1282,7 +1282,7 @@ const randomRejectionPool = [
   },
   {
     id: 3,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Despite your skills, unfortunately..",
@@ -1290,7 +1290,7 @@ const randomRejectionPool = [
   },
   {
     id: 4,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Regrettably, your submission falls short..",
@@ -1298,7 +1298,7 @@ const randomRejectionPool = [
   },
   {
     id: 5,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "We regret to inform you, but..",
@@ -1306,7 +1306,7 @@ const randomRejectionPool = [
   },
   {
     id: 6,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Your application was considered, however..",
@@ -1314,7 +1314,7 @@ const randomRejectionPool = [
   },
   {
     id: 7,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Despite your potential, we must..",
@@ -1322,7 +1322,7 @@ const randomRejectionPool = [
   },
   {
     id: 8,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We regretfully inform you that..",
@@ -1330,7 +1330,7 @@ const randomRejectionPool = [
   },
   {
     id: 9,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Despite your efforts, we must..",
@@ -1338,7 +1338,7 @@ const randomRejectionPool = [
   },
   {
     id: 10,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "We appreciate your interest, however..",
@@ -1346,7 +1346,7 @@ const randomRejectionPool = [
   },
   {
     id: 11,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "Your skills are commendable, but..",
@@ -1354,7 +1354,7 @@ const randomRejectionPool = [
   },
   {
     id: 12,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "We regret to inform you that..",
@@ -1362,7 +1362,7 @@ const randomRejectionPool = [
   },
   {
     id: 13,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -1,
     message1: "Despite your dedication, unfortunately..",
@@ -1370,7 +1370,7 @@ const randomRejectionPool = [
   },
   {
     id: 14,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -5,
     message1: "Regrettably, your application did not meet..",
@@ -1378,7 +1378,7 @@ const randomRejectionPool = [
   },
   {
     id: 15,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -3,
     message1: "We regretfully inform you that..",
@@ -1386,7 +1386,7 @@ const randomRejectionPool = [
   },
   {
     id: 16,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -2,
     message1: "Despite your potential, we must..",
@@ -1394,7 +1394,7 @@ const randomRejectionPool = [
   },
   {
     id: 17,
-    icon: "./img/icon_rejection.png",
+    icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
     effect_motivation: -4,
     message1: "Thank you for your submission, unfortunately..",
@@ -1526,6 +1526,6 @@ setInterval(checkMainAchievement, 1000);
 
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 15000);
+setInterval(randomRejection, 14000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 14000);
+setInterval(randomEvent, 13000);

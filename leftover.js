@@ -323,7 +323,7 @@ window.addEventListener("load", playBackgroundMusic);
 
 /////// Create a function `randomEvent` and randomEvent will pull from the object below:
 
-const randomEventPool = [
+const randomEventPool1 = [
   { 
       color: "red",
       effect_motivation: -10,
@@ -658,7 +658,7 @@ function checkUpgradeAchievements(index) {
 
 
 /// UPDATED OBJECT
-const upgradeAchievements = {
+const upgradeAchievements1 = {
     // TRY HARDER [0]
     upgrade0: [
         {
@@ -895,3 +895,163 @@ const upgradeAchievements = {
     ],
   };
 
+
+
+
+
+
+
+
+  /// UPDATED JOB POSTING//
+  const jobTitles = [
+    "Executive Intern",
+    "Totally Real Role",
+    "Analyst Jr.",
+    "Digital Dreamer",
+    "Code Whisperer",
+    "Social Media Sorcerer",
+    "AI Wizard",
+    "Space Explorer",
+    "Robot Wrangler",
+    "Time Traveling Troublemaker",
+    "Unicorn Wrangler",
+    "Master of Puns",
+    "Wizard of Widgets",
+    "Grand Poobah of Gizmos",
+    "Chaos Coordinator",
+    "Meme Maestro",
+    "Reality Distortion Engineer",
+    "Chief Emoji Officer",
+    "Pixel Picasso",
+  ];
+  
+  const jobCompanies = [
+    "Interns Collective",
+    "Indian Guy named John Kyle",
+    "Pen Island Solutions",
+    "Unicorn Innovations",
+    "Pixel Perfectionists",
+    "Meme Magic Enterprises",
+    "Quantum Quokka Technologies",
+    "Galactic Gourmet Solutions",
+    "Automaton Asylum",
+    "Lunar Lemonade Co.",
+    "Epic Emoji Emporium",
+    "Wacky Widget Workshop",
+    "Gizmo Galaxy",
+    "Pun Paradise",
+    "Meme Machine Co.",
+    "Chaos Co.",
+    "Emoji Extravaganza",
+    "Pixel Pinnacle",
+    "Universe Unleashed Ltd.",
+  ];
+  
+  const jobLocations = [
+    "New York, NY",
+    "Springfield, MA",
+    "Taipei, Taiwan",
+    "San Francisco, CA",
+    "Seattle, WA",
+    "Los Angeles, CA",
+    "Sydney, Australia",
+    "Houston, TX",
+    "Berlin, Germany",
+    "Mars Metropolis",
+    "Atlantis, Ocean Floor",
+    "Wizarding World",
+    "Galaxy Far Far Away",
+    "Narnia",
+    "Oz, Emerald City",
+    "Middle-earth, Shire",
+    "Neverland",
+    "Hogwarts",
+    "Pixel Paradise",
+  ];
+  
+  const iconFolderPath = "./img/jobPostingIcons/";
+  
+  function getIconPath(index) {
+    const maxIndex = 10; // Assuming you have images named 0.png to 9.png
+    const actualIndex = index % (maxIndex + 1); // Use modulo to ensure it wraps around
+    return `${iconFolderPath}${actualIndex}.png`;
+  }
+  
+  function getRandomPayAndBenefits() {
+    const minPay = Math.floor(Math.random() * 50) + 30; // Random pay between $30k and $80k
+    const maxPay = minPay + Math.floor(Math.random() * 20) + 10; // Random benefits between 10 and 30
+    return `$${minPay}k/yr - $${maxPay}k/yr · ${Math.floor(Math.random() * 5)} benefits`;
+  }
+  
+  const jobPostingCycleObj = Array.from({ length: jobTitles.length }, (_, id) => ({
+    id,
+    icon: getIconPath(id),
+    title: jobTitles[id],
+    company: jobCompanies[id],
+    location: jobLocations[id],
+    pay: getRandomPayAndBenefits(),
+  }));
+  
+  // Shuffle the job postings array
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+  
+  shuffleArray(jobPostingCycleObj);
+  
+  let jobPostingsIndex = 0; // Track the current job posting index
+  
+  function cycleJobPostings() {
+    // Remove the first job posting from the array
+    const removedPosting = jobPostingCycleObj.shift();
+    // Add it back to the end of the array
+    jobPostingCycleObj.push(removedPosting);
+  }
+  
+  
+  function updateJobPostings() {
+    const jobPostingsElement = document.getElementById("job-postings");
+    jobPostingsElement.innerHTML = ""; // Clear the previous job postings
+  
+    jobPostingCycleObj.forEach((posting, index) => {
+      const jobPostingItem = document.createElement("div");
+      jobPostingItem.className = "job-posting-item";
+      if (index === 0) {
+        jobPostingItem.classList.add("first-posting");
+      }
+  
+      const iconElement = document.createElement("img");
+      iconElement.src = posting.icon;
+      iconElement.className = "icon";
+  
+      const titleElement = document.createElement("div");
+      titleElement.className = "job-title";
+      titleElement.textContent = posting.title;
+  
+      const companyElement = document.createElement("div");
+      companyElement.className = "job-company";
+      companyElement.textContent = posting.company;
+  
+      const locationElement = document.createElement("div");
+      locationElement.className = "job-location";
+      locationElement.textContent = posting.location;
+  
+      const payElement = document.createElement("div");
+      payElement.className = "job-pay";
+      payElement.textContent = posting.pay;
+  
+      const detailsElement = document.createElement("div");
+      detailsElement.appendChild(titleElement);
+      detailsElement.appendChild(companyElement);
+      detailsElement.appendChild(locationElement);
+      detailsElement.appendChild(payElement);
+  
+      jobPostingItem.appendChild(iconElement);
+      jobPostingItem.appendChild(detailsElement);
+  
+      jobPostingsElement.appendChild(jobPostingItem);
+    });
+}
