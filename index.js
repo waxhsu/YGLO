@@ -215,7 +215,7 @@ const shopObj = [
   },
   {
     id: 1,
-    icon: "./img/shopIcons/1_LinkedIndeed.png",
+    icon: "./img/shopIcons/1_linkedIndeed.png",
     name: "LinkedIndeed Premium",
     cost: 50,
     clicksPerSecond: 1,
