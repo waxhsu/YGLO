@@ -215,8 +215,8 @@ const shopObj = [
   },
   {
     id: 1,
-    icon: "./img/shopIcons/1_linkedIndeed.png",
-    name: "LinkedIndeed Premium",
+    icon: "./img/shopIcons/1_linkIndeed.png",
+    name: "LinkIndeed Premium",
     cost: 50,
     clicksPerSecond: 1,
     count: 0,
@@ -713,40 +713,40 @@ const upgradeAchievementsObj = [
     displayed: false,
   },
 
-  // LinkedIndeed PREMIUM [1]
+  // LinkIndeed PREMIUM [1]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 1, 
     message1: "$40 a month huh?",
-    message2: "Own 1 LinkedIndeed Premium",
+    message2: "Own 1 LinkIndeed Premium",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 10,
     message1: "Bill Gates thanks you",
-    message2: "Own 10 LinkedIndeed Premiums",
+    message2: "Own 10 LinkIndeed Premiums",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 50,
     message1: "condition met",
-    message2: "Own 50 LinkedIndeed Premiums",
+    message2: "Own 50 LinkIndeed Premiums",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 100,
     message1: "condition met",
-    message2: "Own 100 LinkedIndeed Premiums",
+    message2: "Own 100 LinkIndeed Premiums",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 500,
     message1: "condition met",
-    message2: "Own 500 LinkedIndeed Premiums",
+    message2: "Own 500 LinkIndeed Premiums",
     displayed: false,
   },
   
@@ -1116,7 +1116,7 @@ const randomEventPool = [
     color: "green",
     effect_motivation: 10,
     effect_apps: 0,
-    message1: "LinkedIndeed awarded you 'Most Employable Person' title",
+    message1: "LinkIndeed awarded you 'Most Employable Person' title",
     message2: "+10 motivation",
   },
   {
