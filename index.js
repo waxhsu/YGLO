@@ -977,12 +977,46 @@ function showAchievement(message1, message2, icon) {
 
 const achievementsPage = document.getElementById("achievements-page");
 
-// Add this function in your JavaScript file
 function toggleAchievementsPage() {
-  achievementsPage.style.display = (achievementsPage.style.display === "none") ? "block" : "none";
+  achievementsPage.style.display = (achievementsPage.style.display === "none") ? "flex" : "none";
+
+  // Clear the content of the achievements-list div
+  const achievementsList = document.getElementById("achievements-list");
+  achievementsList.innerHTML = "";
+
+  // Display icons or "?" based on achievements
+  displayAchievements(mainAchievementsObj);
+  displayAchievements(upgradeAchievementsObj);
 }
 
 
+function displayAchievements(achievementsArray) {
+  const achievementsList = document.getElementById("achievements-list");
+  achievementsArray.forEach((achievement) => {
+    const achievementListDiv = document.createElement("div");
+    achievementListDiv.className = "achievement-item";
+    // Check if the achievement is displayed
+    if (achievement.displayed) {
+      // Display the icon
+      const iconImage = document.createElement("img");
+      iconImage.src = achievement.icon;
+      iconImage.alt = "Achievement Icon";
+      achievementListDiv.appendChild(iconImage);
+
+      
+    } else {
+      // Display "?" for not achieved
+      const questionMark = document.createElement("img");
+      questionMark.className = "question-mark";
+      questionMark.src = "./img/icon_questionMark.png";
+      questionMark.alt = "?";
+      achievementListDiv.appendChild(questionMark);
+    }
+
+    // Append the achievement div to the achievements page
+    achievementsList.appendChild(achievementListDiv);
+  });
+}
 
 
 
@@ -1108,7 +1142,7 @@ const randomEventPool = [
     effect_motivation: 7,
     effect_apps: 3,
     message1: "Your resume became an internet sensation overnight",
-    message2: "+7 motivation, +3 applications",
+    message2: "+7$ motivation, +3 applications",
   },
   {
     id: 12,

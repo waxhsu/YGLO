@@ -179,31 +179,31 @@ animation: blinker 1.75s infinite;
 /* @@@@@ achievements page @@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#achievements-trigger, #achievements-page {
-  border: blue 2px solid;
+#achievements-trigger {
+  border: red 2px solid;
   background-color: white;
 }
 
 #achievements-page {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  border: blue 2px solid;
+  background-color: white;
   position: fixed;
   max-width: 80%;
   min-width: 80%;
-  top: 20%;
+  max-height: 80%;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9999; /* Ensure it's on top */
 }
 
-
-
-
-
-
-
-
-
-
-
+#achievements-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 
 
