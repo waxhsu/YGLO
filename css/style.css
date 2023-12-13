@@ -113,7 +113,6 @@ h1 {
   padding: 20px 30px;
   font-size: 3.5vh;
   background-color: #5055ee;
-  /* max-width: 40%; */
   color: white;
   border: none;
   cursor: pointer;
@@ -187,7 +186,6 @@ animation: blinker 1.75s infinite;
 #achievements-page {
   display: flex;
   flex-direction: column;
-  /* flex-wrap: wrap; */
   border: blue 2px solid;
   background-color: white;
   position: fixed;
@@ -197,7 +195,7 @@ animation: blinker 1.75s infinite;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999; /* Ensure it's on top */
+  z-index: 2000;
 }
 
 #achievements-list {
@@ -205,11 +203,24 @@ animation: blinker 1.75s infinite;
   flex-wrap: wrap;
 }
 
+.tooltip {
+  visibility: hidden;
+  background-color: #555;
+  max-width: 100%;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 9999;
+  bottom: 80%;
+  transition: opacity 0.3s;
+}
 
-
-
-
-
+.achievement-item:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
 
 
 
@@ -227,7 +238,7 @@ animation: blinker 1.75s infinite;
   /* top: 0; */
   /* left: 50%; */
   /* transform: translateX(-50%); */
-  z-index: 9999; /* Ensure it's on top */
+  z-index: 1001; /* Ensure it's on top */
 }
 
 .notification {
@@ -240,7 +251,7 @@ animation: blinker 1.75s infinite;
   /* text-align: center; */
   position: relative;
   padding-right: 25px;
-  z-index: 9998; 
+  z-index: 1000; 
   animation: fadeFromBottom 1s ease-in-out;
 }
 

@@ -1001,8 +1001,17 @@ function displayAchievements(achievementsArray) {
       const iconImage = document.createElement("img");
       iconImage.src = achievement.icon;
       iconImage.alt = "Achievement Icon";
-      achievementListDiv.appendChild(iconImage);
 
+      // Create a tooltip div for message2
+      const tooltip = document.createElement("div");
+      tooltip.className = "tooltip";
+      tooltip.textContent = achievement.message1;
+
+      // Append the tooltip to the icon
+      
+      // Append the icon to the achievementListDiv
+      achievementListDiv.appendChild(iconImage);
+      achievementListDiv.appendChild(tooltip);
       
     } else {
       // Display "?" for not achieved
@@ -1133,7 +1142,7 @@ const randomEventPool = [
     effect_motivation: 3,
     effect_apps: 2,
     message1: "Recruiters mistook you for a genius prodigy",
-    message2: "+8 motivation, +2 applications",
+    message2: "+3 motivation, +2 applications",
   },
   {
     id: 11,
@@ -1142,7 +1151,7 @@ const randomEventPool = [
     effect_motivation: 7,
     effect_apps: 3,
     message1: "Your resume became an internet sensation overnight",
-    message2: "+7$ motivation, +3 applications",
+    message2: "+7 motivation, +3 applications",
   },
   {
     id: 12,
@@ -1557,7 +1566,6 @@ updateCPSDisplay();
 // updateJobPostings();
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
-
 
 // Set an interval to trigger random event
 setInterval(randomRejection, 14000);
