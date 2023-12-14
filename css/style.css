@@ -135,7 +135,7 @@ h1 {
 
 #job-applied {
   font-size: 15vh;
-  z-index: 9500;
+  z-index: 7000;
   /* margin: 0 0 0.5vh; */
 }
 #job-applied-text {
@@ -196,7 +196,7 @@ animation: blinker 1.75s infinite;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2000;
+  z-index: 9000;
 }
 
 #achievements-list {
