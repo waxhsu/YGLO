@@ -135,6 +135,7 @@ h1 {
 
 #job-applied {
   font-size: 15vh;
+  z-index: 9500;
   /* margin: 0 0 0.5vh; */
 }
 #job-applied-text {
@@ -201,6 +202,8 @@ animation: blinker 1.75s infinite;
 #achievements-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  padding: 1.5vh 0;
 }
 
 .tooltip {
@@ -217,7 +220,7 @@ animation: blinker 1.75s infinite;
   transition: opacity 0.3s;
 }
 
-.achievement-item:hover .tooltip {
+.achievement-item:hover  .tooltip {
   visibility: visible;
   opacity: 1;
 }
