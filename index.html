@@ -9,20 +9,20 @@
 	
 	<div id="topUI">
 		<button id="soundToggleBtn">Toggle Sound</button>
-		<div id="playTestInfo">PLAYTEST INFO =>></div>
+		<audio id="background-music" autoplay loop>
+			<source src="./YGLOv3.mp3" type="audio/mpeg">
+		</audio>		
+		
+		<div id="music-controls">
+			<label for="volume-slider">Volume:</label>
+			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input>
+			<button id="mute-button">Mute Music</button>
+		</div>
+
+		
 		<div id="playTestInfo">clickValue = 1000</div>
 		<div id="playTestInfo">1 rejection = 14 sec</div>
 		<div id="playTestInfo">1 random Event = 13 sec</div>
-		
-<!-- asjfksa;dfjksadf;kjlasdfkasdfl;jsadkflsa -->
-		<!-- <div id="music-controls">
-			<label for="volume-slider">Volume:</label>
-			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input>
-			<button id="mute-button">Mute</button>
-		</div> -->
-		<!-- <audio id="background-music" autoplay loop>
-			<source src="./YGLOv3.mp3" type="audio/mpeg">
-		</audio> -->		
 		
 
     <!-- Add the following div for the achievements page trigger -->
@@ -32,6 +32,7 @@
 
     <!-- Add the div for the achievements page -->
     <div id="achievements-page" style="display: none;">
+		<button class="close-button" onclick="toggleAchievementsPage()">X</button>
 		<h1 class="banner">Achievements Page</h1>
 		<div id="achievements-list"></div>
         <!-- Populate this div with the achievements content dynamically -->

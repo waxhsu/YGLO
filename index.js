@@ -1,7 +1,7 @@
 // Initialize variables
-let motivation = 20;
+let motivation = 0;
 let autoApplications = [];
-let clickValue = 10000;
+let clickValue = 1000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -1081,184 +1081,10 @@ const randomEventPool = [
     id: 0,
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
-    effect_motivation: -0.5,
-    effect_apps: -0.5,
+    effect_motivation: -0.121,
+    effect_apps: -0.11,
     message1: "You spilled ketchup on your interview outfit",
-    // message2: "-9 motivation, -2 applications",
   },
-//   {
-//     id: 1,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -7,
-//     effect_apps: -4,
-//     message1: "You accidentally sent a cat meme to recruiters",
-//     message2: "-7 motivation, -4 applications",
-//   },
-//   {
-//     id: 2,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -8,
-//     effect_apps: -3,
-//     message1: "You mistook the CEO for the janitor during a networking event",
-//     message2: "-8 motivation, -3 applications",
-//   },
-//   {
-//     id: 3,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -10,
-//     effect_apps: -1,
-//     message1: "You said 'mic drop' after answering an interview question",
-//     message2: "-10 motivation, -1 application",
-//   },
-//   {
-//     id: 4,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -6,
-//     effect_apps: -5,
-//     message1: "You applied for a job at your own company",
-//     message2: "-6 motivation, -5 applications",
-//   },
-//   {
-//     id: 5,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -9,
-//     effect_apps: -2,
-//     message1: "You spoke in memes during a serious phone interview",
-//     message2: "-9 motivation, -2 applications",
-//   },
-//   {
-//     id: 6,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -7,
-//     effect_apps: -4,
-//     message1: "You mentioned your ex-boss's ghost as a reference",
-//     message2: "-7 motivation, -4 applications",
-//   },
-//   {
-//     id: 7,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -8,
-//     effect_apps: -3,
-//     message1: "You wore pajamas to a video job interview",
-//     message2: "-8 motivation, -3 applications",
-//   },
-//   {
-//     id: 8,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -10,
-//     effect_apps: -1,
-//     message1: "You dropped your resume into the virtual trash can",
-//     message2: "-10 motivation, -1 application",
-//   },
-//   {
-//     id: 9,
-//     icon: "./img/randomIcons/icon_randomevent_bad.png",
-//     color: "red",
-//     effect_motivation: -6,
-//     effect_apps: -5,
-//     message1: "You attached a cat video instead of a cover letter",
-//     message2: "-6 motivation, -5 applications",
-//   },
-
-// // random POSITIVE events
-//   {
-//     id: 10,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 3,
-//     effect_apps: 2,
-//     message1: "Recruiters mistook you for a genius prodigy",
-//     message2: "+3 motivation, +2 applications",
-//   },
-//   {
-//     id: 11,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 7,
-//     effect_apps: 3,
-//     message1: "Your resume became an internet sensation overnight",
-//     message2: "+7 motivation, +3 applications",
-//   },
-//   {
-//     id: 12,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 10,
-//     effect_apps: 0,
-//     message1: "LinkIndeed awarded you 'Most Employable Person' title",
-//     message2: "+10 motivation",
-//   },
-//   // {
-//   //   id: 13,
-//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
-//   //   color: "green",
-//   //   effect_motivation: 9,
-//   //   effect_apps: 1,
-//   //   message1: "Interviewers hailed you as the 'Answer Guru'",
-//   //   message2: "+9 motivation, +1 application",
-//   // },
-//   {
-//     id: 14,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 6,
-//     effect_apps: 4,
-//     message1: "Your cover letter became a viral motivational speech",
-//     message2: "+6 motivation, +4 applications",
-//   },
-//   // {
-//   //   id: 15,
-//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
-//   //   color: "green",
-//   //   effect_motivation: 5,
-//   //   effect_apps: 5,
-//   //   message1: "Received fan mail for your incredible resume design",
-//   //   message2: "+5 motivation, +5 applications",
-//   // },
-//   {
-//     id: 16,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 7,
-//     effect_apps: 3,
-//     message1: "Recruiters mistakenly thought you invented the internet",
-//     message2: "+7 motivation, +3 applications",
-//   },
-//   // {
-//   //   id: 17,
-//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
-//   //   color: "green",
-//   //   effect_motivation: 8,
-//   //   effect_apps: 2,
-//   //   message1: "A unicorn appeared during your virtual interview",
-//   //   message2: "+8 motivation, +2 applications",
-//   // },
-//   {
-//     id: 18,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 6,
-//     effect_apps: 4,
-//     message1: "Your resume was declared a national treasure",
-//     message2: "+6 motivation, +4 applications",
-//   },
-//   {
-//     id: 19,
-//     icon: "./img/randomIcons/icon_randomevent_good.png",
-//     color: "green",
-//     effect_motivation: 9,
-//     effect_apps: 1,
-//     message1: "Career fair attendees mistook you for the CEO",
-//     message2: "+9 motivation, +1 application",
-//   },
 
 ];
 
@@ -1268,33 +1094,31 @@ let timer = null; // Initialize timer
 function randomEvent() {
   const randomIndex = Math.floor(Math.random() * randomEventPool.length);
   const event = randomEventPool[randomIndex];
-  const motivationRandomCalc = applyRandomEventEffect(event);
-  showRandomEvent(event, motivationRandomCalc);
-  // applyRandomEventEffect(event);
-  
+  const { motivationRandomCalc, jobAppRandomCalc } = applyRandomEventEffect(event);
+  showRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
 }
 
 // Function to apply the effects of the random event
 function applyRandomEventEffect(event) {
   if (motivation <= 0) {
-    return 0;
+    return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
   }
   if (jobApplications <= 0) {
-    return 0;
+    return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
   }
-  let motivationRandomCalc = event.effect_motivation * motivation
-  let jobAppRandomCalc = event.effect_apps * jobApplications
+
+  let motivationRandomCalc = event.effect_motivation * motivation;
+  let jobAppRandomCalc = event.effect_apps * jobApplications;
   motivation += motivationRandomCalc;
   jobApplications += jobAppRandomCalc;
   updateMotivation();
   updateJobApplications();
-  return motivationRandomCalc
-  return jobAppRandomCalc
 
+  return { motivationRandomCalc, jobAppRandomCalc };
 }
 
 // Function to display random events in the notification box
-function showRandomEvent(randomEvent, motivationRandomCalc) {
+function showRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
@@ -1319,9 +1143,24 @@ function showRandomEvent(randomEvent, motivationRandomCalc) {
   }
   message2Element.className = "message2";
 
-  // Append message1 and message2 to messageContainer
+  const message3Element = document.createElement("div");
+  if (Math.round(jobAppRandomCalc) === 0) {
+    message3Element.textContent = `You need to apply more`;
+  } else {
+    const roundedJobApps = Math.round(jobAppRandomCalc);
+    if (roundedJobApps === 1) {
+      message3Element.textContent = `${roundedJobApps} job app`;
+    } else if (roundedJobApps === -1) {
+      message3Element.textContent = `-1 job app`;
+    } else {
+      message3Element.textContent = `${roundedJobApps} job apps`;
+    }
+  }
+  message3Element.className = "message3";
+
   messageContainer.appendChild(message1Element);
   messageContainer.appendChild(message2Element);
+  messageContainer.appendChild(message3Element);
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";

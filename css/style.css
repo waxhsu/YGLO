@@ -242,6 +242,8 @@ animation: blinker 1.75s infinite;
   /* left: 50%; */
   /* transform: translateX(-50%); */
   z-index: 1001; /* Ensure it's on top */
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .notification {
@@ -296,7 +298,7 @@ animation: blinker 1.75s infinite;
   font-weight: bold;
 }
 
-.message2 {
+.message2, .message3 {
   font-style: italic;
   font-size: 18px;
   color: black;
