@@ -1,7 +1,7 @@
 // Initialize variables
-let motivation = 0
+let motivation = 20;
 let autoApplications = [];
-let clickValue = 1000;
+let clickValue = 10000;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -652,64 +652,64 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 1, 
-    message1: "Your first time actually trying!",
-    message2: "Own 1 Try Harder",
+    message1: "Own 1 Try Harder",
+    message2: "Your first time actually trying!",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 10,
-    message1: "condition met",
-    message2: "Own 10 Try Harders",
+    message1: "Own 10 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 50,
-    message1: "condition met",
-    message2: "Own 50 Try Harders",
+    message1: "Own 50 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 100,
-    message1: "condition met",
-    message2: "Own 100 Try Harders",
+    message1: "Own 100 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false, 
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 500,
-    message1: "condition met",
-    message2: "Own 500 Try Harders",
+    message1: "Own 500 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 1000,
-    message1: "condition met",
-    message2: "Own 1000 Try Harders",
+    message1: "Own 1000 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 2500,
-    message1: "condition met",
-    message2: "Own 2500 Try Harders",
+    message1: "Own 2500 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 5000,
-    message1: "condition met",
-    message2: "Own 5000 Try Harders",
+    message1: "Own 5000 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade0: 10000,
-    message1: "condition met",
-    message2: "Own 10000 Try Harders",
+    message1: "Own 10000 Try Harders",
+    message2: "insert funny excerpt",
     displayed: false,
   },
 
@@ -717,36 +717,36 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 1, 
-    message1: "$40 a month huh?",
-    message2: "Own 1 LinkIndeed Premium",
+    message1: "Own 1 LinkIndeed Premium",
+    message2: "$40 a month huh?",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-    upgrade1: 10,
     message1: "Bill Gates thanks you",
+    upgrade2: 10,
     message2: "Own 10 LinkIndeed Premiums",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 50,
-    message1: "condition met",
-    message2: "Own 50 LinkIndeed Premiums",
+    message1: "Own 50 LinkIndeed Premiums",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 100,
-    message1: "condition met",
-    message2: "Own 100 LinkIndeed Premiums",
+    message1: "Own 100 LinkIndeed Premiums",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade1: 500,
-    message1: "condition met",
-    message2: "Own 500 LinkIndeed Premiums",
+    message1: "Own 500 LinkIndeed Premiums",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   
@@ -755,36 +755,36 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 1, 
-    message1: "Thank you Mr. Patel!",
-    message2: "First outsourced applier",
+    message1: "First outsourced applier",
+    message2: "Thank you Mr. Patel!",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 2,
-    message1: "TEST 2",
-    message2: "Own 2 outsourced worker",
+    message1: "Own 2 outsourced worker",
+    message2: "TEST 2",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 3,
-    message1: "condition met",
-    message2: "Own 3 Fiverr outsources",
+    message1: "Own 3 Fiverr outsources",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 4,
-    message1: "condition met",
-    message2: "Own 100 Fiverr outsources",
+    message1: "Own 100 Fiverr outsources",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade2: 5,
-    message1: "condition met",
-    message2: "Own 500 Fiverr outsources",
+    message1: "Own 500 Fiverr outsources",
+    message2: "insert funny excerpt",
     displayed: false,
   },
 
@@ -794,36 +794,36 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 1, 
-    message1: "condition met",
-    message2: "Own 1 severance",
+    message1: "Own 1 severance",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 2,
-    message1: "condition met",
-    message2: "Own 2 severances",
+    message1: "Own 2 severances",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 3,
-    message1: "condition met",
-    message2: "Own 25 upgrades",
+    message1: "Own 25 upgrades",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 4,
-    message1: "condition met",
-    message2: "Own 100 upgrades",
+    message1: "Own 100 upgrades",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade3: 5,
-    message1: "condition met",
-    message2: "Own 500 upgrades",
+    message1: "Own 500 upgrades",
+    message2: "insert funny excerpt",
     displayed: false,
   },
 
@@ -833,36 +833,36 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 1, 
-    message1: "condition met",
-    message2: "Own 1 unemployment",
+    message1: "Own 1 unemployment",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 2,
-    message1: "condition met",
-    message2: "Own 2 unemployments",
+    message1: "Own 2 unemployments",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 3, 
-    message1: "condition met",
-    message2: "Own 3 unemployments",
+    message1: "Own 3 unemployments",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 4,
-    message1: "condition met",
-    message2: "Own 4 unemployments",
+    message1: "Own 4 unemployments",
+    message2: "insert funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade4: 5,
-    message1: "condition met",
-    message2: "Own 5 unemployments",
+    message1: "Own 5 unemployments",
+    message2: "insert funny excerpt",
     displayed: false,
   },
 
@@ -870,36 +870,36 @@ const upgradeAchievementsObj = [
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 1, 
-    message1: "condition met",
-    message2: "Know 1 guy who work in the unemployment office",
+    message1: "Know 1 guy who work in the unemployment office",
+    message2: "funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 2,
-    message1: "condition met",
-    message2: "Know 2 guys who work in the unemployment office",
+    message1: "Know 2 guys who work in the unemployment office",
+    message2: "funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 3, 
-    message1: "condition met",
-    message2: "Know 3 guys who work in the unemployment office",
+    message1: "Know 3 guys who work in the unemployment office",
+    message2: "funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 4,
-    message1: "condition met",
-    message2: "Know 4 guys who work in the unemployment office",
+    message1: "Know 4 guys who work in the unemployment office",
+    message2: "funny excerpt",
     displayed: false,
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     upgrade5: 5, 
-    message1: "condition met",
-    message2: "Know 5 guys who work in the unemployment office",
+    message1: "Know 5 guys who work in the unemployment office",
+    message2: "funny excerpt",
     displayed: false,
   },
 ];
@@ -990,12 +990,50 @@ function toggleAchievementsPage() {
 }
 
 
+// function displayAchievements(achievementsArray) {
+//   const achievementsList = document.getElementById("achievements-list");
+//   achievementsArray.forEach((achievement) => {
+//     const achievementListDiv = document.createElement("div");
+//     achievementListDiv.className = "achievement-item";
+//     // Check if the achievement is displayed
+//     if (achievement.displayed) {
+//       // Display the icon
+//       const iconImage = document.createElement("img");
+//       iconImage.src = achievement.icon;
+//       iconImage.alt = "Achievement Icon";
+
+//       // Create a tooltip div for message2
+//       const tooltip = document.createElement("div");
+//       tooltip.className = "tooltip";
+//       tooltip.textContent = achievement.message1;
+
+//       // Append the tooltip to the icon
+      
+//       // Append the icon to the achievementListDiv
+//       achievementListDiv.appendChild(iconImage);
+//       achievementListDiv.appendChild(tooltip);
+      
+//     } else {
+//       // Display "?" for not achieved
+//       const questionMark = document.createElement("img");
+//       questionMark.className = "question-mark";
+//       questionMark.src = "./img/icon_questionMark.png";
+//       questionMark.alt = "?";
+//       achievementListDiv.appendChild(questionMark);
+//     }
+
+//     // Append the achievement div to the achievements page
+//     achievementsList.appendChild(achievementListDiv);
+//   });
+// }
+
+
 function displayAchievements(achievementsArray) {
   const achievementsList = document.getElementById("achievements-list");
   achievementsArray.forEach((achievement) => {
     const achievementListDiv = document.createElement("div");
     achievementListDiv.className = "achievement-item";
-    // Check if the achievement is displayed
+
     if (achievement.displayed) {
       // Display the icon
       const iconImage = document.createElement("img");
@@ -1007,12 +1045,11 @@ function displayAchievements(achievementsArray) {
       tooltip.className = "tooltip";
       tooltip.textContent = achievement.message1;
 
-      // Append the tooltip to the icon
-      
       // Append the icon to the achievementListDiv
       achievementListDiv.appendChild(iconImage);
+
+      // Append the tooltip as a sibling to the iconImage
       achievementListDiv.appendChild(tooltip);
-      
     } else {
       // Display "?" for not achieved
       const questionMark = document.createElement("img");
@@ -1034,9 +1071,6 @@ function displayAchievements(achievementsArray) {
 
 
 
-
-
-
 ///////////////////////////////////////////////////////////
 /////////////////////  RANDOM EVENT  //////////////////////
 ///////////////////////////////////////////////////////////
@@ -1047,184 +1081,184 @@ const randomEventPool = [
     id: 0,
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
-    effect_motivation: -9,
-    effect_apps: -2,
+    effect_motivation: -0.5,
+    effect_apps: -0.5,
     message1: "You spilled ketchup on your interview outfit",
-    message2: "-9 motivation, -2 applications",
+    // message2: "-9 motivation, -2 applications",
   },
-  {
-    id: 1,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -7,
-    effect_apps: -4,
-    message1: "You accidentally sent a cat meme to recruiters",
-    message2: "-7 motivation, -4 applications",
-  },
-  {
-    id: 2,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -8,
-    effect_apps: -3,
-    message1: "You mistook the CEO for the janitor during a networking event",
-    message2: "-8 motivation, -3 applications",
-  },
-  {
-    id: 3,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -10,
-    effect_apps: -1,
-    message1: "You said 'mic drop' after answering an interview question",
-    message2: "-10 motivation, -1 application",
-  },
-  {
-    id: 4,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -6,
-    effect_apps: -5,
-    message1: "You applied for a job at your own company",
-    message2: "-6 motivation, -5 applications",
-  },
-  {
-    id: 5,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -9,
-    effect_apps: -2,
-    message1: "You spoke in memes during a serious phone interview",
-    message2: "-9 motivation, -2 applications",
-  },
-  {
-    id: 6,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -7,
-    effect_apps: -4,
-    message1: "You mentioned your ex-boss's ghost as a reference",
-    message2: "-7 motivation, -4 applications",
-  },
-  {
-    id: 7,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -8,
-    effect_apps: -3,
-    message1: "You wore pajamas to a video job interview",
-    message2: "-8 motivation, -3 applications",
-  },
-  {
-    id: 8,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -10,
-    effect_apps: -1,
-    message1: "You dropped your resume into the virtual trash can",
-    message2: "-10 motivation, -1 application",
-  },
-  {
-    id: 9,
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    effect_motivation: -6,
-    effect_apps: -5,
-    message1: "You attached a cat video instead of a cover letter",
-    message2: "-6 motivation, -5 applications",
-  },
+//   {
+//     id: 1,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -7,
+//     effect_apps: -4,
+//     message1: "You accidentally sent a cat meme to recruiters",
+//     message2: "-7 motivation, -4 applications",
+//   },
+//   {
+//     id: 2,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -8,
+//     effect_apps: -3,
+//     message1: "You mistook the CEO for the janitor during a networking event",
+//     message2: "-8 motivation, -3 applications",
+//   },
+//   {
+//     id: 3,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -10,
+//     effect_apps: -1,
+//     message1: "You said 'mic drop' after answering an interview question",
+//     message2: "-10 motivation, -1 application",
+//   },
+//   {
+//     id: 4,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -6,
+//     effect_apps: -5,
+//     message1: "You applied for a job at your own company",
+//     message2: "-6 motivation, -5 applications",
+//   },
+//   {
+//     id: 5,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -9,
+//     effect_apps: -2,
+//     message1: "You spoke in memes during a serious phone interview",
+//     message2: "-9 motivation, -2 applications",
+//   },
+//   {
+//     id: 6,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -7,
+//     effect_apps: -4,
+//     message1: "You mentioned your ex-boss's ghost as a reference",
+//     message2: "-7 motivation, -4 applications",
+//   },
+//   {
+//     id: 7,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -8,
+//     effect_apps: -3,
+//     message1: "You wore pajamas to a video job interview",
+//     message2: "-8 motivation, -3 applications",
+//   },
+//   {
+//     id: 8,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -10,
+//     effect_apps: -1,
+//     message1: "You dropped your resume into the virtual trash can",
+//     message2: "-10 motivation, -1 application",
+//   },
+//   {
+//     id: 9,
+//     icon: "./img/randomIcons/icon_randomevent_bad.png",
+//     color: "red",
+//     effect_motivation: -6,
+//     effect_apps: -5,
+//     message1: "You attached a cat video instead of a cover letter",
+//     message2: "-6 motivation, -5 applications",
+//   },
 
-// random POSITIVE events
-  {
-    id: 10,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 3,
-    effect_apps: 2,
-    message1: "Recruiters mistook you for a genius prodigy",
-    message2: "+3 motivation, +2 applications",
-  },
-  {
-    id: 11,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 7,
-    effect_apps: 3,
-    message1: "Your resume became an internet sensation overnight",
-    message2: "+7 motivation, +3 applications",
-  },
-  {
-    id: 12,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 10,
-    effect_apps: 0,
-    message1: "LinkIndeed awarded you 'Most Employable Person' title",
-    message2: "+10 motivation",
-  },
-  // {
-  //   id: 13,
-  //   icon: "./img/randomIcons/icon_randomevent_good.png",
-  //   color: "green",
-  //   effect_motivation: 9,
-  //   effect_apps: 1,
-  //   message1: "Interviewers hailed you as the 'Answer Guru'",
-  //   message2: "+9 motivation, +1 application",
-  // },
-  {
-    id: 14,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 6,
-    effect_apps: 4,
-    message1: "Your cover letter became a viral motivational speech",
-    message2: "+6 motivation, +4 applications",
-  },
-  // {
-  //   id: 15,
-  //   icon: "./img/randomIcons/icon_randomevent_good.png",
-  //   color: "green",
-  //   effect_motivation: 5,
-  //   effect_apps: 5,
-  //   message1: "Received fan mail for your incredible resume design",
-  //   message2: "+5 motivation, +5 applications",
-  // },
-  {
-    id: 16,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 7,
-    effect_apps: 3,
-    message1: "Recruiters mistakenly thought you invented the internet",
-    message2: "+7 motivation, +3 applications",
-  },
-  // {
-  //   id: 17,
-  //   icon: "./img/randomIcons/icon_randomevent_good.png",
-  //   color: "green",
-  //   effect_motivation: 8,
-  //   effect_apps: 2,
-  //   message1: "A unicorn appeared during your virtual interview",
-  //   message2: "+8 motivation, +2 applications",
-  // },
-  {
-    id: 18,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 6,
-    effect_apps: 4,
-    message1: "Your resume was declared a national treasure",
-    message2: "+6 motivation, +4 applications",
-  },
-  {
-    id: 19,
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    effect_motivation: 9,
-    effect_apps: 1,
-    message1: "Career fair attendees mistook you for the CEO",
-    message2: "+9 motivation, +1 application",
-  },
+// // random POSITIVE events
+//   {
+//     id: 10,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 3,
+//     effect_apps: 2,
+//     message1: "Recruiters mistook you for a genius prodigy",
+//     message2: "+3 motivation, +2 applications",
+//   },
+//   {
+//     id: 11,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 7,
+//     effect_apps: 3,
+//     message1: "Your resume became an internet sensation overnight",
+//     message2: "+7 motivation, +3 applications",
+//   },
+//   {
+//     id: 12,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 10,
+//     effect_apps: 0,
+//     message1: "LinkIndeed awarded you 'Most Employable Person' title",
+//     message2: "+10 motivation",
+//   },
+//   // {
+//   //   id: 13,
+//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
+//   //   color: "green",
+//   //   effect_motivation: 9,
+//   //   effect_apps: 1,
+//   //   message1: "Interviewers hailed you as the 'Answer Guru'",
+//   //   message2: "+9 motivation, +1 application",
+//   // },
+//   {
+//     id: 14,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 6,
+//     effect_apps: 4,
+//     message1: "Your cover letter became a viral motivational speech",
+//     message2: "+6 motivation, +4 applications",
+//   },
+//   // {
+//   //   id: 15,
+//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
+//   //   color: "green",
+//   //   effect_motivation: 5,
+//   //   effect_apps: 5,
+//   //   message1: "Received fan mail for your incredible resume design",
+//   //   message2: "+5 motivation, +5 applications",
+//   // },
+//   {
+//     id: 16,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 7,
+//     effect_apps: 3,
+//     message1: "Recruiters mistakenly thought you invented the internet",
+//     message2: "+7 motivation, +3 applications",
+//   },
+//   // {
+//   //   id: 17,
+//   //   icon: "./img/randomIcons/icon_randomevent_good.png",
+//   //   color: "green",
+//   //   effect_motivation: 8,
+//   //   effect_apps: 2,
+//   //   message1: "A unicorn appeared during your virtual interview",
+//   //   message2: "+8 motivation, +2 applications",
+//   // },
+//   {
+//     id: 18,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 6,
+//     effect_apps: 4,
+//     message1: "Your resume was declared a national treasure",
+//     message2: "+6 motivation, +4 applications",
+//   },
+//   {
+//     id: 19,
+//     icon: "./img/randomIcons/icon_randomevent_good.png",
+//     color: "green",
+//     effect_motivation: 9,
+//     effect_apps: 1,
+//     message1: "Career fair attendees mistook you for the CEO",
+//     message2: "+9 motivation, +1 application",
+//   },
 
 ];
 
@@ -1234,13 +1268,33 @@ let timer = null; // Initialize timer
 function randomEvent() {
   const randomIndex = Math.floor(Math.random() * randomEventPool.length);
   const event = randomEventPool[randomIndex];
-    showRandomEvent(event);
-    applyRandomEventEffect(event);
+  const motivationRandomCalc = applyRandomEventEffect(event);
+  showRandomEvent(event, motivationRandomCalc);
+  // applyRandomEventEffect(event);
   
 }
 
+// Function to apply the effects of the random event
+function applyRandomEventEffect(event) {
+  if (motivation <= 0) {
+    return 0;
+  }
+  if (jobApplications <= 0) {
+    return 0;
+  }
+  let motivationRandomCalc = event.effect_motivation * motivation
+  let jobAppRandomCalc = event.effect_apps * jobApplications
+  motivation += motivationRandomCalc;
+  jobApplications += jobAppRandomCalc;
+  updateMotivation();
+  updateJobApplications();
+  return motivationRandomCalc
+  return jobAppRandomCalc
+
+}
+
 // Function to display random events in the notification box
-function showRandomEvent(randomEvent) {
+function showRandomEvent(randomEvent, motivationRandomCalc) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
@@ -1258,7 +1312,11 @@ function showRandomEvent(randomEvent) {
   message1Element.className = "message1";
 
   const message2Element = document.createElement("div");
-  message2Element.textContent = randomEvent.message2;
+  if (Math.round(motivationRandomCalc) === 0) {
+    message2Element.textContent = `You've hit motivation rock bottom`;
+  } else {
+    message2Element.textContent = `${Math.round(motivationRandomCalc)} motivation`;
+  }
   message2Element.className = "message2";
 
   // Append message1 and message2 to messageContainer
@@ -1277,21 +1335,12 @@ function showRandomEvent(randomEvent) {
   notification.appendChild(messageContainer);
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
-
-
-//   setTimeout(() => {
-//     notificationBox.removeChild(notification);
-// }, 15000);
+  
+  //   setTimeout(() => {
+  //     notificationBox.removeChild(notification);
+  // }, 15000);
 }
-
-// Function to apply the effects of the random event
-function applyRandomEventEffect(event) {
-  motivation += event.effect_motivation;
-  jobApplications += event.effect_apps;
-  updateMotivation();
-  updateJobApplications();
-}
-
+    
 
 
 ////////////////////////////////////////////////////////////
@@ -1570,4 +1619,4 @@ setInterval(checkMainAchievement, 1000);
 // Set an interval to trigger random event
 setInterval(randomRejection, 14000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 13000);
+setInterval(randomEvent, 10000);
