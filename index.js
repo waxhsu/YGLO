@@ -1078,13 +1078,22 @@ function displayAchievements(achievementsArray) {
 const randomEventPool = [
 // Random NEGATIVE events
   {
-    id: 0,
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
     effect_motivation: -0.121,
     effect_apps: -0.11,
     message1: "You spilled ketchup on your interview outfit",
   },
+
+
+// Random POSITIVE events
+// {
+//   icon: "./img/randomIcons/icon_randomevent_good.png",
+//   color: "green",
+//   effect_motivation: 0.0121,
+//   effect_apps: 0.0011,
+//   message1: "randomEventGood",
+// },
 
 ];
 
@@ -1458,4 +1467,4 @@ setInterval(checkMainAchievement, 1000);
 // Set an interval to trigger random event
 setInterval(randomRejection, 14000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 10000);
+setInterval(randomEvent, 100000);
