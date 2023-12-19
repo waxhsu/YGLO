@@ -29,6 +29,7 @@
   border: red solid 2px;
 }
 
+
 .icon {
   max-height: 95px;
   max-width: 95px;
@@ -43,6 +44,7 @@
 
 .banner {
   height: 3.5vh;
+  background-color: goldenrod;
 }
 
 body {
@@ -62,6 +64,9 @@ h1 {
   padding: 0 10% 0 10%;
 }
 
+#motivation {
+  background-color: goldenrod;
+}
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -76,31 +81,40 @@ h1 {
 
 #mainUI {
   display: flex;
+  /* justify-content: space-between; */
   min-height: 94.5vh;
 }
 
 #leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  min-width: 33%;
+  min-width: 33.333%;
+  max-width: 33.333%;
   max-height: 94.5vh; 
 }
 
-#leftUI, #rightUI  {
+#leftUI, #rightUI, #bottomCenterUI {
   overflow-y: auto; 
+}
+
+
+#topCenterUI, #bottomCenterUI {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #topCenterUI {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center;
   height: 40.5vh;
 }
 
 #bottomCenterUI {
-  /* border: solid red 1px; */
   height: 54vh; 
-  overflow-y: auto; 
+}
+
+#shop {
+  width: 100%;
 }
 
 
@@ -358,14 +372,18 @@ animation: blinker 1.75s infinite;
 /* @@@@@@@ update shop @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-/* #autoApplications {
-  display: flex;
-  flex-direction: column;
-} */
+.shop-item.greyed-out {
+  opacity: 0.5; /* Adjust the opacity to your preference */
+  pointer-events: none; /* Disable pointer events on greyed-out items */
+}
+
+.info-container {
+  width: 100%;
+}
 
 .shop-item {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   border: 1px solid #ccc;
   padding: 10px;
@@ -412,6 +430,7 @@ animation: blinker 1.75s infinite;
 }
 
 .item-count {
+  /* position: absolute; */
   font-size: 25px;
   font-weight: bold;
   text-align: right;

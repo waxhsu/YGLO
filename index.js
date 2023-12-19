@@ -13,7 +13,7 @@ let totalRejections = 0
 ////////////////////////////////////////////////////////////
   
 // Define a variable to keep track of sound state (on or off)
-let isSoundOn = true;
+let isSoundOn = false;
 
 // Add an event listener to the sound toggle button
 document.getElementById('soundToggleBtn').addEventListener('click', toggleSound);
@@ -120,42 +120,93 @@ function calculateTotalClicksPerSecond() {
 ////////////////////////////////////////////////////////////
 
 // Function to update the AutoApplications in the shop
+// function updateShop() {
+//   const shopElement = document.getElementById("shop");
+//   shopElement.innerHTML = ""; // Clear the previous shop items
+
+//   shopObj.forEach(shop => {
+//       const iconElement = document.createElement("img");
+//       iconElement.src = shop.icon;
+//       iconElement.className = "shop-icon";
+  
+//       const shopItem = document.createElement("div");
+//       shopItem.className = "shop-item";
+
+//       const nameElement = document.createElement("div");
+//       nameElement.className = "item-name";
+//       nameElement.textContent = shop.name;
+
+//       const costElement = document.createElement("div");
+//       costElement.className = "item-cost";
+//       costElement.textContent = `Cost: -${shop.cost} Motivation`;
+
+//       const clicksPerSecondElement = document.createElement("div");
+//       clicksPerSecondElement.className = "item-cps";
+//       clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
+
+//       const countElement = document.createElement("div");
+//       countElement.className = "item-count";
+//       countElement.textContent = `owned: ${shop.count}`;
+
+//       shopItem.appendChild(iconElement);
+//       shopItem.appendChild(nameElement);
+//       shopItem.appendChild(costElement);
+//       shopItem.appendChild(clicksPerSecondElement);
+//       shopItem.appendChild(countElement);
+
+//       shopItem.addEventListener("click", () => buyAutoApplication(shop));
+//       shopElement.appendChild(shopItem);
+//   });
+// }
+
 function updateShop() {
   const shopElement = document.getElementById("shop");
   shopElement.innerHTML = ""; // Clear the previous shop items
 
-  shopObj.forEach(shop => {
-      const iconElement = document.createElement("img");
-      iconElement.src = shop.icon;
-      iconElement.className = "shop-icon";
-  
-      const shopItem = document.createElement("div");
-      shopItem.className = "shop-item";
+  shopObj.forEach((shop, index) => {
+    const iconElement = document.createElement("img");
+    iconElement.src = shop.icon;
+    iconElement.className = "shop-icon";
 
-      const nameElement = document.createElement("div");
-      nameElement.className = "item-name";
-      nameElement.textContent = shop.name;
+    const shopItem = document.createElement("div");
+    shopItem.className = "shop-item";
 
-      const costElement = document.createElement("div");
-      costElement.className = "item-cost";
-      costElement.textContent = `Cost: -${shop.cost} Motivation`;
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "info-container";
 
-      const clicksPerSecondElement = document.createElement("div");
-      clicksPerSecondElement.className = "item-cps";
-      clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
+    const nameElement = document.createElement("div");
+    nameElement.className = "item-name";
+    nameElement.textContent = shop.name;
 
-      const countElement = document.createElement("div");
-      countElement.className = "item-count";
-      countElement.textContent = `owned: ${shop.count}`;
+    const costElement = document.createElement("div");
+    costElement.className = "item-cost";
+    costElement.textContent = `Cost: -${shop.cost} Motivation`;
 
-      shopItem.appendChild(iconElement);
-      shopItem.appendChild(nameElement);
-      shopItem.appendChild(costElement);
-      shopItem.appendChild(clicksPerSecondElement);
-      shopItem.appendChild(countElement);
+    const clicksPerSecondElement = document.createElement("div");
+    clicksPerSecondElement.className = "item-cps";
+    clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
 
+    const countElement = document.createElement("div");
+    countElement.className = "item-count";
+    countElement.textContent = `owned: ${shop.count}`;
+
+    infoContainer.appendChild(nameElement);
+    infoContainer.appendChild(costElement);
+    infoContainer.appendChild(clicksPerSecondElement);
+    infoContainer.appendChild(countElement);
+
+    shopItem.appendChild(iconElement);
+    shopItem.appendChild(infoContainer);
+
+    if (index === 0 || shopObj[index - 1].count >= 10) {
+      // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
+    } else {
+      // Grey out and hide the items that don't meet the condition
+      shopItem.classList.add("greyed-out");
+      shopItem.style.display = "none";
+    }
   });
 }
 
@@ -194,7 +245,6 @@ function updateShopUpgrades() {
 // Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
-  // totalRejections += 1 * totalClicksPerSecond;
   motivation += 0.1 * totalClicksPerSecond; // Increase motivation based on job applications clicked
   updateMotivation();
   updateRejection();
@@ -274,7 +324,7 @@ const jobPostingCycleObj = [
     icon: "./img/jobPostingIcons/icon_jobposting.png",
     // title: "222222222222",
     title: "Totally Real Role",
-    company: "Indian Guy named John Kyle",
+    company: "Not-American guy named John Kyle",
     location: "Springfield, MA",
     pay: "$69k/yr - $69.7k/yr · 10 benefits",
   },
@@ -1080,20 +1130,16 @@ const randomEventPool = [
   {
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
-    effect_motivation: -0.121,
-    effect_apps: -0.11,
-    message1: "You spilled ketchup on your interview outfit",
+    message1: "randomEventBad",
   },
 
 
 // Random POSITIVE events
-// {
-//   icon: "./img/randomIcons/icon_randomevent_good.png",
-//   color: "green",
-//   effect_motivation: 0.0121,
-//   effect_apps: 0.0011,
-//   message1: "randomEventGood",
-// },
+{
+  icon: "./img/randomIcons/icon_randomevent_good.png",
+  color: "green",
+  message1: "randomEventGood",
+},
 
 ];
 
@@ -1104,20 +1150,45 @@ function randomEvent() {
   const randomIndex = Math.floor(Math.random() * randomEventPool.length);
   const event = randomEventPool[randomIndex];
   const { motivationRandomCalc, jobAppRandomCalc } = applyRandomEventEffect(event);
-  showRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
+  const goodOrBad = event.color
+
+  if (goodOrBad === 'red'){
+    showBadRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
+  } else if (goodOrBad === 'green') {
+    showGoodRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
+  }
 }
 
-// Function to apply the effects of the random event
+
 function applyRandomEventEffect(event) {
-  if (motivation <= 0) {
+  let effect_motivation, effect_apps;
+  /////////////////////////////////////////////////////////
+  // ADD MATH EQUATION FOR A PROPER GAME PROGRESSION VALUES
+  /////////////////////////////////////////////////////////
+  if (event.color === 'red') {
+    // Generate random values within the specified range for 'red'
+    effect_motivation = getRandomInRange(-0.121, -0.097);
+    effect_apps = getRandomInRange(-0.118, -0.101);
+  } else if (event.color === 'green') {
+    // Generate random values within the specified range for 'green'
+    effect_motivation = getRandomInRange(0.0027, 0.0151);
+    effect_apps = getRandomInRange(0.0111, 0.0121);
+  }
+  /////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////
+
+  if (event.color === 'green' && motivation <= 0) {
+    motivation += 1;
     return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
   }
   if (jobApplications <= 0) {
     return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
   }
 
-  let motivationRandomCalc = event.effect_motivation * motivation;
-  let jobAppRandomCalc = event.effect_apps * jobApplications;
+  let motivationRandomCalc = effect_motivation * motivation;
+  let jobAppRandomCalc = effect_apps * jobApplications;
+
   motivation += motivationRandomCalc;
   jobApplications += jobAppRandomCalc;
   updateMotivation();
@@ -1126,8 +1197,13 @@ function applyRandomEventEffect(event) {
   return { motivationRandomCalc, jobAppRandomCalc };
 }
 
+// Helper function to get a random number within a specified range
+function getRandomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 // Function to display random events in the notification box
-function showRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
+function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
@@ -1183,12 +1259,65 @@ function showRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
   notification.appendChild(messageContainer);
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
-  
-  //   setTimeout(() => {
-  //     notificationBox.removeChild(notification);
-  // }, 15000);
 }
     
+
+function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
+  playRandomInboxSound();
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  notification.style.backgroundColor = randomEvent.color;
+
+  const iconElement = document.createElement("img");
+  iconElement.className = "icon";
+  iconElement.src = randomEvent.icon;
+
+  const messageContainer = document.createElement("div"); // New div for messages
+  messageContainer.className = "message-container";
+
+  const message1Element = document.createElement("div");
+  message1Element.textContent = randomEvent.message1;
+  message1Element.className = "message1";
+
+  const message2Element = document.createElement("div");
+  if (Math.round(motivationRandomCalc) === 0) {
+    message2Element.textContent = `You feel a tiny bit more motivated`;
+  } else {
+    message2Element.textContent = `+${Math.round(motivationRandomCalc)} motivation`;
+  }
+  message2Element.className = "message2";
+
+  const message3Element = document.createElement("div");
+  if (Math.round(jobAppRandomCalc) === 0) {
+    message3Element.textContent = `You are compelled to apply more`;
+  } else {
+    const roundedJobApps = Math.round(jobAppRandomCalc);
+    if (roundedJobApps === 1) {
+      message3Element.textContent = `${roundedJobApps} job app`;
+    } else {
+      message3Element.textContent = `+${roundedJobApps} job apps`;
+    }
+  }
+  message3Element.className = "message3";
+
+  messageContainer.appendChild(message1Element);
+  messageContainer.appendChild(message2Element);
+  messageContainer.appendChild(message3Element);
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+
+  closeButton.addEventListener("click", () => {
+  notificationBox.removeChild(notification);
+  });
+
+  notification.appendChild(iconElement);
+  notification.appendChild(messageContainer);
+  notification.appendChild(closeButton);
+  notificationBox.appendChild(notification);
+}
+
 
 
 ////////////////////////////////////////////////////////////
@@ -1200,161 +1329,140 @@ const randomRejectionPool = [
     id: 0,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -2,
     message1: "Thank you for your interest, unfortunately..",
-    message2: "-2 motivation",
   },
   {
     id: 1,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -1,
     message1: "Your app was impressive, but..",
-    message2: "-1 motivation",
   },
   {
     id: 2,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -4,
     message1: "We appreciate your effort, but..",
-    message2: "-4 motivation",
   },
   {
     id: 3,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -3,
     message1: "Despite your skills, unfortunately..",
-    message2: "-3 motivation",
   },
   {
     id: 4,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -5,
     message1: "Regrettably, your submission falls short..",
-    message2: "-5 motivation",
   },
   {
     id: 5,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -2,
     message1: "We regret to inform you, but..",
-    message2: "-2 motivation",
   },
   {
     id: 6,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -1,
     message1: "Your application was considered, however..",
-    message2: "-1 motivation",
   },
   {
     id: 7,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -3,
     message1: "Despite your potential, we must..",
-    message2: "-3 motivation",
   },
   {
     id: 8,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -4,
     message1: "We regretfully inform you that..",
-    message2: "-4 motivation",
   },
   {
     id: 9,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -5,
     message1: "Despite your efforts, we must..",
-    message2: "-5 motivation",
   },
   {
     id: 10,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -2,
     message1: "We appreciate your interest, however..",
-    message2: "-2 motivation",
   },
   {
     id: 11,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -3,
     message1: "Your skills are commendable, but..",
-    message2: "-3 motivation",
   },
   {
     id: 12,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -4,
     message1: "We regret to inform you that..",
-    message2: "-4 motivation",
   },
   {
     id: 13,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -1,
     message1: "Despite your dedication, unfortunately..",
-    message2: "-1 motivation",
   },
   {
     id: 14,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -5,
     message1: "Regrettably, your application did not meet..",
-    message2: "-5 motivation",
   },
   {
     id: 15,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -3,
     message1: "We regretfully inform you that..",
-    message2: "-3 motivation",
   },
   {
     id: 16,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -2,
     message1: "Despite your potential, we must..",
-    message2: "-2 motivation",
   },
   {
     id: 17,
     icon: "./img/randomIcons/icon_rejection.png",
     color: "grey",
-    effect_motivation: -4,
     message1: "Thank you for your submission, unfortunately..",
-    message2: "-4 motivation",
   },
   // Add more rejection events as needed
 ];
 
 function randomRejection() {
-  if (jobApplications >= 100){
-  const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
-  const rejectionEvent = randomRejectionPool[randomIndex];
-  showRandomRejection(rejectionEvent);
-  applyRandomRejectionEffects(rejectionEvent);
+  if (jobApplications >= 100) {
+    const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
+    const rejectionEvent = randomRejectionPool[randomIndex];
+    const { motivationRejectCalc } = applyRandomRejectionEffects(rejectionEvent);
+    showRandomRejection(rejectionEvent, motivationRejectCalc);
   }
+}
+
+// Function to apply the effects of the rejection event
+function applyRandomRejectionEffects() {
+  /////////////////////////////////////////////////////////
+  // ADD MATH EQUATION FOR A PROPER GAME PROGRESSION VALUES
+  /////////////////////////////////////////////////////////
+  effect_motivation = getRandomInRange(-0.121, -0.097);
+  /////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////
+  let motivationRejectCalc = effect_motivation * motivation;
+  motivation += motivationRejectCalc;
+  updateMotivation();
+  return { motivationRejectCalc }; // Return an object with motivationRejectCalc property
 }
 
 
 // Function to display achievements in the notification box
-function showRandomRejection(rejectionEvent) {
+function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   playRandomInboxSound();
   totalRejections += 1;
   const notification = document.createElement("div");
@@ -1373,7 +1481,11 @@ function showRandomRejection(rejectionEvent) {
   message1Element.className = "message1";
   
   const message2Element = document.createElement("div");
-  message2Element.textContent = rejectionEvent.message2;
+  if (Math.round(motivationRejectCalc) === 0) {
+    message2Element.textContent = `You've hit motivation rock bottom`;
+  } else {
+    message2Element.textContent = `${Math.round(motivationRejectCalc)} motivation`;
+  }
   message2Element.className = "message2";
   
   // Append message1 and message2 to messageContainer
@@ -1392,17 +1504,8 @@ function showRandomRejection(rejectionEvent) {
   notification.appendChild(messageContainer);
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
-
-//   setTimeout(() => {
-//     notificationBox.removeChild(notification);
-// }, 15000);
 }
 
-// Function to apply the effects of the rejection event
-function applyRandomRejectionEffects(rejectionEvent) {
-  motivation += rejectionEvent.effect_motivation;
-  updateMotivation();
-}
 
 ////////////////////////////////////////////////////////////
 ////////////////////   SHOW NOTIFICATIONS   ////////////////
@@ -1465,6 +1568,6 @@ setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 14000);
+setInterval(randomRejection, 5000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 100000);
+setInterval(randomEvent, 11000);
