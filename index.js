@@ -1,7 +1,7 @@
 // Initialize variables
-let motivation = 0;
+let motivation = -1;
 let autoApplications = [];
-let clickValue = 1000;
+let clickValue = 100;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
@@ -119,46 +119,6 @@ function calculateTotalClicksPerSecond() {
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
 
-// Function to update the AutoApplications in the shop
-// function updateShop() {
-//   const shopElement = document.getElementById("shop");
-//   shopElement.innerHTML = ""; // Clear the previous shop items
-
-//   shopObj.forEach(shop => {
-//       const iconElement = document.createElement("img");
-//       iconElement.src = shop.icon;
-//       iconElement.className = "shop-icon";
-  
-//       const shopItem = document.createElement("div");
-//       shopItem.className = "shop-item";
-
-//       const nameElement = document.createElement("div");
-//       nameElement.className = "item-name";
-//       nameElement.textContent = shop.name;
-
-//       const costElement = document.createElement("div");
-//       costElement.className = "item-cost";
-//       costElement.textContent = `Cost: -${shop.cost} Motivation`;
-
-//       const clicksPerSecondElement = document.createElement("div");
-//       clicksPerSecondElement.className = "item-cps";
-//       clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
-
-//       const countElement = document.createElement("div");
-//       countElement.className = "item-count";
-//       countElement.textContent = `owned: ${shop.count}`;
-
-//       shopItem.appendChild(iconElement);
-//       shopItem.appendChild(nameElement);
-//       shopItem.appendChild(costElement);
-//       shopItem.appendChild(clicksPerSecondElement);
-//       shopItem.appendChild(countElement);
-
-//       shopItem.addEventListener("click", () => buyAutoApplication(shop));
-//       shopElement.appendChild(shopItem);
-//   });
-// }
-
 function updateShop() {
   const shopElement = document.getElementById("shop");
   shopElement.innerHTML = ""; // Clear the previous shop items
@@ -198,7 +158,7 @@ function updateShop() {
     shopItem.appendChild(iconElement);
     shopItem.appendChild(infoContainer);
 
-    if (index === 0 || shopObj[index - 1].count >= 10) {
+    if (index === 0 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
@@ -309,172 +269,118 @@ const shopObj = [
 ////////////////////   JOB POSTINGS   //////////////////////
 ////////////////////////////////////////////////////////////
 
-const jobPostingCycleObj = [
-  {
-    id: 0,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    // title: "111111111111111",
-    title: "Executive Intern",
-    company: "Interns Collective",
-    location: "New York, NY",
-    pay: "$0k/yr - $0.7k/yr · 0 benefits",
-  },
-  {
-    id: 1,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    // title: "222222222222",
-    title: "Totally Real Role",
-    company: "Not-American guy named John Kyle",
-    location: "Springfield, MA",
-    pay: "$69k/yr - $69.7k/yr · 10 benefits",
-  },
-  {
-    id: 2,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    // title: "3333333333",
-    title: "Analist Jr.",
-    company: "Pen Island Solutions",
-    location: "Taipei, Taiwan",
-    pay: "$12k/yr - $30k/yr · 3 benefits",
-  },
-  {
-    id: 3,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    // title: "444444444444",
-    title: "Digital Dreamer",
-    company: "Unicorn Innovations",
-    location: "San Francisco, CA",
-    pay: "$55k/yr - $65k/yr · 5 benefits",
-  },
-  {
-    id: 4,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Code Whisperer",
-    company: "Pixel Perfectionists",
-    location: "Seattle, WA",
-    pay: "$45k/yr - $55k/yr · 4 benefits",
-  },
-  {
-    id: 5,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Social Media Sorcerer",
-    company: "Meme Magic Enterprises",
-    location: "Los Angeles, CA",
-    pay: "$40k/yr - $50k/yr · 3 benefits",
-  },
-  {
-    id: 6,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "AI Wizard",
-    company: "Quantum Quokka Technologies",
-    location: "Sydney, Australia",
-    pay: "$60k/yr - $69k/yr · 6 benefits",
-  },
-  {
-    id: 7,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Space Explorer",
-    company: "Galactic Gourmet Solutions",
-    location: "Houston, TX",
-    pay: "$50k/yr - $60k/yr · 5 benefits",
-  },
-  {
-    id: 8,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Robot Wrangler",
-    company: "Automaton Asylum",
-    location: "Berlin, Germany",
-    pay: "$35k/yr - $45k/yr · 2 benefits",
-  },
-  {
-    id: 9,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Crypto Crusader",
-    company: "Blockchain Buccaneers",
-    location: "Singapore",
-    pay: "$25k/yr - $35k/yr · 1 benefit",
-  },
-  {
-    id: 10,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Data Diviner",
-    company: "Byte Mystic Guild",
-    location: "Toronto, Canada",
-    pay: "$30k/yr - $40k/yr · 3 benefits",
-  },
-  {
-    id: 11,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Virtual Visionary",
-    company: "VR Wonderland Enterprises",
-    location: "Tokyo, Japan",
-    pay: "$55k/yr - $65k/yr · 4 benefits",
-  },
-  {
-    id: 12,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "E-commerce Enchanter",
-    company: "Magical Marketplace Co.",
-    location: "London, UK",
-    pay: "$40k/yr - $50k/yr · 2 benefits",
-  },
-  {
-    id: 13,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Data Dinosaur Tamer",
-    company: "Jurassic Analytics Ltd.",
-    location: "Denver, CO",
-    pay: "$30k/yr - $40k/yr · 1 benefit",
-  },
-  {
-    id: 14,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Cybernetic Maestro",
-    company: "Bit Symphony Solutions",
-    location: "Austin, TX",
-    pay: "$45k/yr - $55k/yr · 3 benefits",
-  },
-  {
-    id: 15,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Augmented Reality Artisan",
-    company: "Virtual Canvas Creations",
-    location: "Barcelona, Spain",
-    pay: "$50k/yr - $60k/yr · 4 benefits",
-  },
-  {
-    id: 16,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Quantum Questmaster",
-    company: "Nebula Navigators Inc.",
-    location: "Mumbai, India",
-    pay: "$35k/yr - $45k/yr · 2 benefits",
-  },
-  {
-    id: 17,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Machine Learning Maven",
-    company: "Algorithm Alchemists",
-    location: "Paris, France",
-    pay: "$60k/yr - $69k/yr · 5 benefits",
-  },
-  {
-    id: 18,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Innovation Instigator",
-    company: "Disruptive Dynamics Co.",
-    location: "New York, NY",
-    pay: "$50k/yr - $60k/yr · 4 benefits",
-  },
-  {
-    id: 19,
-    icon: "./img/jobPostingIcons/icon_jobposting.png",
-    title: "Game Dev Guru",
-    company: "Pixel Play Studios",
-    location: "Osaka, Japan",
-    pay: "$45k/yr - $55k/yr · 3 benefits",
-  },
+const jobCycleTitle = [
+  "Executive Intern",
+  "Totally Real Role",
+  "Analyst Jr.",
+  "Digital Dreamer",
+  "Code Whisperer",
+  "Social Media Sorcerer",
+  "AI Wizard",
+  "Space Explorer",
+  "Robot Wrangler",
+  "Time Traveling Troublemaker",
+  "Unicorn Wrangler",
+  "Master of Puns",
+  "Wizard of Widgets",
+  "Grand Poobah of Gizmos",
+  "Chaos Coordinator",
+  "Meme Maestro",
+  "Reality Distortion Engineer",
+  "Chief Emoji Officer",
+  "Pixel Picasso",
 ];
+
+const jobCycleCompany = [
+  "Interns Collective",
+  "Indian Guy named John Kyle",
+  "Pen Island Solutions",
+  "Unicorn Innovations",
+  "Pixel Perfectionists",
+  "Meme Magic Enterprises",
+  "Quantum Quokka Technologies",
+  "Galactic Gourmet Solutions",
+  "Automaton Asylum",
+  "Lunar Lemonade Co.",
+  "Epic Emoji Emporium",
+  "Wacky Widget Workshop",
+  "Gizmo Galaxy",
+  "Pun Paradise",
+  "Meme Machine Co.",
+  "Chaos Co.",
+  "Emoji Extravaganza",
+  "Pixel Pinnacle",
+  "Universe Unleashed Ltd.",
+];
+
+const jobCycleLocation = [
+  "New York, NY",
+  "Springfield, MA",
+  "Taipei, Taiwan",
+  "San Francisco, CA",
+  "Seattle, WA",
+  "Los Angeles, CA",
+  "Sydney, Australia",
+  "Houston, TX",
+  "Berlin, Germany",
+  "Mars Metropolis",
+  "Atlantis, Ocean Floor",
+  "Wizarding World",
+  "Galaxy Far Far Away",
+  "Narnia",
+  "Oz, Emerald City",
+  "Middle-earth, Shire",
+  "Neverland",
+  "Hogwarts",
+  "Pixel Paradise",
+];
+
+const iconFolderPath = "./img/jobPostingIcons/";
+
+function getIconPath(index) {
+  const maxIndex = 11; // Assuming you have images named 0.png to 9.png
+  const actualIndex = index % (maxIndex + 1); // Use modulo to ensure it wraps around
+  return `${iconFolderPath}${actualIndex}.png`;
+}
+
+function getRandomPayAndBenefits() {
+  const minPay = Math.floor(Math.random() * 50) + 30; // Random pay between $30k and $80k
+  const maxPay = minPay + Math.floor(Math.random() * 20) + 10; // Random benefits between 10 and 30
+  return `$${minPay}k/yr - $${maxPay}k/yr · ${Math.floor(Math.random() * 5)} benefits`;
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+const jobPostingCycleObj = Array.from({ length: jobCycleTitle.length }, (_, id) => {
+  const randomIconIndex = getRandomIndex(jobCycleTitle);
+  const randomTitleIndex = getRandomIndex(jobCycleTitle);
+  const randomCompanyIndex = getRandomIndex(jobCycleCompany);
+  const randomLocationIndex = getRandomIndex(jobCycleLocation);
+
+  return {
+    id,
+    icon: getIconPath(randomIconIndex),
+    title: jobCycleTitle[randomTitleIndex],
+    company: jobCycleCompany[randomCompanyIndex],
+    location: jobCycleLocation[randomLocationIndex],
+    pay: getRandomPayAndBenefits(),
+  };
+});
+
+// Shuffle the job postings array
+// function shuffleArray(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+// }
+
+// shuffleArray(jobCycleTitle);
+// shuffleArray(jobCycleCompany);
+// shuffleArray(jobCycleLocation);
+// shuffleArray(jobPostingCycleObj);
 
 let jobPostingsIndex = 0; // Track the current job posting index
 
@@ -484,6 +390,7 @@ function cycleJobPostings() {
   // Add it back to the end of the array
   jobPostingCycleObj.push(removedPosting);
 }
+
 
 function updateJobPostings() {
   const jobPostingsElement = document.getElementById("job-postings");
@@ -503,19 +410,19 @@ function updateJobPostings() {
     const titleElement = document.createElement("div");
     titleElement.className = "job-title";
     titleElement.textContent = posting.title;
-    
+
     const companyElement = document.createElement("div");
     companyElement.className = "job-company";
     companyElement.textContent = posting.company;
-    
+
     const locationElement = document.createElement("div");
     locationElement.className = "job-location";
     locationElement.textContent = posting.location;
-    
+
     const payElement = document.createElement("div");
     payElement.className = "job-pay";
     payElement.textContent = posting.pay;
-    
+
     const detailsElement = document.createElement("div");
     detailsElement.appendChild(titleElement);
     detailsElement.appendChild(companyElement);
@@ -524,11 +431,11 @@ function updateJobPostings() {
 
     jobPostingItem.appendChild(iconElement);
     jobPostingItem.appendChild(detailsElement);
-  
+
     jobPostingsElement.appendChild(jobPostingItem);
-    
   });
 }
+
 
 updateJobPostings();
 
@@ -1040,44 +947,6 @@ function toggleAchievementsPage() {
 }
 
 
-// function displayAchievements(achievementsArray) {
-//   const achievementsList = document.getElementById("achievements-list");
-//   achievementsArray.forEach((achievement) => {
-//     const achievementListDiv = document.createElement("div");
-//     achievementListDiv.className = "achievement-item";
-//     // Check if the achievement is displayed
-//     if (achievement.displayed) {
-//       // Display the icon
-//       const iconImage = document.createElement("img");
-//       iconImage.src = achievement.icon;
-//       iconImage.alt = "Achievement Icon";
-
-//       // Create a tooltip div for message2
-//       const tooltip = document.createElement("div");
-//       tooltip.className = "tooltip";
-//       tooltip.textContent = achievement.message1;
-
-//       // Append the tooltip to the icon
-      
-//       // Append the icon to the achievementListDiv
-//       achievementListDiv.appendChild(iconImage);
-//       achievementListDiv.appendChild(tooltip);
-      
-//     } else {
-//       // Display "?" for not achieved
-//       const questionMark = document.createElement("img");
-//       questionMark.className = "question-mark";
-//       questionMark.src = "./img/icon_questionMark.png";
-//       questionMark.alt = "?";
-//       achievementListDiv.appendChild(questionMark);
-//     }
-
-//     // Append the achievement div to the achievements page
-//     achievementsList.appendChild(achievementListDiv);
-//   });
-// }
-
-
 function displayAchievements(achievementsArray) {
   const achievementsList = document.getElementById("achievements-list");
   achievementsArray.forEach((achievement) => {
@@ -1101,7 +970,6 @@ function displayAchievements(achievementsArray) {
       // Append the tooltip as a sibling to the iconImage
       achievementListDiv.appendChild(tooltip);
     } else {
-      // Display "?" for not achieved
       const questionMark = document.createElement("img");
       questionMark.className = "question-mark";
       questionMark.src = "./img/icon_questionMark.png";
@@ -1116,7 +984,14 @@ function displayAchievements(achievementsArray) {
 
 
 
-
+// Add an event listener for the "keydown" event on the document
+document.addEventListener("keydown", function(event) {
+  // Check if the pressed key is the "Esc" key
+  if (event.key === "a") {
+    // Call the toggleAchievementsPage function to close the achievements page
+    toggleAchievementsPage();
+  }
+});
 
 
 
@@ -1167,8 +1042,8 @@ function applyRandomEventEffect(event) {
   /////////////////////////////////////////////////////////
   if (event.color === 'red') {
     // Generate random values within the specified range for 'red'
-    effect_motivation = getRandomInRange(-0.121, -0.097);
-    effect_apps = getRandomInRange(-0.118, -0.101);
+    effect_motivation = getRandomInRange(-0.321, -0.197);
+    effect_apps = getRandomInRange(-0.148, -0.121);
   } else if (event.color === 'green') {
     // Generate random values within the specified range for 'green'
     effect_motivation = getRandomInRange(0.0027, 0.0151);
@@ -1178,13 +1053,15 @@ function applyRandomEventEffect(event) {
   /////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
 
-  if (event.color === 'green' && motivation <= 0) {
+  if (event.color === 'green' && motivation < ((shopObj[0].cost))) {
     motivation += 1;
-    return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
+    return { motivationRandomCalc: 0, jobAppRandomCalc: effect_apps * jobApplications};
+  } else if (event.color === 'red' && motivation > 0) {
+    motivation -= 1;
   }
-  if (jobApplications <= 0) {
-    return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
-  }
+  // if (jobApplications <= 0) {
+  //   return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
+  // }
 
   let motivationRandomCalc = effect_motivation * motivation;
   let jobAppRandomCalc = effect_apps * jobApplications;
@@ -1221,10 +1098,12 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
   message1Element.className = "message1";
 
   const message2Element = document.createElement("div");
-  if (Math.round(motivationRandomCalc) === 0) {
+  if (motivation === 0 || motivation < 0) {  
     message2Element.textContent = `You've hit motivation rock bottom`;
+  } else if (Math.ceil(motivationRandomCalc) === 0) {
+    message2Element.textContent = `-1 motivation`;
   } else {
-    message2Element.textContent = `${Math.round(motivationRandomCalc)} motivation`;
+    message2Element.textContent = `${Math.ceil(motivationRandomCalc)} motivation`;
   }
   message2Element.className = "message2";
 
@@ -1232,13 +1111,12 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
   if (Math.round(jobAppRandomCalc) === 0) {
     message3Element.textContent = `You need to apply more`;
   } else {
-    const roundedJobApps = Math.round(jobAppRandomCalc);
-    if (roundedJobApps === 1) {
-      message3Element.textContent = `${roundedJobApps} job app`;
-    } else if (roundedJobApps === -1) {
+    if (Math.round(jobAppRandomCalc) === 1) {
+      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job app`;
+    } else if (Math.round(jobAppRandomCalc) === -1) {
       message3Element.textContent = `-1 job app`;
     } else {
-      message3Element.textContent = `${roundedJobApps} job apps`;
+      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job apps`;
     }
   }
   message3Element.className = "message3";
@@ -1291,11 +1169,10 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
   if (Math.round(jobAppRandomCalc) === 0) {
     message3Element.textContent = `You are compelled to apply more`;
   } else {
-    const roundedJobApps = Math.round(jobAppRandomCalc);
-    if (roundedJobApps === 1) {
-      message3Element.textContent = `${roundedJobApps} job app`;
+    if (Math.round(jobAppRandomCalc) === 1) {
+      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job app`;
     } else {
-      message3Element.textContent = `+${roundedJobApps} job apps`;
+      message3Element.textContent = `+${Math.round(jobAppRandomCalc)} job apps`;
     }
   }
   message3Element.className = "message3";
@@ -1568,6 +1445,6 @@ setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 5000);
+setInterval(randomRejection, 15000);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 11000);
+setInterval(randomEvent, 14000);

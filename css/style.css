@@ -148,7 +148,7 @@ h1 {
 }
 
 #job-applied {
-  font-size: 15vh;
+  font-size: 10vh;
   z-index: 7000;
   /* margin: 0 0 0.5vh; */
 }
@@ -207,10 +207,12 @@ animation: blinker 1.75s infinite;
   max-width: 80%;
   min-width: 80%;
   max-height: 80%;
+  min-height: 60%;
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9000;
+  padding: 3.5%
 }
 
 #achievements-list {
@@ -221,17 +223,25 @@ animation: blinker 1.75s infinite;
 }
 
 .tooltip {
+  display: flex;
   visibility: hidden;
   background-color: #555;
-  max-width: 100%;
+  min-width: max-content;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px;
   position: absolute;
   z-index: 9999;
-  bottom: 80%;
   transition: opacity 0.3s;
+}
+
+.achievement-item{
+  max-height: 95px;
+  max-width: 95px;
+  min-width: 95px;
+  display: flex;
+  justify-content: center;
 }
 
 .achievement-item:hover  .tooltip {

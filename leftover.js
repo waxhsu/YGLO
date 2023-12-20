@@ -1055,3 +1055,48 @@ const upgradeAchievements1 = {
       jobPostingsElement.appendChild(jobPostingItem);
     });
 }
+
+
+
+
+
+// OLD SHOP CODE
+// Function to update the AutoApplications in the shop
+// function updateShop() {
+//   const shopElement = document.getElementById("shop");
+//   shopElement.innerHTML = ""; // Clear the previous shop items
+
+//   shopObj.forEach(shop => {
+//       const iconElement = document.createElement("img");
+//       iconElement.src = shop.icon;
+//       iconElement.className = "shop-icon";
+  
+//       const shopItem = document.createElement("div");
+//       shopItem.className = "shop-item";
+
+//       const nameElement = document.createElement("div");
+//       nameElement.className = "item-name";
+//       nameElement.textContent = shop.name;
+
+//       const costElement = document.createElement("div");
+//       costElement.className = "item-cost";
+//       costElement.textContent = `Cost: -${shop.cost} Motivation`;
+
+//       const clicksPerSecondElement = document.createElement("div");
+//       clicksPerSecondElement.className = "item-cps";
+//       clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
+
+//       const countElement = document.createElement("div");
+//       countElement.className = "item-count";
+//       countElement.textContent = `owned: ${shop.count}`;
+
+//       shopItem.appendChild(iconElement);
+//       shopItem.appendChild(nameElement);
+//       shopItem.appendChild(costElement);
+//       shopItem.appendChild(clicksPerSecondElement);
+//       shopItem.appendChild(countElement);
+
+//       shopItem.addEventListener("click", () => buyAutoApplication(shop));
+//       shopElement.appendChild(shopItem);
+//   });
+// }
