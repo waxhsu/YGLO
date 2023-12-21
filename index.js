@@ -1,11 +1,25 @@
 // Initialize variables
+let timer = null;
 let motivation = -1;
 let autoApplications = [];
-let clickValue = 100;
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
 let manualClick = 0;
-let totalRejections = 0
+
+let totalRejections = 0;
+
+let goodRandomEvents = 0;
+let badRandomEvents = 0;
+let totalRandomEvents = 0;
+
+let randomRejectInterval = 10000
+let randomEventInterval = 8000
+let clickValue = 100;
+
+/////////// PLAY TEST INFO ////////
+document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
+document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
+document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
 
 
 ////////////////////////////////////////////////////////////
@@ -80,11 +94,64 @@ clickButton.addEventListener("click", clickForJobApplications);
 /////////////////  UPDATE STATS INFO  /////////////////////
 ///////////////////////////////////////////////////////////
 
-// Function to update the job application count on the screen
+
+function formatNumberWithCommas(number) {
+  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function formatLargeNumber(value) {
+  if (value < 1000000) {
+    return { formattedValue: formatNumberWithCommas(Math.round(value)), scale: "" };
+  } else {
+    const million = 1000000;
+    const billion = 1000000000;
+    const trillion = 1000000000000;
+
+    if (value < billion) {
+      return { formattedValue: `${(value / million).toFixed(3)}`, scale: "million" };
+    } else if (value < trillion) {
+      return { formattedValue: `${(value / billion).toFixed(3)}`, scale: "billion" };
+    } else {
+      return { formattedValue: `${(value / trillion).toFixed(3)}`, scale: "trillion" };
+    }
+  }
+}
+
 function updateJobApplications() {
   const jobApplicationsElement = document.getElementById("job-applied");
-  jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
+  const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
+
+  const formattedValueObject = formatLargeNumber(jobApplications);
+  const formattedValue = formattedValueObject.formattedValue;
+
+  scaleElement.textContent = formattedValueObject.scale;
+  jobApplicationsElement.textContent = formattedValue;
 }
+
+
+// function updateJobApplications() {
+//   const jobApplicationsElement = document.getElementById("job-applied");
+//   const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
+
+//   const formattedData = formatLargeNumber(jobApplications);
+
+//   jobApplicationsElement.textContent = formattedData.formattedValue;
+
+//   // Update the scale element
+//   scaleElement.textContent = formattedData.scale;
+// }
+
+// // Function to update the job application count on the screen
+// function updateJobApplications() {
+//   const jobApplicationsElement = document.getElementById("job-applied");
+//   jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
+// }
+
+
+
+
+
+
 
 // Function to update the CPS (Clicks Per Second) display
 function updateCPSDisplay() {
@@ -92,10 +159,31 @@ function updateCPSDisplay() {
   cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
 }
 
+
+
 // Function to update the motivation count on the screen
+function formatLargeNumberAll(value) {
+  if (value < 1000000) {
+    return formatNumberWithCommas(Math.round(value));
+  } else {
+    const million = 1000000;
+    const billion = 1000000000;
+    const trillion = 1000000000000;
+
+    if (value < billion) {
+      return `${(value / million).toFixed(3)} million`;
+    } else if (value < trillion) {
+      return `${(value / billion).toFixed(3)} billion`;
+    } else {
+      return `${(value / trillion).toFixed(3)} trillion`;
+    }
+  }
+}
+
 function updateMotivation() {
   const motivationElement = document.getElementById("motivation");
-  motivationElement.textContent = `Motivation: ${Math.floor(motivation)}`;
+  const formattedValue = formatLargeNumberAll(motivation);
+  motivationElement.textContent = `Motivation: ${formattedValue}`;
 }
 
 // Function to update the rejection display
@@ -205,11 +293,11 @@ function updateShopUpgrades() {
 // Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
-  motivation += 0.1 * totalClicksPerSecond; // Increase motivation based on job applications clicked
+  motivation += 0.1 * totalClicksPerSecond; 
   updateMotivation();
   updateRejection();
   updateJobApplications();
-  updateCPSDisplay(); // Update CPS when generating
+  updateCPSDisplay();
 }
 
 
@@ -338,7 +426,7 @@ const jobCycleLocation = [
 const iconFolderPath = "./img/jobPostingIcons/";
 
 function getIconPath(index) {
-  const maxIndex = 11; // Assuming you have images named 0.png to 9.png
+  const maxIndex = 10; // Assuming you have images named 0.png to 9.png
   const actualIndex = index % (maxIndex + 1); // Use modulo to ensure it wraps around
   return `${iconFolderPath}${actualIndex}.png`;
 }
@@ -354,40 +442,19 @@ function getRandomIndex(array) {
 }
 
 const jobPostingCycleObj = Array.from({ length: jobCycleTitle.length }, (_, id) => {
-  const randomIconIndex = getRandomIndex(jobCycleTitle);
-  const randomTitleIndex = getRandomIndex(jobCycleTitle);
-  const randomCompanyIndex = getRandomIndex(jobCycleCompany);
-  const randomLocationIndex = getRandomIndex(jobCycleLocation);
-
   return {
     id,
-    icon: getIconPath(randomIconIndex),
-    title: jobCycleTitle[randomTitleIndex],
-    company: jobCycleCompany[randomCompanyIndex],
-    location: jobCycleLocation[randomLocationIndex],
+    icon: getIconPath(getRandomIndex(jobCycleTitle)),
+    title: jobCycleTitle[getRandomIndex(jobCycleTitle)],
+    company: jobCycleCompany[getRandomIndex(jobCycleCompany)],
+    location: jobCycleLocation[getRandomIndex(jobCycleLocation)],
     pay: getRandomPayAndBenefits(),
   };
 });
 
-// Shuffle the job postings array
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
-
-// shuffleArray(jobCycleTitle);
-// shuffleArray(jobCycleCompany);
-// shuffleArray(jobCycleLocation);
-// shuffleArray(jobPostingCycleObj);
-
-let jobPostingsIndex = 0; // Track the current job posting index
-
+let jobPostingsIndex = 0;
 function cycleJobPostings() {
-  // Remove the first job posting from the array
   const removedPosting = jobPostingCycleObj.shift();
-  // Add it back to the end of the array
   jobPostingCycleObj.push(removedPosting);
 }
 
@@ -424,6 +491,7 @@ function updateJobPostings() {
     payElement.textContent = posting.pay;
 
     const detailsElement = document.createElement("div");
+    detailsElement.className = "job-details";
     detailsElement.appendChild(titleElement);
     detailsElement.appendChild(companyElement);
     detailsElement.appendChild(locationElement);
@@ -585,17 +653,131 @@ const mainAchievementsObj = [
     message2: "fricky frick",
     displayed: false,
   },
+
+  // bad random event achievements
+  { 
+    icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    badEvents: 10,
+    message1: "10 bad things happened",
+    message2: "Well, gosh darn it!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    badEvents: 100,
+    message1: "100 bad things happened to you",
+    message2: "*Wiggles index finger* well just my luck!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    badEvents: 250,
+    message1: "250 bad things happened to you",
+    message2: "insertFunnyLame joke",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    badEvents: 500, 
+    message1: "500 bad things happened to you",
+    message2: "You stare into the vast space of nothingness",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    badEvents: 1000, 
+    message1: "1000 bad things happened to you",
+    message2: "You blow a small puff of air out of your nostrils",
+    displayed: false,
+  },
+
+  // good random event achievements
+{ 
+    icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    goodEvents: 10,
+    message1: "10 good things happened",
+    message2: "Maybe I'll get at least an interview!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    goodEvents: 100,
+    message1: "100 good things happened to you",
+    message2: "You feel kinda good about yourself!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    goodEvents: 250,
+    message1: "250 good things happened to you",
+    message2: "insertFunnyLame joke",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    goodEvents: 500, 
+    message1: "500 good things happened to you",
+    message2: "*rubs chin*" ,
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    goodEvents: 1000, 
+    message1: "1000 good things happened to you",
+    message2: "You blow a small puff of air out of your nostrils",
+    displayed: false,
+  },
+  // total random event achievements
+
+  { 
+    icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    totalRandom: 25,
+    message1: "25 random things happened",
+    message2: "rawr xD random!!1!11!!!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    totalRandom: 200,
+    message1: "200 random things happened to you",
+    message2: "wow freaking random!!!!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    totalRandom: 500,
+    message1: "500 random things happened to you",
+    message2: "some of these random things happened repeated",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    totalRandom: 1000, 
+    message1: "1000 random things happened to you",
+    message2: "*claps big floppy feet together*" ,
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    totalRandom: 1500, 
+    message1: "1500 random things happened to you",
+    message2: "*slaps belly and spits out a tooth* well if it isn't my belly??",
+    displayed: false,
+  },
 ];
 
 function checkMainAchievement() {
   for (const achievement of mainAchievementsObj) {
-    const { clicks, apps, rejections, displayed, message1, message2, icon } = achievement;
-    if (
-      ((clicks && manualClick >= clicks) ||
+    const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, displayed, message1, message2, icon } = achievement;
+    if ((
+      (clicks && manualClick >= clicks) ||
       (apps && jobApplications >= apps) ||
-      (rejections && totalRejections >= rejections)) &&
-      !displayed
-    ) {
+      (rejections && totalRejections >= rejections) || 
+      (badEvents && badRandomEvents >= badEvents) ||
+      (goodEvents && goodRandomEvents >= goodEvents) ||
+      (totalRandom && totalRandomEvents >= totalRandom)
+      ) 
+    && !displayed) {
       showAchievement(message1, message2, icon);
       
       achievement.displayed = true;
@@ -957,7 +1139,7 @@ function displayAchievements(achievementsArray) {
       // Display the icon
       const iconImage = document.createElement("img");
       iconImage.src = achievement.icon;
-      iconImage.alt = "Achievement Icon";
+      iconImage.className = "achievement-item";
 
       // Create a tooltip div for message2
       const tooltip = document.createElement("div");
@@ -986,9 +1168,7 @@ function displayAchievements(achievementsArray) {
 
 // Add an event listener for the "keydown" event on the document
 document.addEventListener("keydown", function(event) {
-  // Check if the pressed key is the "Esc" key
   if (event.key === "a") {
-    // Call the toggleAchievementsPage function to close the achievements page
     toggleAchievementsPage();
   }
 });
@@ -1018,10 +1198,10 @@ const randomEventPool = [
 
 ];
 
-let timer = null; // Initialize timer
 
 // Function to trigger random events
 function randomEvent() {
+  totalRandomEvents += 1;
   const randomIndex = Math.floor(Math.random() * randomEventPool.length);
   const event = randomEventPool[randomIndex];
   const { motivationRandomCalc, jobAppRandomCalc } = applyRandomEventEffect(event);
@@ -1082,6 +1262,7 @@ function getRandomInRange(min, max) {
 // Function to display random events in the notification box
 function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
   playRandomInboxSound();
+  badRandomEvents += 1;
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.style.backgroundColor = randomEvent.color;
@@ -1103,7 +1284,7 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
   } else if (Math.ceil(motivationRandomCalc) === 0) {
     message2Element.textContent = `-1 motivation`;
   } else {
-    message2Element.textContent = `${Math.ceil(motivationRandomCalc)} motivation`;
+    message2Element.textContent = `${formatLargeNumberAll(Math.ceil(motivationRandomCalc))} motivation`;
   }
   message2Element.className = "message2";
 
@@ -1112,11 +1293,11 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
     message3Element.textContent = `You need to apply more`;
   } else {
     if (Math.round(jobAppRandomCalc) === 1) {
-      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job app`;
+      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
     } else if (Math.round(jobAppRandomCalc) === -1) {
       message3Element.textContent = `-1 job app`;
     } else {
-      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job apps`;
+      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job apps`;
     }
   }
   message3Element.className = "message3";
@@ -1142,6 +1323,7 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
 
 function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc) {
   playRandomInboxSound();
+  goodRandomEvents += 1;
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.style.backgroundColor = randomEvent.color;
@@ -1161,7 +1343,7 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
   if (Math.round(motivationRandomCalc) === 0) {
     message2Element.textContent = `You feel a tiny bit more motivated`;
   } else {
-    message2Element.textContent = `+${Math.round(motivationRandomCalc)} motivation`;
+    message2Element.textContent = `+${formatLargeNumberAll(Math.round(motivationRandomCalc))} motivation`;
   }
   message2Element.className = "message2";
 
@@ -1170,9 +1352,9 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
     message3Element.textContent = `You are compelled to apply more`;
   } else {
     if (Math.round(jobAppRandomCalc) === 1) {
-      message3Element.textContent = `${Math.round(jobAppRandomCalc)} job app`;
+      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
     } else {
-      message3Element.textContent = `+${Math.round(jobAppRandomCalc)} job apps`;
+      message3Element.textContent = `+${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job apps`;
     }
   }
   message3Element.className = "message3";
@@ -1361,7 +1543,7 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   if (Math.round(motivationRejectCalc) === 0) {
     message2Element.textContent = `You've hit motivation rock bottom`;
   } else {
-    message2Element.textContent = `${Math.round(motivationRejectCalc)} motivation`;
+    message2Element.textContent = `${formatLargeNumberAll(Math.round(motivationRejectCalc))} motivation`;
   }
   message2Element.className = "message2";
   
@@ -1445,6 +1627,6 @@ setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
 // Set an interval to trigger random event
-setInterval(randomRejection, 15000);
+setInterval(randomRejection, randomRejectInterval);
 // Set an interval to trigger random events every 60 seconds
-setInterval(randomEvent, 14000);
+setInterval(randomEvent, randomEventInterval);

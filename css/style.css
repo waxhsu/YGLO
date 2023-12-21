@@ -1,5 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); */
+
 
 /* .cover-art {
   position: fixed;
@@ -24,7 +25,21 @@
   }
 } */
 
-#playTestInfo {
+
+body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: 'Pixelify Sans', sans-serif;
+  /* font-family: 'Orbitron', sans-serif; */
+  
+  font-size: 25px;
+  overflow: hidden;
+  margin: 0;
+}
+
+
+.playTestInfo {
   font-size: 25px;
   border: red solid 2px;
 }
@@ -44,20 +59,11 @@
 
 .banner {
   height: 3.5vh;
+  width: 80%;
   background-color: goldenrod;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  /* font-family: 'VT323', monospace; */
-  font-family: 'Pixelify Sans', sans-serif; /* Use 'Pixelify Sans' as the preferred font */
-  font-size: 25px;
-  overflow: hidden;
-  margin: 0;
 
-}
 
 h1 {
   color: black;
@@ -87,9 +93,13 @@ h1 {
 
 #leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  min-width: 33.333%;
-  max-width: 33.333%;
+  min-width: 32.5%;
+  max-width: 32.5%;
   max-height: 94.5vh; 
+}
+
+#leftUI {
+  min-width: 35%;
 }
 
 #leftUI, #rightUI, #bottomCenterUI {
@@ -359,21 +369,29 @@ animation: blinker 1.75s infinite;
   background-color: #f9f9f9;
 }
 
+.job-details {
+  width: 100%
+}
+
+
+.job-title, .job-company, .job-location, .job-pay {
+  padding: 1%;
+}
 
 .job-title {
   font-weight: bold;
+  font-size: 35px;
 }
 
-.job-company {
+.job-company, .job-location  {
   color: #555;
+  font-size: 25px;
 }
-.job-location {
-  color: #555;
-  font-size: 24px;
-}
+
 .job-pay {
-  color: #555;
-  font-size: 24px;
+  color: #000000;
+  font-weight: bold;
+  font-size: 20.5px;
 }
 
 
