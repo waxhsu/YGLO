@@ -17,9 +17,9 @@ let randomEventInterval = 8000
 let clickValue = 100;
 
 /////////// PLAY TEST INFO ////////
-document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
-document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
-document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
+// document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
+// document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
+// document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
 
 
 ////////////////////////////////////////////////////////////
@@ -119,7 +119,7 @@ function formatLargeNumber(value) {
 
 function updateJobApplications() {
   const jobApplicationsElement = document.getElementById("job-applied");
-  const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
+  const scaleElement = document.getElementsByClassName("scale"); // Assuming there is an element with the ID "scale"
 
   const formattedValueObject = formatLargeNumber(jobApplications);
   const formattedValue = formattedValueObject.formattedValue;
@@ -189,8 +189,22 @@ function updateMotivation() {
 // Function to update the rejection display
 function updateRejection() {
   const rejectionDisplay = document.getElementById("rejection-display");
-  rejectionDisplay.textContent = `Rejections: ${Math.floor(totalRejections)}`; // Display MPS rounded to 2 decimal places
+  const scaleElement = document.getElementsByClassName("scale"); // Assuming there is an element with the ID "scale"
+
+  const formattedValueObject = formatLargeNumber(totalRejections);
+  const formattedValue = formattedValueObject.formattedValue;
+
+  scaleElement.textContent = formattedValueObject.scale;
+  rejectionDisplay.textContent = formattedValue;
+
+  // rejectionDisplay.textContent = `${Math.floor(totalRejections)}`; // Display MPS rounded to 2 decimal places
 }
+
+
+
+
+
+
 
 // Function to calculate the total clicks per second
 function calculateTotalClicksPerSecond() {
@@ -553,6 +567,7 @@ const mainAchievementsObj = [
   // manual click achievements
   { 
     icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
+    iconFalse: "./img/achievementIcons/manualClick/icon_click_achievement_false.png",
     clicks: 1, 
     message1: "Your first click!",
     message2: "Hopefully this will lead to somewhere.. eventually",
@@ -560,6 +575,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
+    iconFalse: "./img/achievementIcons/manualClick/icon_click_achievement_false.png",
     clicks: 2,
     message1: "You manually applied to 2 jobs!",
     message2: "test2",
@@ -567,6 +583,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
+    iconFalse: "./img/achievementIcons/manualClick/icon_click_achievement_false.png",
     clicks: 3, 
     message1: "You manually applied to 3 jobs!", 
     message2: "test3",
@@ -574,6 +591,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/manualClick/icon_click_achievement.png",
+    iconFalse: "./img/achievementIcons/manualClick/icon_click_achievement_false.png",
     clicks: 4, 
     message1: "You manually applied to 4 jobs!", 
     message2: "test4",
@@ -583,6 +601,7 @@ const mainAchievementsObj = [
   // job application achievements
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 69, 
     message1: "You applied to 69 jobs!",
     message2: "Nice",
@@ -590,6 +609,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 420, 
     message1: "You applied to 420 jobs!",
     message2: "Nice",
@@ -597,6 +617,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 6969,
     message1: "You applied to 6969 jobs!",
     message2: "Nice x 101",
@@ -604,6 +625,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 8000,
     message1: "You applied to 8000 jobs!",
     message2: "You feel kinda empty inside",
@@ -611,6 +633,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 10000,
     message1: "You applied to 10000 jobs!",
     message2: "You feel kinda empty inside",
@@ -618,6 +641,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 42069, 
     message1: "You applied to 42069 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
@@ -625,6 +649,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/jobApp/icon_jobapp_achievement.png",
+    iconFalse: "./img/achievementIcons/jobApp/icon_jobapp_achievement_false.png",
     apps: 69420, 
     message1: "You applied to 69420 jobs!", 
     message2: "You blow a small puff of air out of your nostrils",
@@ -634,6 +659,7 @@ const mainAchievementsObj = [
   // rejection achievements
   { 
     icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
+    iconFalse: "./img/achievementIcons/rejection/icon_rejection_achievement_false.png",
     rejections: 1, 
     message1: "1 rejection",
     message2: "your 1st rejection!",
@@ -641,6 +667,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
+    iconFalse: "./img/achievementIcons/rejection/icon_rejection_achievement_false.png",
     rejections: 5,
     message1: "5 rejections",
     message2: "frick",
@@ -648,6 +675,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/rejection/icon_rejection_achievement.gif",
+    iconFalse: "./img/achievementIcons/rejection/icon_rejection_achievement_false.png",
     rejections: 10,
     message1: "10 rejections",
     message2: "fricky frick",
@@ -657,6 +685,7 @@ const mainAchievementsObj = [
   // bad random event achievements
   { 
     icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/badEvent/icon_badEvent_achievement_false.png",
     badEvents: 10,
     message1: "10 bad things happened",
     message2: "Well, gosh darn it!",
@@ -664,6 +693,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/badEvent/icon_badEvent_achievement_false.png",
     badEvents: 100,
     message1: "100 bad things happened to you",
     message2: "*Wiggles index finger* well just my luck!",
@@ -671,6 +701,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/badEvent/icon_badEvent_achievement_false.png",
     badEvents: 250,
     message1: "250 bad things happened to you",
     message2: "insertFunnyLame joke",
@@ -678,6 +709,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/badEvent/icon_badEvent_achievement_false.png",
     badEvents: 500, 
     message1: "500 bad things happened to you",
     message2: "You stare into the vast space of nothingness",
@@ -685,6 +717,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/badEvent/icon_badEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/badEvent/icon_badEvent_achievement_false.png",
     badEvents: 1000, 
     message1: "1000 bad things happened to you",
     message2: "You blow a small puff of air out of your nostrils",
@@ -694,6 +727,7 @@ const mainAchievementsObj = [
   // good random event achievements
 { 
     icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement_false.png",
     goodEvents: 10,
     message1: "10 good things happened",
     message2: "Maybe I'll get at least an interview!",
@@ -701,6 +735,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement_false.png",
     goodEvents: 100,
     message1: "100 good things happened to you",
     message2: "You feel kinda good about yourself!",
@@ -708,6 +743,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement_false.png",
     goodEvents: 250,
     message1: "250 good things happened to you",
     message2: "insertFunnyLame joke",
@@ -715,6 +751,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement_false.png",
     goodEvents: 500, 
     message1: "500 good things happened to you",
     message2: "*rubs chin*" ,
@@ -722,6 +759,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement.png",
+    iconFalse: "./img/achievementIcons/goodEvent/icon_goodEvent_achievement_false.png",
     goodEvents: 1000, 
     message1: "1000 good things happened to you",
     message2: "You blow a small puff of air out of your nostrils",
@@ -731,6 +769,7 @@ const mainAchievementsObj = [
 
   { 
     icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    iconFalse: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement_false.png",
     totalRandom: 25,
     message1: "25 random things happened",
     message2: "rawr xD random!!1!11!!!",
@@ -738,6 +777,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    iconFalse: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement_false.png",
     totalRandom: 200,
     message1: "200 random things happened to you",
     message2: "wow freaking random!!!!",
@@ -745,6 +785,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    iconFalse: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement_false.png",
     totalRandom: 500,
     message1: "500 random things happened to you",
     message2: "some of these random things happened repeated",
@@ -752,6 +793,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    iconFalse: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement_false.png",
     totalRandom: 1000, 
     message1: "1000 random things happened to you",
     message2: "*claps big floppy feet together*" ,
@@ -759,6 +801,7 @@ const mainAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement.png",
+    iconFalse: "./img/achievementIcons/totalRandomEvent/icon_totalRandom_achievement_false.png",
     totalRandom: 1500, 
     message1: "1500 random things happened to you",
     message2: "*slaps belly and spits out a tooth* well if it isn't my belly??",
@@ -790,6 +833,7 @@ const upgradeAchievementsObj = [
   // TRY HARDER [0]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 1, 
     message1: "Own 1 Try Harder",
     message2: "Your first time actually trying!",
@@ -797,6 +841,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 10,
     message1: "Own 10 Try Harders",
     message2: "insert funny excerpt",
@@ -804,6 +849,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 50,
     message1: "Own 50 Try Harders",
     message2: "insert funny excerpt",
@@ -811,6 +857,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 100,
     message1: "Own 100 Try Harders",
     message2: "insert funny excerpt",
@@ -818,6 +865,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 500,
     message1: "Own 500 Try Harders",
     message2: "insert funny excerpt",
@@ -825,6 +873,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 1000,
     message1: "Own 1000 Try Harders",
     message2: "insert funny excerpt",
@@ -832,6 +881,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 2500,
     message1: "Own 2500 Try Harders",
     message2: "insert funny excerpt",
@@ -839,6 +889,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 5000,
     message1: "Own 5000 Try Harders",
     message2: "insert funny excerpt",
@@ -846,6 +897,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 10000,
     message1: "Own 10000 Try Harders",
     message2: "insert funny excerpt",
@@ -855,6 +907,7 @@ const upgradeAchievementsObj = [
   // LinkIndeed PREMIUM [1]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade1: 1, 
     message1: "Own 1 LinkIndeed Premium",
     message2: "$40 a month huh?",
@@ -862,6 +915,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     message1: "Bill Gates thanks you",
     upgrade2: 10,
     message2: "Own 10 LinkIndeed Premiums",
@@ -869,6 +923,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade1: 50,
     message1: "Own 50 LinkIndeed Premiums",
     message2: "insert funny excerpt",
@@ -876,6 +931,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade1: 100,
     message1: "Own 100 LinkIndeed Premiums",
     message2: "insert funny excerpt",
@@ -883,6 +939,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade1: 500,
     message1: "Own 500 LinkIndeed Premiums",
     message2: "insert funny excerpt",
@@ -893,6 +950,7 @@ const upgradeAchievementsObj = [
   // OUTSOURCE TO FIVERR [2]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade2: 1, 
     message1: "First outsourced applier",
     message2: "Thank you Mr. Patel!",
@@ -900,6 +958,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade2: 2,
     message1: "Own 2 outsourced worker",
     message2: "TEST 2",
@@ -907,6 +966,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade2: 3,
     message1: "Own 3 Fiverr outsources",
     message2: "insert funny excerpt",
@@ -914,6 +974,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade2: 4,
     message1: "Own 100 Fiverr outsources",
     message2: "insert funny excerpt",
@@ -921,6 +982,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade2: 5,
     message1: "Own 500 Fiverr outsources",
     message2: "insert funny excerpt",
@@ -932,6 +994,7 @@ const upgradeAchievementsObj = [
   //  SEVERANCES [3]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade3: 1, 
     message1: "Own 1 severance",
     message2: "insert funny excerpt",
@@ -939,6 +1002,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade3: 2,
     message1: "Own 2 severances",
     message2: "insert funny excerpt",
@@ -946,6 +1010,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade3: 3,
     message1: "Own 25 upgrades",
     message2: "insert funny excerpt",
@@ -953,6 +1018,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade3: 4,
     message1: "Own 100 upgrades",
     message2: "insert funny excerpt",
@@ -960,6 +1026,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade3: 5,
     message1: "Own 500 upgrades",
     message2: "insert funny excerpt",
@@ -971,6 +1038,7 @@ const upgradeAchievementsObj = [
   //  UNEMPLOYMENT [4]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade4: 1, 
     message1: "Own 1 unemployment",
     message2: "insert funny excerpt",
@@ -978,6 +1046,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade4: 2,
     message1: "Own 2 unemployments",
     message2: "insert funny excerpt",
@@ -985,6 +1054,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade4: 3, 
     message1: "Own 3 unemployments",
     message2: "insert funny excerpt",
@@ -992,6 +1062,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade4: 4,
     message1: "Own 4 unemployments",
     message2: "insert funny excerpt",
@@ -999,6 +1070,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade4: 5,
     message1: "Own 5 unemployments",
     message2: "insert funny excerpt",
@@ -1008,6 +1080,7 @@ const upgradeAchievementsObj = [
   //  SOME GUY [5]
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade5: 1, 
     message1: "Know 1 guy who work in the unemployment office",
     message2: "funny excerpt",
@@ -1015,6 +1088,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade5: 2,
     message1: "Know 2 guys who work in the unemployment office",
     message2: "funny excerpt",
@@ -1022,6 +1096,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade5: 3, 
     message1: "Know 3 guys who work in the unemployment office",
     message2: "funny excerpt",
@@ -1029,6 +1104,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade5: 4,
     message1: "Know 4 guys who work in the unemployment office",
     message2: "funny excerpt",
@@ -1036,6 +1112,7 @@ const upgradeAchievementsObj = [
   },
   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade5: 5, 
     message1: "Know 5 guys who work in the unemployment office",
     message2: "funny excerpt",
@@ -1154,7 +1231,7 @@ function displayAchievements(achievementsArray) {
     } else {
       const questionMark = document.createElement("img");
       questionMark.className = "question-mark";
-      questionMark.src = "./img/icon_questionMark.png";
+      questionMark.src = achievement.iconFalse;
       questionMark.alt = "?";
       achievementListDiv.appendChild(questionMark);
     }
@@ -1577,6 +1654,7 @@ function showNotification(message, icon) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
+  
 
   // Adding an icon if provided
   if (icon) {
@@ -1616,6 +1694,9 @@ function closeNotification() {
 
 
 
+////////////////////////////////////////////////////////////
+////////////////////   TIME TRACKING CODE   ////////////////
+////////////////////////////////////////////////////////////
 
 
 // Initialize the game

@@ -85,6 +85,14 @@ h1 {
   justify-content: space-between;
 }
 
+.deepFuckingValue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
 #mainUI {
   display: flex;
   /* justify-content: space-between; */
@@ -98,11 +106,16 @@ h1 {
   max-height: 94.5vh; 
 }
 
+#rightTopUI, #rightBottomUI {
+  max-height: 38.5vh; 
+  min-height: 38.5vh; 
+}
+
 #leftUI {
   min-width: 35%;
 }
 
-#leftUI, #rightUI, #bottomCenterUI {
+#leftUI, #rightTopUI, #notification-box, #rightBottomUI {
   overflow-y: auto; 
 }
 
@@ -158,11 +171,11 @@ h1 {
 }
 
 #job-applied {
-  font-size: 10vh;
+  font-size: 5vh;
   z-index: 7000;
   /* margin: 0 0 0.5vh; */
 }
-#job-applied-text {
+.value-display-text {
   font-size: 25px;
   /* margin: 1.5vh; */
 }
@@ -259,6 +272,19 @@ animation: blinker 1.75s infinite;
   opacity: 1;
 }
 
+.achievement-item:hover{
+  visibility: visible;
+  opacity: 1;
+  filter: brightness(90%);
+  transform: scale(0.96);
+}
+
+
+
+.question-mark:hover {
+  filter: brightness(80%);
+  transform: scale(0.96);
+}
 
 
 
@@ -269,15 +295,10 @@ animation: blinker 1.75s infinite;
 
 
 #notification-box {
-  /* position: fixed; */
-  /* max-width: 35%; */
-  /* min-width: 35%; */
-  /* top: 0; */
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
   z-index: 1001; /* Ensure it's on top */
   display: flex;
   flex-direction: column-reverse;
+  /* max-height: 50%; */
 }
 
 .notification {
