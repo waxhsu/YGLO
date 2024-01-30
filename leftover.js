@@ -1100,3 +1100,43 @@ const upgradeAchievements1 = {
 //       shopElement.appendChild(shopItem);
 //   });
 // }
+
+
+
+
+// ////////////////////////////////////////////////////////
+// ////////////////////    MUSIC   ////////////////////////
+// ////////////////////////////////////////////////////////
+  
+// // START MUSIC
+//   const bgMusic = document.getElementById("background-music");
+//   const muteButton = document.getElementById("mute-button");
+//   const volumeSlider = document.getElementById("volume-slider");
+
+//   // Function to start playing the background music
+//   function playBackgroundMusic() {
+//       bgMusic.play();
+//   }
+
+//   // Function to toggle the background music (mute/unmute)
+//   function toggleMute() {
+//     if (bgMusic.muted) {
+//         bgMusic.muted = false;
+//         muteButton.textContent = "Mute";
+//     } else {
+//         bgMusic.muted = true;
+//         muteButton.textContent = "Unmute";
+//     }
+//   }
+
+//   // Function to handle volume change
+//   function changeVolume() {
+//     bgMusic.volume = volumeSlider.value;
+//   }
+
+//   volumeSlider.addEventListener("input", changeVolume);
+//   muteButton.addEventListener("click", toggleMute);
+
+//   // Add an event listener to start playing the music when the page loads
+//   window.addEventListener("load", playBackgroundMusic);
+

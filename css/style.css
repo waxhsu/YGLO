@@ -46,9 +46,9 @@ body {
 
 
 .icon {
-  max-height: 95px;
-  max-width: 95px;
-  min-width: 95px;
+  max-height: 72.5px;
+  max-width: 72.5px;
+  min-width: 72.5px;
   padding: 2%;
 }
 
@@ -58,17 +58,14 @@ body {
 }
 
 .banner {
+  font-size: 30px;
   height: 3.5vh;
   width: 80%;
   background-color: goldenrod;
-}
-
-
-
-h1 {
-  color: black;
   padding: 0 10% 0 10%;
+  color: black;
 }
+
 
 #motivation {
   background-color: goldenrod;
@@ -101,9 +98,22 @@ h1 {
 
 #leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  min-width: 32.5%;
-  max-width: 32.5%;
   max-height: 94.5vh; 
+}
+
+#leftUI {
+  min-width: 30%;
+  max-width: 30%;
+}
+
+#centerUI {
+  min-width: 42.5%;
+  max-width: 42.5%;
+}
+
+#rightUI {
+  min-width: 27.5%;
+  max-width: 27.5%;
 }
 
 #rightTopUI, #rightBottomUI {
@@ -111,11 +121,9 @@ h1 {
   min-height: 38.5vh; 
 }
 
-#leftUI {
-  min-width: 35%;
-}
 
-#leftUI, #rightTopUI, #notification-box, #rightBottomUI {
+
+#leftUI, #rightTopUI, #notification-box, #rightBottomUI, #bottomCenterUI {
   overflow-y: auto; 
 }
 
@@ -170,7 +178,7 @@ h1 {
   filter: brightness(85%);
 }
 
-#job-applied {
+#job-applied-value {
   font-size: 5vh;
   z-index: 7000;
   /* margin: 0 0 0.5vh; */
@@ -381,7 +389,7 @@ animation: blinker 1.75s infinite;
 /* @@@@@@@ job posting @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-.job-posting-item {
+.job-listing-item {
   display: flex;
   border: 1px solid #ccc;
   padding: 10px;
@@ -390,30 +398,40 @@ animation: blinker 1.75s infinite;
   background-color: #f9f9f9;
 }
 
-.job-details {
+.job-listing-box {
   width: 100%
 }
 
 
-.job-title, .job-company, .job-location, .job-pay {
+.job-listing-title, .job-listing-company, .job-listing-location, .job-listing-pay {
   padding: 1%;
 }
 
-.job-title {
+.job-listing-title {
   font-weight: bold;
-  font-size: 35px;
-}
-
-.job-company, .job-location  {
-  color: #555;
   font-size: 25px;
 }
 
-.job-pay {
+.job-listing-company {
   color: #000000;
-  font-weight: bold;
-  font-size: 20.5px;
+  font-size: 20px;
 }
+
+.job-listing-pay, .job-listing-location {
+  color: #555;
+  font-weight: bold;
+  font-size: 17.5px;
+}
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@ job details @@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+
+
 
 
 

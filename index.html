@@ -9,20 +9,33 @@
 	
 	<div id="topUI">
 		<button id="soundToggleBtn">Sound On</button>
-		<audio id="background-music" autoplay loop>
+		<!-- <audio id="background-music" autoplay loop>
 			<source src="./YGLOv3.mp3" type="audio/mpeg">
-		</audio>		
+		</audio>		 -->
 		
 		<!-- <div id="music-controls">
 			<label for="volume-slider">Volume:</label>
 			<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input>
 			<button id="mute-button">Mute Music</button>
 		</div> -->
+		
+		<div id="cps-display">Applications: 0</div>
+		<div class="deepFuckingValue">
+			<div id="job-applied">0</div>
+			<div class="scale"></div>
+			<div class="value-display-text">Jobs Applied</div>
+		</div>
+
+		<div class="deepFuckingValue">
+			<div id="rejection-display">0</div>
+			<div class="value-display-text">Rejections</div>
+		</div>
+
 
 		
-		<div id="clickValueInfo" class="playTestInfo"></div>
+		<!-- <div id="clickValueInfo" class="playTestInfo"></div>
 		<div id="randomEventInfo" class="playTestInfo"></div>
-		<div id="rejectEventInfo" class="playTestInfo"></div>
+		<div id="rejectEventInfo" class="playTestInfo"></div> -->
 
     <!-- Add the following div for the achievements page trigger -->
     <div id="achievements-trigger" onclick="toggleAchievementsPage()">
@@ -54,20 +67,22 @@
 	
 	<div id="centerUI">
 		<div id="topCenterUI">
-			<div id="job-applied">0</div>
-			<div id="scale"></div>
-			<div id="job-applied-text">Jobs Applied</div>
-			<div id="cps-display">Applications: 0</div>
-			<div id="rejection-display">Rejections: 0</div>
+			<h1 class="banner">Job Desc</h1>
+			<div id="job-details0">TITLE</div>
+			<div id="job-details1">Company - Location</div>
+			<div id="job-details2">Pay</div>
+			
 			<button id="click-button">Apply Here</button>
-			<div id="motivation">Motivation: -129</div>
 		</div>
 		
 		<div id="bottomCenterUI">
-			<h1 class="banner">Job Desc</h1>
-			
+			<h1 class="banner">About</h1>
+			<div id="job-details3"></div>
+			<h1 class="banner">Reposbilibilities</h1>
+			<div id="job-details4"></div>
+			<h1 class="banner">Qualifications</h1>
+			<div id="job-details5"></div>
 		</div>
-		
 	</div>
 
 
@@ -80,6 +95,7 @@
 		</div>
 
 		<h1 class="banner">Shop</h1>
+		<div id="motivation">Motivation: -129</div>
 		<div id="rightBottomUI">
 			<div id="shop"></div>
 		</div>
@@ -87,6 +103,6 @@
 
 </div>
 
-<script src="index.js"></script>
+<script src="index.js" type="module"></script>
 </body>
 </html>
