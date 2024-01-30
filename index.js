@@ -2,7 +2,7 @@ import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, 
 
 // Initialize variables
 let timer = null;
-let motivation = 1000;
+let motivation = -12;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
 let jobApplications = 0;
@@ -13,7 +13,7 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 10000;
 let randomEventInterval = 8000;
-let clickValue = 100;
+let clickValue = 1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
