@@ -2,18 +2,18 @@ import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, 
 
 // Initialize variables
 let timer = null;
-let motivation = -12;
+let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
-let jobApplications = 0;
+let jobApplications = 1130000;
 let manualClick = 0;
 let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 10000;
-let randomEventInterval = 8000;
-let clickValue = 1;
+let randomEventInterval = 23000;
+let clickValue = 1.5;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -100,68 +100,6 @@ function formatNumberWithCommas(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function formatLargeNumber(value) {
-  if (value < 1000000) {
-    return { formattedValue: formatNumberWithCommas(Math.round(value)), scale: "" };
-  } else {
-    const million = 1000000;
-    const billion = 1000000000;
-    const trillion = 1000000000000;
-
-    if (value < billion) {
-      return { formattedValue: `${(value / million).toFixed(3)}`, scale: "million" };
-    } else if (value < trillion) {
-      return { formattedValue: `${(value / billion).toFixed(3)}`, scale: "billion" };
-    } else {
-      return { formattedValue: `${(value / trillion).toFixed(3)}`, scale: "trillion" };
-    }
-  }
-}
-
-function updateJobApplications() {
-  const jobApplicationsElement = document.getElementById("job-applied");
-  const scaleElement = document.getElementsByClassName("scale"); // Assuming there is an element with the ID "scale"
-
-  const formattedValueObject = formatLargeNumber(jobApplications);
-  const formattedValue = formattedValueObject.formattedValue;
-
-  scaleElement.textContent = formattedValueObject.scale;
-  jobApplicationsElement.textContent = formattedValue;
-}
-
-
-// function updateJobApplications() {
-//   const jobApplicationsElement = document.getElementById("job-applied");
-//   const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
-
-//   const formattedData = formatLargeNumber(jobApplications);
-
-//   jobApplicationsElement.textContent = formattedData.formattedValue;
-
-//   // Update the scale element
-//   scaleElement.textContent = formattedData.scale;
-// }
-
-// // Function to update the job application count on the screen
-// function updateJobApplications() {
-//   const jobApplicationsElement = document.getElementById("job-applied");
-//   jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
-// }
-
-
-
-
-
-
-
-// Function to update the CPS (Clicks Per Second) display
-function updateCPSDisplay() {
-  const cpsDisplay = document.getElementById("cps-display");
-  cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
-}
-
-
-
 // Function to update the motivation count on the screen
 function formatLargeNumberAll(value) {
   if (value < 1000000) {
@@ -181,30 +119,52 @@ function formatLargeNumberAll(value) {
   }
 }
 
+
+// function updateJobApplications() {
+//   const jobApplicationsElement = document.getElementById("jobs-applied-value");
+//   const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
+
+//   const formattedData = formatLargeNumber(jobApplications);
+
+//   jobApplicationsElement.textContent = formattedData.formattedValue;
+
+//   // Update the scale element
+//   scaleElement.textContent = formattedData.scale;
+// }
+
+// // Function to update the job application count on the screen
+// function updateJobApplications() {
+//   const jobApplicationsElement = document.getElementById("jobs-applied-value");
+//   jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
+// }
+
+
+function updateJobApplications() {
+  const jobApplicationsElement = document.getElementById("jobs-applied-value");
+  const formattedAppsValue = formatLargeNumberAll(jobApplications);
+  jobApplicationsElement.textContent = `${formattedAppsValue}`;
+}
+
+// Function to update the CPS (Clicks Per Second) display
+function updateCPSDisplay() {
+  const cpsDisplay = document.getElementById("cps-display");
+  cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+}
+
 function updateMotivation() {
-  const motivationElement = document.getElementById("motivation");
+  const motivationElement = document.getElementById("motivation-value");
   const formattedValue = formatLargeNumberAll(motivation);
   motivationElement.textContent = `Motivation: ${formattedValue}`;
 }
 
 // Function to update the rejection display
 function updateRejection() {
-  const rejectionDisplay = document.getElementById("rejection-display");
-  const scaleElement = document.getElementsByClassName("scale"); // Assuming there is an element with the ID "scale"
-
-  const formattedValueObject = formatLargeNumber(totalRejections);
-  const formattedValue = formattedValueObject.formattedValue;
-
-  scaleElement.textContent = formattedValueObject.scale;
-  rejectionDisplay.textContent = formattedValue;
+  const rejectionDisplay = document.getElementById("rejection-value");
+  const formattedRejectionValue = formatLargeNumberAll(motivation);
+  rejectionDisplay.textContent = `${formattedRejectionValue}`;
 
   // rejectionDisplay.textContent = `${Math.floor(totalRejections)}`; // Display MPS rounded to 2 decimal places
 }
-
-
-
-
-
 
 
 // Function to calculate the total clicks per second
@@ -392,18 +352,39 @@ function updateJobPostings() {
   });
 
   // Populate the job details divs with content from the first posting
-  document.getElementById("job-details0").textContent = firstPosting.title;
-  document.getElementById("job-details1").textContent = `${firstPosting.company} - ${firstPosting.location}`;
-  document.getElementById("job-details2").textContent = firstPosting.pay;
+  document.getElementById("job-detail-title").textContent = firstPosting.title;
+  document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
+  document.getElementById("job-detail-pay").textContent = firstPosting.pay;
 
-  
-  document.getElementById("job-details3").textContent = firstPosting.about;
-  document.getElementById("job-details4").textContent = firstPosting.responsibilities;
-  document.getElementById("job-details5").textContent = firstPosting.qualifications;
+
+  document.getElementById("job-detail-about").textContent = firstPosting.about;
+
+  const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+  responsibilitiesElement.innerHTML = "";
+
+  const responsibilitiesList = document.createElement("ul");
+  firstPosting.responsibilities.forEach(responsibility => {
+    const listItem = document.createElement("li");
+    listItem.textContent = responsibility;
+    responsibilitiesList.appendChild(listItem);
+  });
+
+  responsibilitiesElement.appendChild(responsibilitiesList);
+
+  const qualificationsElement = document.getElementById("job-detail-qualifications");
+  qualificationsElement.innerHTML = "";
+
+  const qualificationsList = document.createElement("ul");
+  firstPosting.qualifications.forEach(qualification => {
+    const listItem = document.createElement("li");
+    listItem.textContent = qualification;
+    qualificationsList.appendChild(listItem);
+  });
+
+  qualificationsElement.appendChild(qualificationsList);
 }
 
 updateJobPostings();
-
 
 
 ///////////////////////////////////////////////////////////

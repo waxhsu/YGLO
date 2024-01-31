@@ -19,15 +19,18 @@
 			<button id="mute-button">Mute Music</button>
 		</div> -->
 		
-		<div id="cps-display">Applications: 0</div>
 		<div class="deepFuckingValue">
-			<div id="job-applied">0</div>
-			<div class="scale"></div>
+			<div id="aps-display">0</div>
+			<div class="value-display-text">Apps/sec</div>
+		</div>
+
+		<div class="deepFuckingValue">
+			<div id="jobs-applied-value">0</div>
 			<div class="value-display-text">Jobs Applied</div>
 		</div>
 
 		<div class="deepFuckingValue">
-			<div id="rejection-display">0</div>
+			<div id="rejection-value">0</div>
 			<div class="value-display-text">Rejections</div>
 		</div>
 
@@ -54,38 +57,38 @@
 
 	</div>
 	
-<div id="mainUI">
-	<div id="leftUI">
-		<h1 class="banner">Job posting</h1>
-		<div id="job-postings"></div>		
+	<div id="mainUI">
+		<div id="leftUI">
+			<h1 class="banner">Job posting</h1>
+			<div id="job-postings">
+		</div>		
 	</div>
 
 
-
-
-
-	
 	<div id="centerUI">
+		<!-- <h1 class="banner">Job Desc</h1> -->
+
 		<div id="topCenterUI">
-			<h1 class="banner">Job Desc</h1>
-			<div id="job-details0">TITLE</div>
-			<div id="job-details1">Company - Location</div>
-			<div id="job-details2">Pay</div>
-			
-			<button id="click-button">Apply Here</button>
+			<div id="job-detail-title">TITLE</div>
+			<div id="job-detail-place">Company - Location</div>
+			<div id="job-detail-highlight">
+				<div id="job-detail-pay">Pay</div>
+			</div>
+		</div>
+		
+		<div id="click-button-box">
+			<div id="click-button">Easy Apply</div>
 		</div>
 		
 		<div id="bottomCenterUI">
-			<h1 class="banner">About</h1>
-			<div id="job-details3"></div>
-			<h1 class="banner">Reposbilibilities</h1>
-			<div id="job-details4"></div>
+			<h1 class="banner">About the job</h1>
+			<div id="job-detail-about"></div>
+			<h1 class="banner">Responsibilities</h1>
+			<div id="job-detail-responsibilities"></div>
 			<h1 class="banner">Qualifications</h1>
-			<div id="job-details5"></div>
+			<div id="job-detail-qualifications"></div>
 		</div>
 	</div>
-
-
 
 
 	<div id="rightUI">
@@ -95,7 +98,7 @@
 		</div>
 
 		<h1 class="banner">Shop</h1>
-		<div id="motivation">Motivation: -129</div>
+		<div id="motivation-value">Motivation: -129</div>
 		<div id="rightBottomUI">
 			<div id="shop"></div>
 		</div>

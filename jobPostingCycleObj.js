@@ -1,13 +1,13 @@
 const jobPostingCycleObj = [
     {
         id: 0,
-        icon: "./img/jobPostingIcons/1.png",
+        icon: "./img/jobPostingIcons/0.png",
         title: "Office Bubble Maker",
-        location: "Walla Walla, Washington, United States",
-        pay: "$69,000/yr - $69,700/yr",
+        location: "Walla Walla, WA",
+        pay: "$42,000/yr - $69,000/yr",
         company: "Alooba Bababoo Inc.",
         about: "Do you thrive in a boring and uneventful work environment? Then this job is the perfect fit for you! Join our team as our Office Bubble Maker and add some fun to your mundane!",
-        responsbilities:  [
+        responsibilities: [
             "Blow bubbles in the office to create a light and airy atmosphere",
             "Keep bubbles flowing throughout the day to ensure a fun and engaging workplace",
             "Pop any bubbles that get too big or distracting",
@@ -22,10 +22,10 @@ const jobPostingCycleObj = [
     },
     {
         id: 1,
-        icon: "./img/jobPostingIcons/2.png",
+        icon: "./img/jobPostingIcons/1.png",
         title: "Professional Underwater Basket Weaver",
         company: "We Are Weavers",
-        location: "Seattle, United States",
+        location: "Kansas City, KS",
         pay: "$60,000/yr - $85,000/yr",
         about: "Looking for someone to join our team and assist with the intricate art of underwater basket weaving. No prior experience required, just a good sense of humor and willingness to get a little wet.",
         responsibilities: [
@@ -43,7 +43,7 @@ const jobPostingCycleObj = [
     },
     {
         id: 2,
-        icon: "./img/jobPostingIcons/3.png",
+        icon: "./img/jobPostingIcons/2.png",
         title: "Chores Scheduling Wizard",
         company: "Big Click's Mustard",
         location: "Mustardville, USA",
@@ -64,10 +64,10 @@ const jobPostingCycleObj = [
     },
     {
         id: 3,
-        icon: "./img/jobPostingIcons/4.png",
+        icon: "./img/jobPostingIcons/3.png",
         title: "Nap Time Coordinator",
-        location: "Seattle, USA",
-        pay: "$40k/yr - $45k/yr",
+        location: "Seattle, WA",
+        pay: "$40,000/yr - $45,000/yr",
         company: "Snooze Inc.",
         about: "We are looking for a highly skilled Nap Time Coordinator to join our team! As a Nap Time Coordinator, you will be responsible for ensuring that all employees get sufficient naps throughout the workday.",
         responsibilities: [
@@ -85,10 +85,10 @@ const jobPostingCycleObj = [
     },
     {
         id: 4,
-        icon: "./img/jobPostingIcons/5.png",
+        icon: "./img/jobPostingIcons/4.png",
         title: "Brunch Coordinator",
         location: "Austin, TX",
-        pay: "$40k/yr - $45k/yr",
+        pay: "$40,000/yr - $45,000/yr",
         company: "Bottomless Mimosas Inc.",
         about: "We are seeking an enthusiastic Brunch Coordinator to join our team. The ideal candidate will be a master of all things brunch, with the ability to plan the perfect mimosa-fueled weekend meal.",
         responsibilities: [
@@ -106,10 +106,10 @@ const jobPostingCycleObj = [
     },
     {
         id: 5,
-        icon: "./img/jobPostingIcons/6.png",
+        icon: "./img/jobPostingIcons/5.png",
         title: "Director of First Impressions",
         location: "Fool's Emerald, Canada",
-        pay: "80k/yr - 90k/yr",
+        pay: "80,000/yr - 90,000/yr",
         company: "First and Foremost Corporation",
         about: "Be the face of our company and make the first encounter a memorable one for our clients and employees. You will contribute greatly to our company's reputation and branding.",
         responsibilities: [
@@ -127,7 +127,7 @@ const jobPostingCycleObj = [
     },
     {
         id: 6,
-        icon: "./img/jobPostingIcons/7.png",
+        icon: "./img/jobPostingIcons/6.png",
         title: "Sand Removal Engineer",
         location: "Cornwall, Canada",
         pay: "$60,000/yr - $90,000/yr",
@@ -148,9 +148,9 @@ const jobPostingCycleObj = [
     },
     {
         id: 7,
-        icon: "./img/jobPostingIcons/8.png",
+        icon: "./img/jobPostingIcons/7.png",
         title: "Information Hoarder",
-        location: "Dayton, California",
+        location: "Dayton, CA",
         pay: "$60,000/yr - $100,000/yr",
         company: "Data Thieves Inc.",
         about: "As an Information Hoarder, you will be responsible for hoarding valuable data from different sources and designing ways to steal competitors' data.",
@@ -169,9 +169,9 @@ const jobPostingCycleObj = [
     },
     {
         id: 8,
-        icon: "./img/jobPostingIcons/9.png",
+        icon: "./img/jobPostingIcons/8.png",
         title: "Office Toner Re-Arranger",
-        location: "Chicago, United States",
+        location: "Chicago, IL",
         pay: "$40,000/yr - $60,000/yr",
         company: "Ergonomic Toner and Ink Co.",
         about: "We're looking for someone to keep our office toner cartridges in tip-top shape.",
@@ -190,10 +190,10 @@ const jobPostingCycleObj = [
     },
     {
         id: 9,
-        icon: "./img/jobPostingIcons/10.png",
+        icon: "./img/jobPostingIcons/9.png",
         title: "Professional Slacker",
-        location: "Las Vegas, United States",
-        pay: "$39,999/year - $40,001/year",
+        location: "Las Vegas, NV",
+        pay: "$39,999/yr - $40,001/yr",
         company: "Hobby Hibernators Inc",
         about: "We are looking for a highly experienced Professional Slacker to join our team at Hobby Hibernators Inc! In this exciting role, you will be responsible for taking long breaks, napping on the job, and procrastinating on important tasks.",
         responsibilities: [
@@ -213,8 +213,8 @@ const jobPostingCycleObj = [
         id: 10,
         icon: "./img/jobPostingIcons/10.png",
         title: "Executive Seat Warmer",
-        location: "Sacramento, California",
-        pay: "$29,200/year - $42,000/year",
+        location: "Sacramento, CA",
+        pay: "$29,200/yr - $42,000/yr",
         company: "Hobby Hibernators Inc",
         about: "Are you tired of your boring office job? Do you want to feel needed and appreicated? Apply now to be our Exective Seat Warmer!",
         responsibilities: [
@@ -235,7 +235,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -243,7 +243,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -251,7 +251,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -259,7 +259,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -267,7 +267,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -275,7 +275,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -283,7 +283,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -291,7 +291,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -299,7 +299,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
     // {
@@ -307,7 +307,7 @@ const jobPostingCycleObj = [
     //     icon: "./img/jobPostingIcons1.png",
     //     title: "Wizarding Intern of Whimsy",
     //     location: "random city",
-    //     pay: "$69k/yr - $69.7k/yr · 0 benefits",
+    //     pay: "$69,000/yr - $69.7,000/yr · 0 benefits",
     //     company: "Whimsical Widget Wizards",
     // },
 ];

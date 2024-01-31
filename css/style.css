@@ -57,12 +57,16 @@ body {
   min-width: 130px;
 }
 
+h1 {
+  margin: 0;
+}
+
 .banner {
   font-size: 30px;
-  height: 3.5vh;
-  width: 80%;
+  height: 30px;
+  width: 100%;
   background-color: goldenrod;
-  padding: 0 10% 0 10%;
+  /* padding: 0 10% 0 10%; */
   color: black;
 }
 
@@ -77,7 +81,7 @@ body {
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #topUI {
-  min-height: 5.5vh;
+  max-height: 60px;
   display: flex;
   justify-content: space-between;
 }
@@ -93,12 +97,12 @@ body {
 #mainUI {
   display: flex;
   /* justify-content: space-between; */
-  min-height: 94.5vh;
+  /* min-height: 95vh; */
 }
 
 #leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  max-height: 94.5vh; 
+  max-height: 95vh; 
 }
 
 #leftUI {
@@ -107,6 +111,8 @@ body {
 }
 
 #centerUI {
+  display: flex;
+  flex-direction: column;
   min-width: 42.5%;
   max-width: 42.5%;
 }
@@ -117,8 +123,8 @@ body {
 }
 
 #rightTopUI, #rightBottomUI {
-  max-height: 38.5vh; 
-  min-height: 38.5vh; 
+  max-height: 40vh; 
+  min-height: 40vh; 
 }
 
 
@@ -129,19 +135,22 @@ body {
 
 
 #topCenterUI, #bottomCenterUI {
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
+  padding: 0 2vw;
 }
 
-#topCenterUI {
-  position: relative;
+
+
+#click-button-box {
+  display: flex;
   justify-content: center;
-  height: 40.5vh;
+  padding: 20px 0;
 }
 
 #bottomCenterUI {
-  height: 54vh; 
+  height: 75vh; 
 }
 
 #shop {
@@ -150,36 +159,11 @@ body {
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@ stats & click button @@@@ */
+/* @@@@ stats  @@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#click-button {
-  margin-top: 1vh;
-  padding: 20px 30px;
-  font-size: 3.5vh;
-  background-color: #5055ee;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  font-family: 'Pixelify Sans', sans-serif;
-  transition: transform 0.1s;
-}
-
-#click-button:hover {
-  transform: scale(0.99);
-  filter: brightness(90%);
-  /* opacity: 50%; */
-  /* background: black; */
-}
-
-#click-button:active {
-  transform: scale(0.96);
-  filter: brightness(85%);
-}
-
-#job-applied-value {
-  font-size: 5vh;
+#jobs-applied-value {
+  /* font-size: 5vh; */
   z-index: 7000;
   /* margin: 0 0 0.5vh; */
 }
@@ -187,36 +171,6 @@ body {
   font-size: 25px;
   /* margin: 1.5vh; */
 }
-
-
-
-
-
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@ job postings @@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-.first-posting{
-animation: blinker 1.75s infinite;
-/* color: red; */
-}
-
-@keyframes blinker {
-  0% {
-    background-color: #f9f9f9;
-  }
-  
-  50% {
-    background-color: lightgrey;
-  }
-  
-  100% {
-    background-color: #f9f9f9;
-  }
-}
-
-
 
 
 
@@ -389,6 +343,27 @@ animation: blinker 1.75s infinite;
 /* @@@@@@@ job posting @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
+.first-posting{
+  animation: blinker 1.75s infinite;
+  /* color: red; */
+  }
+  
+  @keyframes blinker {
+    0% {
+      background-color: #f9f9f9;
+    }
+    
+    50% {
+      background-color: lightgrey;
+    }
+    
+    100% {
+      background-color: #f9f9f9;
+    }
+  }
+  
+  
+
 .job-listing-item {
   display: flex;
   border: 1px solid #ccc;
@@ -424,13 +399,66 @@ animation: blinker 1.75s infinite;
 }
 
 
-
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@ job details @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
+#job-detail-title {
+  margin-top: 1vh;
+  font-size: 40px;
+  font-weight: bold;
+}
 
+#job-detail-place {
+  font-size: 22.5px;
+  padding-bottom: 1vh;
+}
 
+#job-detail-highlight {
+  border: 2px blue solid;
+}
+
+#job-detail-pay {
+  font-size: 20px;
+}
+
+#job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
+  padding-bottom: 1vh;
+  font-size: 22px
+}
+
+#job-detail-about{
+  margin: 20px 0;
+}
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@ click button @@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+#click-button {
+  margin-top: 1vh;
+  padding: 20px 30px;
+  font-size: 35px;
+  background-color: #5055ee;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: 'Pixelify Sans', sans-serif;
+  transition: transform 0.1s;
+}
+
+#click-button:hover {
+  transform: scale(0.99);
+  filter: brightness(90%);
+  /* opacity: 50%; */
+  /* background: black; */
+}
+
+#click-button:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+}
 
 
 
