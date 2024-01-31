@@ -2,18 +2,18 @@ import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, 
 
 // Initialize variables
 let timer = null;
+let jobApplications = 0;
 let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
-let jobApplications = 1130000;
 let manualClick = 0;
 let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let randomRejectInterval = 10000;
-let randomEventInterval = 23000;
-let clickValue = 1.5;
+let randomRejectInterval = 5000;
+let randomEventInterval = 5000;
+let clickValue = 1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -119,36 +119,16 @@ function formatLargeNumberAll(value) {
   }
 }
 
-
-// function updateJobApplications() {
-//   const jobApplicationsElement = document.getElementById("jobs-applied-value");
-//   const scaleElement = document.getElementById("scale"); // Assuming there is an element with the ID "scale"
-
-//   const formattedData = formatLargeNumber(jobApplications);
-
-//   jobApplicationsElement.textContent = formattedData.formattedValue;
-
-//   // Update the scale element
-//   scaleElement.textContent = formattedData.scale;
-// }
-
-// // Function to update the job application count on the screen
-// function updateJobApplications() {
-//   const jobApplicationsElement = document.getElementById("jobs-applied-value");
-//   jobApplicationsElement.textContent = `${Math.round(jobApplications)}`;
-// }
-
-
 function updateJobApplications() {
   const jobApplicationsElement = document.getElementById("jobs-applied-value");
-  const formattedAppsValue = formatLargeNumberAll(jobApplications);
-  jobApplicationsElement.textContent = `${formattedAppsValue}`;
+  const formattedValue = formatLargeNumberAll(jobApplications);
+  jobApplicationsElement.textContent = formattedValue;
 }
 
-// Function to update the CPS (Clicks Per Second) display
-function updateCPSDisplay() {
-  const cpsDisplay = document.getElementById("cps-display");
-  cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+function updateAPSDisplay() {
+  const apsElement = document.getElementById("aps-value");
+  const formattedValue = formatLargeNumberAll(totalClicksPerSecond);
+  apsElement.textContent = formattedValue;
 }
 
 function updateMotivation() {
@@ -157,14 +137,16 @@ function updateMotivation() {
   motivationElement.textContent = `Motivation: ${formattedValue}`;
 }
 
-// Function to update the rejection display
 function updateRejection() {
-  const rejectionDisplay = document.getElementById("rejection-value");
-  const formattedRejectionValue = formatLargeNumberAll(motivation);
-  rejectionDisplay.textContent = `${formattedRejectionValue}`;
-
-  // rejectionDisplay.textContent = `${Math.floor(totalRejections)}`; // Display MPS rounded to 2 decimal places
+  const rejectionElement = document.getElementById("rejection-value");
+  const formattedValue = formatLargeNumberAll(totalRejections);
+  rejectionElement.textContent = formattedValue;
 }
+
+
+
+
+
 
 
 // Function to calculate the total clicks per second
@@ -205,7 +187,7 @@ function updateShop() {
     costElement.textContent = `Cost: -${shop.cost} Motivation`;
 
     const clicksPerSecondElement = document.createElement("div");
-    clicksPerSecondElement.className = "item-cps";
+    clicksPerSecondElement.className = "item-aps";
     clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
 
     const countElement = document.createElement("div");
@@ -243,8 +225,8 @@ function buyAutoApplication(app) {
       updateMotivation();
       updateShop();
       calculateTotalClicksPerSecond();
-      updateCPSDisplay(); // Update CPS when purchasing
-      updateShopUpgrades(); // Update the shop upgrade variables
+      updateAPSDisplay(); 
+      updateShopUpgrades(); 
   }
 }
 
@@ -263,20 +245,14 @@ function updateShopUpgrades() {
 ///////////////////    AUTOCLICKER    //////////////////////
 ////////////////////////////////////////////////////////////
 
-
-// Function to add job applications automatically based on CPS
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
   motivation += 0.1 * totalClicksPerSecond; 
   updateMotivation();
   updateRejection();
   updateJobApplications();
-  updateCPSDisplay();
+  updateAPSDisplay();
 }
-
-
-// Initialize the shop with AutoApplications
-
 
 ////////////////////////////////////////////////////////////
 ////////////////////   JOB POSTINGS   //////////////////////
@@ -355,7 +331,6 @@ function updateJobPostings() {
   document.getElementById("job-detail-title").textContent = firstPosting.title;
   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
   document.getElementById("job-detail-pay").textContent = firstPosting.pay;
-
 
   document.getElementById("job-detail-about").textContent = firstPosting.about;
 
@@ -865,7 +840,7 @@ function closeNotification() {
 // Initialize the game
 updateShop();
 updateJobApplications();
-updateCPSDisplay();
+updateAPSDisplay();
 // updateJobPostings();
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
@@ -874,5 +849,4 @@ setInterval(checkMainAchievement, 1000);
 setInterval(randomRejection, randomRejectInterval);
 // Set an interval to trigger random events every 60 seconds
 setInterval(randomEvent, randomEventInterval);
-
 

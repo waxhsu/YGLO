@@ -1140,3 +1140,25 @@ const upgradeAchievements1 = {
 //   // Add an event listener to start playing the music when the page loads
 //   window.addEventListener("load", playBackgroundMusic);
 
+
+
+
+
+
+function updateJobApplications() {
+  const jobApplicationsElement = document.getElementById("jobs-applied-value");
+  const formattedAppsValue = formatLargeNumberAll(jobApplications);
+  jobApplicationsElement.textContent = `${formattedAppsValue}`;
+}
+
+// Function to update the CPS (Clicks Per Second) display
+function updateCPSDisplay() {
+  const cpsDisplay = document.getElementById("cps-display");
+  cpsDisplay.textContent = `Apps per sec: ${totalClicksPerSecond.toFixed(2)}`; // Display CPS rounded to 2 decimal places
+}
+
+function updateMotivation() {
+  const motivationElement = document.getElementById("motivation-value");
+  const formattedValue = formatLargeNumberAll(motivation);
+  motivationElement.textContent = `Motivation: ${formattedValue}`;
+}

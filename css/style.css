@@ -57,17 +57,18 @@ body {
   min-width: 130px;
 }
 
-h1 {
-  margin: 0;
-}
-
 .banner {
+  margin: 0;
   font-size: 30px;
-  height: 30px;
+  height: 35px;
   width: 100%;
   background-color: goldenrod;
-  /* padding: 0 10% 0 10%; */
+  padding: 1vh 0 0 1vw;
   color: black;
+}
+
+ul, li {
+  margin: 0;
 }
 
 
@@ -81,7 +82,7 @@ h1 {
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #topUI {
-  max-height: 60px;
+  min-height: 5.5vh;
   display: flex;
   justify-content: space-between;
 }
@@ -96,13 +97,14 @@ h1 {
 
 #mainUI {
   display: flex;
-  /* justify-content: space-between; */
-  /* min-height: 95vh; */
+  justify-content: space-between;
+  min-height: 94.5vh;
 }
 
 #leftUI, #centerUI, #rightUI {
   border: solid red 1px;
-  max-height: 95vh; 
+  max-height: 94.5vh; 
+  margin: .25vh .25vw;
 }
 
 #leftUI {
@@ -113,18 +115,18 @@ h1 {
 #centerUI {
   display: flex;
   flex-direction: column;
-  min-width: 42.5%;
-  max-width: 42.5%;
+  min-width: 43%;
+  max-width: 43%;
 }
 
 #rightUI {
-  min-width: 27.5%;
-  max-width: 27.5%;
+  min-width: 25%;
+  max-width: 25%;
 }
 
 #rightTopUI, #rightBottomUI {
-  max-height: 40vh; 
-  min-height: 40vh; 
+  max-height: 38.5vh; 
+  min-height: 38.5vh; 
 }
 
 
@@ -135,22 +137,13 @@ h1 {
 
 
 #topCenterUI, #bottomCenterUI {
-  /* display: flex; */
-  flex-direction: column;
-  /* align-items: center; */
-  padding: 0 2vw;
-}
-
-
-
-#click-button-box {
   display: flex;
-  justify-content: center;
-  padding: 20px 0;
+  flex-direction: column;
 }
 
-#bottomCenterUI {
-  height: 75vh; 
+#topCenterUI {
+  /* height: auto; */
+  margin: 2vh 2vw;
 }
 
 #shop {
@@ -159,11 +152,42 @@ h1 {
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@ stats  @@@@ */
+/* @@@@ stats & click button @@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-#jobs-applied-value {
-  /* font-size: 5vh; */
+#click-button-box {
+  display: flex;
+  justify-content: center;
+  margin: 10%;
+}
+
+#click-button {
+  /* margin-top: 1vh; */
+  padding: 2vh 3vw;
+  font-size: 35px;
+  background-color: #5055ee;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+  font-family: 'Pixelify Sans', sans-serif;
+  transition: transform 0.1s;
+}
+
+#click-button:hover {
+  transform: scale(0.99);
+  filter: brightness(90%);
+  /* opacity: 50%; */
+  /* background: black; */
+}
+
+#click-button:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+}
+
+#job-applied-value {
+  font-size: 5vh;
   z-index: 7000;
   /* margin: 0 0 0.5vh; */
 }
@@ -171,6 +195,11 @@ h1 {
   font-size: 25px;
   /* margin: 1.5vh; */
 }
+
+
+
+
+
 
 
 
@@ -363,7 +392,6 @@ h1 {
   }
   
   
-
 .job-listing-item {
   display: flex;
   border: 1px solid #ccc;
@@ -399,23 +427,21 @@ h1 {
 }
 
 
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@ job details @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #job-detail-title {
-  margin-top: 1vh;
-  font-size: 40px;
-  font-weight: bold;
+  font-size: 45px;
 }
 
 #job-detail-place {
-  font-size: 22.5px;
-  padding-bottom: 1vh;
+  font-size: 20px;
 }
 
-#job-detail-highlight {
-  border: 2px blue solid;
+#job-detail-highlight{
+  border: blue solid 2px;
 }
 
 #job-detail-pay {
@@ -423,43 +449,13 @@ h1 {
 }
 
 #job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
-  padding-bottom: 1vh;
-  font-size: 22px
+  font-size: 20px;
+  padding-bottom: 30px;
 }
 
 #job-detail-about{
-  margin: 20px 0;
+  margin: 0 0 0 2vw;
 }
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@ click button @@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-#click-button {
-  margin-top: 1vh;
-  padding: 20px 30px;
-  font-size: 35px;
-  background-color: #5055ee;
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-  font-family: 'Pixelify Sans', sans-serif;
-  transition: transform 0.1s;
-}
-
-#click-button:hover {
-  transform: scale(0.99);
-  filter: brightness(90%);
-  /* opacity: 50%; */
-  /* background: black; */
-}
-
-#click-button:active {
-  transform: scale(0.96);
-  filter: brightness(85%);
-}
-
 
 
 
@@ -518,7 +514,7 @@ h1 {
   text-align: center;
 }
 
-.item-cost, .item-cps  {
+.item-cost, .item-aps  {
   font-size: 25px;
   text-align: center;
   margin-top: 5px;
@@ -532,4 +528,3 @@ h1 {
   margin-top: 5px;
   align-self: flex-end;
 }
-
