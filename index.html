@@ -20,40 +20,37 @@
 		</div> -->
 		
 		<div class="deepFuckingValue">
-			<div id="aps-value">0</div>
+			<div id="aps-value" class="value-display">0</div>
 			<div class="value-display-text">Apps/sec</div>
 		</div>
 
 		<div class="deepFuckingValue">
-			<div id="jobs-applied-value">0</div>
+			<div id="jobs-value" class="value-display">0</div>
 			<div class="value-display-text">Jobs Applied</div>
 		</div>
 
 		<div class="deepFuckingValue">
-			<div id="rejection-value">0</div>
+			<div id="rejection-value" class="value-display">0</div>
 			<div class="value-display-text">Rejections</div>
 		</div>
 
+		<div class="deepFuckingValue">
+			<div id="motivation-value" class="value-display">-42</div>
+			<div class="value-display-text">Motivation</div>
+		</div>
 
-		
-		<!-- <div id="clickValueInfo" class="playTestInfo"></div>
-		<div id="randomEventInfo" class="playTestInfo"></div>
-		<div id="rejectEventInfo" class="playTestInfo"></div> -->
 
-    <!-- Add the following div for the achievements page trigger -->
-    <div id="achievements-trigger" onclick="toggleAchievementsPage()">
-        view Achievements
-    </div>
 
-    <!-- Add the div for the achievements page -->
-    <div id="achievements-page" style="display: none;">
-		<button class="close-button" onclick="toggleAchievementsPage()">X</button>
-		<h1 class="banner">Achievements Page</h1>
-		<div id="achievements-list"></div>
-        <!-- Populate this div with the achievements content dynamically -->
-        <!-- You can use JavaScript to update this content based on the player's achievements -->
-        <!-- Add more content as needed -->
-    </div>
+
+		<div id="achievements-trigger" onclick="toggleAchievementsPage()">
+			Press 'a' to view achievements
+		</div>
+
+		<div id="achievements-page" style="display: none;">
+			<button class="close-button" onclick="toggleAchievementsPage()">X</button>
+			<h1 class="banner">Achievements Page</h1>
+			<div id="achievements-list"></div>
+    	</div>
 
 	</div>
 	
@@ -63,11 +60,6 @@
 		<div id="job-postings"></div>		
 	</div>
 
-
-
-
-
-	
 	<div id="centerUI">
 		<div id="topCenterUI">
 			<!-- <h1 class="banner">Job Desc</h1> -->
@@ -93,18 +85,14 @@
 		</div>
 	</div>
 
-
-
-
 	<div id="rightUI">
+		<h1 class="banner">Notification</h1>
 		<div id="rightTopUI">
-			<h1 class="banner">Notification</h1>
 			<div id="notification-box"></div>
 		</div>
 
-		<div id="rightBottomUI">
 		<h1 class="banner">Shop</h1>
-		<div id="motivation-value">Motivation: -129</div>
+		<div id="rightBottomUI">
 			<div id="shop"></div>
 		</div>
 	</div>

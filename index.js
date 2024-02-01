@@ -13,7 +13,7 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 5000;
 let randomEventInterval = 5000;
-let clickValue = 1;
+let clickValue = 10000;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -119,22 +119,22 @@ function formatLargeNumberAll(value) {
   }
 }
 
-function updateJobApplications() {
-  const jobApplicationsElement = document.getElementById("jobs-applied-value");
-  const formattedValue = formatLargeNumberAll(jobApplications);
-  jobApplicationsElement.textContent = formattedValue;
-}
-
 function updateAPSDisplay() {
   const apsElement = document.getElementById("aps-value");
   const formattedValue = formatLargeNumberAll(totalClicksPerSecond);
   apsElement.textContent = formattedValue;
 }
 
+function updateJobApplications() {
+  const jobApplicationsElement = document.getElementById("jobs-value");
+  const formattedValue = formatLargeNumberAll(jobApplications);
+  jobApplicationsElement.textContent = formattedValue;
+}
+
 function updateMotivation() {
   const motivationElement = document.getElementById("motivation-value");
   const formattedValue = formatLargeNumberAll(motivation);
-  motivationElement.textContent = `Motivation: ${formattedValue}`;
+  motivationElement.textContent = formattedValue;
 }
 
 function updateRejection() {
@@ -174,6 +174,12 @@ function updateShop() {
 
     const shopItem = document.createElement("div");
     shopItem.className = "shop-item";
+    
+    const titleContainer = document.createElement("div");
+    titleContainer.className = "title-container";
+
+    const detailContainer = document.createElement("div");
+    detailContainer.className = "detail-container";
 
     const infoContainer = document.createElement("div");
     infoContainer.className = "info-container";
@@ -184,7 +190,7 @@ function updateShop() {
 
     const costElement = document.createElement("div");
     costElement.className = "item-cost";
-    costElement.textContent = `Cost: -${shop.cost} Motivation`;
+    costElement.textContent = `Cost: -${shop.cost} Motives`;
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps";
@@ -193,14 +199,20 @@ function updateShop() {
     const countElement = document.createElement("div");
     countElement.className = "item-count";
     countElement.textContent = `owned: ${shop.count}`;
+    
+    titleContainer.appendChild(nameElement)
+    detailContainer.appendChild(iconElement)
+    detailContainer.appendChild(infoContainer)
+    
 
-    infoContainer.appendChild(nameElement);
     infoContainer.appendChild(costElement);
     infoContainer.appendChild(clicksPerSecondElement);
     infoContainer.appendChild(countElement);
 
-    shopItem.appendChild(iconElement);
-    shopItem.appendChild(infoContainer);
+
+    shopItem.appendChild(titleContainer);
+    // shopItem.appendChild(iconElement);
+    shopItem.appendChild(detailContainer);
 
     if (index === 0 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
@@ -502,20 +514,16 @@ function displayAchievements(achievementsArray) {
       achievementListDiv.appendChild(questionMark);
     }
 
-    // Append the achievement div to the achievements page
     achievementsList.appendChild(achievementListDiv);
   });
 }
 
 
-
-// Add an event listener for the "keydown" event on the document
 document.addEventListener("keydown", function(event) {
   if (event.key === "a") {
     toggleAchievementsPage();
   }
 });
-
 
 
 
