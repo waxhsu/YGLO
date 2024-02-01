@@ -1162,3 +1162,116 @@ function updateMotivation() {
   const formattedValue = formatLargeNumberAll(motivation);
   motivationElement.textContent = `Motivation: ${formattedValue}`;
 }
+
+
+
+
+
+
+// previous updateJobPostings code
+// import { jobPostingCycleObj } from './jobPostingCycleObj.js';
+
+//   // Shuffle the job postings array
+//   function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//       const j = Math.floor(Math.random() * (i + 1));
+//       [array[i], array[j]] = [array[j], array[i]];
+//     }
+//   }
+  
+//   shuffleArray(jobPostingCycleObj);
+  
+//   let jobPostingsIndex = 0; // Track the current job posting index
+  
+//   function cycleJobPostings() {
+//     // Remove the first job posting from the array
+//     const removedPosting = jobPostingCycleObj.shift();
+//     // Add it back to the end of the array
+//     jobPostingCycleObj.push(removedPosting);
+//   }
+  
+
+// function updateJobPostings() {
+//   const jobPostingsElement = document.getElementById("job-postings");
+//   jobPostingsElement.innerHTML = ""; // Clear the previous job postings
+
+//   const firstPosting = jobPostingCycleObj[0];
+
+//   jobPostingCycleObj.forEach((posting, index) => {
+//     const jobPostingItem = document.createElement("div");
+//     jobPostingItem.className = "job-listing-item";
+//     if (index === 0) {
+//       jobPostingItem.classList.add("first-posting");
+//     }
+
+//     const iconElement = document.createElement("img");
+//     iconElement.src = posting.icon;
+//     iconElement.className = "icon";
+//     iconElement.alt = "ICON";
+
+//     const titleElement = document.createElement("div");
+//     titleElement.className = "job-listing-title";
+//     titleElement.textContent = posting.title;
+
+//     const companyElement = document.createElement("div");
+//     companyElement.className = "job-listing-company";
+//     companyElement.textContent = posting.company;
+
+//     const locationElement = document.createElement("div");
+//     locationElement.className = "job-listing-location";
+//     locationElement.textContent = posting.location;
+
+//     const payElement = document.createElement("div");
+//     payElement.className = "job-listing-pay";
+//     payElement.textContent = posting.pay;
+
+//     const detailsElement = document.createElement("div");
+//     detailsElement.className = "job-listing-box";
+//     detailsElement.appendChild(titleElement);
+//     detailsElement.appendChild(companyElement);
+//     detailsElement.appendChild(locationElement);
+//     detailsElement.appendChild(payElement);
+
+//     jobPostingItem.appendChild(iconElement);
+//     jobPostingItem.appendChild(detailsElement);
+
+//     jobPostingsElement.appendChild(jobPostingItem);
+//   });
+
+//   // Populate the job details divs with content from the first posting
+//   document.getElementById("job-detail-title").textContent = firstPosting.title;
+//   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
+//   document.getElementById("job-detail-pay").textContent = firstPosting.pay;
+
+//   document.getElementById("job-detail-about").textContent = firstPosting.about;
+
+//   const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+//   responsibilitiesElement.innerHTML = "";
+
+//   const responsibilitiesList = document.createElement("ul");
+//   firstPosting.responsibilities.forEach(responsibility => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = responsibility;
+//     responsibilitiesList.appendChild(listItem);
+//   });
+
+//   responsibilitiesElement.appendChild(responsibilitiesList);
+
+//   const qualificationsElement = document.getElementById("job-detail-qualifications");
+//   qualificationsElement.innerHTML = "";
+
+//   const qualificationsList = document.createElement("ul");
+//   firstPosting.qualifications.forEach(qualification => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = qualification;
+//     qualificationsList.appendChild(listItem);
+//   });
+
+//   qualificationsElement.appendChild(qualificationsList);
+// }
+
+// updateJobPostings();
+
+
+
+
