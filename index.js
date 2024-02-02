@@ -41,7 +41,6 @@ function toggleSound() {
   // You can add more logic here to stop playing sounds if the state is off
 }
 
-// Function to update button text based on sound state
 function updateButtonText() {
   const buttonText = isSoundOn ? 'Sound On' : 'Sound Off';
   document.getElementById('soundToggleBtn').textContent = buttonText;
@@ -72,8 +71,6 @@ function playRandomInboxSound() {
   }
 }
 
-
-// Function to handle clicking and adding job applications
 function clickForJobApplications() {
     motivation += 0.217 * clickValue;
     manualClick += 1;
@@ -86,7 +83,6 @@ function clickForJobApplications() {
     playRandomClickSound();
 }
 
-// Add a click event listener to the button
 const clickButton = document.getElementById("click-button");
 clickButton.addEventListener("click", clickForJobApplications);
 
@@ -95,12 +91,10 @@ clickButton.addEventListener("click", clickForJobApplications);
 /////////////////  UPDATE STATS INFO  /////////////////////
 ///////////////////////////////////////////////////////////
 
-
 function formatNumberWithCommas(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Function to update the motivation count on the screen
 function formatLargeNumberAll(value) {
   if (value < 1000000) {
     return formatNumberWithCommas(Math.round(value));
@@ -142,9 +136,6 @@ function updateRejection() {
   const formattedValue = formatLargeNumberAll(totalRejections);
   rejectionElement.textContent = formattedValue;
 }
-
-
-
 
 
 
@@ -198,7 +189,7 @@ function updateShop() {
 
     const countElement = document.createElement("div");
     countElement.className = "item-count";
-    countElement.textContent = `owned: ${shop.count}`;
+    countElement.textContent = `x${shop.count}`;
     
     titleContainer.appendChild(nameElement)
     detailContainer.appendChild(iconElement)
@@ -242,10 +233,8 @@ function buyAutoApplication(app) {
   }
 }
 
-// Create an array to store the shop upgrade variables
 let shopUpgradeCount = autoApplications.map(app => app.count);
 
-// Function to update shop upgrade variables
 function updateShopUpgrades() {
   shopObj.forEach((app, index) => {
     shopUpgradeCount[index] = app.count;
@@ -291,48 +280,62 @@ function updateJobPostings() {
 
   jobPostingCycleObj.forEach((posting, index) => {
     const jobPostingItem = document.createElement("div");
-    jobPostingItem.className = "job-listing-item";
+    jobPostingItem.className = "job-posting-item";
     if (index === 0) {
       jobPostingItem.classList.add("first-posting");
     }
 
-    const iconElement = document.createElement("img");
-    iconElement.src = posting.icon;
-    iconElement.className = "icon";
-    iconElement.alt = "ICON";
+    const jobPostingIcon = document.createElement("img");
+    jobPostingIcon.src = posting.icon;
+    jobPostingIcon.className = "icon";
+    jobPostingIcon.alt = "ICON";
 
-    const titleElement = document.createElement("div");
-    titleElement.className = "job-listing-title";
-    titleElement.textContent = posting.title;
+    const jobPostingTitle = document.createElement("div");
+    jobPostingTitle.className = "job-posting-title";
+    jobPostingTitle.textContent = posting.title;
 
-    const companyElement = document.createElement("div");
-    companyElement.className = "job-listing-company";
-    companyElement.textContent = posting.company;
+    const jobPostingCompany = document.createElement("div");
+    jobPostingCompany.className = "job-posting-company";
+    jobPostingCompany.textContent = posting.company;
 
-    const locationElement = document.createElement("div");
-    locationElement.className = "job-listing-location";
-    locationElement.textContent = posting.location;
+    const jobPostingLocation = document.createElement("div");
+    jobPostingLocation.className = "job-posting-location";
+    jobPostingLocation.textContent = posting.location;
 
-    const payElement = document.createElement("div");
-    payElement.className = "job-listing-pay";
-    payElement.textContent = posting.pay;
+    const jobPostingPay = document.createElement("div");
+    jobPostingPay.className = "job-posting-pay";
+    jobPostingPay.textContent = posting.pay;
 
-    const detailsElement = document.createElement("div");
-    detailsElement.className = "job-listing-box";
-    detailsElement.appendChild(titleElement);
-    detailsElement.appendChild(companyElement);
-    detailsElement.appendChild(locationElement);
-    detailsElement.appendChild(payElement);
-
-    jobPostingItem.appendChild(iconElement);
-    jobPostingItem.appendChild(detailsElement);
+    const jobPostingInfo = document.createElement("div");
+    jobPostingInfo.className = "job-posting-box";
+    jobPostingInfo.appendChild(jobPostingTitle);
+    jobPostingInfo.appendChild(jobPostingCompany);
+    jobPostingInfo.appendChild(jobPostingLocation);
+    jobPostingInfo.appendChild(jobPostingPay);
+    jobPostingItem.appendChild(jobPostingIcon);
+    jobPostingItem.appendChild(jobPostingInfo);
 
     jobPostingsElement.appendChild(jobPostingItem);
   });
 
   document.getElementById("job-detail-title").textContent = firstPosting.title;
   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
-  document.getElementById("job-detail-pay").textContent = firstPosting.pay;
+
+
+
+//////////////////
+
+document.getElementById("job-detail-pay").textContent = firstPosting.pay;
+document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
+document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
+document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and X more`;
+document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${firstPosting.reviewTime}`;
+
+
+//////////////////
+
+
+
   document.getElementById("job-detail-about").textContent = firstPosting.about;
 
   const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
@@ -360,14 +363,20 @@ function updateJobPostings() {
   qualificationsElement.appendChild(qualificationsList);
 
   // Add onclick event to each job posting item
-  const jobPostingsItems = document.querySelectorAll(".job-listing-item");
+  const jobPostingsItems = document.querySelectorAll(".job-posting-item");
   jobPostingsItems.forEach((item, index) => {
     const clickedPosting = jobPostingCycleObj[index];
     item.addEventListener("click", function () {
 
       document.getElementById("job-detail-title").textContent = clickedPosting.title;
       document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
+
+
+
       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+
+
+
       document.getElementById("job-detail-about").textContent = clickedPosting.about;
 
       const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
@@ -393,6 +402,8 @@ function updateJobPostings() {
       });
 
       qualificationsElement.appendChild(qualificationsList);
+
+      cycleJobPostings(index);
     });
   });
 }
@@ -401,24 +412,18 @@ document.addEventListener("DOMContentLoaded", function () {
   updateJobPostings();
 });
 
-function cycleJobPostings() {
-  const removedPosting = jobPostingCycleObj.shift();
+// function cycleJobPostings() {
+//   const removedPosting = jobPostingCycleObj.shift();
+//   jobPostingCycleObj.push(removedPosting);
+// }
+
+function cycleJobPostings(clickedIndex) {
+  // Remove the clicked posting from its current position
+  const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
+  
+  // Move the removed posting to the end of the array
   jobPostingCycleObj.push(removedPosting);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -524,12 +529,9 @@ const achievementsPage = document.getElementById("achievements-page");
 
 function toggleAchievementsPage() {
   achievementsPage.style.display = (achievementsPage.style.display === "none") ? "flex" : "none";
-
-  // Clear the content of the achievements-list div
   const achievementsList = document.getElementById("achievements-list");
   achievementsList.innerHTML = "";
 
-  // Display icons or "?" based on achievements
   displayAchievements(mainAchievementsObj);
   displayAchievements(upgradeAchievementsObj);
 }
@@ -542,20 +544,15 @@ function displayAchievements(achievementsArray) {
     achievementListDiv.className = "achievement-item";
 
     if (achievement.displayed) {
-      // Display the icon
       const iconImage = document.createElement("img");
       iconImage.src = achievement.icon;
       iconImage.className = "achievement-item";
 
-      // Create a tooltip div for message2
       const tooltip = document.createElement("div");
       tooltip.className = "tooltip";
       tooltip.textContent = achievement.message1;
 
-      // Append the icon to the achievementListDiv
       achievementListDiv.appendChild(iconImage);
-
-      // Append the tooltip as a sibling to the iconImage
       achievementListDiv.appendChild(tooltip);
     } else {
       const questionMark = document.createElement("img");

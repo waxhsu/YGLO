@@ -34,6 +34,8 @@ body {
   font-size: 25px;
   overflow: hidden;
   margin: 0 .25vw;
+  background-color: #fffdef;
+
 }
 
 
@@ -56,7 +58,7 @@ body {
   font-size: 30px;
   /* height: 3.5vh; */
   /* width: 100%; */
-  background-color: goldenrod;
+  background-color: #83ffd6 ;
   padding: 1vh 0 0 1vw;
   color: black;
 }
@@ -145,7 +147,10 @@ ul, li {
 }
 
 #topCenterUI {
-  margin: 2vh 2vw;
+  /* position: block; */
+  margin: 1vh 2vw 0 2vw;
+  /* max-height: 300px;
+  min-height: 300px; */
 }
 
 
@@ -156,11 +161,13 @@ ul, li {
 #click-button-box {
   display: flex;
   justify-content: center;
-  margin: 10%;
+  /* margin: 10%; */
+  /* background-color: green; */
 }
 
 #click-button {
   /* margin-top: 1vh; */
+  margin: 1vh 1vw;
   padding: 2vh 3vw;
   font-size: 35px;
   background-color: #5055ee;
@@ -385,7 +392,7 @@ ul, li {
   }
   
   
-.job-listing-item {
+.job-posting-item {
   display: flex;
   border: 1px solid #ccc;
   padding: 10px;
@@ -394,26 +401,26 @@ ul, li {
   background-color: #f9f9f9;
 }
 
-.job-listing-box {
+.job-posting-box {
   width: 100%
 }
 
 
-.job-listing-title, .job-listing-company, .job-listing-location, .job-listing-pay {
+.job-posting-title, .job-posting-company, .job-posting-location, .job-posting-pay {
   padding: 1%;
 }
 
-.job-listing-title {
+.job-posting-title {
   font-weight: bold;
   font-size: 25px;
 }
 
-.job-listing-company {
+.job-posting-company {
   color: #000000;
   font-size: 20px;
 }
 
-.job-listing-pay, .job-listing-location {
+.job-posting-pay, .job-posting-location {
   color: #555;
   font-weight: bold;
   font-size: 17.5px;
@@ -424,6 +431,22 @@ ul, li {
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@ job details @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@ highlight container @@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.highlight-container {
+  display: flex;
+  align-items: center;
+}
+
+.highlight-icon {
+  max-height: 25px;
+  max-width: 25px;
+  min-width: 25px;
+  padding: 0 2% 0 0;
+  margin: 0 0 1% 0;
+}
 
 #job-detail-title {
   font-size: 45px;
@@ -433,12 +456,15 @@ ul, li {
   font-size: 20px;
 }
 
-#job-detail-highlight{
-  border: blue solid 2px;
-}
-
 #job-detail-pay {
   font-size: 20px;
+}
+
+
+#job-detail-highlight-box{
+  margin: 4% 0 0 0;
+  border: blue solid 2px;
+  font-size: 18px;
 }
 
 #job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
