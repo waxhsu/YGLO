@@ -97,6 +97,7 @@ ul, li {
   display: flex;
   justify-content: space-between;
   min-height: auto;
+  /* margin: 0 5vw; */
 }
 
 #leftUI, #centerUI, #rightUI {
@@ -148,7 +149,7 @@ ul, li {
 
 #topCenterUI {
   /* position: block; */
-  margin: 1vh 2vw 0 2vw;
+  margin: 1vh 2% 0 2%;
   /* max-height: 300px;
   min-height: 300px; */
 }
@@ -372,8 +373,8 @@ ul, li {
 /* @@@@@@@ job posting @@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-.first-posting{
-  animation: blinker 1.75s infinite;
+.clicked-posting{
+  animation: blinker 1.5s infinite;
   /* color: red; */
   }
   
@@ -383,7 +384,7 @@ ul, li {
     }
     
     50% {
-      background-color: lightgrey;
+      background-color: rgb(161, 161, 161);
     }
     
     100% {
@@ -435,7 +436,7 @@ ul, li {
 /* @@@@ highlight container @@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-.highlight-container {
+.job-detail-row {
   display: flex;
   align-items: center;
 }
@@ -448,6 +449,10 @@ ul, li {
   margin: 0 0 1% 0;
 }
 
+.job-detail-highlight {
+  padding: 0 0 2px;
+}
+
 #job-detail-title {
   font-size: 45px;
 }
@@ -456,14 +461,9 @@ ul, li {
   font-size: 20px;
 }
 
-#job-detail-pay {
-  font-size: 20px;
-}
-
-
 #job-detail-highlight-box{
-  margin: 4% 0 0 0;
-  border: blue solid 2px;
+  margin: 2% 0 0 0;
+  /* border: blue solid 2px; */
   font-size: 18px;
 }
 

@@ -11,9 +11,9 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let randomRejectInterval = 5000;
-let randomEventInterval = 5000;
-let clickValue = 10000;
+let randomRejectInterval = 12000;
+let randomEventInterval = 14000;
+let clickValue = 1.1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -282,7 +282,7 @@ function updateJobPostings() {
     const jobPostingItem = document.createElement("div");
     jobPostingItem.className = "job-posting-item";
     if (index === 0) {
-      jobPostingItem.classList.add("first-posting");
+      jobPostingItem.classList.add("clicked-posting");
     }
 
     const jobPostingIcon = document.createElement("img");
@@ -328,7 +328,7 @@ function updateJobPostings() {
 document.getElementById("job-detail-pay").textContent = firstPosting.pay;
 document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
 document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
-document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and X more`;
+document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and more`;
 document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${firstPosting.reviewTime}`;
 
 
@@ -367,17 +367,24 @@ document.getElementById("job-detail-reviewTime").textContent = `Applicant review
   jobPostingsItems.forEach((item, index) => {
     const clickedPosting = jobPostingCycleObj[index];
     item.addEventListener("click", function () {
+      jobPostingsItems.forEach(postingItem => {
+        postingItem.classList.remove("clicked-posting");
+      });
 
+      // Add the "clicked-posting" class to the clicked element
+      item.classList.add("clicked-posting");
+      
       document.getElementById("job-detail-title").textContent = clickedPosting.title;
       document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
-
-
+      document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+      document.getElementById("job-detail-about").textContent = clickedPosting.about;
 
       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+      document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
+      document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
+      document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
+      document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${clickedPosting.reviewTime}`;
 
-
-
-      document.getElementById("job-detail-about").textContent = clickedPosting.about;
 
       const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
       responsibilitiesElement.innerHTML = "";
@@ -412,16 +419,10 @@ document.addEventListener("DOMContentLoaded", function () {
   updateJobPostings();
 });
 
-// function cycleJobPostings() {
-//   const removedPosting = jobPostingCycleObj.shift();
-//   jobPostingCycleObj.push(removedPosting);
-// }
+
 
 function cycleJobPostings(clickedIndex) {
-  // Remove the clicked posting from its current position
   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
-  
-  // Move the removed posting to the end of the array
   jobPostingCycleObj.push(removedPosting);
 }
 
@@ -780,7 +781,7 @@ function applyRandomRejectionEffects() {
   /////////////////////////////////////////////////////////
   // ADD MATH EQUATION FOR A PROPER GAME PROGRESSION VALUES
   /////////////////////////////////////////////////////////
-  effect_motivation = getRandomInRange(-0.121, -0.097);
+  const effect_motivation = getRandomInRange(-0.121, -0.097);
   /////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
@@ -885,6 +886,14 @@ function closeNotification() {
   notificationBox.style.display = "none";
 
 }
+
+
+// document.addEventListener("keydown", function (event) {
+//   if (event.keyCode === 13) {
+//     event.preventDefault();
+//     console.log("Enter key is disabled in this game.");
+//   }
+// });
 
 
 
