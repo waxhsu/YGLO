@@ -12,8 +12,8 @@ let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
-let randomEventInterval = 14000;
-let clickValue = 1.1;
+let randomEventInterval = 10000;
+let clickValue = 5;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -70,22 +70,6 @@ function playRandomInboxSound() {
     audio.play();
   }
 }
-
-function clickForJobApplications() {
-    motivation += 0.217 * clickValue;
-    manualClick += 1;
-    jobApplications += clickValue;
-    updateJobApplications();
-    updateMotivation();
-    updateRejection();
-    cycleJobPostings(); 
-    updateJobPostings();
-    playRandomClickSound();
-}
-
-const clickButton = document.getElementById("click-button");
-clickButton.addEventListener("click", clickForJobApplications);
-
 
 ///////////////////////////////////////////////////////////
 /////////////////  UPDATE STATS INFO  /////////////////////
@@ -256,6 +240,26 @@ function autoGenerateJobApplications() {
 }
 
 ////////////////////////////////////////////////////////////
+////////////////////   CLICK BUTTON   //////////////////////
+////////////////////////////////////////////////////////////
+
+function clickForJobApplications() {
+  motivation += 0.217 * clickValue;
+  manualClick += 1;
+  jobApplications += clickValue;
+  updateJobApplications();
+  updateMotivation();
+  updateRejection();
+  cycleJobPostings(); //wtf
+  updateJobPostings();
+  playRandomClickSound();
+}
+
+const clickButton = document.getElementById("click-button");
+clickButton.addEventListener("click", clickForJobApplications);
+
+
+////////////////////////////////////////////////////////////
 ////////////////////   JOB POSTINGS   //////////////////////
 ////////////////////////////////////////////////////////////
 
@@ -272,11 +276,10 @@ shuffleArray(jobPostingCycleObj);
 
 let jobPostingsIndex = 0;
 
+// puts data on the left
 function updateJobPostings() {
   const jobPostingsElement = document.getElementById("job-postings");
   jobPostingsElement.innerHTML = "";
-
-  const firstPosting = jobPostingCycleObj[0];
 
   jobPostingCycleObj.forEach((posting, index) => {
     const jobPostingItem = document.createElement("div");
@@ -317,25 +320,19 @@ function updateJobPostings() {
 
     jobPostingsElement.appendChild(jobPostingItem);
   });
+  displayJobDetail();
+}
 
+function displayJobDetail() {
+///// displays the first item in array ////
+  const firstPosting = jobPostingCycleObj[0];
   document.getElementById("job-detail-title").textContent = firstPosting.title;
   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
-
-
-
-//////////////////
-
-document.getElementById("job-detail-pay").textContent = firstPosting.pay;
-document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
-document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
-document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and more`;
-document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${firstPosting.reviewTime}`;
-
-
-//////////////////
-
-
-
+  document.getElementById("job-detail-pay").textContent = firstPosting.pay;
+  document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
+  document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
+  document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and more`;
+  document.getElementById("job-detail-reviewTime").textContent = `${firstPosting.reviewTime}`;
   document.getElementById("job-detail-about").textContent = firstPosting.about;
 
   const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
@@ -362,6 +359,8 @@ document.getElementById("job-detail-reviewTime").textContent = `Applicant review
 
   qualificationsElement.appendChild(qualificationsList);
 
+
+///// displays the clicked item in array ////
   // Add onclick event to each job posting item
   const jobPostingsItems = document.querySelectorAll(".job-posting-item");
   jobPostingsItems.forEach((item, index) => {
@@ -378,12 +377,11 @@ document.getElementById("job-detail-reviewTime").textContent = `Applicant review
       document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
       document.getElementById("job-detail-about").textContent = clickedPosting.about;
-
       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
       document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
       document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
       document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
-      document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${clickedPosting.reviewTime}`;
+      document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
 
 
       const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
@@ -414,12 +412,6 @@ document.getElementById("job-detail-reviewTime").textContent = `Applicant review
     });
   });
 }
-
-document.addEventListener("DOMContentLoaded", function () {
-  updateJobPostings();
-});
-
-
 
 function cycleJobPostings(clickedIndex) {
   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
@@ -622,9 +614,6 @@ function applyRandomEventEffect(event) {
   } else if (event.color === 'red' && motivation > 0) {
     motivation -= 1;
   }
-  // if (jobApplications <= 0) {
-  //   return { motivationRandomCalc: 0, jobAppRandomCalc: 0 };
-  // }
 
   let motivationRandomCalc = effect_motivation * motivation;
   let jobAppRandomCalc = effect_apps * jobApplications;
@@ -906,12 +895,11 @@ function closeNotification() {
 updateShop();
 updateJobApplications();
 updateAPSDisplay();
-// updateJobPostings();
+updateJobPostings();
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
-// Set an interval to trigger random event
+
 setInterval(randomRejection, randomRejectInterval);
-// Set an interval to trigger random events every 60 seconds
 setInterval(randomEvent, randomEventInterval);
 

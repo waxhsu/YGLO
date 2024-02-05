@@ -6,9 +6,9 @@ const jobPostingCycleObj = [
         location: "Walla Walla, WA",
         pay: "$12/hr - $20/hr",
         employee: "10-30",
-        alumni: 92,
+        alumni: "92",
         skill: "Being fun, exhalation",
-        reviewTime: "3 days",
+        reviewTime: "Applicant review time is 3 days",
         company: "Alooba Bababoo Inc.",
         about: "Do you thrive in a boring and uneventful work environment? Then this job is the perfect fit for you! Join our team as our Office Bubble Maker and add some fun to your mundane!",
         responsibilities: [
@@ -27,28 +27,27 @@ const jobPostingCycleObj = [
     {
         id: 1,
         icon: "./img/jobPostingIcons/1.png",
-        title: "Professional Underwater Basket Weaver",
-        company: "We Are Weavers",
-        location: "Kansas City, KS",
-        pay: "$60k/yr - $85k/yr",
-        employee: "1-3",
-        alumni: 1,
-        skill: "Freedive, fish talk",
-        reviewTime: "whenever we're on land",
-        about: "Looking for someone to join our team and assist with the intricate art of underwater basket weaving. No prior experience required, just a good sense of humor and willingness to get a little wet.",
+        title: "Professional Eraser",
+        location: "Dubuque, Iowa, USA",
+        pay: "$60,000/yr - $70,000/yr",
+        employee: "10-14",
+        alumni: "60",
+        skill: "Quick Thinking, Extreme Attention to Detail",
+        reviewTime: "Applicant review time is unpredictable",
+        company: "Completely Clean Erasers",
+        about: "Do you love to erase? Do you spend way too much time erasing tiny mistakes? Then we have the perfect job for you! Be the ultimate eraser champion at our company and proudly declare to the world that you erase for a living.",
         responsibilities: [
-            "Collect aquatic plant materials needed for basket weaving",
-            "Weave baskets while submerged in water",
-            "Assist with daily maintenance of underwater basket weaving equipment",
-            "Collaborate with team to create new and innovative underwater basket weaving techniques",
+          "Erase typos, erasure smudges, and dust",
+          "Lead eraser workshop and conferences",
+          "Test and review different erasing techniques and tools",
+          "Attend company team building outings and all-eraser events"
         ],
         qualifications: [
-            "Basic swimming skills",
-            "Ability to hold breath for minimum of 30 seconds",
-            "Experience with regular basket weaving (just kidding, no one knows how to do that)",
-            "Comfortable working in a wet and often unpredictable environment",
-        ],
-
+          "Must have at least 2 years of erasing experience",
+          "Bachelor's degree in Fine Erasing",
+          "In-depth knowledge of various eraser models",
+          "Patience and determination when facing difficult erasures"
+        ]
     },
     {
         id: 2,
@@ -58,9 +57,9 @@ const jobPostingCycleObj = [
         location: "Mustardville, USA",
         pay: "$65k/yr - $85k/yr",
         employee: "100-500",
-        alumni: 12,
+        alumni: "12",
         skill: "HR, Excel",
-        reviewTime: "like almost never",
+        reviewTime: "Applicant review time is like almost never",
         about: "Are you a master of micromanagement? Do you have the ability to schedule the mundane tasks of daily life with extreme precision? Then the Council of Chores Scheduling Wizard just might be the position for you! Put your organizational skills to the test and join our team today.",
         responsibilities: [
             "Create complex schedules for household chores, including but not limited to vacuuming, laundry, and dishwashing",
@@ -82,9 +81,9 @@ const jobPostingCycleObj = [
         location: "Seattle, WA",
         pay: "$40k/yr - $45k/yr",
         employee: "10-30",
-        alumni: 13,
+        alumni: "13",
         skill: "Time Management, can read",
-        reviewTime: "12 weeks",
+        reviewTime: "Applicant review time is 12 weeks",
         company: "Snooze Inc.",
         about: "We are looking for a highly skilled Nap Time Coordinator to join our team! As a Nap Time Coordinator, you will be responsible for ensuring that all employees get sufficient naps throughout the workday.",
         responsibilities: [
@@ -107,9 +106,9 @@ const jobPostingCycleObj = [
         location: "Austin, TX",
         pay: "$40k/yr - $45k/yr",
         employee: "50-150",
-        alumni: 2,
+        alumni: "2",
         skill: "Woodcraft, HVAC",
-        reviewTime: "usually after lunch",
+        reviewTime: "Applicant review time is usually after lunch",
         company: "Bottomless Mimosas Inc.",
         about: "We are seeking an enthusiastic Brunch Coordinator to join our team. The ideal candidate will be a master of all things brunch, with the ability to plan the perfect mimosa-fueled weekend meal.",
         responsibilities: [
@@ -132,9 +131,9 @@ const jobPostingCycleObj = [
         location: "Fool's Emerald, Canada",
         pay: "80k/yr - 90k/yr",
         employee: "1,000 - 5,000+",
-        alumni: 312,
+        alumni: "312",
         skill: "Vision, can smell",
-        reviewTime: "12 minutes",
+        reviewTime: "Applicant review time is 12 minutes",
         company: "First and Foremost Corporation",
         about: "Be the face of our company and make the first encounter a memorable one for our clients and employees. You will contribute greatly to our company's reputation and branding.",
         responsibilities: [
@@ -157,9 +156,9 @@ const jobPostingCycleObj = [
         location: "Cornwall, Canada",
         pay: "$60k/yr - $90k/yr",
         employee: "10-30",
-        alumni: 40,
+        alumni: "40",
         skill: "Corn, agriculture",
-        reviewTime: "9 minutes ago",
+        reviewTime: "Applicant review time is 9 minutes ago",
         company: "Grains Away Inc.",
         about: "The Sand Removal Engineer is responsible for removing tiny sand particles that have taken over the office.",
         responsibilities: [
@@ -182,9 +181,9 @@ const jobPostingCycleObj = [
         location: "Dayton, CA",
         pay: "$60k/yr - $100k/yr",
         employee: "2 - ??",
-        alumni: 9,
+        alumni: "9",
         skill: "Paranoia, anxiety",
-        reviewTime: "like almost never",
+        reviewTime: "Applicant review time is like almost never",
         company: "Data Thieves Inc.",
         about: "As an Information Hoarder, you will be responsible for hoarding valuable data from different sources and designing ways to steal competitors' data.",
         responsibilities: [
@@ -207,9 +206,9 @@ const jobPostingCycleObj = [
         location: "Chicago, IL",
         pay: "$40k/yr - $60k/yr",
         employee: "15-80",
-        alumni: 0,
+        alumni: "0",
         skill: "Hands, fingers, toes",
-        reviewTime: "idk",
+        reviewTime: "Applicant review time is idk",
         company: "Ergonomic Toner and Ink Co.",
         about: "We're looking for someone to keep our office toner cartridges in tip-top shape.",
         responsibilities: [
@@ -228,26 +227,26 @@ const jobPostingCycleObj = [
     {
         id: 9,
         icon: "./img/jobPostingIcons/9.png",
-        title: "Professional Slacker",
-        location: "Las Vegas, NV",
-        pay: "$39,999/yr - $40,001/yr",
-        employee: "0-10",
-        alumni: 0,
-        skill: "thumb twiddling",
-        reviewTime: "soon?",
-        company: "Hobby Hibernators Inc",
-        about: "We are looking for a highly experienced Professional Slacker to join our team at Hobby Hibernators Inc! In this exciting role, you will be responsible for taking long breaks, napping on the job, and procrastinating on important tasks.",
+        title: "Professional Meeting Attendant",
+        location: "Winnipeg, Canada",
+        pay: "$41,000/yr - $101,000/yr",
+        employee: "100-150",
+        alumni: "300",
+        skill: "Strategic planning, note-taking",
+        reviewTime: "Applicant review time is whenever our busy CEO decides to finally look at the pile of resumes on their desk.",
+        company: "Meeting Magic Inc.",
+        about: "Do you find yourself enjoying boring, mundane meetings? Do you love taking notes and planning out your day in excruciating detail? Then we have the job for you! Join our team as a Professional Meeting Attendant and fulfill your dreams of becoming the most organized and efficient employee in the world.",
         responsibilities: [
-            "Take extended coffee breaks and social media scrolling sessions",
-            "Achieve record-breaking levels of laziness",
-            "Make it to Friday without doing any actual work",
-            "Attend all office happy hours and team building events (these are mandatory)",
+          "Take comprehensive and detailed notes during meetings, including action items and follow up tasks.",
+          "Assist with scheduling and coordinating meeting times and locations.",
+          "Occasionally order lunch for the team during extra-long meetings.",
+          "Participate in the thrilling task of setting up conference calls and virtual meetings."
         ],
         qualifications: [
-            "Must have mastered the art of Gilmore Girls binge watching",
-            "Excellent at making excuses and blaming others",
-            "Basic computer skills are a must (after all, you need to be able to access Netflix and YouTube)",
-            "Strong ability to procrastinate and still manage to get by",
+          "At least 2 years of experience attending meetings (and not falling asleep).",
+          "Exceptional note-taking and organization skills.",
+          "Proficient in using Microsoft Office.",
+          "A high tolerance for caffeine and small talk."
         ]
     },
     {
@@ -256,10 +255,10 @@ const jobPostingCycleObj = [
         title: "Executive Seat Warmer",
         location: "Sacramento, CA",
         pay: "$29k/yr - $42k/yr",
-        employee: "1",
-        alumni: 7,
+        employee: "1.7",
+        alumni: "7",
         skill: "warmth, having a butt",
-        reviewTime: "ASAP",
+        reviewTime: "Applicant review time is Applicant review time is ASAP",
         company: "Hobby Hibernators Inc",
         about: "Are you tired of your boring office job? Do you want to feel needed and appreicated? Apply now to be our Exective Seat Warmer!",
         responsibilities: [
@@ -275,6 +274,108 @@ const jobPostingCycleObj = [
             "Ability to handle high-stress situatioons, such as a chair malfunction or relocation.",
         ]
     },
+    {
+        id: 11,
+        icon: "./img/jobPostingIcons/11.png",
+        title: "Coffee Stirrer Specialist",
+        location: "Muffinville, USA",
+        pay: "$25/hr - $42/hr",
+        employee: "exactly 49",
+        alumni: "273",
+        skill: "Precision stirring, Coffee bean whispering",
+        reviewTime: "Applicant review time is longer than the average sitcom episode",
+      
+        company: "Caffeine Symphony",
+        about: "Join our team at Caffeine Symphony and become a maestro of stirring! Dive into the world of coffee with us.",
+        responsibilities: [
+          "Expertly stir coffee with various utensils",
+          "Conduct daily coffee aroma evaluations",
+          "Attend impromptu air guitar sessions",
+          "Collaborate on coffee-themed poetry"
+        ],
+        qualifications: [
+          "Must have a black belt in coffee stirring",
+          "Experience in coffee brewing (instant coffee counts)",
+          "Ability to distinguish between light and dark roasts",
+          "Willingness to participate in coffee-themed karaoke"
+        ],
+      },
+      {
+        id: 12,
+        icon: "./img/jobPostingIcons/12.png",
+        title: "Toothpick Architect",
+        location: "Pretzel Springs, Canada",
+        pay: "$32/hr - $52/hr",
+        employee: "Around 35 toothpick enthusiasts",
+        alumni: "104",
+        skill: "Advanced toothpick engineering, Toothpick juggling",
+        reviewTime: "Applicant review time is shorter than a catnap",
+      
+        company: "Bamboo Bliss",
+        about: "Embrace the world of toothpick architecture at Bamboo Bliss! We design groundbreaking structures with the humble toothpick.",
+        responsibilities: [
+          "Construct miniature toothpick skyscrapers",
+          "Host toothpick design thinking sessions",
+          "Participate in toothpick bridge-building competitions",
+          "Develop toothpick-based art installations"
+        ],
+        qualifications: [
+          "Master's degree in Toothpickology",
+          "Ability to create toothpick mazes",
+          "Experience in toothpick origami",
+          "Expertise in the delicate art of toothpick balancing"
+        ],
+      },
+      {
+        id: 11,
+        icon: "./img/jobPostingIcons/11.png",
+        title: "Lawn Flamingo Coordinator",
+        location: "Tumbleweed Junction, USA",
+        pay: "$25/hr - $38/hr",
+        employee: "50-100",
+        alumni: "20-40",
+        skill: "Flamingo herding, Lawn decoration design",
+        reviewTime: "Applicant review time is 'when pigs fly'",
+        company: "Flamingo Fandango Enterprises",
+        about: "Join our team as a Lawn Flamingo Coordinator and be part of a flock-tastic journey. Embrace the chaos of organizing lawn ornaments that defy gravity and make lawns the talk of the town.",
+        responsibilities: [
+          "Coordinate the strategic placement of Lawn Flamingos in a synchronized dance pattern",
+          "Collaborate with the imaginary Flamingo Fashion Council on new trends",
+          "Organize team-building exercises with invisible colleagues",
+          "Ensure the happiness of our invisible Flamingo Whisperer"
+        ],
+        qualifications: [
+          "Experience in lawn decoration or imaginary animal husbandry",
+          "Ability to speak Flamingo and interpret their subtle dance moves",
+          "Expertise in color coordination with invisible objects",
+          "Proven skill in managing invisible deadlines"
+        ],
+      },
+      {
+        id: 12,
+        icon: "./img/jobPostingIcons/12.png",
+        title: "Bubble Wrap Popper",
+        location: "Whoopee City, Canada",
+        pay: "$19/hr - $28/hr",
+        employee: "10-50",
+        alumni: "5-20",
+        skill: "Precision popping, Bubble wrap sculpture",
+        reviewTime: "Applicant review time is 'in a New York minute'",
+        company: "Bubble Bursts Incorporated",
+        about: "At Bubble Bursts Incorporated, we're looking for a Bubble Wrap Popper to join our revolutionary team. Transform everyday popping into an art form and burst your way into a bubbly career.",
+        responsibilities: [
+          "Expertly pop Bubble Wrap to create mesmerizing sculptures",
+          "Invent new bubble wrap popping techniques and share them with the team",
+          "Participate in Bubble Wrap popping contests (no losers allowed)",
+          "Conduct bubble wrap sound therapy sessions for stressed colleagues"
+        ],
+        qualifications: [
+          "Mastery in the art of Bubble Wrap popping",
+          "Ability to think outside the bubble",
+          "Experience in bubble wrap recycling programs",
+          "Attention to detail, especially when counting popped bubbles"
+        ],
+      },
 ];
 
 export { jobPostingCycleObj };
