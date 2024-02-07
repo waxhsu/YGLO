@@ -588,59 +588,21 @@ const upgradeAchievementsObj = [
 
 const randomEventPool = [
 // Random NEGATIVE events
-  {
+    {
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "red",
-    message1: "You just missed the bus, and it started pouring rain as soon as you stepped outside.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    message1: "Your phone battery died, and you left your charger at home. Now you're stuck without navigation.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    message1: "You spilled coffee on your shirt just before an important meeting. Murphy's Law strikes again.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    message1: "You realized you forgot your umbrella when a sudden downpour caught you on the way to work.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_bad.png",
-    color: "red",
-    message1: "You stepped into a puddle right after polishing your shoes. The universe has a sense of humor.",
-  },
+    message1: "randomEventBad",
+    },
+
 
 // Random POSITIVE events
-  {
+{
     icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "green",
-    message1: "You found a dollar on the floor. It's a small win, but a win nonetheless!",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    message1: "Someone let you skip ahead in a long queue. Good karma is on your side!",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    message1: "You discovered that your favorite cafe is offering a buy-one-get-one-free deal on your go-to coffee.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    message1: "You received an unexpected compliment that brightened your entire day.",
-  },
-  {
-    icon: "./img/randomIcons/icon_randomevent_good.png",
-    color: "green",
-    message1: "Your favorite song played on the radio just when you needed a mood lift.",
-  },
-];
+    message1: "randomEventGood",
+},
+
+  ];
 
 const randomRejectionPool = [
     {

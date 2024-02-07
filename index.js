@@ -272,9 +272,9 @@ function shuffleArray(array) {
   }
 }
 
-shuffleArray(jobPostingCycleObj);
+// shuffleArray(jobPostingCycleObj);
 
-let jobPostingsIndex = 0;
+// let jobPostingsIndex = 0;
 
 // puts data on the left
 function updateJobPostings() {
@@ -326,6 +326,7 @@ function updateJobPostings() {
 function displayJobDetail() {
 ///// displays the first item in array ////
   const firstPosting = jobPostingCycleObj[0];
+  
   document.getElementById("job-detail-title").textContent = firstPosting.title;
   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
   document.getElementById("job-detail-pay").textContent = firstPosting.pay;
@@ -870,11 +871,11 @@ function showNotification(message, icon) {
   notificationBox.appendChild(notification);
   
 }
-// Function to close the notification
-function closeNotification() {
-  notificationBox.style.display = "none";
+// // Function to close the notification
+// function closeNotification() {
+//   notificationBox.style.display = "none";
 
-}
+// }
 
 
 // document.addEventListener("keydown", function (event) {
@@ -883,6 +884,28 @@ function closeNotification() {
 //     console.log("Enter key is disabled in this game.");
 //   }
 // });
+
+
+////////////////////////////////////////////////////////////
+/////////////////   close all notifications   //////////////
+////////////////////////////////////////////////////////////
+
+function closeElement(element) {
+  // Your close button logic here
+  element.click(); // Assuming a click event is used to close the element
+}
+
+// Function to close all elements with the specified class
+function closeAllElements(className) {
+  const closeButtons = document.querySelectorAll("." + className);
+  closeButtons.forEach(closeElement);
+}
+
+// Event listener for the "Close All" button
+document.getElementById("close-all").addEventListener("click", function () {
+  closeAllElements("close-button"); // Replace "close-button" with the actual class of your close buttons
+});
+
 
 
 

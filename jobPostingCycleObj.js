@@ -327,8 +327,8 @@ const jobPostingCycleObj = [
         ],
       },
       {
-        id: 11,
-        icon: "./img/jobPostingIcons/11.png",
+        id: 13,
+        icon: "./img/jobPostingIcons/13.png",
         title: "Lawn Flamingo Coordinator",
         location: "Tumbleweed Junction, USA",
         pay: "$25/hr - $38/hr",
@@ -352,8 +352,8 @@ const jobPostingCycleObj = [
         ],
       },
       {
-        id: 12,
-        icon: "./img/jobPostingIcons/12.png",
+        id: 14,
+        icon: "./img/jobPostingIcons/14.png",
         title: "Bubble Wrap Popper",
         location: "Whoopee City, Canada",
         pay: "$19/hr - $28/hr",
