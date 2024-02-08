@@ -272,7 +272,7 @@ function shuffleArray(array) {
   }
 }
 
-// shuffleArray(jobPostingCycleObj);
+shuffleArray(jobPostingCycleObj);
 
 // let jobPostingsIndex = 0;
 
@@ -473,6 +473,8 @@ function checkUpgradeAchievement(index) {
 /////////////////////////////////////////////////////////
 /////////////////   SHOW ACHIEVEMENTS   /////////////////
 /////////////////////////////////////////////////////////
+
+const notificationBox = document.getElementById("notification-box");
 
 // Function to display achievements in the notification box
 function showAchievement(message1, message2, icon) {
@@ -826,56 +828,6 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
 }
-
-
-////////////////////////////////////////////////////////////
-////////////////////   SHOW NOTIFICATIONS   ////////////////
-////////////////////////////////////////////////////////////
-
-const notificationBox = document.getElementById("notification-box");
-
-// Function to show a notification
-function showNotification(message, icon) {
-  playRandomInboxSound();
-  const notification = document.createElement("div");
-  notification.className = "notification";
-  
-
-  // Adding an icon if provided
-  if (icon) {
-    const iconElement = document.createElement("img");
-    iconElement.src = icon;
-    iconElement.className = "notification-icon";
-    notification.appendChild(iconElement);
-  }
-
-  const message1Element = document.createElement("div");
-  message1Element.textContent = message.message1;
-  message1Element.className = "event-message1";
-
-  const message2Element = document.createElement("div");
-  message2Element.textContent = message.message2;
-  message2Element.className = "event-message2";
-
-  const closeButton = document.createElement("button");
-  closeButton.textContent = "X";
-  closeButton.className = "close-button";
-  closeButton.addEventListener("click", () => {
-    notificationBox.removeChild(notification);
-  });
-
-  notification.appendChild(message1Element);
-  notification.appendChild(message2Element);
-  notification.appendChild(closeButton);
-
-  notificationBox.appendChild(notification);
-  
-}
-// // Function to close the notification
-// function closeNotification() {
-//   notificationBox.style.display = "none";
-
-// }
 
 
 // document.addEventListener("keydown", function (event) {
