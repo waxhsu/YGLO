@@ -255,8 +255,142 @@ function clickForJobApplications() {
   playRandomClickSound();
 }
 
-const clickButton = document.getElementById("click-button");
-clickButton.addEventListener("click", clickForJobApplications);
+const applyButton = document.getElementById("apply-button");
+applyButton.addEventListener("click", clickForJobApplications);
+
+
+
+
+////////////////////////////////////////////////////////////
+///////////////////   ATTACHMENTS  PAGE   //////////////////
+////////////////////////////////////////////////////////////
+
+import { coverLetterObj } from './coverLetterObj.js';
+
+// const attachPage = document.getElementById("attach-page");
+// const attachButton = document.getElementById("attach-button");
+// const textBox = document.getElementById("textBox");
+
+// // Set the textarea as disabled to prevent direct user input
+// textBox.setAttribute("disabled", "true");
+
+// attachButton.addEventListener("click", toggleAttachPage);
+
+// let currentLetterIndex = 0;
+// let currentParagraphIndex = 0;
+// let isDisplayingLetter = false;
+
+// function toggleAttachPage() {
+//   attachPage.style.display = (attachPage.style.display === "none") ? "flex" : "none";
+//   const achievementsList = document.getElementById("achievements-list");
+//   achievementsList.innerHTML = "";
+
+//   const closeButton = document.createElement("button");
+//   closeButton.textContent = "X";
+//   closeButton.className = "close-button";
+//   closeButton.addEventListener("click", toggleAttachPage);
+
+//   attachPage.appendChild(closeButton);
+
+//   // Add keypress event listener
+//   document.addEventListener("keypress", showNextLetter);
+// }
+
+// function showNextLetter() {
+//   const currentParagraph = coverLetterObj[currentParagraphIndex].letter;
+
+//   if (!isDisplayingLetter) {
+//     // Display the next letter in the current paragraph
+//     textBox.value += currentParagraph[currentLetterIndex];
+
+//     // Move to the next letter index
+//     currentLetterIndex++;
+
+//     // Check if all letters in the current paragraph are displayed
+//     if (currentLetterIndex === currentParagraph.length) {
+//       currentLetterIndex = 0; // Reset letter index
+//       currentParagraphIndex++; // Move to the next paragraph
+//       textBox.value += '\n'; // Move to the next line for the next paragraph
+//     }
+
+//     // Check if all paragraphs are displayed
+//     if (currentParagraphIndex === coverLetterObj.length) {
+//       // Remove the keypress event listener when all paragraphs are displayed
+//       document.removeEventListener("keypress", showNextLetter);
+//     }
+    
+//     isDisplayingLetter = true;
+
+//     // Delay before allowing the next keypress to display the next letter
+//     setTimeout(() => {
+//       isDisplayingLetter = false;
+//     }, 1);
+//   }
+// }
+
+const attachPage = document.getElementById("attach-page");
+const attachButton = document.getElementById("attach-button");
+attachButton.addEventListener("click", toggleAttachPage);
+
+let currentLetterIndex = 0;
+let currentParagraphIndex = 0;
+let isDisplayingLetter = false;
+
+function toggleAttachPage() {
+  attachPage.style.display = (attachPage.style.display === "none") ? "flex" : "none";
+  const achievementsList = document.getElementById("achievements-list");
+  achievementsList.innerHTML = "";
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+  closeButton.addEventListener("click", toggleAttachPage);
+
+  attachPage.appendChild(closeButton);
+
+  // Add keypress event listener
+  document.addEventListener("keypress", showNextLetter);
+}
+
+function showNextLetter(event) {
+  const textBox = document.getElementById("textBox");
+  const currentParagraph = coverLetterObj[currentParagraphIndex].letter;
+
+  if (!isDisplayingLetter) {
+    // Prevent the player's input from being inserted into the textarea
+    event.preventDefault();
+
+    // Display the next letter in the current paragraph
+    textBox.value += currentParagraph[currentLetterIndex];
+
+    // Move to the next letter index
+    currentLetterIndex++;
+
+    // Check if all letters in the current paragraph are displayed
+    if (currentLetterIndex === currentParagraph.length) {
+      currentLetterIndex = 0; // Reset letter index
+      currentParagraphIndex++; // Move to the next paragraph
+      textBox.value += '\n'; // Move to the next line for the next paragraph
+    }
+
+    // Check if all paragraphs are displayed
+    if (currentParagraphIndex === coverLetterObj.length) {
+      // Remove the keypress event listener when all paragraphs are displayed
+      document.removeEventListener("keypress", showNextLetter);
+    }
+
+    isDisplayingLetter = true;
+
+    // Delay before allowing the next keypress to display the next letter
+    setTimeout(() => {
+      isDisplayingLetter = false;
+
+      // Move the cursor to the end of the text
+      textBox.scrollTop = textBox.scrollHeight;
+    }, 1);
+  }
+}
+
 
 
 ////////////////////////////////////////////////////////////
@@ -272,7 +406,7 @@ function shuffleArray(array) {
   }
 }
 
-shuffleArray(jobPostingCycleObj);
+// shuffleArray(jobPostingCycleObj);
 
 // let jobPostingsIndex = 0;
 
@@ -287,6 +421,12 @@ function updateJobPostings() {
     if (index === 0) {
       jobPostingItem.classList.add("clicked-posting");
     }
+    if (index === jobPostingCycleObj.length - 1) {
+      jobPostingItem.style.display = "none";
+    }
+    if (index === jobPostingCycleObj.length - 2) {
+      jobPostingItem.style.display = "none";
+    }    
 
     const jobPostingIcon = document.createElement("img");
     jobPostingIcon.src = posting.icon;
@@ -320,6 +460,7 @@ function updateJobPostings() {
 
     jobPostingsElement.appendChild(jobPostingItem);
   });
+  
   displayJobDetail();
 }
 
@@ -522,11 +663,22 @@ function showAchievement(message1, message2, icon) {
 ////////////////////////////////////////////////////////////
 
 const achievementsPage = document.getElementById("achievements-page");
+const achievementsButton = document.getElementById("achievements-button");
+achievementsButton.addEventListener("click", toggleAchievementsPage);
 
 function toggleAchievementsPage() {
   achievementsPage.style.display = (achievementsPage.style.display === "none") ? "flex" : "none";
   const achievementsList = document.getElementById("achievements-list");
   achievementsList.innerHTML = "";
+
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+  closeButton.addEventListener("click", toggleAchievementsPage);
+  
+
+  achievementsPage.appendChild(closeButton)
 
   displayAchievements(mainAchievementsObj);
   displayAchievements(upgradeAchievementsObj);
@@ -559,15 +711,16 @@ function displayAchievements(achievementsArray) {
     }
 
     achievementsList.appendChild(achievementListDiv);
+    
   });
 }
 
 
-document.addEventListener("keydown", function(event) {
-  if (event.key === "a") {
-    toggleAchievementsPage();
-  }
-});
+// document.addEventListener("keydown", function(event) {
+//   if (event.key === "a") {
+//     toggleAchievementsPage();
+//   }
+// });
 
 
 

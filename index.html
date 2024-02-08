@@ -42,12 +42,11 @@
 
 
 
-		<div id="achievements-trigger" onclick="toggleAchievementsPage()">
+		<button id="achievements-button">
 			'A'
-		</div>
+		</button>
 
 		<div id="achievements-page" style="display: none;">
-			<button class="close-button" onclick="toggleAchievementsPage()">X</button>
 			<h1 class="banner">Achievements Page</h1>
 			<div id="achievements-list"></div>
     	</div>
@@ -62,7 +61,6 @@
 
 	<div id="centerUI">
 		<div id="topCenterUI">
-			<!-- <h1 class="banner">Job Desc</h1> -->
 			<div id="job-detail-title">TITLE</div>
 			<div id="job-detail-place">Company - Location</div>
 			
@@ -91,8 +89,17 @@
 		</div>
 		
 		<div id="click-button-box">
-			<button id="click-button">Apply</button>
+			<button id="apply-button" class="click-button">Apply</button>
+			<button id="attach-button" class="click-button">Attach</button>
+
+			<div id="attach-page" style="display: none;">
+				<h1 class="banner">Attach/Type Your Cover Letter</h1>
+				<textarea type="text" id="textBox" style="resize: none" rows="50" cols="50" value="you get additional motivation from attaching cover letter"></textarea>
+				<button id="submit-button" class="click-button">Submit & Send</button>
+			</div>
+
 		</div>
+		
 		
 		<div id="bottomCenterUI">
 			<h1 class="banner">About</h1>

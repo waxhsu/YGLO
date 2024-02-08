@@ -258,7 +258,7 @@ const jobPostingCycleObj = [
         employee: "1.7",
         alumni: "7",
         skill: "warmth, having a butt",
-        reviewTime: "Applicant review time is Applicant review time is ASAP",
+        reviewTime: "Applicant review time is ASAP",
         company: "Hobby Hibernators Inc",
         about: "Are you tired of your boring office job? Do you want to feel needed and appreicated? Apply now to be our Exective Seat Warmer!",
         responsibilities: [
