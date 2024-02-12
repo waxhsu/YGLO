@@ -1653,3 +1653,70 @@ function cycleJobPostings(clickedIndex) {
 }
 
 
+
+
+
+
+// ATTACHMENt minIGAME
+
+const attachPage = document.getElementById("attach-page");
+const attachButton = document.getElementById("attach-button");
+const textBox = document.getElementById("textBox");
+
+// Set the textarea as disabled to prevent direct user input
+textBox.setAttribute("disabled", "true");
+
+attachButton.addEventListener("click", toggleAttachPage);
+
+let currentLetterIndex = 0;
+let currentParagraphIndex = 0;
+let isDisplayingLetter = false;
+
+function toggleAttachPage() {
+  if (attachPage.style.display === "none") {
+    attachPage.style.display = "flex";
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.className = "close-button";
+    closeButton.addEventListener("click", toggleAttachPage);
+    attachPage.appendChild(closeButton);
+
+    // Reset indexes and show a random cover letter
+    currentLetterIndex = 0;
+    currentParagraphIndex = 0;
+    randomCoverLetterIndex();
+  } else {
+    attachPage.style.display = "none";
+    document.removeEventListener("keypress", showNextLetter);
+  }
+}
+
+function randomCoverLetterIndex() {
+  const randomIndex = Math.floor(Math.random() * coverLetterPool.length);
+  const randomCoverLetter = coverLetterPool[randomIndex];
+  showNextLetter(randomCoverLetter);
+}
+
+function showNextLetter(randomCoverLetter) {
+  const currentParagraph = randomCoverLetter.letter;
+
+  if (!isDisplayingLetter) {
+    // Display all lines in the current paragraph
+    for (let i = 0; i < currentParagraph.length; i++) {
+      textBox.value += currentParagraph[i];
+      textBox.value += '\n'; // Move to the next line for the next paragraph
+    }
+
+    // Remove the keypress event listener after displaying all paragraphs
+    document.removeEventListener("keypress", showNextLetter);
+
+    isDisplayingLetter = true;
+
+    // Delay before allowing the next keypress
+    setTimeout(() => {
+      isDisplayingLetter = false;
+    }, 1);
+  }
+}
+
+

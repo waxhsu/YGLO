@@ -1,7 +1,52 @@
-const coverLetterObj = [
+const coverLetterPool = [
     {
-        id: 0,
-        letter: 
+        letter: [
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+            "first ",
+        ],
+    },
+    {
+        letter: [
+            "second ",
+            "second ",
+            "second ",
+            "second ",
+            "second ",
+            "second ",
+            "second ",
+            "second ",
+
+        ],
+    },
+    {
+        letter: [
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+            "third ",
+        ],
+    },
+];
+
+
+
+export { coverLetterPool };
+
         // [
         //     "Dea",
         //     "r H",
@@ -182,38 +227,3 @@ const coverLetterObj = [
         //     "eed",
         //     "s."
         // ]
-        [
-            "first cover letter 1",
-            "first cover letter 2",
-            "first cover letter 3",
-            "first cover letter 4",
-            "first cover letter 5",
-        ],
-    },
-    {
-        id: 1,
-        letter: 
-        [
-            "second cover letter 6",
-            "second cover letter 7",
-            "second cover letter 8",
-            "second cover letter 9",
-            "second cover letter 10",
-        ],
-    },
-    {
-        id: 2,
-        letter: 
-        [
-            "third cover letter 11",
-            "third cover letter 12",
-            "third cover letter 13",
-            "third cover letter 14",
-            "third cover letter 15",
-        ],
-    },
-];
-
-
-
-export { coverLetterObj };
