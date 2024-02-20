@@ -13,7 +13,7 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 5;
+let clickValue = 11113.2;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -253,7 +253,7 @@ function applyJobApplication() {
   cycleJobPostings(); //wtf
   updateJobPostings();
   playRandomClickSound();
-  
+
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
 
@@ -289,7 +289,7 @@ function toggleAttachPage() {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "close-button";
+  closeButton.className = "div-close-button";
   closeButton.addEventListener("click", toggleAttachPage);
 
   attachPage.appendChild(closeButton);
@@ -587,6 +587,7 @@ function showAchievement(message1, message2, icon) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
+  notification.style.backgroundColor = "#83ffd6"
 
   const iconElement = document.createElement("img");
   iconElement.className = "icon";
@@ -639,7 +640,7 @@ function toggleAchievementsPage() {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "close-button";
+  closeButton.className = "div-close-button";
   closeButton.addEventListener("click", toggleAchievementsPage);
   
 
@@ -703,7 +704,7 @@ function randomEvent() {
   const { motivationRandomCalc, jobAppRandomCalc } = applyRandomEventEffect(event);
   const goodOrBad = event.color
 
-  if (goodOrBad === '#ff5fbaf'){
+  if (goodOrBad === '#ff5aff'){
     showBadRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
   } else if (goodOrBad === '#73ddff') {
     showGoodRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
@@ -716,8 +717,8 @@ function applyRandomEventEffect(event) {
   /////////////////////////////////////////////////////////
   // ADD MATH EQUATION FOR A PROPER GAME PROGRESSION VALUES
   /////////////////////////////////////////////////////////
-  if (event.color === '#ff5fbaf') {
-    // Generate random values within the specified range for '#ff5fbaf'
+  if (event.color === '#ff5aff') {
+    // Generate random values within the specified range for '#ff5aff'
     effect_motivation = getRandomInRange(-0.321, -0.197);
     effect_apps = getRandomInRange(-0.148, -0.121);
   } else if (event.color === '#73ddff') {
@@ -732,7 +733,7 @@ function applyRandomEventEffect(event) {
   if (event.color === '#73ddff' && motivation < ((shopObj[0].cost))) {
     motivation += 1;
     return { motivationRandomCalc: 0, jobAppRandomCalc: effect_apps * jobApplications};
-  } else if (event.color === '#ff5fbaf' && motivation > 0) {
+  } else if (event.color === '#ff5aff' && motivation > 0) {
     motivation -= 1;
   }
 

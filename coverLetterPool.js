@@ -1,41 +1,23 @@
 const coverLetterPool = [
     {
+        id: 0,
         letter: [
-            "first ",
-            "first ",
-            "first ",
-            "first ",
-            "first ",
-            "first ",
-            "first ",
-            "first ",
             "first ",
             "first ",
             "first ",
         ],
     },
     {
+        id: 1,
         letter: [
             "second ",
             "second ",
             "second ",
-            "second ",
-            "second ",
-            "second ",
-            "second ",
-            "second ",
-
         ],
     },
     {
+        id: 2,
         letter: [
-            "third ",
-            "third ",
-            "third ",
-            "third ",
-            "third ",
-            "third ",
-            "third ",
             "third ",
             "third ",
             "third ",
