@@ -13,7 +13,7 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 11113.2;
+let clickValue = 1.2;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -148,7 +148,7 @@ function updateShop() {
     iconElement.className = "shop-icon";
 
     const shopItem = document.createElement("div");
-    shopItem.className = "shop-item";
+    shopItem.className = `shop-item ${motivation < shop.cost ? 'greyed-out' : ''}`;
     
     const titleContainer = document.createElement("div");
     titleContainer.className = "title-container";
@@ -195,9 +195,9 @@ function updateShop() {
       shopElement.appendChild(shopItem);
     } else {
       // Grey out and hide the items that don't meet the condition
-      shopItem.classList.add("greyed-out");
       shopItem.style.display = "none";
     }
+
   });
 }
 
@@ -299,37 +299,37 @@ function toggleAttachPage() {
 }
 
 
-function showNextLetter() {
-  const currentParagraph = coverLetterPool[currentParagraphIndex].letter;
+// function showNextLetter() {
+//   const currentParagraph = coverLetterPool[currentParagraphIndex].letter;
 
-  if (!isDisplayingLetter) {
-    // Display the next letter in the current paragraph
-    textBox.value += currentParagraph[currentLetterIndex];
+//   if (!isDisplayingLetter) {
+//     // Display the next letter in the current paragraph
+//     textBox.value += currentParagraph[currentLetterIndex];
 
-    // Move to the next letter index
-    currentLetterIndex++;
+//     // Move to the next letter index
+//     currentLetterIndex++;
 
-    // Check if all letters in the current paragraph are displayed
-    if (currentLetterIndex === currentParagraph.length) {
-      currentLetterIndex = 0; // Reset letter index
-      currentParagraphIndex++; // Move to the next paragraph
-      textBox.value += '\n'; // Move to the next line for the next paragraph
-    }
+//     // Check if all letters in the current paragraph are displayed
+//     if (currentLetterIndex === currentParagraph.length) {
+//       currentLetterIndex = 0; // Reset letter index
+//       currentParagraphIndex++; // Move to the next paragraph
+//       textBox.value += '\n'; // Move to the next line for the next paragraph
+//     }
 
-    // Check if all paragraphs are displayed
-    if (currentParagraphIndex === coverLetterPool.length) {
-      // Remove the keypress event listener when all paragraphs are displayed
-      document.removeEventListener("keypress", showNextLetter);
-    }
+//     // Check if all paragraphs are displayed
+//     if (currentParagraphIndex === coverLetterPool.length) {
+//       // Remove the keypress event listener when all paragraphs are displayed
+//       document.removeEventListener("keypress", showNextLetter);
+//     }
     
-    isDisplayingLetter = true;
+//     isDisplayingLetter = true;
 
-    // Delay before allowing the next keypress to display the next letter
-    setTimeout(() => {
-      isDisplayingLetter = false;
-    }, 1);
-  }
-}
+//     // Delay before allowing the next keypress to display the next letter
+//     setTimeout(() => {
+//       isDisplayingLetter = false;
+//     }, 1);
+//   }
+// }
 
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", applyJobApplicationWithCV);
@@ -993,7 +993,7 @@ updateJobPostings();
 setInterval(autoGenerateJobApplications, 1000);
 setInterval(checkMainAchievement, 1000);
 
-
+setInterval(updateShop, 1000)
 setInterval(randomRejection, randomRejectInterval);
 setInterval(randomEvent, randomEventInterval);
 
