@@ -253,6 +253,11 @@ function applyJobApplication() {
   cycleJobPostings(); //wtf
   updateJobPostings();
   playRandomClickSound();
+  
+  currentLetterIndex = 0;
+  currentParagraphIndex = 0;
+
+  textBox.value = "";
 }
 
 const applyButton = document.getElementById("apply-button");
@@ -698,9 +703,9 @@ function randomEvent() {
   const { motivationRandomCalc, jobAppRandomCalc } = applyRandomEventEffect(event);
   const goodOrBad = event.color
 
-  if (goodOrBad === 'red'){
+  if (goodOrBad === '#ff5fbaf'){
     showBadRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
-  } else if (goodOrBad === 'green') {
+  } else if (goodOrBad === '#73ddff') {
     showGoodRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
   }
 }
@@ -711,12 +716,12 @@ function applyRandomEventEffect(event) {
   /////////////////////////////////////////////////////////
   // ADD MATH EQUATION FOR A PROPER GAME PROGRESSION VALUES
   /////////////////////////////////////////////////////////
-  if (event.color === 'red') {
-    // Generate random values within the specified range for 'red'
+  if (event.color === '#ff5fbaf') {
+    // Generate random values within the specified range for '#ff5fbaf'
     effect_motivation = getRandomInRange(-0.321, -0.197);
     effect_apps = getRandomInRange(-0.148, -0.121);
-  } else if (event.color === 'green') {
-    // Generate random values within the specified range for 'green'
+  } else if (event.color === '#73ddff') {
+    // Generate random values within the specified range for '#73ddff'
     effect_motivation = getRandomInRange(0.0027, 0.0151);
     effect_apps = getRandomInRange(0.0111, 0.0121);
   }
@@ -724,10 +729,10 @@ function applyRandomEventEffect(event) {
   /////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////
 
-  if (event.color === 'green' && motivation < ((shopObj[0].cost))) {
+  if (event.color === '#73ddff' && motivation < ((shopObj[0].cost))) {
     motivation += 1;
     return { motivationRandomCalc: 0, jobAppRandomCalc: effect_apps * jobApplications};
-  } else if (event.color === 'red' && motivation > 0) {
+  } else if (event.color === '#ff5fbaf' && motivation > 0) {
     motivation -= 1;
   }
 
