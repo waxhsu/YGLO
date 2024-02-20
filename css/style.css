@@ -609,6 +609,14 @@ ul, li {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #topUI {
+    height: 45px;
+  }
+  .deepFuckingValue, .value-display, .value-display-text {
+    font-size: 18px;
+  }
+
   #job-detail-title {
     font-size: 30px;
   }
