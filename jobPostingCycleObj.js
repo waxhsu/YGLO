@@ -227,7 +227,7 @@ const jobPostingCycleObj = [
     {
         id: 9,
         icon: "./img/jobPostingIcons/9.png",
-        title: "Professional Meeting Attendant",
+        title: "Pro Meeting Attendant",
         location: "Winnipeg, Canada",
         pay: "$41,000/yr - $101,000/yr",
         employee: "100-150",
