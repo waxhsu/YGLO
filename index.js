@@ -13,7 +13,7 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 1.2;
+let clickValue = 10000000.2;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -165,7 +165,7 @@ function updateShop() {
 
     const costElement = document.createElement("div");
     costElement.className = "item-cost";
-    costElement.textContent = `Cost: -${shop.cost} Motives`;
+    costElement.textContent = `-${shop.cost} Motivation`;
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps";
@@ -268,28 +268,24 @@ applyButton.addEventListener("click", applyJobApplication);
 ///////////////////   ATTACHMENTS  PAGE   //////////////////
 ////////////////////////////////////////////////////////////
 
-import { coverLetterPool } from './coverLetterPool.js';
+import {coverLetterPool} from './coverLetterPool.js';
 
 const attachPage = document.getElementById("attach-page");
 const attachButton = document.getElementById("attach-button");
-const textBox = document.getElementById("textBox");
-
-// Set the textarea as disabled to prevent direct user input
-textBox.setAttribute("disabled", "true");
-
 attachButton.addEventListener("click", toggleAttachPage);
 
 let currentLetterIndex = 0;
 let currentParagraphIndex = 0;
 let isDisplayingLetter = false;
-let currentId = 0;
 
 function toggleAttachPage() {
   attachPage.style.display = (attachPage.style.display === "none") ? "flex" : "none";
+  const achievementsList = document.getElementById("achievements-list");
+  achievementsList.innerHTML = "";
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "div-close-button";
+  closeButton.className = "close-button";
   closeButton.addEventListener("click", toggleAttachPage);
 
   attachPage.appendChild(closeButton);
@@ -298,38 +294,39 @@ function toggleAttachPage() {
   document.addEventListener("keypress", showNextLetter);
 }
 
+function showNextLetter() {
+  const textBox = document.getElementById("textBox");
+  const currentParagraph = coverLetterPool[currentParagraphIndex].letter;
 
-// function showNextLetter() {
-//   const currentParagraph = coverLetterPool[currentParagraphIndex].letter;
+  if (!isDisplayingLetter) {
+    // Display the next letter in the current paragraph
+    textBox.value += currentParagraph[currentLetterIndex];
 
-//   if (!isDisplayingLetter) {
-//     // Display the next letter in the current paragraph
-//     textBox.value += currentParagraph[currentLetterIndex];
+    // Move to the next letter index
+    currentLetterIndex++;
 
-//     // Move to the next letter index
-//     currentLetterIndex++;
+    // Check if all letters in the current paragraph are displayed
+    if (currentLetterIndex === currentParagraph.length) {
+      currentLetterIndex = 0; // Reset letter index
+      currentParagraphIndex++; // Move to the next paragraph
+      textBox.value += '\n'; // Move to the next line for the next paragraph
+    }
 
-//     // Check if all letters in the current paragraph are displayed
-//     if (currentLetterIndex === currentParagraph.length) {
-//       currentLetterIndex = 0; // Reset letter index
-//       currentParagraphIndex++; // Move to the next paragraph
-//       textBox.value += '\n'; // Move to the next line for the next paragraph
-//     }
-
-//     // Check if all paragraphs are displayed
-//     if (currentParagraphIndex === coverLetterPool.length) {
-//       // Remove the keypress event listener when all paragraphs are displayed
-//       document.removeEventListener("keypress", showNextLetter);
-//     }
+    // Check if all paragraphs are displayed
+    if (currentParagraphIndex === coverLetterPool.length) {
+      // Remove the keypress event listener when all paragraphs are displayed
+      document.removeEventListener("keypress", showNextLetter);
+    }
     
-//     isDisplayingLetter = true;
+    isDisplayingLetter = true;
 
-//     // Delay before allowing the next keypress to display the next letter
-//     setTimeout(() => {
-//       isDisplayingLetter = false;
-//     }, 1);
-//   }
-// }
+    // Delay before allowing the next keypress to display the next letter
+    setTimeout(() => {
+      isDisplayingLetter = false;
+    }, 1);
+  }
+}
+
 
 const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", applyJobApplicationWithCV);
@@ -341,10 +338,10 @@ function applyJobApplicationWithCV() {
   updateJobApplications();
   updateMotivation();
   updateRejection();
-  cycleJobPostings(); //wtf
-  updateJobPostings();
   playRandomClickSound();
   toggleAttachPage();
+  // cycleJobPostings(); //wtf
+  // updateJobPostings();
 
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
@@ -362,20 +359,34 @@ function applyJobApplicationWithCV() {
 ////////////////////   JOB POSTINGS   //////////////////////
 ////////////////////////////////////////////////////////////
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function shuffleArray(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//       }
+//     }
+    
+//     shuffleArray(jobPostingCycleObj);
+    
 import { jobPostingCycleObj } from './jobPostingCycleObj.js';
 
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// shuffleArray(jobPostingCycleObj);
-
-// let jobPostingsIndex = 0;
-
-// puts data on the left
 function updateJobPostings() {
   const jobPostingsElement = document.getElementById("job-postings");
   jobPostingsElement.innerHTML = "";
@@ -383,15 +394,6 @@ function updateJobPostings() {
   jobPostingCycleObj.forEach((posting, index) => {
     const jobPostingItem = document.createElement("div");
     jobPostingItem.className = "job-posting-item";
-    if (index === 0) {
-      jobPostingItem.classList.add("clicked-posting");
-    }
-    if (index === jobPostingCycleObj.length - 1) {
-      jobPostingItem.style.display = "none";
-    }
-    if (index === jobPostingCycleObj.length - 2) {
-      jobPostingItem.style.display = "none";
-    }    
 
     const jobPostingIcon = document.createElement("img");
     jobPostingIcon.src = posting.icon;
@@ -423,107 +425,85 @@ function updateJobPostings() {
     jobPostingItem.appendChild(jobPostingIcon);
     jobPostingItem.appendChild(jobPostingInfo);
 
+    jobPostingItem.addEventListener("click", function () {
+      // Call the displayJobDetail function when a job posting item is clicked
+      displayJobDetail(index);
+    });
+
     jobPostingsElement.appendChild(jobPostingItem);
   });
-  
-  displayJobDetail();
 }
 
-function displayJobDetail() {
-///// displays the first item in array ////
-  const firstPosting = jobPostingCycleObj[0];
-  
-  document.getElementById("job-detail-title").textContent = firstPosting.title;
-  document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
-  document.getElementById("job-detail-pay").textContent = firstPosting.pay;
-  document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
-  document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
-  document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and more`;
-  document.getElementById("job-detail-reviewTime").textContent = `${firstPosting.reviewTime}`;
-  document.getElementById("job-detail-about").textContent = firstPosting.about;
+// displayJobDetail();
 
-  const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-  responsibilitiesElement.innerHTML = "";
-
-  const responsibilitiesList = document.createElement("ul");
-  firstPosting.responsibilities.forEach(responsibility => {
-    const listItem = document.createElement("li");
-    listItem.textContent = responsibility;
-    responsibilitiesList.appendChild(listItem);
-  });
-
-  responsibilitiesElement.appendChild(responsibilitiesList);
-
-  const qualificationsElement = document.getElementById("job-detail-qualifications");
-  qualificationsElement.innerHTML = "";
-
-  const qualificationsList = document.createElement("ul");
-  firstPosting.qualifications.forEach(qualification => {
-    const listItem = document.createElement("li");
-    listItem.textContent = qualification;
-    qualificationsList.appendChild(listItem);
-  });
-
-  qualificationsElement.appendChild(qualificationsList);
-
-
-///// displays the clicked item in array ////
-  // Add onclick event to each job posting item
+function displayJobDetail(index) {
   const jobPostingsItems = document.querySelectorAll(".job-posting-item");
-  jobPostingsItems.forEach((item, index) => {
-    const clickedPosting = jobPostingCycleObj[index];
-    item.addEventListener("click", function () {
-      jobPostingsItems.forEach(postingItem => {
-        postingItem.classList.remove("clicked-posting");
-      });
-
-      // Add the "clicked-posting" class to the clicked element
-      item.classList.add("clicked-posting");
-      
-      document.getElementById("job-detail-title").textContent = clickedPosting.title;
-      document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
-      document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-      document.getElementById("job-detail-about").textContent = clickedPosting.about;
-      document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-      document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
-      document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
-      document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
-      document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
-
-
-      const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-      responsibilitiesElement.innerHTML = "";
-
-      const responsibilitiesList = document.createElement("ul");
-      clickedPosting.responsibilities.forEach(responsibility => {
-        const listItem = document.createElement("li");
-        listItem.textContent = responsibility;
-        responsibilitiesList.appendChild(listItem);
-      });
-
-      responsibilitiesElement.appendChild(responsibilitiesList);
-
-      const qualificationsElement = document.getElementById("job-detail-qualifications");
-      qualificationsElement.innerHTML = "";
-
-      const qualificationsList = document.createElement("ul");
-      clickedPosting.qualifications.forEach(qualification => {
-        const listItem = document.createElement("li");
-        listItem.textContent = qualification;
-        qualificationsList.appendChild(listItem);
-      });
-
-      qualificationsElement.appendChild(qualificationsList);
-
-      cycleJobPostings(index);
-    });
+  jobPostingsItems.forEach(postingItem => {
+    postingItem.classList.remove("clicked-posting");
   });
-}
 
-function cycleJobPostings(clickedIndex) {
-  const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
-  jobPostingCycleObj.push(removedPosting);
-}
+  jobPostingsItems[index].classList.add("clicked-posting");
+
+  const clickedPosting = jobPostingCycleObj[index];
+        
+        document.getElementById("job-detail-title").textContent = clickedPosting.title;
+        document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
+        document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+        document.getElementById("job-detail-about").textContent = clickedPosting.about;
+        document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+        document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
+        document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
+        document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
+        document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
+  
+  
+        const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+        responsibilitiesElement.innerHTML = "";
+  
+        const responsibilitiesList = document.createElement("ul");
+        clickedPosting.responsibilities.forEach(responsibility => {
+          const listItem = document.createElement("li");
+          listItem.textContent = responsibility;
+          responsibilitiesList.appendChild(listItem);
+        });
+  
+        responsibilitiesElement.appendChild(responsibilitiesList);
+  
+        const qualificationsElement = document.getElementById("job-detail-qualifications");
+        qualificationsElement.innerHTML = "";
+  
+        const qualificationsList = document.createElement("ul");
+        clickedPosting.qualifications.forEach(qualification => {
+          const listItem = document.createElement("li");
+          listItem.textContent = qualification;
+          qualificationsList.appendChild(listItem);
+        });
+  
+        qualificationsElement.appendChild(qualificationsList);
+  
+        cycleJobPostings(index);
+      }
+
+
+      updateJobPostings();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

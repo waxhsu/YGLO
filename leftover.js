@@ -1450,208 +1450,6 @@ function updateMotivation() {
 /// where i left off
 
 
-import { jobPostingCycleObj } from './jobPostingCycleObj.js';
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
-
-// shuffleArray(jobPostingCycleObj);
-
-let jobPostingsIndex = 0;
-let currentJobIndex = 0;
-
-function updateJobPostings() {
-  const jobPostingsElement = document.getElementById("job-postings");
-  jobPostingsElement.innerHTML = "";
-
-  jobPostingCycleObj.forEach((posting, index) => {
-    const jobPostingItem = document.createElement("div");
-    jobPostingItem.className = "job-posting-item";
-    if (index === 0) {
-      jobPostingItem.classList.add("clicked-posting");
-    }
-
-    const jobPostingIcon = document.createElement("img");
-    jobPostingIcon.src = posting.icon;
-    jobPostingIcon.className = "icon";
-    jobPostingIcon.alt = "ICON";
-
-    const jobPostingTitle = document.createElement("div");
-    jobPostingTitle.className = "job-posting-title";
-    jobPostingTitle.textContent = posting.title;
-
-    const jobPostingCompany = document.createElement("div");
-    jobPostingCompany.className = "job-posting-company";
-    jobPostingCompany.textContent = posting.company;
-
-    const jobPostingLocation = document.createElement("div");
-    jobPostingLocation.className = "job-posting-location";
-    jobPostingLocation.textContent = posting.location;
-
-    const jobPostingPay = document.createElement("div");
-    jobPostingPay.className = "job-posting-pay";
-    jobPostingPay.textContent = posting.pay;
-
-    const jobPostingInfo = document.createElement("div");
-    jobPostingInfo.className = "job-posting-box";
-    jobPostingInfo.appendChild(jobPostingTitle);
-    jobPostingInfo.appendChild(jobPostingCompany);
-    jobPostingInfo.appendChild(jobPostingLocation);
-    jobPostingInfo.appendChild(jobPostingPay);
-    jobPostingItem.appendChild(jobPostingIcon);
-    jobPostingItem.appendChild(jobPostingInfo);
-
-    jobPostingsElement.appendChild(jobPostingItem);
-  });
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  updateJobPostings();
-  displayJobDetail();
-});
-
-function displayJobDetail() {
-  // const nextPosting = jobPostingCycleObj[0];
-  // document.getElementById("job-detail-title").textContent = nextPosting.title;
-  // document.getElementById("job-detail-place").textContent = `${nextPosting.company} · ${nextPosting.location}`;
-  // document.getElementById("job-detail-pay").textContent = nextPosting.pay;
-  // document.getElementById("job-detail-employee").textContent = `${nextPosting.employee} employees`;
-  // document.getElementById("job-detail-alumni").textContent = `${nextPosting.alumni} alumni work here`;
-  // document.getElementById("job-detail-skill").textContent = `Skills: ${nextPosting.skill}, and more`;
-  // document.getElementById("job-detail-reviewTime").textContent = `${nextPosting.reviewTime}`;
-  // document.getElementById("job-detail-about").textContent = nextPosting.about;
-
-  // const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-  // responsibilitiesElement.innerHTML = "";
-
-  // const responsibilitiesList = document.createElement("ul");
-  //   nextPosting.responsibilities.forEach(responsibility => {
-  //     const listItem = document.createElement("li");
-  //     listItem.textContent = responsibility;
-  //     responsibilitiesList.appendChild(listItem);
-  //   });
-
-  // responsibilitiesElement.appendChild(responsibilitiesList);
-
-  // const qualificationsElement = document.getElementById("job-detail-qualifications");
-  // qualificationsElement.innerHTML = "";
-
-  // const qualificationsList = document.createElement("ul");
-  //   nextPosting.qualifications.forEach(qualification => {
-  //     const listItem = document.createElement("li");
-  //     listItem.textContent = qualification;
-  //     qualificationsList.appendChild(listItem);
-  //   });
-
-  // qualificationsElement.appendChild(qualificationsList);
-
-
-
-
-  // Add onclick event to each job posting item
-  const jobPostingsItems = document.querySelectorAll(".job-posting-item");
-  jobPostingsItems.forEach((item, index) => {
-    const clickedPosting = jobPostingCycleObj[index];
-    item.addEventListener("click", function () {
-      jobPostingsItems.forEach(postingItem => {
-        postingItem.classList.remove("clicked-posting");
-      });
-
-      // Add the "clicked-posting" class to the clicked element
-      item.classList.add("clicked-posting");
-      
-      document.getElementById("job-detail-title").textContent = clickedPosting.title;
-      document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
-      document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-      document.getElementById("job-detail-about").textContent = clickedPosting.about;
-      document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-      document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
-      document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
-      document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
-      document.getElementById("job-detail-reviewTime").textContent = `Applicant review time is ${clickedPosting.reviewTime}`;
-
-
-      const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-      responsibilitiesElement.innerHTML = "";
-
-      const responsibilitiesList = document.createElement("ul");
-      clickedPosting.responsibilities.forEach(responsibility => {
-        const listItem = document.createElement("li");
-        listItem.textContent = responsibility;
-        responsibilitiesList.appendChild(listItem);
-      });
-
-      responsibilitiesElement.appendChild(responsibilitiesList);
-
-      const qualificationsElement = document.getElementById("job-detail-qualifications");
-      qualificationsElement.innerHTML = "";
-
-      const qualificationsList = document.createElement("ul");
-      clickedPosting.qualifications.forEach(qualification => {
-        const listItem = document.createElement("li");
-        listItem.textContent = qualification;
-        qualificationsList.appendChild(listItem);
-      });
-
-      qualificationsElement.appendChild(qualificationsList);
-
-      cycleJobPostings(index);
-      currentJobIndex = index;
-
-    });
-  });
-}
-
-function displayNextJobDetail () {
-  currentJobIndex = (currentJobIndex) % jobPostingCycleObj.length;
-
-  const nextPosting = jobPostingCycleObj[currentJobIndex];
-  document.getElementById("job-detail-title").textContent = nextPosting.title;
-  document.getElementById("job-detail-place").textContent = `${nextPosting.company} · ${nextPosting.location}`;
-  document.getElementById("job-detail-pay").textContent = nextPosting.pay;
-  document.getElementById("job-detail-employee").textContent = `${nextPosting.employee} employees`;
-  document.getElementById("job-detail-alumni").textContent = `${nextPosting.alumni} alumni work here`;
-  document.getElementById("job-detail-skill").textContent = `Skills: ${nextPosting.skill}, and more`;
-  document.getElementById("job-detail-reviewTime").textContent = `${nextPosting.reviewTime}`;
-  document.getElementById("job-detail-about").textContent = nextPosting.about;
-
-  const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-  responsibilitiesElement.innerHTML = "";
-
-  const responsibilitiesList = document.createElement("ul");
-    nextPosting.responsibilities.forEach(responsibility => {
-      const listItem = document.createElement("li");
-      listItem.textContent = responsibility;
-      responsibilitiesList.appendChild(listItem);
-    });
-
-  responsibilitiesElement.appendChild(responsibilitiesList);
-
-  const qualificationsElement = document.getElementById("job-detail-qualifications");
-  qualificationsElement.innerHTML = "";
-
-  const qualificationsList = document.createElement("ul");
-    nextPosting.qualifications.forEach(qualification => {
-      const listItem = document.createElement("li");
-      listItem.textContent = qualification;
-      qualificationsList.appendChild(listItem);
-    });
-
-  qualificationsElement.appendChild(qualificationsList);
-}
-
-
-
-
-function cycleJobPostings(clickedIndex) {
-  const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
-  jobPostingCycleObj.push(removedPosting);
-}
-
 
 
 
@@ -1718,5 +1516,163 @@ function showNextLetter(randomCoverLetter) {
     }, 1);
   }
 }
+
+
+
+
+
+
+/// REFACTOR JOB POSTINGS
+
+
+function updateJobPostings() {
+  const jobPostingsElement = document.getElementById("job-postings");
+  jobPostingsElement.innerHTML = "";
+
+  jobPostingCycleObj.forEach((posting, index) => {
+    const jobPostingItem = document.createElement("div");
+    jobPostingItem.className = "job-posting-item";
+    if (index === 0) {
+      jobPostingItem.classList.add("clicked-posting");
+    }
+    if (index === jobPostingCycleObj.length - 1) {
+      jobPostingItem.style.display = "none";
+    }
+    if (index === jobPostingCycleObj.length - 2) {
+      jobPostingItem.style.display = "none";
+    }    
+
+    const jobPostingIcon = document.createElement("img");
+    jobPostingIcon.src = posting.icon;
+    jobPostingIcon.className = "icon";
+    jobPostingIcon.alt = "ICON";
+
+    const jobPostingTitle = document.createElement("div");
+    jobPostingTitle.className = "job-posting-title";
+    jobPostingTitle.textContent = posting.title;
+
+    const jobPostingCompany = document.createElement("div");
+    jobPostingCompany.className = "job-posting-company";
+    jobPostingCompany.textContent = posting.company;
+
+    const jobPostingLocation = document.createElement("div");
+    jobPostingLocation.className = "job-posting-location";
+    jobPostingLocation.textContent = posting.location;
+
+    const jobPostingPay = document.createElement("div");
+    jobPostingPay.className = "job-posting-pay";
+    jobPostingPay.textContent = posting.pay;
+
+    const jobPostingInfo = document.createElement("div");
+    jobPostingInfo.className = "job-posting-box";
+    jobPostingInfo.appendChild(jobPostingTitle);
+    jobPostingInfo.appendChild(jobPostingCompany);
+    jobPostingInfo.appendChild(jobPostingLocation);
+    jobPostingInfo.appendChild(jobPostingPay);
+    jobPostingItem.appendChild(jobPostingIcon);
+    jobPostingItem.appendChild(jobPostingInfo);
+
+    jobPostingsElement.appendChild(jobPostingItem);
+  });
+  
+  displayJobDetail();
+}
+
+// function displayJobDetail() {
+// ///// displays the first item in array ////
+//   const firstPosting = jobPostingCycleObj[0];
+  
+//   document.getElementById("job-detail-title").textContent = firstPosting.title;
+//   document.getElementById("job-detail-place").textContent = `${firstPosting.company} · ${firstPosting.location}`;
+//   document.getElementById("job-detail-pay").textContent = firstPosting.pay;
+//   document.getElementById("job-detail-employee").textContent = `${firstPosting.employee} employees`;
+//   document.getElementById("job-detail-alumni").textContent = `${firstPosting.alumni} alumni work here`;
+//   document.getElementById("job-detail-skill").textContent = `Skills: ${firstPosting.skill}, and more`;
+//   document.getElementById("job-detail-reviewTime").textContent = `${firstPosting.reviewTime}`;
+//   document.getElementById("job-detail-about").textContent = firstPosting.about;
+
+//   const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+//   responsibilitiesElement.innerHTML = "";
+
+//   const responsibilitiesList = document.createElement("ul");
+//   firstPosting.responsibilities.forEach(responsibility => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = responsibility;
+//     responsibilitiesList.appendChild(listItem);
+//   });
+
+//   responsibilitiesElement.appendChild(responsibilitiesList);
+
+//   const qualificationsElement = document.getElementById("job-detail-qualifications");
+//   qualificationsElement.innerHTML = "";
+
+//   const qualificationsList = document.createElement("ul");
+//   firstPosting.qualifications.forEach(qualification => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = qualification;
+//     qualificationsList.appendChild(listItem);
+//   });
+
+//   qualificationsElement.appendChild(qualificationsList);
+
+
+// ///// displays the clicked item in array ////
+//   // Add onclick event to each job posting item
+//   const jobPostingsItems = document.querySelectorAll(".job-posting-item");
+//   jobPostingsItems.forEach((item, index) => {
+//     const clickedPosting = jobPostingCycleObj[index];
+//     item.addEventListener("click", function () {
+//       jobPostingsItems.forEach(postingItem => {
+//         postingItem.classList.remove("clicked-posting");
+//       });
+
+//       // Add the "clicked-posting" class to the clicked element
+//       item.classList.add("clicked-posting");
+      
+//       document.getElementById("job-detail-title").textContent = clickedPosting.title;
+//       document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
+//       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+//       document.getElementById("job-detail-about").textContent = clickedPosting.about;
+//       document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+//       document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
+//       document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
+//       document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
+//       document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
+
+
+//       const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+//       responsibilitiesElement.innerHTML = "";
+
+//       const responsibilitiesList = document.createElement("ul");
+//       clickedPosting.responsibilities.forEach(responsibility => {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = responsibility;
+//         responsibilitiesList.appendChild(listItem);
+//       });
+
+//       responsibilitiesElement.appendChild(responsibilitiesList);
+
+//       const qualificationsElement = document.getElementById("job-detail-qualifications");
+//       qualificationsElement.innerHTML = "";
+
+//       const qualificationsList = document.createElement("ul");
+//       clickedPosting.qualifications.forEach(qualification => {
+//         const listItem = document.createElement("li");
+//         listItem.textContent = qualification;
+//         qualificationsList.appendChild(listItem);
+//       });
+
+//       qualificationsElement.appendChild(qualificationsList);
+
+//       cycleJobPostings(index);
+//     });
+//   });
+// }
+
+// function cycleJobPostings(clickedIndex) {
+//   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
+//   jobPostingCycleObj.push(removedPosting);
+// }
+
 
 
