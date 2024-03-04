@@ -14,13 +14,12 @@ let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
 let clickValue = 10000000.2;
+let totalAutoApplications = 0
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
 // document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
 // document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
-
-
 
 
 ////////////////////////////////////////////////////////////
@@ -207,7 +206,8 @@ function buyAutoApplication(app) {
   if (motivation >= app.cost) {
       motivation -= app.cost;
       app.count += 1;
-      app.cost = Math.floor(app.cost * 1.1); // Cost scales exponentially
+      totalAutoApplications += 1;
+      app.cost = Math.floor(app.cost * 1.15);
       playRandomClickSound();
       updateMotivation();
       updateShop();
@@ -258,17 +258,29 @@ function applyJobApplication() {
   currentParagraphIndex = 0;
 
   textBox.value = "";
+  
+  displayNextJobDetail();
+
 }
 
 const applyButton = document.getElementById("apply-button");
 applyButton.addEventListener("click", applyJobApplication);
 
 
+function displayNextJobDetail() {
+  const jobPostingsElement = document.getElementById("job-postings");
+  const currentClickedIndex = Array.from(jobPostingsElement.children).findIndex(postingItem => postingItem.classList.contains("clicked-posting"));
+  const nextIndex = (currentClickedIndex + 1) % jobPostingCycleObj.length;
+
+  // Display the details for the next index
+  displayJobDetail(nextIndex);
+}
+
 ////////////////////////////////////////////////////////////
 ///////////////////   ATTACHMENTS  PAGE   //////////////////
 ////////////////////////////////////////////////////////////
 
-import {coverLetterPool} from './coverLetterPool.js';
+import { coverLetterPool } from './coverLetterPool.js';
 
 const attachPage = document.getElementById("attach-page");
 const attachButton = document.getElementById("attach-button");
@@ -338,15 +350,16 @@ function applyJobApplicationWithCV() {
   updateJobApplications();
   updateMotivation();
   updateRejection();
+  cycleJobPostings(); //wtf
+  updateJobPostings();
   playRandomClickSound();
   toggleAttachPage();
-  // cycleJobPostings(); //wtf
-  // updateJobPostings();
 
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
 
   textBox.value = "";
+  displayNextJobDetail();
 }
 
 // function clearTextBox () {
@@ -437,6 +450,13 @@ function updateJobPostings() {
 // displayJobDetail();
 
 function displayJobDetail(index) {
+
+  const centerUIStart = document.getElementById("centerUIStart");
+  const centerUI = document.getElementById("centerUI");
+  
+  centerUIStart.style.display = "none";
+  centerUI.style.display = "flex";
+
   const jobPostingsItems = document.querySelectorAll(".job-posting-item");
   jobPostingsItems.forEach(postingItem => {
     postingItem.classList.remove("clicked-posting");
@@ -445,52 +465,64 @@ function displayJobDetail(index) {
   jobPostingsItems[index].classList.add("clicked-posting");
 
   const clickedPosting = jobPostingCycleObj[index];
-        
-        document.getElementById("job-detail-title").textContent = clickedPosting.title;
-        document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
-        document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-        document.getElementById("job-detail-about").textContent = clickedPosting.about;
-        document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
-        document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
-        document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
-        document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
-        document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
   
-  
-        const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
-        responsibilitiesElement.innerHTML = "";
-  
-        const responsibilitiesList = document.createElement("ul");
-        clickedPosting.responsibilities.forEach(responsibility => {
-          const listItem = document.createElement("li");
-          listItem.textContent = responsibility;
-          responsibilitiesList.appendChild(listItem);
-        });
-  
-        responsibilitiesElement.appendChild(responsibilitiesList);
-  
-        const qualificationsElement = document.getElementById("job-detail-qualifications");
-        qualificationsElement.innerHTML = "";
-  
-        const qualificationsList = document.createElement("ul");
-        clickedPosting.qualifications.forEach(qualification => {
-          const listItem = document.createElement("li");
-          listItem.textContent = qualification;
-          qualificationsList.appendChild(listItem);
-        });
-  
-        qualificationsElement.appendChild(qualificationsList);
-  
-        cycleJobPostings(index);
-      }
+  document.getElementById("job-detail-title").textContent = clickedPosting.title;
+  document.getElementById("job-detail-place").textContent = `${clickedPosting.company} · ${clickedPosting.location}`;
+  document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+  document.getElementById("job-detail-about").textContent = clickedPosting.about;
+  document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
+  document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
+  document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
+  document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
+  document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
 
 
-      updateJobPostings();
+  const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
+  responsibilitiesElement.innerHTML = "";
+
+  const responsibilitiesList = document.createElement("ul");
+  clickedPosting.responsibilities.forEach(responsibility => {
+    const listItem = document.createElement("li");
+    listItem.textContent = responsibility;
+    responsibilitiesList.appendChild(listItem);
+  });
+
+  responsibilitiesElement.appendChild(responsibilitiesList);
+
+  const qualificationsElement = document.getElementById("job-detail-qualifications");
+  qualificationsElement.innerHTML = "";
+
+  const qualificationsList = document.createElement("ul");
+  clickedPosting.qualifications.forEach(qualification => {
+    const listItem = document.createElement("li");
+    listItem.textContent = qualification;
+    qualificationsList.appendChild(listItem);
+  });
+
+  qualificationsElement.appendChild(qualificationsList);
+
+  
+}
+// cycleJobPostings(index);
 
 
+// function cycleJobPostings(clickedIndex) {
+//   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1);
+//   jobPostingCycleObj.push(removedPosting);
+// }
+function cycleJobPostings() {
+  const jobPostingsElement = document.getElementById("job-postings");
+  const clickedPostingIndex = Array.from(jobPostingsElement.children).findIndex(postingItem => postingItem.classList.contains("clicked-posting"));
 
+  if (clickedPostingIndex !== -1) {
+    // Remove the clicked posting from the array
+    const removedPosting = jobPostingCycleObj.splice(clickedPostingIndex, 1)[0];
 
+    // Add the removed posting to the end of the array
+    jobPostingCycleObj.push(removedPosting);
+  }
 
+}
 
 
 

@@ -39,7 +39,16 @@ body, #textBox {
 }
 
 
+#centerUIStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 40px;
+}
 
+#centerUI {
+  display: none;
+}
 
 .icon {
   max-height: 72.5px;
@@ -614,6 +623,14 @@ ul, li {
     margin-left: auto;
     margin-right: auto;
   }
+
+  #centerUIStart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 30px;
+  }
+
 
   #topUI {
     height: 45px;
