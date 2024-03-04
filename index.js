@@ -301,8 +301,10 @@ function toggleAttachPage() {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "close-button";
+  closeButton.className = "div-close-button";
   closeButton.addEventListener("click", toggleAttachPage);
+  attachPage.appendChild(closeButton);
+
 
   // Get the textBox element
   const textBox = document.getElementById("textBox");
@@ -650,7 +652,7 @@ function showAchievement(message1, message2, icon) {
 ////////////////////////////////////////////////////////////
 
 const achievementsPage = document.getElementById("achievements-page");
-const achievementsButton = document.getElementById("achievements-button");
+const achievementsButton = document.getElementById("profile-picture");
 achievementsButton.addEventListener("click", toggleAchievementsPage);
 
 function toggleAchievementsPage() {

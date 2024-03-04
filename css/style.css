@@ -25,7 +25,6 @@
   }
 } */
 
-
 body, #textBox {
   user-select: none;
   display: flex;
@@ -48,6 +47,23 @@ body, #textBox {
 
 #centerUI {
   display: none;
+}
+
+#profile-picture{
+  position: absolute;
+  right: 0%;
+  max-height: 80px;
+  max-width: 80px;
+}
+
+#profile-picture:hover {
+  transform: scale(0.99);
+  filter: brightness(90%);
+}
+
+#profile-picture:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
 }
 
 .icon {
@@ -238,14 +254,14 @@ ul, li {
   flex-direction: column;
   border: grey 2px solid;
   position: fixed;
-  /* max-width: 80%;
-  min-width: 80%; */
+  max-width: 80%;
+  min-width: 80%;
   max-height: 80%;
   min-height: 60%;
   /* top: 2.5%; */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 8001;
+  z-index: 7001;
   padding: 3.5%
 }
 
@@ -375,7 +391,7 @@ ul, li {
 }
 
 
-.close-button {
+.close-button, .div-close-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -394,19 +410,7 @@ ul, li {
 }
 
 .div-close-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  background-color: #f44336;
-  color: white;
-  font-size: 8px;
-  font-weight: bold;
-  padding: 2.5px 5px;
-  margin: 2px;
-  border-radius: 50px;
-  cursor: pointer;
-  z-index: 9999;
-  /* opacity: 0;  */
+  opacity: 1; 
   /* transition: opacity 0.3s ease;  */
 }
 
@@ -505,7 +509,6 @@ ul, li {
 
 #job-detail-highlight-box{
   margin: 2% 0 0 0;
-  /* border: blue solid 2px; */
   font-size: 18px;
 }
 
