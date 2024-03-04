@@ -343,7 +343,7 @@ const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", applyJobApplicationWithCV);
 
 function applyJobApplicationWithCV() {
-  motivation += 0.217 * clickValue;
+  motivation += 0.817 * clickValue;
   manualClick += 1;
   jobApplications += clickValue;
   updateJobApplications();
