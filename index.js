@@ -14,7 +14,6 @@ let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
 let clickValue = 1.25;
-// let totalAutoApplications = 1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;

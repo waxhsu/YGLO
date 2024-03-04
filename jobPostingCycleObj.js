@@ -233,7 +233,7 @@ const jobPostingCycleObj = [
         employee: "100-150",
         alumni: "300",
         skill: "Strategic planning, note-taking",
-        reviewTime: "Applicant review time is whenever our busy CEO decides to finally look at the pile of resumes on their desk.",
+        reviewTime: "Applicant review time is usually after lunch break.",
         company: "Meeting Magic Inc.",
         about: "Do you find yourself enjoying boring, mundane meetings? Do you love taking notes and planning out your day in excruciating detail? Then we have the job for you! Join our team as a Professional Meeting Attendant and fulfill your dreams of becoming the most organized and efficient employee in the world.",
         responsibilities: [
