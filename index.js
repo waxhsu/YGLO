@@ -6,7 +6,11 @@ let jobApplications = 0;
 let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
-let manualClick = 0;
+
+let appliedWithoutCV = 0;
+let appliedWithCV = 0;
+let totalApplied = 0;
+
 let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
@@ -244,7 +248,8 @@ function autoGenerateJobApplications() {
 
 function applyJobApplication() {
   motivation += clickValue * 1.15^(jobApplications*0.05);
-  manualClick += 1;
+  appliedWithoutCV += 1;
+  totalApplied += 1;
   jobApplications += clickValue
   updateJobApplications();
   updateMotivation();
@@ -299,7 +304,11 @@ function toggleAttachPage() {
   closeButton.className = "close-button";
   closeButton.addEventListener("click", toggleAttachPage);
 
-  attachPage.appendChild(closeButton);
+  // Get the textBox element
+  const textBox = document.getElementById("textBox");
+
+  // Make the textbox read-only
+  textBox.readOnly = true;
 
   // Add keypress event listener
   document.addEventListener("keypress", showNextLetter);
@@ -343,8 +352,9 @@ const submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", applyJobApplicationWithCV);
 
 function applyJobApplicationWithCV() {
-  motivation += 0.817 * clickValue;
-  manualClick += 1;
+  motivation += 0.817 * 1.15^(jobApplications*0.5);
+  appliedWithCV += 1;
+  totalApplied += 1;
   jobApplications += clickValue;
   updateJobApplications();
   updateMotivation();
@@ -549,7 +559,7 @@ function checkMainAchievement() {
   for (const achievement of mainAchievementsObj) {
     const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, displayed, message1, message2, icon } = achievement;
     if ((
-      (clicks && manualClick >= clicks) ||
+      (clicks && appliedWithoutCV >= clicks) ||
       (apps && jobApplications >= apps) ||
       (rejections && totalRejections >= rejections) || 
       (badEvents && badRandomEvents >= badEvents) ||
