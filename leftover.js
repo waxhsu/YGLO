@@ -1669,10 +1669,10 @@ function updateJobPostings() {
 //   });
 // }
 
-// function cycleJobPostings(clickedIndex) {
-//   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
-//   jobPostingCycleObj.push(removedPosting);
-// }
+function cycleJobPostings(clickedIndex) {
+  const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1)[0];
+  jobPostingCycleObj.push(removedPosting);
+}
 
 
 

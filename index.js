@@ -13,14 +13,13 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 10000000.2;
-let totalAutoApplications = 0
+let clickValue = 1.25;
+// let totalAutoApplications = 1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
 // document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
 // document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
-
 
 ////////////////////////////////////////////////////////////
 ///////////////////    MAIN GAMEPLAY   /////////////////////
@@ -164,7 +163,8 @@ function updateShop() {
 
     const costElement = document.createElement("div");
     costElement.className = "item-cost";
-    costElement.textContent = `-${shop.cost} Motivation`;
+    const formattedValue = formatLargeNumberAll(shop.cost);
+    costElement.textContent = `-${formattedValue} Motivation`;
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps";
@@ -204,16 +204,16 @@ function updateShop() {
 // Function to buy an AutoApplication
 function buyAutoApplication(app) {
   if (motivation >= app.cost) {
-      motivation -= app.cost;
-      app.count += 1;
-      totalAutoApplications += 1;
-      app.cost = Math.floor(app.cost * 1.15);
-      playRandomClickSound();
-      updateMotivation();
-      updateShop();
-      calculateTotalClicksPerSecond();
-      updateAPSDisplay(); 
-      updateShopUpgrades(); 
+    app.cost = Math.floor(app.cost * 1.15);
+    motivation -= app.cost;
+    app.count += 1;
+    // totalAutoApplications += 1;
+    playRandomClickSound();
+    updateMotivation();
+    updateShop();
+    calculateTotalClicksPerSecond();
+    updateAPSDisplay(); 
+    updateShopUpgrades(); 
   }
 }
 
@@ -232,7 +232,7 @@ function updateShopUpgrades() {
 
 function autoGenerateJobApplications() {
   jobApplications += totalClicksPerSecond;
-  motivation += 0.1 * totalClicksPerSecond; 
+  motivation += 1 * totalClicksPerSecond; 
   updateMotivation();
   updateRejection();
   updateJobApplications();
@@ -244,9 +244,9 @@ function autoGenerateJobApplications() {
 ////////////////////////////////////////////////////////////
 
 function applyJobApplication() {
-  motivation += 0.217 * clickValue;
+  motivation += clickValue * 1.15^(jobApplications*0.05);
   manualClick += 1;
-  jobApplications += clickValue;
+  jobApplications += clickValue
   updateJobApplications();
   updateMotivation();
   updateRejection();
@@ -890,8 +890,24 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
 ////////////////////////////////////////////////////////////
 
 
+// function randomRejection() {
+//   if (jobApplications >= 100) {
+//     const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
+//     const rejectionEvent = randomRejectionPool[randomIndex];
+//     const { motivationRejectCalc } = applyRandomRejectionEffects(rejectionEvent);
+//     showRandomRejection(rejectionEvent, motivationRejectCalc);
+//   }
+// }
+
 function randomRejection() {
-  if (jobApplications >= 100) {
+  // Set a probability threshold based on the number of jobApplications
+  const probabilityThreshold = jobApplications / 50; // Adjust as needed
+
+  // Generate a random number between 0 and 1
+  const randomValue = Math.random();
+
+  // Check if the random value is below the probability threshold
+  if (randomValue < probabilityThreshold) {
     const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
     const rejectionEvent = randomRejectionPool[randomIndex];
     const { motivationRejectCalc } = applyRandomRejectionEffects(rejectionEvent);
@@ -960,6 +976,13 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   notificationBox.appendChild(notification);
 }
 
+function updateRandomRejectionInterval() {
+  if (jobApplications >= 100) {
+    // Exponentially decrease the interval as jobApplications increases
+    const exponentialFactor = 0.9; // Adjust this factor as needed
+    randomRejectInterval = baseRandomRejectInterval * Math.pow(exponentialFactor, jobApplications - 100);
+  }
+}
 
 // document.addEventListener("keydown", function (event) {
 //   if (event.keyCode === 13) {
