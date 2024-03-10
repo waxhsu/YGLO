@@ -86,7 +86,7 @@ body, #textBox {
 
 #close-all {
   position: absolute;
-  bottom: 50%;
+  bottom: 60.5%;
   right: 0;
   z-index: 1002;
   border-radius: 50px;
@@ -160,20 +160,20 @@ ul, li {
 }
 
 #rightTopUI {
-  max-height: 40.5vh; 
-  min-height: 40.5vh; 
+  max-height: 30.5vh; 
+  min-height: 30.5vh; 
   margin: 0 0 2px;
 }
 
 #rightBottomUI{
   /* border: green solid 2px; */
   /* max-height: 48%;  */
-  max-height: 44.5vh; 
-  min-height: 44.5vh; 
+  max-height: 56vh; 
+  min-height: 56vh; 
   margin: 0 0 2px;
 }
 
-#leftUI, #rightTopUI, #rightBottomUI, #bottomCenterUI, #achievements-page, #shop {
+#leftUI, #rightTopUI, #rightBottomUI, #bottomCenterUI, #achievements-page {
   overflow-y: auto; 
 }
 
@@ -548,8 +548,12 @@ ul, li {
   pointer-events: none; /* Disable pointer events for greyed-out items */
 }
 
+.shop-item.-out .shop-icon {
+  filter: contrast(0%);
+}
+
 .info-container {
-  width: 100%;
+  width: 100px;
 }
 
 .title-container {
@@ -612,6 +616,10 @@ ul, li {
     width: 1128px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .info-container {
+    width: 120px;
   }
 }
 

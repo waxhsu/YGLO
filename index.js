@@ -12,12 +12,12 @@ let appliedWithCV = 0;
 let totalApplied = 0;
 
 let totalRejections = 0;
-let goodRandomEvents = 0;
-let badRandomEvents = 0;
+let goodRandomEvents = 9;
+let badRandomEvents = 9;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 1000.25;
+let clickValue = 1000;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -167,11 +167,11 @@ function updateShop() {
     const costElement = document.createElement("div");
     costElement.className = "item-cost";
     const formattedValue = formatLargeNumberAll(shop.cost);
-    costElement.textContent = `-${formattedValue} Motivation`;
+    costElement.textContent = `-${formattedValue} grit`;
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps";
-    clicksPerSecondElement.textContent = `Apps/sec: +${shop.clicksPerSecond}`;
+    clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/sec`;
 
     const countElement = document.createElement("div");
     countElement.className = "item-count";
@@ -191,7 +191,7 @@ function updateShop() {
     // shopItem.appendChild(iconElement);
     shopItem.appendChild(detailContainer);
 
-    if (index === 0 || shopObj[index - 1].count >= 1) {
+    if (index <= 1 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
@@ -797,7 +797,7 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
 
   const message2Element = document.createElement("div");
   if (motivation === 0 || motivation < 0) {  
-    message2Element.textContent = `You've hit motivation rock bottom`;
+    message2Element.textContent = `You hit motivation rock bottom`;
   } else if (Math.ceil(motivationRandomCalc) === 0) {
     message2Element.textContent = `-1 motivation`;
   } else {
@@ -807,7 +807,7 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
 
   const message3Element = document.createElement("div");
   if (Math.round(jobAppRandomCalc) === 0) {
-    message3Element.textContent = `You need to apply more`;
+    // message3Element.textContent = `You need to apply more`;
   } else {
     if (Math.round(jobAppRandomCalc) === 1) {
       message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
@@ -866,7 +866,7 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
 
   const message3Element = document.createElement("div");
   if (Math.round(jobAppRandomCalc) === 0) {
-    message3Element.textContent = `You are compelled to apply more`;
+    // message3Element.textContent = `You are compelled to apply more`;
   } else {
     if (Math.round(jobAppRandomCalc) === 1) {
       message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
@@ -963,7 +963,7 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   
   const message2Element = document.createElement("div");
   if (Math.round(motivationRejectCalc) === 0) {
-    message2Element.textContent = `You've hit motivation rock bottom`;
+    message2Element.textContent = `You hit motivation rock bottom`;
   } else {
     message2Element.textContent = `${formatLargeNumberAll(Math.round(motivationRejectCalc))} motivation`;
   }
