@@ -17,12 +17,50 @@ let badRandomEvents = 9;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 1000;
+let clickValue = 1;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
 // document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
 // document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
+
+
+ 
+// START MUSIC
+const bgMusic = document.getElementById("background-music");
+const muteButton = document.getElementById("mute-button");
+const volumeSlider = document.getElementById("volume-slider");
+
+// Function to start playing the background music
+function playBackgroundMusic() {
+  bgMusic.play();
+  bgMusic.muted = true;
+}
+
+// Function to toggle the background music (mute/unmute)
+function toggleMute() {
+if (bgMusic.muted) {
+    bgMusic.muted = false;
+    muteButton.textContent = "Music On";
+} else {
+    bgMusic.muted = true;
+    muteButton.textContent = "Music Off";
+}
+}
+
+// // Function to handle volume change
+// function changeVolume() {
+
+// bgMusic.volume = volumeSlider.value;
+// }
+
+// volumeSlider.addEventListener("input", changeVolume);
+muteButton.addEventListener("click", toggleMute);
+
+// Add an event listener to start playing the music when the page loads
+window.addEventListener("load", playBackgroundMusic);
+
+
 
 ////////////////////////////////////////////////////////////
 ///////////////////    MAIN GAMEPLAY   /////////////////////
@@ -139,9 +177,54 @@ function calculateTotalClicksPerSecond() {
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
 
+const tryHarder = {
+  name: "Try Harder",
+  icon: "./img/shopIcons/0_tryHarder.png",
+  cost: 15,
+  clickValue: 1.1,
+  count: 0,
+};
+
+function updateTryHarder() {
+  // const tryHarderElement = document.getElementById("tryHarder");
+  // tryHarderElement.classList.toggle('greyed-out', motivation < tryHarder.cost);
+
+  const costElement = document.getElementById("tryHarder-cost");
+  const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
+  costElement.textContent = `-${formattedCostValue} grit`;
+
+  const apsElement = document.getElementById("tryHarder-aps");
+  const formattedClickValue = formatLargeNumberAll(tryHarder.clickValue);
+  apsElement.textContent = `+${formattedClickValue} click`;
+
+  const countElement = document.getElementById("tryHarder-count");
+  countElement.textContent = `x${tryHarder.count}`;
+
+  
+}
+
+function buyTryHarder() {
+  if (motivation >= tryHarder.cost) {
+    tryHarder.cost = Math.floor(tryHarder.cost * 1.15);
+    motivation -= tryHarder.cost;
+    tryHarder.count += 1;
+
+    // FIGURE OUT THE MATH FOR THIS
+    tryHarder.clickValue = tryHarder.clickValue * 2;
+    clickValue = tryHarder.clickValue;
+    playRandomClickSound();
+    updateMotivation();
+    updateTryHarder();
+  }
+}
+
+const tryHarderButton = document.getElementById("tryHarder");
+tryHarderButton.addEventListener("click", buyTryHarder);
+
+
 function updateShop() {
   const shopElement = document.getElementById("shop");
-  shopElement.innerHTML = ""; // Clear the previous shop items
+  shopElement.innerHTML = "";
 
   shopObj.forEach((shop, index) => {
     const iconElement = document.createElement("img");
@@ -264,7 +347,32 @@ function applyJobApplication() {
   textBox.value = "";
   
   displayNextJobDetail();
+  applyParticle();
 
+}
+
+function applyParticle() {
+  const particleContainer = document.getElementById("apply-button");
+
+  const particle = document.createElement("div");
+  particle.className = "particle";
+  particle.textContent = `+${clickValue}`;
+
+  particleContainer.appendChild(particle);
+
+  // Animate the particle
+  const animation = particle.animate(
+      [
+          { transform: 'translateY(0)', opacity: 1 },
+          { transform: 'translateY(-100px)', opacity: 0 }
+      ],
+      { duration: 1000, easing: 'ease-out' }
+  );
+
+  // Remove the particle from the DOM after the animation is complete
+  animation.onfinish = () => {
+      particle.remove();
+  };
 }
 
 const applyButton = document.getElementById("apply-button");
