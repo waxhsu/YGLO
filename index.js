@@ -27,16 +27,26 @@ let clickValue = 1;
 
  
 // START MUSIC
-const bgMusic = document.getElementById("background-music");
 const muteButton = document.getElementById("mute-button");
 const volumeSlider = document.getElementById("volume-slider");
 
 // Function to start playing the background music
+let bgMusic = new Audio('./YGLO_bg_v3.mp3');
+bgMusic.muted = true; // Mute by default
+
 function playBackgroundMusic() {
-  bgMusic.play();
-  bgMusic.muted = true;
+  // Listen for the first user interaction event (e.g., click)
+  document.addEventListener('click', initiateAudioPlayback, { once: true });
 }
 
+function initiateAudioPlayback() {
+  // Unmute and play the audio
+  bgMusic.muted = false;
+  bgMusic.play();
+}
+
+// Call the playBackgroundMusic function somewhere in your code to start listening for user interaction
+playBackgroundMusic();
 // Function to toggle the background music (mute/unmute)
 function toggleMute() {
 if (bgMusic.muted) {
