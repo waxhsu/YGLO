@@ -356,7 +356,10 @@ function applyParticle() {
 
   const particle = document.createElement("div");
   particle.className = "particle";
-  particle.textContent = `+${clickValue}`;
+
+  const formattedValue = formatLargeNumberAll(clickValue);
+
+  particle.textContent = `+${formattedValue}`;
 
   particleContainer.appendChild(particle);
 

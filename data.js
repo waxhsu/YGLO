@@ -1,12 +1,12 @@
 const shopObj = [
-    {
-      id: 0,
-      icon: "./img/shopIcons/0_tryHarder.png",
-      name: "Try Harder",
-      cost: 15,
-      clicksPerSecond: 1,
-      count: 0,
-    },
+    // {
+    //   id: 0,
+    //   icon: "./img/shopIcons/0_tryHarder.png",
+    //   name: "Try Harder",
+    //   cost: 15,
+    //   clicksPerSecond: 1,
+    //   count: 0,
+    // },
     {
       id: 1,
       icon: "./img/shopIcons/1_linkIndeed.png",
