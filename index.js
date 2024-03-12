@@ -17,7 +17,7 @@ let badRandomEvents = 9;
 let totalRandomEvents = 0;
 let randomRejectInterval = 12000;
 let randomEventInterval = 10000;
-let clickValue = 1;
+let clickValue = 1000;
 
 /////////// PLAY TEST INFO ////////
 // document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
@@ -32,7 +32,6 @@ const volumeSlider = document.getElementById("volume-slider");
 
 // Function to start playing the background music
 let bgMusic = new Audio('./YGLO_bg_v3.mp3');
-bgMusic.muted = true; // Mute by default
 
 function playBackgroundMusic() {
   // Listen for the first user interaction event (e.g., click)
@@ -41,7 +40,7 @@ function playBackgroundMusic() {
 
 function initiateAudioPlayback() {
   // Unmute and play the audio
-  bgMusic.muted = false;
+  bgMusic.muted = true;
   bgMusic.play();
 }
 
@@ -220,11 +219,13 @@ function buyTryHarder() {
     tryHarder.count += 1;
 
     // FIGURE OUT THE MATH FOR THIS
-    tryHarder.clickValue = tryHarder.clickValue * 2;
+    tryHarder.clickValue = tryHarder.clickValue * 1.05;
     clickValue = tryHarder.clickValue;
     playRandomClickSound();
     updateMotivation();
     updateTryHarder();
+    applyParticle("+1", event.clientX, event.clientY, "try-harder");
+
   }
 }
 
@@ -281,7 +282,6 @@ function updateShop() {
 
 
     shopItem.appendChild(titleContainer);
-    // shopItem.appendChild(iconElement);
     shopItem.appendChild(detailContainer);
 
     if (index <= 1 || shopObj[index - 1].count >= 1) {
@@ -310,6 +310,7 @@ function buyAutoApplication(app) {
     calculateTotalClicksPerSecond();
     updateAPSDisplay(); 
     updateShopUpgrades(); 
+    applyParticle(`+${formatLargeNumberAll(app.clicksPerSecond)} apps/sec`, event.clientX, event.clientY, "shop-item");
   }
 }
 
@@ -357,34 +358,34 @@ function applyJobApplication() {
   textBox.value = "";
   
   displayNextJobDetail();
-  applyParticle();
-
+  applyParticle(`+${formatLargeNumberAll(clickValue)}`, event.clientX, event.clientY, "apply-button");
 }
 
-function applyParticle() {
-  const particleContainer = document.getElementById("apply-button");
+
+function applyParticle(textContent, x, y, targetElementId) {
+  const targetElement = document.getElementById(targetElementId);
+  const particleContainer = document.createElement("div");
+  particleContainer.className = "particle-container";
+  particleContainer.style.position = "fixed";
+  particleContainer.style.top = `${y}px`;
+  particleContainer.style.left = `${x}px`;
+  document.body.appendChild(particleContainer);
 
   const particle = document.createElement("div");
   particle.className = "particle";
-
-  const formattedValue = formatLargeNumberAll(clickValue);
-
-  particle.textContent = `+${formattedValue}`;
-
+  particle.textContent = textContent;
   particleContainer.appendChild(particle);
 
-  // Animate the particle
   const animation = particle.animate(
-      [
-          { transform: 'translateY(0)', opacity: 1 },
-          { transform: 'translateY(-100px)', opacity: 0 }
-      ],
-      { duration: 1000, easing: 'ease-out' }
+    [
+      { transform: 'translateY(0)', opacity: 1 },
+      { transform: 'translateY(-100px)', opacity: 0 }
+    ],
+    { duration: 1000, easing: 'ease-out' }
   );
 
-  // Remove the particle from the DOM after the animation is complete
   animation.onfinish = () => {
-      particle.remove();
+    particleContainer.remove();
   };
 }
 

@@ -52,8 +52,8 @@ body, #textBox {
 #profile-picture{
   position: absolute;
   right: 0%;
-  max-height: 80px;
-  max-width: 80px;
+  max-height: 100px;
+  max-width: 100px;
 }
 
 #profile-picture:hover {
@@ -70,7 +70,7 @@ body, #textBox {
   max-height: 72.5px;
   max-width: 72.5px;
   min-width: 72.5px;
-  padding: 2%;
+  /* padding: 2%; */
 }
 
 
@@ -579,19 +579,23 @@ ul, li {
   transition: transform 0.1s;
 }
 
-.item-name, .clickValue-item-name {
+.item-name {
   font-size: 2.5vh;
   font-weight: bold;
   text-align: center;
 }
 
-.item-cost, .item-aps, .clickValue-item-cost, .clickValue-item-aps  {
+.item-cost, .item-aps {
   font-size: 17px;
   text-align: center;
   margin-top: 5px;
 }
 
-.item-count, .clickValue-item-count {
+.item-cost {
+  color: red;
+}
+
+.item-count {
   /* position: absolute; */
   font-size: 25px;
   font-weight: bold;
