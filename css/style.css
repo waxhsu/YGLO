@@ -1,6 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); */
 
+#border-container {
+  position: relative;
+  background-image: url('..//img/introduction/mainScreen.gif'); /* Replace with the path to your GIF file */
+  background-size: contain; /* Adjust to your needs */
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+}
+
+#theGame {
+  border: solid 4px black;
+}
+
 
 /* .cover-art {
   position: fixed;
@@ -25,7 +42,7 @@
   }
 } */
 
-body, #textBox {
+body {
   user-select: none;
   display: flex;
   flex-direction: column;
@@ -35,6 +52,7 @@ body, #textBox {
   overflow: hidden;
   margin: 0 5px;
   background-color: #fffdef;
+  max-height: 800px;
 }
 
 

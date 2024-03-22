@@ -14,6 +14,7 @@ const shopObj = [
       cost: 100,
       clicksPerSecond: 8,
       count: 0,
+      unlocked: false,
     },
     {
       id: 2,
@@ -22,6 +23,7 @@ const shopObj = [
       cost: 1100,
       clicksPerSecond: 47,
       count: 0,
+      unlocked: false,
     },
     {
       id: 3,
@@ -30,6 +32,7 @@ const shopObj = [
       cost: 12000,
       clicksPerSecond: 260,
       count: 0,
+      unlocked: false,
     },
     {
       id: 4,
@@ -38,6 +41,7 @@ const shopObj = [
       cost: 130000,
       clicksPerSecond: 1400,
       count: 0,
+      unlocked: false,
     },
     {
       id: 5,
@@ -46,6 +50,7 @@ const shopObj = [
       cost: 14000000,
       clicksPerSecond: 5600,
       count: 0,
+      unlocked: false,
     },
   ];
 

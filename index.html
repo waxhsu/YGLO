@@ -6,146 +6,152 @@
 
 
 <body>
-	
-	<div id="topUI">
-		<div id="soundButtonBox">
-			<button id="soundToggleBtn">Sound Off</button>
+	<!-- <div id="border-container"> -->
+		<!-- <div id="theGame"> -->
+
+			<div id="topUI">
+				<div id="soundButtonBox">
+					<button id="soundToggleBtn">Sound Off</button>
+					
+						<!-- <audio id="background-music" autoplay loop>
+							<source 
+								
+								type="audio/mpeg"
+								muted="true">
+						</audio> -->
+						<!-- <label for="volume-slider">Volume:</label>
+							<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input> -->
+							<button id="mute-button">Music Off</button>
+				</div>
+				
+				<div class="deepFuckingValue">
+					<div id="aps-value" class="value-display">0</div>
+					<div class="value-display-text">Apps/sec</div>
+				</div>
+
+				<div class="deepFuckingValue">
+					<div id="jobs-value" class="value-display">0</div>
+					<div class="value-display-text">Jobs Applied</div>
+				</div>
+
+				<div class="deepFuckingValue">
+					<div id="rejection-value" class="value-display">0</div>
+					<div class="value-display-text">Rejections</div>
+				</div>
+
+				<div class="deepFuckingValue">
+					<div id="motivation-value" class="value-display">-42</div>
+					<div class="value-display-text">Grit</div>
+				</div>
+
+				<div class="deepFuckingValue">
+				</div>
+
+
+
+
+				<img id="profile-picture" src="./img/stateIcons/stateIdle.gif"></img>
+
+				<div id="achievements-page" style="display: none;">
+					<h1 class="banner">Achievements Page</h1>
+					<div id="achievements-list"></div>
+				</div>
+
+			</div>
 			
-				<!-- <audio id="background-music" autoplay loop>
-					<source 
+			<div id="mainUI">
+				<div id="leftUI">
+					<h1 class="banner">Job posting</h1>
+					<div id="job-postings"></div>		
+				</div>
+
+				<div id="centerUIStart" style="display: flex">
+					<p>You twiddle your thumbs.</p>
+					<p>You decide to apply to at least one job!</p>
+				</div>
+				<div id="centerUI" style="display: none">
+					<div id="topCenterUI">
+						<div id="job-detail-title">TITLE</div>
+						<div id="job-detail-place">Company - Location</div>
 						
-						type="audio/mpeg"
-						muted="true">
-				</audio> -->
-				<!-- <label for="volume-slider">Volume:</label>
-					<input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1"></input> -->
-					<button id="mute-button">Music Off</button>
-		</div>
-		
-		<div class="deepFuckingValue">
-			<div id="aps-value" class="value-display">0</div>
-			<div class="value-display-text">Apps/sec</div>
-		</div>
+						<div id="job-detail-highlight-box">
+							<div class="job-detail-row">
+								<img class="highlight-icon" src="./img/highlightIcons/0.png"></img>
+								<div class="job-detail-highlight" id="job-detail-pay"></div>	
+							</div>
+							<div class="job-detail-row">
+								<img class="highlight-icon" src="./img/highlightIcons/1.png"></img>
+								<div class="job-detail-highlight" id="job-detail-employee"># of Employees</div>	
+							</div>
+							<div class="job-detail-row">
+								<img class="highlight-icon" src="./img/highlightIcons/2.png"></img>
+								<div class="job-detail-highlight" id="job-detail-alumni">X school alumni work here</div>	
+							</div>
+							<div class="job-detail-row">
+								<img class="highlight-icon" src="./img/highlightIcons/3.png"></img>
+								<div class="job-detail-highlight" id="job-detail-skill">Skills: asdf, asdf</div>	
+							</div>
+							<div class="job-detail-row">
+								<img class="highlight-icon" src="./img/highlightIcons/4.png"></img>
+								<div class="job-detail-highlight" id="job-detail-reviewTime">Applicant review time is </div>	
+							</div>
+						</div>
+					</div>
+					
+					<div id="click-button-box">
+						<button id="apply-button" class="click-button">Apply</button>
+						<button id="attach-button" class="click-button">Attach</button>
 
-		<div class="deepFuckingValue">
-			<div id="jobs-value" class="value-display">0</div>
-			<div class="value-display-text">Jobs Applied</div>
-		</div>
+						<div id="attach-page" style="display: none;">
+							<h1 class="banner">Attach/Type Your Cover Letter</h1>
+							<textarea type="text" id="textBox" style="resize: none" rows="50" cols="50" value="you get additional motivation from attaching cover letter"></textarea>
+							<button id="submit-button" class="click-button">Submit & Send</button>
+						</div>
 
-		<div class="deepFuckingValue">
-			<div id="rejection-value" class="value-display">0</div>
-			<div class="value-display-text">Rejections</div>
-		</div>
-
-		<div class="deepFuckingValue">
-			<div id="motivation-value" class="value-display">-42</div>
-			<div class="value-display-text">Grit</div>
-		</div>
-
-		<div class="deepFuckingValue">
-		</div>
-
-
-
-
-		<img id="profile-picture" src="./img/stateIcons/stateIdle.gif"></img>
-
-		<div id="achievements-page" style="display: none;">
-			<h1 class="banner">Achievements Page</h1>
-			<div id="achievements-list"></div>
-    	</div>
-
-	</div>
-	
-<div id="mainUI">
-	<div id="leftUI">
-		<h1 class="banner">Job posting</h1>
-		<div id="job-postings"></div>		
-	</div>
-
-	<div id="centerUIStart" style="display: flex">
-		<p>You twiddle your thumbs.</p>
-		<p>Start applying now!</p>
-	</div>
-	<div id="centerUI" style="display: none">
-		<div id="topCenterUI">
-			<div id="job-detail-title">TITLE</div>
-			<div id="job-detail-place">Company - Location</div>
-			
-			<div id="job-detail-highlight-box">
-				<div class="job-detail-row">
-					<img class="highlight-icon" src="./img/highlightIcons/0.png"></img>
-					<div class="job-detail-highlight" id="job-detail-pay"></div>	
+					</div>
+					
+					
+					<div id="bottomCenterUI">
+						<h1 class="banner">About</h1>
+						<div id="job-detail-about"></div>
+						<h1 class="banner">Responsibilities</h1>
+						<div id="job-detail-responsibilities"></div>
+						<h1 class="banner">Qualifications</h1>
+						<div id="job-detail-qualifications"></div>
+					</div>
 				</div>
-				<div class="job-detail-row">
-					<img class="highlight-icon" src="./img/highlightIcons/1.png"></img>
-					<div class="job-detail-highlight" id="job-detail-employee"># of Employees</div>	
-				</div>
-				<div class="job-detail-row">
-					<img class="highlight-icon" src="./img/highlightIcons/2.png"></img>
-					<div class="job-detail-highlight" id="job-detail-alumni">X school alumni work here</div>	
-				</div>
-				<div class="job-detail-row">
-					<img class="highlight-icon" src="./img/highlightIcons/3.png"></img>
-					<div class="job-detail-highlight" id="job-detail-skill">Skills: asdf, asdf</div>	
-				</div>
-				<div class="job-detail-row">
-					<img class="highlight-icon" src="./img/highlightIcons/4.png"></img>
-					<div class="job-detail-highlight" id="job-detail-reviewTime">Applicant review time is </div>	
-				</div>
-			</div>
-		</div>
-		
-		<div id="click-button-box">
-			<button id="apply-button" class="click-button">Apply</button>
-			<button id="attach-button" class="click-button">Attach</button>
 
-			<div id="attach-page" style="display: none;">
-				<h1 class="banner">Attach/Type Your Cover Letter</h1>
-				<textarea type="text" id="textBox" style="resize: none" rows="50" cols="50" value="you get additional motivation from attaching cover letter"></textarea>
-				<button id="submit-button" class="click-button">Submit & Send</button>
-			</div>
+				<div id="rightUI">
+					<h1 class="banner">Notification</h1>
+					<button id="close-all">Close all</button>
+					<div id="rightTopUI">
+						<div id="notification-box"></div>
+					</div>
 
-		</div>
-		
-		
-		<div id="bottomCenterUI">
-			<h1 class="banner">About</h1>
-			<div id="job-detail-about"></div>
-			<h1 class="banner">Responsibilities</h1>
-			<div id="job-detail-responsibilities"></div>
-			<h1 class="banner">Qualifications</h1>
-			<div id="job-detail-qualifications"></div>
-		</div>
-	</div>
+					<h1 class="banner">Shop</h1>
+					<div id="rightBottomUI">
+						<div id="tryHarder" class="shop-item">
+							<div class="title-container">
+								<div class="item-name">Try Harder</div>
+							</div>
+							<div class="detail-container">	
+								<img class="shop-icon" src="./img/shopIcons/0_tryHarder.png"></img>
+								<div class="info-container">
+									<div id="tryHarder-cost" class="item-cost">cost: 15</div>
+									<div id="tryHarder-aps" class="item-aps">+clickValue</div>
+									<div id="tryHarder-count" class="item-count">x0</div>
+								</div>
+							</div>
+						</div>
 
-	<div id="rightUI">
-		<h1 class="banner">Notification</h1>
-		<button id="close-all">Close all</button>
-		<div id="rightTopUI">
-			<div id="notification-box"></div>
-		</div>
-
-		<h1 class="banner">Shop</h1>
-		<div id="rightBottomUI">
-			<div id="tryHarder" class="shop-item">
-				<div class="title-container">
-					<div class="item-name">Try Harder</div>
-				</div>
-				<div class="detail-container">	
-					<img class="shop-icon" src="./img/shopIcons/0_tryHarder.png"></img>
-					<div class="info-container">
-						<div id="tryHarder-cost" class="item-cost">cost: 15</div>
-						<div id="tryHarder-aps" class="item-aps">+clickValue</div>
-						<div id="tryHarder-count" class="item-count">x0</div>
+						<div id="shop">
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div id="shop">
-			</div>
 		</div>
-	</div>
+	<!-- </div> -->
 
 </div>
 
