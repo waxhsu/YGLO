@@ -15,16 +15,47 @@ let totalRejections = 0;
 let goodRandomEvents = 9;
 let badRandomEvents = 9;
 let totalRandomEvents = 0;
-let randomRejectInterval = 12000;
-let randomEventInterval = 10000;
-let clickValue = 1000;
-
-/////////// PLAY TEST INFO ////////
-// document.getElementById('clickValueInfo').textContent = `clickValue = ${clickValue}`;
-// document.getElementById('randomEventInfo').textContent = `randomEvent = ${randomEventInterval/1000} sec`;
-// document.getElementById('rejectEventInfo').textContent = `rejectEvent = ${randomRejectInterval/1000} sec`;
+let clickValue = 10;
 
 
+// let randomRejectInterval = 12000;
+// let randomEventInterval = 10000;
+let universalInterval = 1000;
+
+
+/// RANDOMIZED TIME INTERVALS ///
+
+
+
+
+/////////// INTRO SCREENS ////////
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   const introAnimation = document.getElementById("intro-animation");
+//   const startScreen = document.getElementById("start-screen");
+//   const gameplayScreen = document.getElementById("gameplay-screen");
+
+//   // Play intro animation once
+//   introAnimation.addEventListener("load", function() {
+//       introAnimation.addEventListener("click", skipIntro);
+//       introAnimation.play();
+//   });
+
+//   // Function to skip intro and fade to start screen
+//   function skipIntro() {
+//       introAnimation.removeEventListener("click", skipIntro);
+//       introAnimation.pause();
+//       introAnimation.style.display = "none"; // Hide intro animation
+//       startScreen.style.opacity = "1"; // Make start screen visible
+//       setTimeout(() => {
+//           startScreen.style.opacity = "0"; // Fade start screen to gameplay screen
+//           setTimeout(() => {
+//               startScreen.style.display = "none"; // Hide start screen after fade
+//               gameplayScreen.style.opacity = "1"; // Make gameplay screen fully visible
+//           }, 1000); // Adjust fade duration as needed
+//       }, 1000); // Adjust delay before fade as needed
+//   }
+// });
  
 // START MUSIC
 const muteButton = document.getElementById("mute-button");
@@ -170,8 +201,6 @@ function updateRejection() {
 }
 
 
-
-
 // Function to calculate the total clicks per second
 function calculateTotalClicksPerSecond() {
   totalClicksPerSecond = 0;
@@ -214,12 +243,12 @@ function updateTryHarder() {
 
 function buyTryHarder() {
   if (motivation >= tryHarder.cost) {
-    tryHarder.cost = Math.floor(tryHarder.cost * 1.15);
+    tryHarder.cost = Math.floor(tryHarder.cost * 1.125);
     motivation -= tryHarder.cost;
     tryHarder.count += 1;
 
     // FIGURE OUT THE MATH FOR THIS
-    tryHarder.clickValue = tryHarder.clickValue * 1.05;
+    tryHarder.clickValue = tryHarder.clickValue * 1.15;
     clickValue = tryHarder.clickValue;
     playRandomClickSound();
     updateMotivation();
@@ -556,7 +585,7 @@ function updateJobPostings() {
 
     const jobPostingLocation = document.createElement("div");
     jobPostingLocation.className = "job-posting-location";
-    jobPostingLocation.textContent = posting.location;
+    // jobPostingLocation.textContent = posting.location;
 
     const jobPostingPay = document.createElement("div");
     jobPostingPay.className = "job-posting-pay";
@@ -605,9 +634,9 @@ function displayJobDetail(index) {
   document.getElementById("job-detail-about").textContent = clickedPosting.about;
   document.getElementById("job-detail-pay").textContent = clickedPosting.pay;
   document.getElementById("job-detail-employee").textContent = `${clickedPosting.employee} employees`;
-  document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
+  // document.getElementById("job-detail-alumni").textContent = `${clickedPosting.alumni} alumni work here`;
   document.getElementById("job-detail-skill").textContent = `Skills: ${clickedPosting.skill}, and more`;
-  document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
+  // document.getElementById("job-detail-reviewTime").textContent = `${clickedPosting.reviewTime}`;
 
 
   const responsibilitiesElement = document.getElementById("job-detail-responsibilities");
@@ -854,6 +883,12 @@ function randomEvent() {
   } else if (goodOrBad === '#73ddff') {
     showGoodRandomEvent(event, motivationRandomCalc, jobAppRandomCalc);
   }
+
+  // Calculate the random interval between 3 to 6 seconds
+  const randomInterval = Math.floor(Math.random() * (59000 - 45000 + 1)) + 45000;
+
+  // Reset the interval with the new random interval
+  setTimeout(randomEvent, randomInterval);
 }
 
 
@@ -865,7 +900,7 @@ function applyRandomEventEffect(event) {
   if (event.color === '#ff5aff') {
     // Generate random values within the specified range for '#ff5aff'
     effect_motivation = getRandomInRange(-0.321, -0.197);
-    effect_apps = getRandomInRange(-0.148, -0.121);
+    effect_apps = getRandomInRange(-0.00001, -0.000002);
   } else if (event.color === '#73ddff') {
     // Generate random values within the specified range for '#73ddff'
     effect_motivation = getRandomInRange(0.0027, 0.0151);
@@ -1036,16 +1071,27 @@ function randomRejection() {
   // Set a probability threshold based on the number of jobApplications
   const probabilityThreshold = jobApplications / 50; // Adjust as needed
 
-  // Generate a random number between 0 and 1
-  const randomValue = Math.random();
-
   // Check if the random value is below the probability threshold
-  if (randomValue < probabilityThreshold) {
+  if (Math.random() < probabilityThreshold) {
     const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
     const rejectionEvent = randomRejectionPool[randomIndex];
     const { motivationRejectCalc } = applyRandomRejectionEffects(rejectionEvent);
     showRandomRejection(rejectionEvent, motivationRejectCalc);
   }
+
+  // Calculate the random interval between 3 to 6 seconds
+  const randomInterval = Math.floor(Math.random() * (58000 - 45000 + 1)) + 45000;
+
+
+  // Calculate the random increase in totalRejections
+  const minIncrease = Math.round(jobApplications * 0.15); // 15% of jobApplications
+  const maxIncrease = Math.round(jobApplications * 0.25); // 25% of jobApplications
+  const randomIncrease = Math.floor(Math.random() * (maxIncrease - minIncrease + 1)) + minIncrease;
+
+  totalRejections += randomIncrease;
+
+  // Reset the interval with the new random interval
+  setTimeout(randomRejection, randomInterval); 
 }
 
 // Function to apply the effects of the rejection event
@@ -1067,7 +1113,7 @@ function applyRandomRejectionEffects() {
 // Function to display achievements in the notification box
 function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   playRandomInboxSound();
-  totalRejections += 1;
+
   const notification = document.createElement("div");
   notification.className = "notification";
   notification.style.backgroundColor = rejectionEvent.color;
@@ -1109,13 +1155,6 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
   notificationBox.appendChild(notification);
 }
 
-function updateRandomRejectionInterval() {
-  if (jobApplications >= 100) {
-    // Exponentially decrease the interval as jobApplications increases
-    const exponentialFactor = 0.9; // Adjust this factor as needed
-    randomRejectInterval = baseRandomRejectInterval * Math.pow(exponentialFactor, jobApplications - 100);
-  }
-}
 
 // document.addEventListener("keydown", function (event) {
 //   if (event.keyCode === 13) {
@@ -1158,10 +1197,12 @@ updateShop();
 updateJobApplications();
 updateAPSDisplay();
 updateJobPostings();
-setInterval(autoGenerateJobApplications, 1000);
-setInterval(checkMainAchievement, 1000);
 
-setInterval(updateShop, 1000)
-setInterval(randomRejection, randomRejectInterval);
-setInterval(randomEvent, randomEventInterval);
+setInterval(autoGenerateJobApplications, universalInterval);
+setInterval(checkMainAchievement, universalInterval);
+setInterval(updateShop, universalInterval);
+
+setTimeout(randomRejection, 15000);
+setTimeout(randomEvent, 45000);
+
 
