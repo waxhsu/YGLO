@@ -115,6 +115,13 @@ body {
   padding: 5px 0 0 10px;
   color: black;
 }
+.shopBanner {
+  margin: 0 0;
+  font-size: 30px;
+  background-color: #FF80FB ; 
+  padding: 5px 0 0 10px;
+  color: black;
+}
 
 #close-all {
   position: absolute;
@@ -143,7 +150,7 @@ ul, li {
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #topUI {
-  height: 55px;
+  min-height: 64px;
   display: flex;
   justify-content: space-between;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
@@ -157,6 +164,11 @@ ul, li {
   font-size: 22.5px;
   /* font-size: 2.5vh; */
 }
+
+.value-display {
+  font-size: 27.5px;
+}
+
 
 #mainUI {
   display: flex;
@@ -244,8 +256,9 @@ ul, li {
   margin: 15px;
   padding: 20px 30px;
   font-size: 35px;
-  background-color: #8873ffff;
-  color: white;
+  /* background-color: #8873ffff; */
+  background-color: #FF80FB ; 
+  /* color: white; */
   border: none;
   cursor: pointer;
   border-radius: 25px;
@@ -693,9 +706,7 @@ ul, li {
 
 
 
-
-
-/* 920 width */
+/* 920 width 
 @media (max-width: 1199px) {
   body {
     width: 920px;
@@ -727,7 +738,6 @@ ul, li {
   }
   #job-detail-highlight-box{
     margin: 2% 0 0 0;
-    /* border: blue solid 2px; */
     font-size: 14px;
   }
 
@@ -751,8 +761,6 @@ ul, li {
   .banner {
     margin: 0 0;
     font-size: 25px;
-    /* height: 3.5vh; */
-    /* width: 100%; */
     background-color: #83ffd6 ;
     padding: 5px 0 0 10px;
     color: black;
@@ -842,7 +850,6 @@ ul, li {
   }
   
   .item-count {
-    /* position: absolute; */
     font-size: 20px;
     font-weight: bold;
     text-align: right;

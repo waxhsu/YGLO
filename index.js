@@ -12,10 +12,10 @@ let appliedWithCV = 0;
 let totalApplied = 0;
 
 let totalRejections = 0;
-let goodRandomEvents = 9;
-let badRandomEvents = 9;
+let goodRandomEvents = 0;
+let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 10;
+let clickValue = 1;
 
 
 // let randomRejectInterval = 12000;
@@ -176,6 +176,31 @@ function formatLargeNumberAll(value) {
   }
 }
 
+function formatLargeNumberWithDecimals(value) {
+  if (value < 100) {
+    // Return the value rounded to 3 decimal places
+    return value.toFixed(2);
+  } else if (value < 1000000) {
+    // Return the formatted number if it's below a million
+    return formatNumberWithCommas(Math.round(value));
+  } else {
+    // Determine whether it's in millions, billions, or trillions and return accordingly
+    const million = 1000000;
+    const billion = 1000000000;
+    const trillion = 1000000000000;
+
+    if (value < billion) {
+      return `${(value / million).toFixed(3)} million`;
+    } else if (value < trillion) {
+      return `${(value / billion).toFixed(3)} billion`;
+    } else {
+      return `${(value / trillion).toFixed(3)} trillion`;
+    }
+  }
+}
+
+
+
 function updateAPSDisplay() {
   const apsElement = document.getElementById("aps-value");
   const formattedValue = formatLargeNumberAll(totalClicksPerSecond);
@@ -229,11 +254,11 @@ function updateTryHarder() {
 
   const costElement = document.getElementById("tryHarder-cost");
   const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
-  costElement.textContent = `-${formattedCostValue} grit`;
+  costElement.textContent = `cost: ${formattedCostValue}`;
 
   const apsElement = document.getElementById("tryHarder-aps");
-  const formattedClickValue = formatLargeNumberAll(tryHarder.clickValue);
-  apsElement.textContent = `+${formattedClickValue} click`;
+  const formattedClickValue = formatLargeNumberWithDecimals(tryHarder.clickValue);
+  apsElement.textContent = `+${formattedClickValue} apps`;
 
   const countElement = document.getElementById("tryHarder-count");
   countElement.textContent = `x${tryHarder.count}`;
@@ -290,11 +315,11 @@ function updateShop() {
     const costElement = document.createElement("div");
     costElement.className = "item-cost";
     const formattedValue = formatLargeNumberAll(shop.cost);
-    costElement.textContent = `-${formattedValue} grit`;
+    costElement.textContent = `cost: ${formattedValue}`;
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps";
-    clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/sec`;
+    clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/s`;
 
     const countElement = document.createElement("div");
     countElement.className = "item-count";
@@ -339,7 +364,7 @@ function buyAutoApplication(app) {
     calculateTotalClicksPerSecond();
     updateAPSDisplay(); 
     updateShopUpgrades(); 
-    applyParticle(`+${formatLargeNumberAll(app.clicksPerSecond)} apps/sec`, event.clientX, event.clientY, "shop-item");
+    applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
   }
 }
 
@@ -370,7 +395,7 @@ function autoGenerateJobApplications() {
 ////////////////////////////////////////////////////////////
 
 function applyJobApplication() {
-  motivation += clickValue * 1.15^(jobApplications*0.05);
+  motivation += clickValue * 1.12^(jobApplications*0.05);
   appliedWithoutCV += 1;
   totalApplied += 1;
   jobApplications += clickValue
@@ -508,7 +533,7 @@ function applyJobApplicationWithCV() {
   motivation += 0.817 * 1.15^(jobApplications*0.5);
   appliedWithCV += 1;
   totalApplied += 1;
-  jobApplications += clickValue;
+  jobApplications += clickValue*10;
   updateJobApplications();
   updateMotivation();
   updateRejection();
@@ -521,6 +546,7 @@ function applyJobApplicationWithCV() {
   currentParagraphIndex = 0;
 
   textBox.value = "";
+  applyParticle(`+${formatLargeNumberWithDecimals(clickValue*10)}`, event.clientX, event.clientY, "submit-button");
   displayNextJobDetail();
 }
 
@@ -710,14 +736,15 @@ function cycleJobPostings() {
 
 function checkMainAchievement() {
   for (const achievement of mainAchievementsObj) {
-    const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, displayed, message1, message2, icon } = achievement;
+    const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, tryHarders, displayed, message1, message2, icon } = achievement;
     if ((
       (clicks && appliedWithoutCV >= clicks) ||
       (apps && jobApplications >= apps) ||
       (rejections && totalRejections >= rejections) || 
       (badEvents && badRandomEvents >= badEvents) ||
       (goodEvents && goodRandomEvents >= goodEvents) ||
-      (totalRandom && totalRandomEvents >= totalRandom)
+      (totalRandom && totalRandomEvents >= totalRandom) ||
+      (tryHarders && tryHarder.count >= tryHarders)
       ) 
     && !displayed) {
       showAchievement(message1, message2, icon);
