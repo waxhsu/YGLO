@@ -17,46 +17,14 @@ let badRandomEvents = 0;
 let totalRandomEvents = 0;
 let clickValue = 1;
 
-
-// let randomRejectInterval = 12000;
-// let randomEventInterval = 10000;
 let universalInterval = 1000;
 
 
-/// RANDOMIZED TIME INTERVALS ///
-
-
-
-
 /////////// INTRO SCREENS ////////
+/// ADD ONCLICK FUNCTION TO REMOVE VIDEO
+/// 
 
-// document.addEventListener("DOMContentLoaded", function() {
-//   const introAnimation = document.getElementById("intro-animation");
-//   const startScreen = document.getElementById("start-screen");
-//   const gameplayScreen = document.getElementById("gameplay-screen");
-
-//   // Play intro animation once
-//   introAnimation.addEventListener("load", function() {
-//       introAnimation.addEventListener("click", skipIntro);
-//       introAnimation.play();
-//   });
-
-//   // Function to skip intro and fade to start screen
-//   function skipIntro() {
-//       introAnimation.removeEventListener("click", skipIntro);
-//       introAnimation.pause();
-//       introAnimation.style.display = "none"; // Hide intro animation
-//       startScreen.style.opacity = "1"; // Make start screen visible
-//       setTimeout(() => {
-//           startScreen.style.opacity = "0"; // Fade start screen to gameplay screen
-//           setTimeout(() => {
-//               startScreen.style.display = "none"; // Hide start screen after fade
-//               gameplayScreen.style.opacity = "1"; // Make gameplay screen fully visible
-//           }, 1000); // Adjust fade duration as needed
-//       }, 1000); // Adjust delay before fade as needed
-//   }
-// });
- 
+// Function to start the game
 // START MUSIC
 const muteButton = document.getElementById("mute-button");
 const volumeSlider = document.getElementById("volume-slider");
@@ -1231,5 +1199,4 @@ setInterval(updateShop, universalInterval);
 
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 45000);
-
 
