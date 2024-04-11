@@ -21,8 +21,24 @@ let universalInterval = 1000;
 
 
 /////////// INTRO SCREENS ////////
-/// ADD ONCLICK FUNCTION TO REMOVE VIDEO
-/// 
+const videoContainer = document.getElementById("video-container");
+videoContainer.addEventListener("click", clicktoSkip)
+
+function clicktoSkip () {
+  videoContainer.parentNode.removeChild(videoContainer);
+}
+
+
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clicktoSkipTitle)
+
+function clicktoSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+}
+
+
+
+
 
 // Function to start the game
 // START MUSIC
@@ -659,13 +675,8 @@ function displayJobDetail(index) {
 
   
 }
-// cycleJobPostings(index);
 
 
-// function cycleJobPostings(clickedIndex) {
-//   const removedPosting = jobPostingCycleObj.splice(clickedIndex, 1);
-//   jobPostingCycleObj.push(removedPosting);
-// }
 function cycleJobPostings() {
   const jobPostingsElement = document.getElementById("job-postings");
   const clickedPostingIndex = Array.from(jobPostingsElement.children).findIndex(postingItem => postingItem.classList.contains("clicked-posting"));
@@ -1198,5 +1209,5 @@ setInterval(checkMainAchievement, universalInterval);
 setInterval(updateShop, universalInterval);
 
 setTimeout(randomRejection, 15000);
-setTimeout(randomEvent, 45000);
+setTimeout(randomEvent, 55000);
 
