@@ -21,21 +21,33 @@ let universalInterval = 1000;
 
 
 /////////// INTRO SCREENS ////////
+const videoElement = document.getElementById("intro-video");
 const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clicktoSkip)
+videoContainer.addEventListener("click", clickToSkipIntro)
 
-function clicktoSkip () {
+videoElement.addEventListener("ended", clickToSkipIntro);
+
+function clickToSkipIntro () {
   videoContainer.parentNode.removeChild(videoContainer);
 }
 
 
 const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clicktoSkipTitle)
+titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clicktoSkipTitle () {
+function clickToSkipTitle () {
   titleContainer.parentNode.removeChild(titleContainer);
 }
 
+// ADD START TIME ON GAME AFTER CLICKTOSKIPTITLE
+
+
+
+//////// CUTSCENE SCREEN ////////
+
+
+
+/// TOOLTIP FUNCTION ///
 
 
 
