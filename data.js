@@ -152,7 +152,7 @@ const mainAchievementsObj = [
       icon: "./img/achievementIcons/rejection/icon_rejection_achievement.png",
       iconFalse: "./img/achievementIcons/rejection/icon_rejection_achievement_false.png",
       rejections: 1, 
-      message1: "Your 1st wave for rejections",
+      message1: "Your 1st wave of rejections",
       message2: "You feel a bit dead inside",
       displayed: false,
     },

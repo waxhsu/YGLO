@@ -1075,16 +1075,6 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
 ///////////////////   RANDOM REJECTIONS   //////////////////
 ////////////////////////////////////////////////////////////
 
-
-// function randomRejection() {
-//   if (jobApplications >= 100) {
-//     const randomIndex = Math.floor(Math.random() * randomRejectionPool.length);
-//     const rejectionEvent = randomRejectionPool[randomIndex];
-//     const { motivationRejectCalc } = applyRandomRejectionEffects(rejectionEvent);
-//     showRandomRejection(rejectionEvent, motivationRejectCalc);
-//   }
-// }
-
 function randomRejection() {
   // Set a probability threshold based on the number of jobApplications
   const probabilityThreshold = jobApplications / 50; // Adjust as needed
