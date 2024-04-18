@@ -48,7 +48,9 @@ function clickToSkipTitle () {
 
 
 /// TOOLTIP FUNCTION ///
-
+function showTooltip () {
+  
+}
 
 
 
@@ -855,7 +857,7 @@ function displayAchievements(achievementsArray) {
       iconImage.className = "achievement-item";
 
       const tooltip = document.createElement("div");
-      tooltip.className = "tooltip";
+      tooltip.className = "achievementTooltip";
       tooltip.textContent = achievement.message1;
 
       achievementListDiv.appendChild(iconImage);

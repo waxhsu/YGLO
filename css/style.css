@@ -93,11 +93,39 @@ body {
 }
 
 
+/*@@@@@@@@@@@@@@@@@@@@@*/
+/*@@@@@  TOOLTIP  @@@@@*/
+/*@@@@@@@@@@@@@@@@@@@@@*/
+
+.tooltipText {
+  display: flex;
+  visibility: hidden;
+  background-color: #555;
+  font-size: 16px;
+  max-width: fit-content;
+  max-height: min-content;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltipText{
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+
+
 .banner {
   margin: 0 0;
   font-size: 30px;
-  /* height: 3.5vh; */
-  /* width: 100%; */
   background-color: #83ffd6 ;
   padding: 5px 0 0 10px;
   color: black;
@@ -304,7 +332,7 @@ ul, li {
   padding: 1.5vh 0;
 }
 
-.tooltip {
+.achievementTooltip {
   display: flex;
   visibility: hidden;
   background-color: #555;
@@ -326,7 +354,7 @@ ul, li {
   justify-content: center;
 }
 
-.achievement-item:hover  .tooltip {
+.achievement-item:hover  .achievementTooltip {
   visibility: visible;
   opacity: 1;
 }
