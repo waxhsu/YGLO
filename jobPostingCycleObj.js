@@ -29,7 +29,7 @@ const jobPostingCycleObj = [
         location: "Dubuque, Iowa, USA",
         pay: "$60,000/yr - $70,000/yr",
         employee: "10-14",
-        skill: "Quick Thinking, Extreme Attention to Detail",
+        skill: "Quick Thinking, Attention to Detail",
         company: "Completely Clean Erasers",
         about: "Do you love to erase? Do you spend way too much time erasing tiny mistakes? Then we have the perfect job for you! Be the ultimate eraser champion at our company and proudly declare to the world that you erase for a living.",
         responsibilities: [

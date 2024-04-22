@@ -7,12 +7,12 @@
 
 <body>
 	
-	<div id="video-container">
+	<!-- <div id="video-container">
 		<video id="intro-video" src="./img/introduction/yglo_intro.mp4" autoplay muted></video>
 	</div>
 	<div id="title-container">
 		<img id="intro-title" src="./img/introduction/Start_Screen.gif"></img>
-	</div>
+	</div> -->
 	
 	<div id="topUI">
 				<div id="soundButtonBox">
@@ -59,7 +59,9 @@
 
 
 
-				<img id="profile-picture" src="./img/stateIcons/stateIdle.gif"></img>
+				<img id="profile-picture" class="tooltip" src="./img/stateIcons/stateIdle.gif">
+					<div class="tooltipText">See achievements</div>
+				</img>
 
 				<div id="achievements-page" style="display: none;">
 					<h1 class="banner">Achievements Page</h1>
@@ -107,9 +109,19 @@
 						</div>
 					</div>
 					
+
 					<div id="click-button-box">
-						<button id="apply-button" class="click-button">Apply</button>
-						<button id="attach-button" class="click-button">Attach</button>
+						<div id="apply-button" class="tooltip">
+							<button class="click-button">Apply</button>
+							<div class="tooltipText">Apply to more jobs!</div>
+						</div>
+						
+						<div id="attach-button" class="tooltip">
+							<button class="click-button">Attach</button>
+							<div class="tooltipText">Attach a cover letter</div>
+						</div>
+						
+					</div>
 
 						<div id="attach-page" style="display: none;">
 							<h1 class="banner">Attach/Type Your Cover Letter</h1>
@@ -117,18 +129,18 @@
 							<button id="submit-button" class="click-button">Submit & Send</button>
 						</div>
 
-					</div>
-					
-					
-					<div id="bottomCenterUI">
-						<h1 class="banner">About</h1>
-						<div id="job-detail-about"></div>
-						<h1 class="banner">Responsibilities</h1>
-						<div id="job-detail-responsibilities"></div>
-						<h1 class="banner">Qualifications</h1>
-						<div id="job-detail-qualifications"></div>
-					</div>
+						
+						
+						<div id="bottomCenterUI">
+							<h1 class="banner">About</h1>
+							<div id="job-detail-about"></div>
+							<h1 class="banner">Responsibilities</h1>
+							<div id="job-detail-responsibilities"></div>
+							<h1 class="banner">Qualifications</h1>
+							<div id="job-detail-qualifications"></div>
+						</div>
 				</div>
+			
 
 				<div id="rightUI">
 					<h1 class="banner">Notification</h1>
@@ -139,7 +151,7 @@
 
 					<h1 class="shopBanner">Shop</h1>
 					<div id="rightBottomUI">
-						<div id="tryHarder" class="shop-item">
+						<div id="tryHarder" class="tooltip">
 							<div class="title-container">
 								<div class="item-name">Try Harder</div>
 							</div>
@@ -147,7 +159,7 @@
 								<img class="shop-icon" src="./img/shopIcons/0_tryHarder.png"></img>
 								<div class="info-container">
 									<div id="tryHarder-cost" class="item-cost">cost: 15</div>
-									<div id="tryHarder-aps" class="item-aps">+1 apps/click</div>
+									<div id="tryHarder-aps" class="item-aps tooltipText">+1 apps/click</div>
 									<div id="tryHarder-count" class="item-count">x0</div>
 								</div>
 							</div>
@@ -155,11 +167,12 @@
 
 						<div id="shop">
 						</div>
+
 					</div>
 				</div>
 			</div>
-
 		</div>
+	</div>
 
 </div>
 

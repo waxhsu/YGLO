@@ -375,10 +375,6 @@ const mainAchievementsObj = [
 
   ];
 
-const tryHarderAchievementsObj = [
-
-]
-
 
 const upgradeAchievementsObj = [
 

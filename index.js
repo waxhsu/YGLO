@@ -15,29 +15,50 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1;
+let clickValue = 100000;
 
 let universalInterval = 1000;
 
 
+// Get all elements with the class 'tooltip'
+const tooltips = document.querySelectorAll('.tooltip');
+
+// Loop through each tooltip element
+tooltips.forEach(tooltip => {
+  // Get the corresponding tooltip text element
+  const tooltipText = tooltip.querySelector('.tooltipText');
+  
+  // Add event listener to tooltip for mousemove event
+  tooltip.addEventListener('mousemove', function(event) {
+    // Get the cursor position relative to the viewport
+    const x = event.clientX;
+    const y = event.clientY;
+
+    // Set the position of the tooltip text to the cursor position
+    tooltipText.style.left = x + 'px';
+    tooltipText.style.top = y + 'px';
+  });
+});
+
+
 /////////// INTRO SCREENS ////////
-const videoElement = document.getElementById("intro-video");
-const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro)
+// const videoElement = document.getElementById("intro-video");
+// const videoContainer = document.getElementById("video-container");
+// videoContainer.addEventListener("click", clickToSkipIntro)
 
-videoElement.addEventListener("ended", clickToSkipIntro);
+// videoElement.addEventListener("ended", clickToSkipIntro);
 
-function clickToSkipIntro () {
-  videoContainer.parentNode.removeChild(videoContainer);
-}
+// function clickToSkipIntro () {
+//   videoContainer.parentNode.removeChild(videoContainer);
+// }
 
 
-const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clickToSkipTitle)
+// const titleContainer = document.getElementById("title-container");
+// titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clickToSkipTitle () {
-  titleContainer.parentNode.removeChild(titleContainer);
-}
+// function clickToSkipTitle () {
+//   titleContainer.parentNode.removeChild(titleContainer);
+// }
 
 // ADD START TIME ON GAME AFTER CLICKTOSKIPTITLE
 
@@ -45,12 +66,6 @@ function clickToSkipTitle () {
 
 //////// CUTSCENE SCREEN ////////
 
-
-
-/// TOOLTIP FUNCTION ///
-function showTooltip () {
-  
-}
 
 
 
@@ -256,7 +271,7 @@ function updateTryHarder() {
 
   const apsElement = document.getElementById("tryHarder-aps");
   const formattedClickValue = formatLargeNumberWithDecimals(tryHarder.clickValue);
-  apsElement.textContent = `+${formattedClickValue} apps`;
+  apsElement.textContent = `+${formattedClickValue} apps/click`;
 
   const countElement = document.getElementById("tryHarder-count");
   countElement.textContent = `x${tryHarder.count}`;
@@ -295,7 +310,7 @@ function updateShop() {
     iconElement.className = "shop-icon";
 
     const shopItem = document.createElement("div");
-    shopItem.className = `shop-item ${motivation < shop.cost ? 'greyed-out' : ''}`;
+    shopItem.className = `shop-item tooltip ${motivation < shop.cost ? 'greyed-out' : ''}`;
     
     const titleContainer = document.createElement("div");
     titleContainer.className = "title-container";
@@ -316,7 +331,7 @@ function updateShop() {
     costElement.textContent = `cost: ${formattedValue}`;
 
     const clicksPerSecondElement = document.createElement("div");
-    clicksPerSecondElement.className = "item-aps";
+    clicksPerSecondElement.className = "item-aps tooltipText";
     clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/s`;
 
     const countElement = document.createElement("div");
@@ -1200,6 +1215,8 @@ document.getElementById("close-all").addEventListener("click", function () {
 ////////////////////////////////////////////////////////////
 ////////////////////   TIME TRACKING CODE   ////////////////
 ////////////////////////////////////////////////////////////
+
+
 
 
 // Initialize the game
