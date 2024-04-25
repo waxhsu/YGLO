@@ -68,9 +68,7 @@ body {
   display: none;
 }
 
-#profile-picture{
-  position: absolute;
-  right: 0%;
+/* #profile-picture{
   max-height: 100px;
   max-width: 100px;
 }
@@ -83,13 +81,12 @@ body {
 #profile-picture:active {
   transform: scale(0.96);
   filter: brightness(85%);
-}
+} */
 
 .icon {
   max-height: 72.5px;
   max-width: 72.5px;
   min-width: 72.5px;
-  /* padding: 2%; */
 }
 
 
@@ -116,6 +113,11 @@ body {
 .tooltip:hover .tooltipText{
   visibility: visible;
   opacity: 1;
+}
+
+#profile-picture:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
 }
 
 
@@ -594,6 +596,17 @@ ul, li {
 
 
 
+#tryHarder, .shop-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  margin: 3px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  transition: transform 0.1s;
+}
+
 
 .shop-icon {
   min-height: 100px;
@@ -604,15 +617,50 @@ ul, li {
   border-radius: 25%;
 }
 
+/* .tooltipText {
+  display: flex;
+  visibility: hidden;
+  background-color: #555;
+  font-size: 16px;
+  max-width: fit-content;
+  max-height: min-content;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: fixed;
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltipText{
+  visibility: visible;
+  opacity: 1;
+} */
+
+
 .shop-item.greyed-out {
-  filter: grayscale(100%); /* Apply greyscale effect for greyed-out items */
-  opacity: 0.5; /* Adjust opacity as needed */
-  pointer-events: none; /* Disable pointer events for greyed-out items */
+  filter: grayscale(100%);
+  opacity: 0.5; 
+  pointer-events: none; 
 }
 
 .shop-item.-out .shop-icon {
   filter: contrast(0%);
 }
+/* 
+
+.shop-item:hover {
+  filter: brightness(90%);
+}
+
+.shop-item:active {
+  transform: scale(0.96);
+  filter: brightness(85%);
+} */
+
+
+
 
 .info-container {
   width: 100px;
@@ -626,17 +674,6 @@ ul, li {
   display: flex;
   /* width: 80%; */
   justify-content: flex-end;
-}
-
-#tryHarder, .shop-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #ccc;
-  margin: 3px;
-  background-color: #f9f9f9;
-  border-radius: 15px;
-  transition: transform 0.1s;
 }
 
 .item-name {
@@ -665,16 +702,6 @@ ul, li {
   align-self: flex-end;
 }
 
-
-
-.shop-item:hover {
-  filter: brightness(90%);
-}
-
-.shop-item:active {
-  transform: scale(0.96);
-  filter: brightness(85%);
-}
 
 #soundButtonBox {
   display: flex;

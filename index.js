@@ -15,30 +15,48 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 100000;
+let clickValue = 10000;
 
 let universalInterval = 1000;
 
+// const tooltips = document.querySelectorAll('.tooltip');
+// tooltips.forEach(tooltip => {
+//   const tooltipText = tooltip.querySelector('.tooltipText');
+  
+//   tooltip.addEventListener('mousemove', function(event) {
+//     const x = event.clientX;
+//     const y = event.clientY;
 
-// Get all elements with the class 'tooltip'
+//     tooltipText.style.left = x + 'px';
+//     tooltipText.style.top = y + 'px';
+//   });
+// });
+
 const tooltips = document.querySelectorAll('.tooltip');
-
-// Loop through each tooltip element
 tooltips.forEach(tooltip => {
-  // Get the corresponding tooltip text element
   const tooltipText = tooltip.querySelector('.tooltipText');
   
-  // Add event listener to tooltip for mousemove event
   tooltip.addEventListener('mousemove', function(event) {
-    // Get the cursor position relative to the viewport
     const x = event.clientX;
     const y = event.clientY;
+    
+    // Get the width and height of the tooltip text element
+    const tooltipWidth = tooltipText.offsetWidth;
+    const tooltipHeight = tooltipText.offsetHeight;
 
-    // Set the position of the tooltip text to the cursor position
-    tooltipText.style.left = x + 'px';
-    tooltipText.style.top = y + 'px';
+    // Calculate the maximum allowable positions to keep the tooltip on the page
+    const maxX = window.innerWidth - tooltipWidth;
+    const maxY = window.innerHeight - tooltipHeight;
+
+    // Adjust the tooltip position to stay within the maximum allowable positions
+    const adjustedX = Math.min(x, maxX);
+    const adjustedY = Math.min(y, maxY);
+
+    tooltipText.style.left = adjustedX + 'px';
+    tooltipText.style.top = adjustedY + 'px';
   });
 });
+
 
 
 /////////// INTRO SCREENS ////////
@@ -230,6 +248,7 @@ function updateMotivation() {
   const motivationElement = document.getElementById("motivation-value");
   const formattedValue = formatLargeNumberAll(motivation);
   motivationElement.textContent = formattedValue;
+  // updateShop();
 }
 
 function updateRejection() {
@@ -279,6 +298,10 @@ function updateTryHarder() {
   
 }
 
+const tryHarderButton = document.getElementById("tryHarder");
+tryHarderButton.addEventListener("click", buyTryHarder);
+
+
 function buyTryHarder() {
   if (motivation >= tryHarder.cost) {
     tryHarder.cost = Math.floor(tryHarder.cost * 1.125);
@@ -292,16 +315,30 @@ function buyTryHarder() {
     updateMotivation();
     updateTryHarder();
     applyParticle("+1", event.clientX, event.clientY, "try-harder");
+    updateShop();
 
   }
 }
 
-const tryHarderButton = document.getElementById("tryHarder");
-tryHarderButton.addEventListener("click", buyTryHarder);
 
+
+
+const shopElement = document.getElementById("shop");
+
+// Delegate event handling to the parent element
+shopElement.addEventListener('mousemove', function(event) {
+    const target = event.target.closest('.shop-item');
+    if (target) {
+        const tooltipText = target.querySelector('.tooltipText');
+        const x = event.clientX;
+        const y = event.clientY;
+
+        tooltipText.style.left = x + 'px';
+        tooltipText.style.top = y + 'px';
+    }
+});
 
 function updateShop() {
-  const shopElement = document.getElementById("shop");
   shopElement.innerHTML = "";
 
   shopObj.forEach((shop, index) => {
@@ -351,12 +388,12 @@ function updateShop() {
     shopItem.appendChild(titleContainer);
     shopItem.appendChild(detailContainer);
 
+
     if (index <= 1 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
     } else {
-      // Grey out and hide the items that don't meet the condition
       shopItem.style.display = "none";
     }
 
@@ -370,23 +407,15 @@ function buyAutoApplication(app) {
     app.cost = Math.floor(app.cost * 1.15);
     motivation -= app.cost;
     app.count += 1;
-    // totalAutoApplications += 1;
     playRandomClickSound();
     updateMotivation();
     updateShop();
     calculateTotalClicksPerSecond();
     updateAPSDisplay(); 
-    updateShopUpgrades(); 
+    // updateShopUpgrades();
+    updateShopCount(); 
     applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
   }
-}
-
-let shopUpgradeCount = autoApplications.map(app => app.count);
-
-function updateShopUpgrades() {
-  shopObj.forEach((app, index) => {
-    shopUpgradeCount[index] = app.count;
-  });
 }
 
 
@@ -414,7 +443,8 @@ function applyJobApplication() {
   jobApplications += clickValue
   updateJobApplications();
   updateMotivation();
-  updateRejection();
+  updateShop();
+  // updateRejection();
   cycleJobPostings(); //wtf
   updateJobPostings();
   playRandomClickSound();
@@ -762,6 +792,13 @@ function checkMainAchievement() {
   }
 }
 
+let shopUpgradeCount = autoApplications.map(app => app.count);
+
+function updateShopCount() {
+  shopObj.forEach((app, index) => {
+    shopUpgradeCount[index] = app.count;
+  });
+}
 
 // Function to check for UPGRADEachievementsObj
 function checkUpgradeAchievement(index) {
@@ -1227,7 +1264,6 @@ updateJobPostings();
 
 setInterval(autoGenerateJobApplications, universalInterval);
 setInterval(checkMainAchievement, universalInterval);
-setInterval(updateShop, universalInterval);
 
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 55000);
