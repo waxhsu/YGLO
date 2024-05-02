@@ -1,6 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&display=swap');
 /* @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); */
 
+
+/* CURSORS */
+
+html:hover {
+  cursor: url('../img/cursor/hover.png'), auto;
+}
+
+html:active {
+  cursor: url('../img/cursor/active.png'), auto;
+}
+
+
+/* INTRO */
+
 #video-container{
   position: fixed;
   top: 0;
@@ -61,7 +75,9 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 40px;
+  text-align: center;
+  font-size: 35px;
+  padding: 30px;
 }
 
 #centerUI {
