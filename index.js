@@ -19,19 +19,6 @@ let clickValue = 10000;
 
 let universalInterval = 1000;
 
-// const tooltips = document.querySelectorAll('.tooltip');
-// tooltips.forEach(tooltip => {
-//   const tooltipText = tooltip.querySelector('.tooltipText');
-  
-//   tooltip.addEventListener('mousemove', function(event) {
-//     const x = event.clientX;
-//     const y = event.clientY;
-
-//     tooltipText.style.left = x + 'px';
-//     tooltipText.style.top = y + 'px';
-//   });
-// });
-
 const tooltips = document.querySelectorAll('.tooltip');
 tooltips.forEach(tooltip => {
   const tooltipText = tooltip.querySelector('.tooltipText');
@@ -43,6 +30,8 @@ tooltips.forEach(tooltip => {
     // Get the width and height of the tooltip text element
     const tooltipWidth = tooltipText.offsetWidth;
     const tooltipHeight = tooltipText.offsetHeight;
+    const offsetX = 22;
+    const offsetY = 25;
 
     // Calculate the maximum allowable positions to keep the tooltip on the page
     const maxX = window.innerWidth - tooltipWidth;
@@ -52,33 +41,33 @@ tooltips.forEach(tooltip => {
     const adjustedX = Math.min(x, maxX);
     const adjustedY = Math.min(y, maxY);
 
-    tooltipText.style.left = adjustedX + 'px';
-    tooltipText.style.top = adjustedY + 'px';
+    tooltipText.style.left = (adjustedX + offsetX) + 'px';
+    tooltipText.style.top = (adjustedY + offsetY) + 'px';
   });
 });
 
 
 
 /////////// INTRO SCREENS ////////
-// const videoElement = document.getElementById("intro-video");
-// const videoContainer = document.getElementById("video-container");
-// videoContainer.addEventListener("click", clickToSkipIntro)
+const videoElement = document.getElementById("intro-video");
+const videoContainer = document.getElementById("video-container");
+videoContainer.addEventListener("click", clickToSkipIntro)
 
-// videoElement.addEventListener("ended", clickToSkipIntro);
+videoElement.addEventListener("ended", clickToSkipIntro);
 
-// function clickToSkipIntro () {
-//   videoContainer.parentNode.removeChild(videoContainer);
-// }
+function clickToSkipIntro () {
+  videoContainer.parentNode.removeChild(videoContainer);
+}
 
 
-// const titleContainer = document.getElementById("title-container");
-// titleContainer.addEventListener("click", clickToSkipTitle)
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clickToSkipTitle)
 
-// function clickToSkipTitle () {
-//   titleContainer.parentNode.removeChild(titleContainer);
-// }
+function clickToSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+  playBackgroundMusic()
+}
 
-// ADD START TIME ON GAME AFTER CLICKTOSKIPTITLE
 
 
 
@@ -87,81 +76,70 @@ tooltips.forEach(tooltip => {
 
 
 
-// Function to start the game
-// START MUSIC
-const muteButton = document.getElementById("mute-button");
-const volumeSlider = document.getElementById("volume-slider");
-
-// Function to start playing the background music
+//////// SOUND AND BGM /////////
+const muteButton = document.getElementById("muteToggleBtn");
+const muteIcon = document.getElementById("muteBGMIcon");
 let bgMusic = new Audio('./YGLO_bg_v3.mp3');
 
+// Function to play background music and set up mute toggle
 function playBackgroundMusic() {
-  // Listen for the first user interaction event (e.g., click)
-  document.addEventListener('click', initiateAudioPlayback, { once: true });
+    bgMusic.muted = true; // Set music to be muted by default
+    bgMusic.play();
+    muteButton.addEventListener('click', toggleMute);
 }
 
-function initiateAudioPlayback() {
-  // Unmute and play the audio
-  bgMusic.muted = true;
-  bgMusic.play();
-}
 
-// Call the playBackgroundMusic function somewhere in your code to start listening for user interaction
-playBackgroundMusic();
-// Function to toggle the background music (mute/unmute)
+// Function to toggle mute state and update mute icon
 function toggleMute() {
-if (bgMusic.muted) {
-    bgMusic.muted = false;
-    muteButton.textContent = "Music On";
-} else {
-    bgMusic.muted = true;
-    muteButton.textContent = "Music Off";
+    if (bgMusic.muted) {
+        bgMusic.muted = false;
+        muteIcon.src = "./img/gameIcons/testOn.png";
+    } else {
+        bgMusic.muted = true;
+        muteIcon.src = "./img/gameIcons/testOff.png";
+    }
 }
-}
 
-// // Function to handle volume change
-// function changeVolume() {
-
-// bgMusic.volume = volumeSlider.value;
-// }
-
-// volumeSlider.addEventListener("input", changeVolume);
-muteButton.addEventListener("click", toggleMute);
-
-// Add an event listener to start playing the music when the page loads
-window.addEventListener("load", playBackgroundMusic);
+////////// AFTER TEST, DELETE THIS ///////////
+// playBackgroundMusic();
+//////////////////////////////////////////////
 
 
 
-////////////////////////////////////////////////////////////
-///////////////////    MAIN GAMEPLAY   /////////////////////
-////////////////////////////////////////////////////////////
-  
-// Define a variable to keep track of sound state (on or off)
+
+const soundButton = document.getElementById('soundToggleBtn');
+const soundIcon = document.getElementById('muteSoundIcon');
+
+////// CHANGE THIS TO TRUE AFTER LAUNCH ////////
 let isSoundOn = false;
+////////////////////////////////////////////////
 
-// Add an event listener to the sound toggle button
-document.getElementById('soundToggleBtn').addEventListener('click', toggleSound);
-
-// Function to toggle sound state and update button text
+// Function to toggle sound state and update sound icon
 function toggleSound() {
   isSoundOn = !isSoundOn;
-  updateButtonText();
-
-  // You can add more logic here to stop playing sounds if the state is off
+  updateSoundIcon();
 }
 
-function updateButtonText() {
-  const buttonText = isSoundOn ? 'Sound On' : 'Sound Off';
-  document.getElementById('soundToggleBtn').textContent = buttonText;
+// Function to update sound icon based on sound state
+function updateSoundIcon() {
+  if (isSoundOn) {
+    soundIcon.src = "./img/gameIcons/testOn.png";
+  } else {
+    soundIcon.src = "./img/gameIcons/testOff.png";
+  }
 }
 
+// Event listener for sound button
+soundButton.addEventListener('click', toggleSound);
+
+// Audio files for click sounds
 const clickSounds = [
   './sound/YGLOclick1.mov',
   './sound/YGLOclick2.mp3',
   './sound/YGLOclick3.mp3',
 ];
 
+// Function to play random click sound
 function playRandomClickSound() {
   if (isSoundOn) {
     const randomIndex = Math.floor(Math.random() * clickSounds.length);
@@ -170,16 +148,26 @@ function playRandomClickSound() {
   }
 }
 
+// Audio files for inbox sounds
 const inboxSounds = [
   './sound/YGLOnotification.mov',
 ];
 
+// Function to play random inbox sound
 function playRandomInboxSound() {
   if (isSoundOn) {
-    const audio = new Audio(inboxSounds);
+    const randomIndex = Math.floor(Math.random() * inboxSounds.length);
+    const audio = new Audio(inboxSounds[randomIndex]);
     audio.play();
   }
 }
+
+
+////////////////////////////////////////////////////////////
+///////////////////    MAIN GAMEPLAY   /////////////////////
+////////////////////////////////////////////////////////////
+  
+
 
 ///////////////////////////////////////////////////////////
 /////////////////  UPDATE STATS INFO  /////////////////////
@@ -332,9 +320,11 @@ shopElement.addEventListener('mousemove', function(event) {
         const tooltipText = target.querySelector('.tooltipText');
         const x = event.clientX;
         const y = event.clientY;
+        const offsetX = 22;
+        const offsetY = 25;
 
-        tooltipText.style.left = x + 'px';
-        tooltipText.style.top = y + 'px';
+        tooltipText.style.left = (x + offsetX) + 'px';
+        tooltipText.style.top = (y + offsetY) + 'px';
     }
 });
 
@@ -604,30 +594,14 @@ function applyJobApplicationWithCV() {
 ////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function shuffleArray(array) {
-//     for (let i = array.length - 1; i > 0; i--) {
-//         const j = Math.floor(Math.random() * (i + 1));
-//         [array[i], array[j]] = [array[j], array[i]];
-//       }
-//     }
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
     
-//     shuffleArray(jobPostingCycleObj);
+    shuffleArray(jobPostingCycleObj);
     
 import { jobPostingCycleObj } from './jobPostingCycleObj.js';
 
