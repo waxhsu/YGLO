@@ -4,11 +4,11 @@
 
 /* CURSORS */
 
-html:hover {
+html:hover, #close-all:hover {
   cursor: url('../img/cursor/hover.png'), auto;
 }
 
-html:active {
+html:active, #close-all:active {
   cursor: url('../img/cursor/active.png'), auto;
 }
 
@@ -83,21 +83,6 @@ body {
 #centerUI {
   display: none;
 }
-
-/* #profile-picture{
-  max-height: 100px;
-  max-width: 100px;
-}
-
-#profile-picture:hover {
-  transform: scale(0.99);
-  filter: brightness(90%);
-}
-
-#profile-picture:active {
-  transform: scale(0.96);
-  filter: brightness(85%);
-} */
 
 .icon {
   max-height: 72.5px;
@@ -480,12 +465,15 @@ ul, li {
   opacity: 0; 
   transition: opacity 0.3s ease; 
   font-family: 'Pixelify Sans', sans-serif;
+  /* cursor: url('../img/cursor/hover.png'), auto; */
 }
 
 .div-close-button {
   opacity: 1; 
   /* transition: opacity 0.3s ease;  */
 }
+
+
 
 
   
@@ -705,7 +693,6 @@ ul, li {
 }
 
 .item-count {
-  /* position: absolute; */
   font-size: 25px;
   font-weight: bold;
   text-align: right;
@@ -725,6 +712,13 @@ ul, li {
   align-items: center;
   padding-left: 10px;
 }
+
+/* #muteBGMIcon {
+  background-image: url('../img/gameIcons/testOff.png');
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+} */
 
 
 .particle-container {

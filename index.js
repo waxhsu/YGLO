@@ -49,24 +49,24 @@ tooltips.forEach(tooltip => {
 
 
 /////////// INTRO SCREENS ////////
-const videoElement = document.getElementById("intro-video");
-const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro)
+// const videoElement = document.getElementById("intro-video");
+// const videoContainer = document.getElementById("video-container");
+// videoContainer.addEventListener("click", clickToSkipIntro)
 
-videoElement.addEventListener("ended", clickToSkipIntro);
+// videoElement.addEventListener("ended", clickToSkipIntro);
 
-function clickToSkipIntro () {
-  videoContainer.parentNode.removeChild(videoContainer);
-}
+// function clickToSkipIntro () {
+//   videoContainer.parentNode.removeChild(videoContainer);
+// }
 
 
-const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clickToSkipTitle)
+// const titleContainer = document.getElementById("title-container");
+// titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clickToSkipTitle () {
-  titleContainer.parentNode.removeChild(titleContainer);
-  playBackgroundMusic()
-}
+// function clickToSkipTitle () {
+//   titleContainer.parentNode.removeChild(titleContainer);
+//   playBackgroundMusic()
+// }
 
 
 
@@ -88,6 +88,10 @@ function playBackgroundMusic() {
     muteButton.addEventListener('click', toggleMute);
 }
 
+////////// AFTER TEST, DELETE THIS ///////////
+playBackgroundMusic();
+//////////////////////////////////////////////
+
 
 // Function to toggle mute state and update mute icon
 function toggleMute() {
@@ -99,10 +103,6 @@ function toggleMute() {
         muteIcon.src = "./img/gameIcons/testOff.png";
     }
 }
-
-////////// AFTER TEST, DELETE THIS ///////////
-// playBackgroundMusic();
-//////////////////////////////////////////////
 
 
 
@@ -1009,17 +1009,6 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
   message2Element.className = "message2";
 
   const message3Element = document.createElement("div");
-  if (Math.round(jobAppRandomCalc) === 0) {
-    // message3Element.textContent = `You need to apply more`;
-  } else {
-    if (Math.round(jobAppRandomCalc) === 1) {
-      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
-    } else if (Math.round(jobAppRandomCalc) === -1) {
-      message3Element.textContent = `-1 job app`;
-    } else {
-      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job apps`;
-    }
-  }
   message3Element.className = "message3";
 
   messageContainer.appendChild(message1Element);
@@ -1068,15 +1057,6 @@ function showGoodRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc
   message2Element.className = "message2";
 
   const message3Element = document.createElement("div");
-  if (Math.round(jobAppRandomCalc) === 0) {
-    // message3Element.textContent = `You are compelled to apply more`;
-  } else {
-    if (Math.round(jobAppRandomCalc) === 1) {
-      message3Element.textContent = `${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job app`;
-    } else {
-      message3Element.textContent = `+${formatLargeNumberAll(Math.round(jobAppRandomCalc))} job apps`;
-    }
-  }
   message3Element.className = "message3";
 
   messageContainer.appendChild(message1Element);
@@ -1119,7 +1099,7 @@ function randomRejection() {
   const randomInterval = Math.floor(Math.random() * (58000 - 45000 + 1)) + 45000;
 
 
-  // Calculate the random increase in totalRejections
+  // Calculate the random increase in totalRejections depending on the amount of jobApplications
   const minIncrease = Math.round(jobApplications * 0.15); // 15% of jobApplications
   const maxIncrease = Math.round(jobApplications * 0.25); // 25% of jobApplications
   const randomIncrease = Math.floor(Math.random() * (maxIncrease - minIncrease + 1)) + minIncrease;
