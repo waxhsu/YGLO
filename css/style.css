@@ -107,7 +107,7 @@ body {
   border-radius: 6px;
   padding: 5px;
   position: fixed;
-  z-index: 9999;
+  z-index: 9998;
   transition: opacity 0.3s;
 }
 
@@ -341,7 +341,7 @@ ul, li {
   border-radius: 6px;
   padding: 5px;
   position: absolute;
-  z-index: 9999;
+  z-index: 9998;
   transition: opacity 0.3s;
 }
 
@@ -743,6 +743,24 @@ ul, li {
 }
 
 
+#minigame-container {
+  position: relative;
+  width: 600px; /* Adjust as needed */
+  height: 400px; /* Adjust as needed */
+  margin: 0 auto;
+  border: 2px solid #000;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+
+
+
+
+
+
+
+
 
 
 /* 1128 width */
@@ -757,6 +775,12 @@ ul, li {
     width: 120px;
   }
 }
+
+
+
+
+
+
 
 
 

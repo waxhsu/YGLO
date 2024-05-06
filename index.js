@@ -19,6 +19,7 @@ let clickValue = 10000;
 
 let universalInterval = 1000;
 
+
 const tooltips = document.querySelectorAll('.tooltip');
 tooltips.forEach(tooltip => {
   const tooltipText = tooltip.querySelector('.tooltipText');
@@ -1204,8 +1205,32 @@ document.getElementById("close-all").addEventListener("click", function () {
 
 
 ////////////////////////////////////////////////////////////
-////////////////////   TIME TRACKING CODE   ////////////////
+////////////////////   bullethell game   ///////////////////
 ////////////////////////////////////////////////////////////
+
+
+
+// function bossChallenge () {
+//   if (appliedWithoutCV = 50) {
+//     miniboss1()
+//   } else if (appliedWithoutCV = 250) {
+//     miniboss2()
+//   } else if (appliedWithoutCV = 1000) {
+//     miniboss3()
+//   }
+// }
+
+
+
+// function miniboss1 () {
+
+// }
+
+
+
+
+
+
 
 
 
