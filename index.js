@@ -1,8 +1,8 @@
-import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool } from './data.js';
+import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool, minigameObj } from './data.js';
 
 // Initialize variables
 let timer = null;
-let jobApplications = 0;
+let jobApplications = 149;
 let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
@@ -15,7 +15,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 10000;
+let clickValue = 1;
 
 let universalInterval = 1000;
 
@@ -74,7 +74,9 @@ tooltips.forEach(tooltip => {
 
 //////// CUTSCENE SCREEN ////////
 
+function showCutscene () {
 
+}
 
 
 //////// SOUND AND BGM /////////
@@ -238,6 +240,7 @@ function updateMotivation() {
   const formattedValue = formatLargeNumberAll(motivation);
   motivationElement.textContent = formattedValue;
   // updateShop();
+  
 }
 
 function updateRejection() {
@@ -428,7 +431,7 @@ function autoGenerateJobApplications() {
 ////////////////////////////////////////////////////////////
 
 function applyJobApplication() {
-  motivation += clickValue * 1.12^(jobApplications*0.05);
+  motivation += clickValue * 1.0012^(jobApplications*0.05);
   appliedWithoutCV += 1;
   totalApplied += 1;
   jobApplications += clickValue
@@ -761,7 +764,6 @@ function checkMainAchievement() {
       ) 
     && !displayed) {
       showAchievement(message1, message2, icon);
-      
       achievement.displayed = true;
     }
   }
@@ -1208,6 +1210,44 @@ document.getElementById("close-all").addEventListener("click", function () {
 ////////////////////   bullethell game   ///////////////////
 ////////////////////////////////////////////////////////////
 
+// use similar code as checkMainAchievement
+function checkMinigame () {
+  for (const achievement of minigameObj) {
+    if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
+      showMinigame(bossIcon, bossMessage) 
+      achievement.unlocked = true;
+    }
+  }
+}
+
+
+function showMinigame (bossIcon, bossMessage) {
+  const gameContainer = document.createElement("div");
+  gameContainer.className = "minigameContainer";
+
+  const iconElement = document.createElement("img");
+  iconElement.className = "bossIcon";
+  iconElement.src = bossIcon;
+
+  // MAKE BOXES IF NEEDED AFTER UI IS DECIDED
+
+  const bossMessageElement = document.createElement("div");
+  bossMessageElement.textContent = bossMessage;
+  bossMessageElement.className = "bossMessage";
+
+  const acceptMinigameElement = document.createElemen("div");
+  acceptMinigameElement.className = "accept"
+  acceptMinigameElement.src = "./img/minigame/accept.png"
+  
+  const declineMinigameElement = document.createElemen("div");
+  declineMinigameElement.className = "decline"
+  declineMinigameElement.src = "./img/minigame/decline.png"
+
+  gameContainer.appendChild(iconElement)
+  gameContainer.appendChild(bossMessageElement)
+  gameContainer.appendChild(acceptMinigameElement)
+  gameContainer.appendChild(declineMinigameElement)
+}
 
 
 // function bossChallenge () {
@@ -1243,6 +1283,7 @@ updateJobPostings();
 
 setInterval(autoGenerateJobApplications, universalInterval);
 setInterval(checkMainAchievement, universalInterval);
+setInterval(checkMinigame, universalInterval)
 
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 55000);

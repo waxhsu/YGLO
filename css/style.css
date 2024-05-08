@@ -755,7 +755,9 @@ ul, li {
 
 
 
-
+.minigameContainer {
+  z-index: 9999;
+}
 
 
 
