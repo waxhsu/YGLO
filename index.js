@@ -2,7 +2,7 @@ import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, 
 
 // Initialize variables
 let timer = null;
-let jobApplications = 149;
+let jobApplications = 0;
 let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
@@ -15,7 +15,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1;
+let clickValue = 1000;
 
 let universalInterval = 1000;
 
@@ -1213,15 +1213,21 @@ document.getElementById("close-all").addEventListener("click", function () {
 // use similar code as checkMainAchievement
 function checkMinigame () {
   for (const achievement of minigameObj) {
+    const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
     if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
-      showMinigame(bossIcon, bossMessage) 
+      showMinigameNotification(bossIcon, bossMessage) 
       achievement.unlocked = true;
     }
   }
 }
 
+const minigameContainer = document.getElementById("minigame-container")
 
-function showMinigame (bossIcon, bossMessage) {
+
+/// LOOK AT TOGGLE ACHIEVEMENTS PAGE TO MAKE UI APPEAR
+
+function showMinigameNotification (bossIcon, bossMessage) {
+  console.log("showMinigameNotification function works")
   const gameContainer = document.createElement("div");
   gameContainer.className = "minigameContainer";
 
@@ -1235,18 +1241,24 @@ function showMinigame (bossIcon, bossMessage) {
   bossMessageElement.textContent = bossMessage;
   bossMessageElement.className = "bossMessage";
 
-  const acceptMinigameElement = document.createElemen("div");
+  const acceptMinigameElement = document.createElement("img");
   acceptMinigameElement.className = "accept"
   acceptMinigameElement.src = "./img/minigame/accept.png"
   
-  const declineMinigameElement = document.createElemen("div");
+  const declineMinigameElement = document.createElement("img");
   declineMinigameElement.className = "decline"
   declineMinigameElement.src = "./img/minigame/decline.png"
 
-  gameContainer.appendChild(iconElement)
-  gameContainer.appendChild(bossMessageElement)
-  gameContainer.appendChild(acceptMinigameElement)
-  gameContainer.appendChild(declineMinigameElement)
+  minigameContainer.appendChild(iconElement)
+  minigameContainer.appendChild(bossMessageElement)
+  minigameContainer.appendChild(acceptMinigameElement)
+  minigameContainer.appendChild(declineMinigameElement)
+  // gameContainer.appendChild(iconElement)
+  // gameContainer.appendChild(bossMessageElement)
+  // gameContainer.appendChild(acceptMinigameElement)
+  // gameContainer.appendChild(declineMinigameElement)
+
+  // minigameContainer.appendChild(gameContainer)
 }
 
 

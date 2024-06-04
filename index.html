@@ -6,6 +6,7 @@
 
 
 <body>
+	<!-- GAME INTRO VIDEO and START SCREEN -->
 	
 	<!-- <div id="video-container">
 		<video id="intro-video" src="./img/introduction/yglo_intro.mp4" autoplay muted></video>
@@ -13,9 +14,17 @@
 	<div id="title-container">
 		<img id="intro-title" src="./img/introduction/Start_Screen.gif"></img>
 	</div> -->
-	<div id="minigame-container">
-        <!-- Game content will be dynamically added here -->
+
+
+	<!-- BULLET HELL MINIGAME CONTAINER AND GAME "POPUP" NOTIF -->
+
+	<!-- <div id="minigame-container">
+		Game content will be dynamically added here
     </div>
+	<div id="minigame-notification" ></div> -->
+
+
+
 	<div id="topUI">
 				<div id="soundButtonBox">
 					<div id="soundToggleBtn">sfx
@@ -26,31 +35,31 @@
 					</div>
 				</div>
 
-				<div class="deepFuckingValue tooltip">
+				<div class="inGameValue tooltip">
 					<div id="motivation-value" class="value-display">-42</div>
 					<div class="value-display-text">Motivation</div>
 					<div class="tooltipText">You can buy stuff at the shop!</div>
 				</div>
 				
-				<div class="deepFuckingValue tooltip">
+				<div class="inGameValue tooltip">
 					<div id="jobs-value" class="value-display">0</div>
 					<div class="value-display-text">Jobs Applied</div>
 					<div class="tooltipText">Total amount of jobs you applied.</div>
 				</div>
 				
-				<div class="deepFuckingValue tooltip">
+				<div class="inGameValue tooltip">
 					<div id="rejection-value" class="value-display">0</div>
 					<div class="value-display-text">Rejections</div>
 					<div class="tooltipText">Total amount of rejections you've received.</div>
 				</div>
 				
-				<div class="deepFuckingValue tooltip">
+				<div class="inGameValue tooltip">
 					<div id="aps-value" class="value-display">0</div>
 					<div class="value-display-text">Apps/sec</div>
 					<div class="tooltipText">Rate of jobs applied from your shop items per second</div>
 				</div>
 
-				<div id="profile-picture" class="deepFuckingValue tooltip">
+				<div id="profile-picture" class="inGameValue tooltip">
 					<img src="./img/stateIcons/stateIdle.gif"></img>	
 					<div class="tooltipText">See achievements</div>
 				</div>
@@ -59,24 +68,32 @@
 					<h1 class="banner">Achievements Page</h1>
 					<div id="achievements-list"></div>
 				</div>
-				
 			</div>
 			
+
+
 			<div id="mainUI">
+
+				<!-- Column for player to select jobs and view details -->
 				<div id="leftUI">
 					<h1 class="banner">Job posting</h1>
 					<div id="job-postings"></div>		
 				</div>
 
+				<!-- UI to inform player to start; disappears after job-postings is clicked -->
 				<div id="centerUIStart" style="display: flex">
 					<p>You twiddle your thumbs.</p>
 					<p>You decide to apply to at least one job!</p>
 				</div>
+
+				<!-- Displays the decorative TITLE details of the selection -->
 				<div id="centerUI" style="display: none">
 					<div id="topCenterUI">
 						<div id="job-detail-title">TITLE</div>
 						<div id="job-detail-place">Company - Location</div>
 						
+
+				<!-- Displays decorative HIGHLIGHT details of the selection -->
 						<div id="job-detail-highlight-box">
 							<div class="job-detail-row">
 								<img class="highlight-icon" src="./img/highlightIcons/0.png"></img>
@@ -86,35 +103,29 @@
 								<img class="highlight-icon" src="./img/highlightIcons/1.png"></img>
 								<div class="job-detail-highlight" id="job-detail-employee"># of Employees</div>	
 							</div>
-							<!-- <div class="job-detail-row">
-								<img class="highlight-icon" src="./img/highlightIcons/2.png"></img>
-								<div class="job-detail-highlight" id="job-detail-alumni">X school alumni work here</div>	
-							</div> -->
 							<div class="job-detail-row">
 								<img class="highlight-icon" src="./img/highlightIcons/3.png"></img>
 								<div class="job-detail-highlight" id="job-detail-skill">Skills: asdf, asdf</div>	
 							</div>
-							<!-- <div class="job-detail-row">
-								<img class="highlight-icon" src="./img/highlightIcons/4.png"></img>
-								<div class="job-detail-highlight" id="job-detail-reviewTime">Applicant review time is </div>	
-							</div> -->
 						</div>
 					</div>
 					
-
 					<div id="click-button-box">
+				<!-- Main gameplay loop button -->
 						<div id="apply-button" class="tooltip">
 							<div class="click-button">Apply</div>
 							<div class="tooltipText">Apply to more jobs!</div>
 						</div>
-						
+				<!-- Secondary gameplay loop button -->
 						<div id="attach-button" class="tooltip">
 							<div class="click-button">Attach</div>
 							<div class="tooltipText">Attach a cover letter</div>
 						</div>
-						
 					</div>
 
+
+				<!-- Secondary gameplay loop content -->
+				<!-- Player is encouraged to type anything and will generate a cover letter -->
 						<div id="attach-page" style="display: none;">
 							<h1 class="banner">Attach/Type Your Cover Letter</h1>
 							<textarea type="text" id="textBox" style="resize: none" rows="50" cols="50" value="you get additional motivation from attaching cover letter"></textarea>
@@ -122,7 +133,7 @@
 						</div>
 
 						
-						
+				<!-- Displays decorative in-depth (humorous) details of the selection -->
 						<div id="bottomCenterUI">
 							<h1 class="banner">About</h1>
 							<div id="job-detail-about"></div>
@@ -133,7 +144,7 @@
 						</div>
 				</div>
 			
-
+				<!-- Displays random notifications from achievements and random events -->
 				<div id="rightUI">
 					<h1 class="banner">Notification</h1>
 					<button id="close-all">Close all</button>
@@ -141,12 +152,14 @@
 						<div id="notification-box"></div>
 					</div>
 
+				<!-- Displays shop items that enhances gameplay -->
 					<h1 class="shopBanner">Shop</h1>
 					<div id="rightBottomUI">
 						<div id="tryHarder" class="tooltip">
 							<div class="title-container">
 								<div class="item-name">Try Harder</div>
 							</div>
+				<!-- tryHarder is different from the forEach shop items -->
 							<div class="detail-container">	
 								<img class="shop-icon" src="./img/shopIcons/0_tryHarder.png"></img>
 								<div class="info-container">
@@ -156,7 +169,7 @@
 								</div>
 							</div>
 						</div>
-
+				<!-- The rest of the shop items that enchances gameplay -->
 						<div id="shop">
 						</div>
 
