@@ -40,6 +40,7 @@ html:active, #close-all:active {
   position: fixed;
   max-height: 80%;
   min-width: 50%;
+  top: 20%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9000;
