@@ -1,4 +1,4 @@
-import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool, minigameObj } from './data.js';
+import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool } from './data.js';
 
 // Initialize variables
 let timer = null;
@@ -15,7 +15,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1000;
+let clickValue = 20;
 
 let universalInterval = 1000;
 
@@ -1207,85 +1207,88 @@ document.getElementById("close-all").addEventListener("click", function () {
 
 
 ////////////////////////////////////////////////////////////
-////////////////////   bullethell game   ///////////////////
+////////////////////   minigame   ///////////////////
 ////////////////////////////////////////////////////////////
 
 // use similar code as checkMainAchievement
-function checkMinigame () {
-  for (const achievement of minigameObj) {
-    const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
-    if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
-      showMinigameNotification(bossIcon, bossMessage) 
-      achievement.unlocked = true;
-    }
-  }
-}
+// function checkMinigame () {
+//   for (const achievement of minigameObj) {
+//     const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
+//     if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
+//       showMinigameNotification(bossIcon, bossMessage) 
+//       achievement.unlocked = true;
+//     }
+//   }
+// }
 
 const minigameContainer = document.getElementById("minigame-container")
+const minigameBackground = document.getElementById("minigame-background")
 
 
 /// LOOK AT TOGGLE ACHIEVEMENTS PAGE TO MAKE UI APPEAR
 
-function showMinigameNotification (bossIcon, bossMessage) {
+function showMinigameNotification () {
+  minigameContainer.style.display = (minigameContainer.style.display === "none") ? "flex" : "none";
+  minigameBackground.style.display = (minigameBackground.style.display === "none") ? "flex" : "none";
   console.log("showMinigameNotification function works")
-  const gameContainer = document.createElement("div");
-  gameContainer.className = "minigameContainer";
 
-  const iconElement = document.createElement("img");
-  iconElement.className = "bossIcon";
-  iconElement.src = bossIcon;
+  // const iconElement = document.createElement("img");
+  // iconElement.className = "bossIcon";
+  // iconElement.src = bossIcon;
 
-  // MAKE BOXES IF NEEDED AFTER UI IS DECIDED
-
-  const bossMessageElement = document.createElement("div");
-  bossMessageElement.textContent = bossMessage;
-  bossMessageElement.className = "bossMessage";
-
-  const acceptMinigameElement = document.createElement("img");
-  acceptMinigameElement.className = "accept"
-  acceptMinigameElement.src = "./img/minigame/accept.png"
+  // minigameContainer.appendChild(iconElement)
   
-  const declineMinigameElement = document.createElement("img");
-  declineMinigameElement.className = "decline"
-  declineMinigameElement.src = "./img/minigame/decline.png"
-
-  minigameContainer.appendChild(iconElement)
-  minigameContainer.appendChild(bossMessageElement)
-  minigameContainer.appendChild(acceptMinigameElement)
-  minigameContainer.appendChild(declineMinigameElement)
-  // gameContainer.appendChild(iconElement)
-  // gameContainer.appendChild(bossMessageElement)
-  // gameContainer.appendChild(acceptMinigameElement)
-  // gameContainer.appendChild(declineMinigameElement)
-
-  // minigameContainer.appendChild(gameContainer)
+  // MAKE BOXES IF NEEDED AFTER UI IS DECIDE
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "div-close-button";
+  closeButton.addEventListener("click", showMinigameNotification);
+  minigameContainer.appendChild(closeButton)
 }
 
 
-// function bossChallenge () {
-//   if (appliedWithoutCV = 50) {
-//     miniboss1()
-//   } else if (appliedWithoutCV = 250) {
-//     miniboss2()
-//   } else if (appliedWithoutCV = 1000) {
-//     miniboss3()
-//   }
-// }
+function checkMinigame() {
+// FUTURE: Make 3 different checks for subsequent minibosses
+  if (jobApplications > 50) {
+    showMinigameNotification();
+    clearInterval(minigameInterval);
+  }
+}
+const minigameInterval = setInterval(checkMinigame, 1000);
 
 
 
-// function miniboss1 () {
+// THANK YOU FOR PLAYING OUR DEMO SCREEN
+// make a window popup and a close button 
+// for the player to continue mindlessly play
 
-// }
+const thankYouScreen = document.getElementById("thankYouScreen");
+const thankYouScreenBackground = document.getElementById("thankYouScreenBackground");
+
+function showThankYou () {
+  thankYouScreen.style.display = (thankYouScreen.style.display === "none") ? "flex" : "none";
+  thankYouScreenBackground.style.display = (thankYouScreenBackground.style.display === "none") ? "flex" : "none";
+  const thankYouBox = document.createElement("div");
+  thankYouBox.className = "thankYouBox"
 
 
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "div-close-button";
+  closeButton.addEventListener("click", showThankYou);
+  thankYouScreen.appendChild(closeButton)
 
+}
 
+// setTimeout (showThankYou, 1000)
 
-
-
-
-
+function checkDemo() {
+  if (jobApplications > 100) {
+    showThankYou();
+    clearInterval(checkDemoInterval); // Clear the interval to stop the function from running again
+  }
+}
+const checkDemoInterval = setInterval(checkDemo, 1000);
 
 // Initialize the game
 updateShop();
@@ -1295,8 +1298,6 @@ updateJobPostings();
 
 setInterval(autoGenerateJobApplications, universalInterval);
 setInterval(checkMainAchievement, universalInterval);
-setInterval(checkMinigame, universalInterval)
-
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 55000);
 

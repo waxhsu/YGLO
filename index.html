@@ -4,27 +4,52 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
+<!-- GAME INTRO VIDEO and START SCREEN -->
+
+<!-- <div id="video-container">
+	<video id="intro-video" src="./img/introduction/yglo_intro.mp4" autoplay muted></video>
+</div>
+<div id="title-container">
+	<img id="intro-title" src="./img/introduction/Start_Screen.gif"></img>
+</div> -->
+
+
+
+
+<!-- MINIGAME CONTAINER -->
+<div id="minigame-container" style="display: none">
+	<div id="minigame-notification">
+		<div>minigame notification content</div>
+		<div></div>
+		<div></div>
+		<button>ACCEPT (starts minigame)</button>
+		<button>DECLINE (does nothing, maybe it slowly fades the more you click)</button>
+	</div>
+
+</div>
+<div id="minigame-background" style="display: none;"></div>
+	
+
+
+
+
+
+<!-- THANK YOU FOR PLAYING POP UP -->
+<div id="thankYouScreen" style="display: none;">
+	<h1 class="thankYouScreenText">Thank you for playing our demo!</h1>
+	<h1 class="thankYouScreenText">You can continue playing if you want</h1>
+	<div id="MaxKevinInfoBox">
+		<div class="MaxKevinInfo">Information box about Max</div>
+		<div class="MaxKevinInfo">Information box about Kevin</div>
+	</div>
+</div>
+<div id="thankYouScreenBackground" style="display: none;"></div>
+
+
+
+
 
 <body>
-	<!-- GAME INTRO VIDEO and START SCREEN -->
-	
-	<!-- <div id="video-container">
-		<video id="intro-video" src="./img/introduction/yglo_intro.mp4" autoplay muted></video>
-	</div>
-	<div id="title-container">
-		<img id="intro-title" src="./img/introduction/Start_Screen.gif"></img>
-	</div> -->
-
-
-	<!-- BULLET HELL MINIGAME CONTAINER AND GAME "POPUP" NOTIF -->
-
-	<!-- <div id="minigame-container">
-		Game content will be dynamically added here
-    </div>
-	<div id="minigame-notification" ></div> -->
-
-
-
 	<div id="topUI">
 				<div id="soundButtonBox">
 					<div id="soundToggleBtn">sfx
@@ -69,9 +94,10 @@
 					<div id="achievements-list"></div>
 				</div>
 			</div>
+
 			
 
-
+			
 			<div id="mainUI">
 
 				<!-- Column for player to select jobs and view details -->
@@ -82,8 +108,8 @@
 
 				<!-- UI to inform player to start; disappears after job-postings is clicked -->
 				<div id="centerUIStart" style="display: flex">
-					<p>You twiddle your thumbs.</p>
-					<p>You decide to apply to at least one job!</p>
+					<p>Objective:</p>
+					<p>Apply at least 69 applications</p>
 				</div>
 
 				<!-- Displays the decorative TITLE details of the selection -->

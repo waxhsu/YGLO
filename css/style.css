@@ -2,6 +2,22 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap'); */
 
 
+
+body {
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: 'Pixelify Sans', sans-serif;
+  font-size: 25px;
+  overflow: hidden;
+  background-color: #fffdef;
+  max-height: 800px;
+  height: 100%;
+  margin: auto;
+  width: 80%;
+}
+
 /* CURSORS */
 
 html:hover, #close-all:hover {
@@ -12,6 +28,48 @@ html:active, #close-all:active {
   cursor: url('../img/cursor/active.png'), auto;
 }
 
+
+
+/* THANK YOU FOR PLAYING */
+/* fix positioning */
+#thankYouScreen {
+  border: black 3px solid;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  max-height: 80%;
+  min-width: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+  padding: 3.5%
+}
+
+.thankYouScreenText {
+color: red;
+}
+
+#thankYouScreenBackground {
+  opacity: 45%;
+  background: black;
+  z-index: 8999;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#MaxKevinInfoBox {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MaxKevinInfo {
+  color: blue;
+  /* max-width: 300px; */
+  border: black solid 1px;
+}
 
 /* INTRO */
 
@@ -55,19 +113,6 @@ html:active, #close-all:active {
   height: auto;
 }
 
-
-body {
-  user-select: none;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  font-family: 'Pixelify Sans', sans-serif;
-  font-size: 25px;
-  overflow: hidden;
-  margin: 0 5px;
-  background-color: #fffdef;
-  max-height: 800px;
-}
 
 
 #centerUIStart {
@@ -691,13 +736,6 @@ ul, li {
   padding-left: 10px;
 }
 
-/* #muteBGMIcon {
-  background-image: url('../img/gameIcons/testOff.png');
-  width: 28px;
-  height: 28px;
-  border-radius: 5px;
-} */
-
 
 .particle-container {
   position: fixed;
@@ -722,38 +760,50 @@ ul, li {
 
 
 #minigame-container {
+  border: black 3px solid;
+  background: white;
   display: flex;
-  position: relative;
-  width: 600px; /* Adjust as needed */
-  height: 400px; /* Adjust as needed */
-  margin: 0 auto;
-  background-color: black;
-  border: 2px solid #000;
-  overflow: hidden;
-  z-index: 9999;
+  flex-direction: column;
+  position: fixed;
+  max-height: 80%;
+  min-width: 50%;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  z-index: 9000;
+  padding: 3.5%
 }
 
 
 
 #minigame-notification {
-  position: fixed;
+  /* position: fixed; */
   display: relative;
-  z-index: 9999;
+  z-index: 9000;
   border: 2px solid green;
-  width: 600px; /* Adjust as needed */
-  height: 400px; /* Adjust as needed */
+}
+
+#minigame-background {
+  opacity: 45%;
+  background: black;
+  z-index: 8999;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 
 
 
 
-
-
-/* 1128 width */
+/* 1128 width
 @media (min-width: 1200px) {
   body {
+    display: flex;
+    
     width: 1128px;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
   }
@@ -761,7 +811,7 @@ ul, li {
   .info-container {
     width: 120px;
   }
-}
+} */
 
 
 
