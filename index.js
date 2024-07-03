@@ -1,4 +1,4 @@
-import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool } from './data.js';
+import { shopObj, mainAchievementsObj, upgradeAchievementsObj, cutsceneObj, randomEventPool, randomRejectionPool } from './data.js';
 
 // Initialize variables
 let timer = null;
@@ -74,14 +74,60 @@ tooltips.forEach(tooltip => {
 
 //////// CUTSCENE FUNCTION ////////
 /// this code should be similar to checkAchievements/showAchievements 
-function showCutscene () {
 
+function checkCutScene() {
+  for (const cutscene of cutsceneObj) {
+    const { clicksReq } = cutscene;
+    if ((
+      (clicksReq && appliedWithoutCV >= clicksReq) 
+      ) 
+    && !displayed) {
+      showCutscene(message1, message2, icon);
+      cutscene.displayed = true;
+    }
+  }
 }
 
 
+function showCutscene(message1, message2, icon) {
+  
+  const notification = document.createElement("div");
+  notification.className = "notification";
+  notification.style.backgroundColor = "#83ffd6"
 
+  const iconElement = document.createElement("img");
+  iconElement.className = "icon";
+  iconElement.src = icon;
 
+  const messageContainer = document.createElement("div"); 
+  messageContainer.className = "message-container";
 
+  const message1Element = document.createElement("div");
+  message1Element.textContent = message1;
+  message1Element.className = "message1";
+
+  const message2Element = document.createElement("div");
+  message2Element.textContent = message2;
+  message2Element.className = "message2";
+
+  // Append message1 and message2 to messageContainer
+  messageContainer.appendChild(message1Element);
+  messageContainer.appendChild(message2Element);
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "close-button";
+
+  
+  closeButton.addEventListener("click", () => {
+    notificationBox.removeChild(notification);
+  });
+
+  notification.appendChild(iconElement);
+  notification.appendChild(messageContainer);
+  notification.appendChild(closeButton);
+  notificationBox.appendChild(notification);
+}
 
 
 

@@ -30,6 +30,33 @@ html:active, #close-all:active {
 
 
 
+/* CUTSCENE STUFF */
+#cutscene-container {
+  border: black 3px solid;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  max-height: 80%;
+  min-width: 50%;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+  padding: 3.5%
+}
+
+#cutscene-container-background {
+  opacity: 45%;
+  background: black;
+  z-index: 8999;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
 /* THANK YOU FOR PLAYING */
 /* fix positioning */
 #thankYouScreen {
