@@ -335,6 +335,26 @@ ul, li {
   filter: brightness(85%);
 }
 
+#apply-button-blink {
+  animation: click-blinker 1.5s infinite;
+  /* color: red; */
+  }
+  
+  @keyframes click-blinker {
+    0% {
+      background-color: #b558b2;
+    }
+    
+    50% {
+      background-color: #FF80FB ; 
+
+    }
+    
+    100% {
+      background-color: #b558b2;
+    }
+  }
+
 
 #attach-page {
   display: flex;
@@ -534,7 +554,7 @@ ul, li {
   
   @keyframes blinker {
     0% {
-      background-color: #f9f9f9;
+      background-color: rgb(161, 161, 161);
     }
     
     50% {
@@ -542,7 +562,7 @@ ul, li {
     }
     
     100% {
-      background-color: #f9f9f9;
+      background-color: rgb(161, 161, 161);
     }
   }
   

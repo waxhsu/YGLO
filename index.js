@@ -72,11 +72,24 @@ tooltips.forEach(tooltip => {
 
 
 
-//////// CUTSCENE SCREEN ////////
-
+//////// CUTSCENE FUNCTION ////////
+/// this code should be similar to checkAchievements/showAchievements 
 function showCutscene () {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //////// SOUND AND BGM /////////
@@ -1273,7 +1286,7 @@ function showThankYou () {
 
 
   const closeButton = document.createElement("button");
-  closeButton.textContent = "X";
+  closeButton.textContent = "Continue playing";
   closeButton.className = "div-close-button";
   closeButton.addEventListener("click", showThankYou);
   thankYouScreen.appendChild(closeButton)
