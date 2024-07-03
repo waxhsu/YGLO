@@ -1,4 +1,5 @@
-import { shopObj, mainAchievementsObj, upgradeAchievementsObj, cutsceneObj, randomEventPool, randomRejectionPool } from './data.js';
+import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool } from './data.js';
+import { cutsceneObj } from './cutsceneObj.js';
 
 // Initialize variables
 let timer = null;
