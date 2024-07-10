@@ -1,5 +1,17 @@
-import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool } from './data.js';
-import { cutsceneObj } from './cutsceneObj.js';
+import { 
+  shopObj, 
+  mainAchievementsObj, 
+  upgradeAchievementsObj, 
+  randomEventPool, 
+  randomRejectionPool, 
+} from './data.js';
+
+import { 
+  cutsceneObj,
+  minigameObj,
+} from './storyObj.js';
+
+
 
 // Initialize variables
 let timer = null;
@@ -107,7 +119,7 @@ function showMinigameNotification () {
   // MAKE BOXES IF NEEDED AFTER UI IS DECIDE
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "div-close-button";
+  closeButton.className = "nofade-close-button";
   closeButton.addEventListener("click", showMinigameNotification);
   minigameContainer.appendChild(closeButton)
 }
@@ -140,7 +152,7 @@ function showThankYou () {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "Continue playing";
-  closeButton.className = "div-close-button";
+  closeButton.className = "nofade-close-button";
   closeButton.addEventListener("click", showThankYou);
   thankYouScreen.appendChild(closeButton)
 
@@ -159,24 +171,6 @@ const checkDemoInterval = setInterval(checkDemo, 1000);
 
 
 //////// CUTSCENE FUNCTION ////////
-/// this code should be similar to checkMainAchievements/showAchievements 
-
-// const cutsceneObj = [
-//   {
-//       id: 0,
-//       clicksReq: 10,
-//       file: "./img/cutscene/0.png",
-//       displayed: false,
-//   },
-//   {
-//       id: 1,
-//       clicksReq: 20,
-//       file: "./img/cutscene/0.png",
-//       displayed: false,
-//   },
-// ]
-
-
 
 function checkCutscene() {
   for (const cutscene of cutsceneObj) {
@@ -202,17 +196,17 @@ function showCutscene(file) {
   cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
   cutsceneBackground.style.display = (cutsceneBackground.style.display === "none") ? "flex" : "none";
 
+  cutsceneElement.innerHTML = "";
+
   const cutsceneFileElement = document.createElement("img");
   cutsceneFileElement.className = "cutscene-file";
-  cutsceneFileElement.textContent = file; // Updated to set textContent instead of src
+  cutsceneFileElement.src = file;
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "close-button";
+  closeButton.className = "nofade-close-button";
 
   closeButton.addEventListener("click", () => {
-    cutsceneBox.removeChild(cutscene);
-    // Hide the cutscene and background elements again
     cutsceneElement.style.display = "none";
     cutsceneBackground.style.display = "none";
   });
@@ -424,8 +418,17 @@ const tryHarder = {
   count: 0,
 };
 
+const tryHarderElement = document.getElementById("tryHarder");
+
+function unlockTryHarder() {
+  if (appliedWithoutCV === 3) {
+    tryHarderElement.addEventListener("click", updateTryHarder);
+    tryHarderElement.classList.remove("greyed-out");
+  }
+}
+
+
 function updateTryHarder() {
-  // const tryHarderElement = document.getElementById("tryHarder");
   // tryHarderElement.classList.toggle('greyed-out', motivation < tryHarder.cost);
 
   const costElement = document.getElementById("tryHarder-cost");
@@ -594,6 +597,8 @@ function applyJobApplication() {
   cycleJobPostings(); //wtf
   updateJobPostings();
   playRandomClickSound();
+  unlockAttachPage();
+  unlockTryHarder();
 
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
@@ -649,11 +654,23 @@ function displayNextJobDetail() {
 ///////////////////   ATTACHMENTS  PAGE   //////////////////
 ////////////////////////////////////////////////////////////
 
+
+
+
 import { coverLetterPool } from './coverLetterPool.js';
 
 const attachPage = document.getElementById("attach-page");
 const attachButton = document.getElementById("attach-button");
-attachButton.addEventListener("click", toggleAttachPage);
+
+
+
+function unlockAttachPage() {
+  if (appliedWithoutCV === 2) {
+    attachButton.addEventListener("click", toggleAttachPage);
+    attachButton.classList.remove("greyed-out");
+  }
+}
+
 
 let currentLetterIndex = 0;
 let currentParagraphIndex = 0;
@@ -666,7 +683,7 @@ function toggleAttachPage() {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "div-close-button";
+  closeButton.className = "nofade-close-button";
   closeButton.addEventListener("click", toggleAttachPage);
   attachPage.appendChild(closeButton);
 
@@ -1015,7 +1032,7 @@ function toggleAchievementsPage() {
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
-  closeButton.className = "div-close-button";
+  closeButton.className = "nofade-close-button";
   closeButton.addEventListener("click", toggleAchievementsPage);
   
 

@@ -18,7 +18,9 @@ body {
   width: 80%;
 }
 
-/* CURSORS */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CURSORS @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 html:hover, #close-all:hover {
   cursor: url('../img/cursor/hover.png'), auto;
@@ -30,9 +32,11 @@ html:active, #close-all:active {
 
 
 
-/* CUTSCENE STUFF */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CUTSCENE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 #cutscene {
-  display: none;
   border: black 3px solid;
   background: white;
   display: flex;
@@ -43,15 +47,14 @@ html:active, #close-all:active {
   top: 20%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9000;
+  z-index: 8999;
   padding: 3.5%
 }
 
 #cutscene-background {
-  display: none;
   opacity: 45%;
   background: black;
-  z-index: 8999;
+  z-index: 8998;
   position: fixed;
   left: 0;
   width: 100%;
@@ -59,8 +62,10 @@ html:active, #close-all:active {
 }
 
 
-/* THANK YOU FOR PLAYING */
-/* fix positioning */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ THANK YOU @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 #thankYouScreen {
   border: black 3px solid;
   background: white;
@@ -101,7 +106,11 @@ color: red;
   border: black solid 1px;
 }
 
-/* INTRO */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ INTRO @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 
 #video-container{
   position: fixed;
@@ -144,25 +153,6 @@ color: red;
 }
 
 
-
-#centerUIStart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  font-size: 35px;
-  padding: 30px;
-}
-
-#centerUI {
-  display: none;
-}
-
-.icon {
-  max-height: 72.5px;
-  max-width: 72.5px;
-  min-width: 72.5px;
-}
 
 
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
@@ -262,6 +252,25 @@ ul, li {
 }
 
 
+#centerUIStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 35px;
+  padding: 30px;
+}
+
+#centerUI {
+  display: none;
+}
+
+.icon {
+  max-height: 72.5px;
+  max-width: 72.5px;
+  min-width: 72.5px;
+}
+
 #mainUI {
   display: flex;
   justify-content: space-between;
@@ -352,6 +361,12 @@ ul, li {
   border-radius: 25px;
   font-family: 'Pixelify Sans', sans-serif;
   transition: transform 0.1s;
+}
+
+.greyed-out {
+  filter: grayscale(100%);
+  opacity: 0.5; 
+  pointer-events: none; 
 }
 
 .click-button:hover {
@@ -544,7 +559,7 @@ ul, li {
 }
 
 
-.close-button, .div-close-button {
+.close-button, .nofade-close-button {
   position: absolute;
   top: 0;
   right: 0;
@@ -562,9 +577,8 @@ ul, li {
   /* cursor: url('../img/cursor/hover.png'), auto; */
 }
 
-.div-close-button {
+.nofade-close-button {
   opacity: 1; 
-  /* transition: opacity 0.3s ease;  */
 }
 
 
@@ -774,6 +788,11 @@ ul, li {
 }
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@ button and particles @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 #soundButtonBox {
   display: flex;
   flex-direction: column;
@@ -809,6 +828,11 @@ ul, li {
 }
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ minigame @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 #minigame-container {
   border: black 3px solid;
   background: white;
@@ -841,192 +865,4 @@ ul, li {
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-
-
-
-
-/* 1128 width
-@media (min-width: 1200px) {
-  body {
-    display: flex;
-    
-    width: 1128px;
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .info-container {
-    width: 120px;
-  }
-} */
-
-
-
-
-
-
-
-
-
-/* 920 width 
-@media (max-width: 1199px) {
-  body {
-    width: 920px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #centerUIStart {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-size: 30px;
-  }
-
-
-  #topUI {
-    height: 45px;
-  }
-  .inGameValue, .value-display, .value-display-text {
-    font-size: 18px;
-  }
-
-  #job-detail-title {
-    font-size: 30px;
-  }
-
-  #job-detail-place {
-    font-size: 16px;
-  }
-  #job-detail-highlight-box{
-    margin: 2% 0 0 0;
-    font-size: 14px;
-  }
-
-  #job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
-    font-size: 15px;
-    padding-top: 12.5px;
-    padding-bottom: 20px;
-  }
-  
-  #job-detail-about{
-    margin: 0 10px;
-  }
-
-  .icon {
-    max-height: 62.5px;
-    max-width: 62.5px;
-    min-width: 62.5px;
-    padding: 2%;
-  }
-  
-  .banner {
-    margin: 0 0;
-    font-size: 25px;
-    background-color: #83ffd6 ;
-    padding: 5px 0 0 10px;
-    color: black;
-  }
-
-  .job-posting-item {
-    display: flex;
-    border: 1px solid #ccc;
-    padding: 8px;
-    background-color: #f9f9f9;
-  }
-
-  .job-posting-box {
-    width: 100%
-  }
-
-
-  .job-posting-title, .job-posting-company, .job-posting-location, .job-posting-pay {
-    padding: .5%;
-  }
-
-  .job-posting-title {
-    font-weight: bold;
-    font-size: 17.5px;
-  }
-
-  .job-posting-company {
-    color: #000000;
-    font-size: 15px;
-  }
-
-  .job-posting-pay, .job-posting-location {
-    color: #555;
-    font-weight: bold;
-    font-size: 12.5px;
-  }
-
-
-
-  .click-button {
-    margin: 10px;
-    padding: 15px 25px;
-    font-size: 27.5px;
-    background-color: #8873ffff;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    font-family: 'Pixelify Sans', sans-serif;
-    transition: transform 0.1s;
-  }
-
-
-  .message1 {
-    font-size: 15px;
-    font-weight: bold;
-  }
-  
-  .message2, .message3 {
-    font-style: italic;
-    font-size: 12.5px;
-    color: black;
-  }
-
-
-  .shop-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid #ccc;
-    margin: 3px;
-    background-color: #f9f9f9;
-    border-radius: 15px;
-    transition: transform 0.1s;
-  }
-  
-  .item-name {
-    font-size: 2vh;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  .item-cost, .item-aps  {
-    font-size: 15px;
-    text-align: center;
-    margin-top: 5px;
-  }
-  
-  .item-count {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: right;
-    margin-top: 5px;
-    align-self: flex-end;
-  }
-
-  .shop-icon {
-    min-height: 80px;
-    max-height: 80px;
-    min-width: 80px;
-    max-width: 80px;
-    padding: 1%;
-    border-radius: 25%;
-  }
 }
