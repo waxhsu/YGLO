@@ -88,16 +88,7 @@ tooltips.forEach(tooltip => {
 ////////////////////   minigame   ///////////////////
 ////////////////////////////////////////////////////////////
 
-// use similar code as checkMainAchievement
-// function checkMinigame () {
-//   for (const achievement of minigameObj) {
-//     const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
-//     if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
-//       showMinigameNotification(bossIcon, bossMessage) 
-//       achievement.unlocked = true;
-//     }
-//   }
-// }
+// use similar code as cutscene~~~~~~~~~~~~~~~~~~
 
 const minigameContainer = document.getElementById("minigame-container")
 const minigameBackground = document.getElementById("minigame-background")
@@ -421,7 +412,7 @@ const tryHarder = {
 const tryHarderElement = document.getElementById("tryHarder");
 
 function unlockTryHarder() {
-  if (appliedWithoutCV === 3) {
+  if (motivation >= tryHarder.cost) {
     tryHarderElement.addEventListener("click", updateTryHarder);
     tryHarderElement.classList.remove("greyed-out");
   }
@@ -429,8 +420,6 @@ function unlockTryHarder() {
 
 
 function updateTryHarder() {
-  // tryHarderElement.classList.toggle('greyed-out', motivation < tryHarder.cost);
-
   const costElement = document.getElementById("tryHarder-cost");
   const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
   costElement.textContent = `cost: ${formattedCostValue}`;
@@ -665,7 +654,7 @@ const attachButton = document.getElementById("attach-button");
 
 
 function unlockAttachPage() {
-  if (appliedWithoutCV === 2) {
+  if (appliedWithoutCV === 5) {
     attachButton.addEventListener("click", toggleAttachPage);
     attachButton.classList.remove("greyed-out");
   }

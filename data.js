@@ -381,7 +381,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    tryHarders: 1, 
+    upgrade0: 1, 
     message1: "Own 1 LinkIndeed Premium",
     message2: "$40 a month huh?",
     displayed: false,
@@ -390,14 +390,14 @@ const upgradeAchievementsObj = [
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     message1: "Bill Gates thanks you",
-    tryHarders: 10,
+    upgrade0: 10,
     message2: "Own 10 LinkIndeed Premiums",
     displayed: false,
 },
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    tryHarders: 50,
+    upgrade0: 50,
     message1: "Own 50 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
@@ -405,7 +405,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    tryHarders: 100,
+    upgrade0: 100,
     message1: "Own 100 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
@@ -413,7 +413,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    tryHarders: 500,
+    upgrade0: 500,
     message1: "Own 500 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
