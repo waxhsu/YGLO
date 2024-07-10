@@ -63,24 +63,24 @@ tooltips.forEach(tooltip => {
 
 
 /////////// INTRO SCREENS ////////
-// const videoElement = document.getElementById("intro-video");
-// const videoContainer = document.getElementById("video-container");
-// videoContainer.addEventListener("click", clickToSkipIntro)
+const videoElement = document.getElementById("intro-video");
+const videoContainer = document.getElementById("video-container");
+videoContainer.addEventListener("click", clickToSkipIntro)
 
-// videoElement.addEventListener("ended", clickToSkipIntro);
+videoElement.addEventListener("ended", clickToSkipIntro);
 
-// function clickToSkipIntro () {
-//   videoContainer.parentNode.removeChild(videoContainer);
-// }
+function clickToSkipIntro () {
+  videoContainer.parentNode.removeChild(videoContainer);
+}
 
 
-// const titleContainer = document.getElementById("title-container");
-// titleContainer.addEventListener("click", clickToSkipTitle)
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clickToSkipTitle)
 
-// function clickToSkipTitle () {
-//   titleContainer.parentNode.removeChild(titleContainer);
-//   playBackgroundMusic()
-// }
+function clickToSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+  playBackgroundMusic()
+}
 
 
 
@@ -216,21 +216,70 @@ function showCutscene(file) {
 
 
 
+
+
+
+
+
+
+
+// SEE cycleJobPostings for reference
+////!REFACTOR SO IT TOGGLES WITH PROFILE PIC
 //////// SOUND AND BGM /////////
 const muteButton = document.getElementById("muteToggleBtn");
 const muteIcon = document.getElementById("muteBGMIcon");
-let bgMusic = new Audio('./YGLO_bg_v3.mp3');
+// let bgMusic = new Audio('./bgm/bgm0_dungeon.mp3');
+let bgMusic = new Audio('./bgm/bgm1_feelgood.mp3');
+
+
+const bgm = [
+  {
+    id: 0,
+    file: "./bgm/bgm0_dungeon",
+    profilePic: "./img/ppIcons/pp_sad.gif",
+  },
+  {
+    id: 1,
+    file: "./bgm/bgm1_feelgood",
+    profilePic: "./img/ppIcons/pp_fire.gif",
+    },
+  // {
+  //   id: 2,
+  //   file: "./bgm/bgm2@@@@",
+  //   profilePic: "./img/ppIcons/pp_idle.gif",
+  // },
+]
+
+
+
 
 // Function to play background music and set up mute toggle
 function playBackgroundMusic() {
-    bgMusic.muted = true; // Set music to be muted by default
+    bgMusic.muted = false; // Set music to be muted by default
     bgMusic.play();
     muteButton.addEventListener('click', toggleMute);
 }
 
-////////// AFTER TEST, DELETE THIS ///////////
-playBackgroundMusic();
-//////////////////////////////////////////////
+
+
+
+function updateProfilePic () {
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Function to toggle mute state and update mute icon
@@ -245,13 +294,11 @@ function toggleMute() {
 }
 
 
-
-
 const soundButton = document.getElementById('soundToggleBtn');
 const soundIcon = document.getElementById('muteSoundIcon');
 
 ////// CHANGE THIS TO TRUE AFTER LAUNCH ////////
-let isSoundOn = false;
+let isSoundOn = true;
 ////////////////////////////////////////////////
 
 // Function to toggle sound state and update sound icon
