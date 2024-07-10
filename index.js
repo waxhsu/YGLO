@@ -16,7 +16,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 20;
+let clickValue = 1;
 
 let universalInterval = 1000;
 
@@ -72,65 +72,157 @@ tooltips.forEach(tooltip => {
 
 
 
+////////////////////////////////////////////////////////////
+////////////////////   minigame   ///////////////////
+////////////////////////////////////////////////////////////
+
+// use similar code as checkMainAchievement
+// function checkMinigame () {
+//   for (const achievement of minigameObj) {
+//     const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
+//     if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
+//       showMinigameNotification(bossIcon, bossMessage) 
+//       achievement.unlocked = true;
+//     }
+//   }
+// }
+
+const minigameContainer = document.getElementById("minigame-container")
+const minigameBackground = document.getElementById("minigame-background")
+
+
+/// LOOK AT TOGGLE ACHIEVEMENTS PAGE TO MAKE UI APPEAR
+
+function showMinigameNotification () {
+  minigameContainer.style.display = (minigameContainer.style.display === "none") ? "flex" : "none";
+  minigameBackground.style.display = (minigameBackground.style.display === "none") ? "flex" : "none";
+  console.log("showMinigameNotification function works")
+
+  // const iconElement = document.createElement("img");
+  // iconElement.className = "bossIcon";
+  // iconElement.src = bossIcon;
+
+  // minigameContainer.appendChild(iconElement)
+  
+  // MAKE BOXES IF NEEDED AFTER UI IS DECIDE
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "X";
+  closeButton.className = "div-close-button";
+  closeButton.addEventListener("click", showMinigameNotification);
+  minigameContainer.appendChild(closeButton)
+}
+
+
+function checkMinigame() {
+// FUTURE: Make 3 different checks for subsequent minibosses
+  if (jobApplications > 50) {
+    showMinigameNotification();
+    clearInterval(minigameInterval);
+  }
+}
+const minigameInterval = setInterval(checkMinigame, 1000);
+
+
+
+// THANK YOU FOR PLAYING OUR DEMO SCREEN
+// make a window popup and a close button 
+// for the player to continue mindlessly play
+
+const thankYouScreen = document.getElementById("thankYouScreen");
+const thankYouScreenBackground = document.getElementById("thankYouScreenBackground");
+
+function showThankYou () {
+  thankYouScreen.style.display = (thankYouScreen.style.display === "none") ? "flex" : "none";
+  thankYouScreenBackground.style.display = (thankYouScreenBackground.style.display === "none") ? "flex" : "none";
+  const thankYouBox = document.createElement("div");
+  thankYouBox.className = "thankYouBox"
+
+
+  const closeButton = document.createElement("button");
+  closeButton.textContent = "Continue playing";
+  closeButton.className = "div-close-button";
+  closeButton.addEventListener("click", showThankYou);
+  thankYouScreen.appendChild(closeButton)
+
+}
+
+// setTimeout (showThankYou, 1000)
+
+function checkDemo() {
+  if (jobApplications > 100) {
+    showThankYou();
+    clearInterval(checkDemoInterval); // Clear the interval to stop the function from running again
+  }
+}
+const checkDemoInterval = setInterval(checkDemo, 1000);
+
+
 
 //////// CUTSCENE FUNCTION ////////
-/// this code should be similar to checkAchievements/showAchievements 
+/// this code should be similar to checkMainAchievements/showAchievements 
 
-function checkCutScene() {
+// const cutsceneObj = [
+//   {
+//       id: 0,
+//       clicksReq: 10,
+//       file: "./img/cutscene/0.png",
+//       displayed: false,
+//   },
+//   {
+//       id: 1,
+//       clicksReq: 20,
+//       file: "./img/cutscene/0.png",
+//       displayed: false,
+//   },
+// ]
+
+
+
+function checkCutscene() {
   for (const cutscene of cutsceneObj) {
-    const { clicksReq } = cutscene;
+    const { clicksReq, file, displayed } = cutscene;
     if ((
+      // add as many parameters needed for cutscene
       (clicksReq && appliedWithoutCV >= clicksReq) 
       ) 
     && !displayed) {
-      showCutscene(message1, message2, icon);
+      showCutscene(file);
       cutscene.displayed = true;
     }
   }
 }
 
+const cutsceneBox = document.getElementById("cutscene-box");
 
-function showCutscene(message1, message2, icon) {
-  
-  const notification = document.createElement("div");
-  notification.className = "notification";
-  notification.style.backgroundColor = "#83ffd6"
+// Function to display cutscene on the main page
+function showCutscene(file) {
+  const cutsceneElement = document.getElementById("cutscene");
+  const cutsceneBackground = document.getElementById("cutscene-background");
 
-  const iconElement = document.createElement("img");
-  iconElement.className = "icon";
-  iconElement.src = icon;
+  cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
+  cutsceneBackground.style.display = (cutsceneBackground.style.display === "none") ? "flex" : "none";
 
-  const messageContainer = document.createElement("div"); 
-  messageContainer.className = "message-container";
-
-  const message1Element = document.createElement("div");
-  message1Element.textContent = message1;
-  message1Element.className = "message1";
-
-  const message2Element = document.createElement("div");
-  message2Element.textContent = message2;
-  message2Element.className = "message2";
-
-  // Append message1 and message2 to messageContainer
-  messageContainer.appendChild(message1Element);
-  messageContainer.appendChild(message2Element);
+  const cutsceneFileElement = document.createElement("img");
+  cutsceneFileElement.className = "cutscene-file";
+  cutsceneFileElement.textContent = file; // Updated to set textContent instead of src
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
   closeButton.className = "close-button";
 
-  
   closeButton.addEventListener("click", () => {
-    notificationBox.removeChild(notification);
+    cutsceneBox.removeChild(cutscene);
+    // Hide the cutscene and background elements again
+    cutsceneElement.style.display = "none";
+    cutsceneBackground.style.display = "none";
   });
 
-  notification.appendChild(iconElement);
-  notification.appendChild(messageContainer);
-  notification.appendChild(closeButton);
-  notificationBox.appendChild(notification);
+  cutsceneElement.appendChild(cutsceneFileElement);
+  cutsceneElement.appendChild(closeButton);
+  cutsceneBox.appendChild(cutsceneElement);
 }
 
-
+// cutscene showing is tied to the totalManual clicks.
 
 
 
@@ -1265,91 +1357,6 @@ document.getElementById("close-all").addEventListener("click", function () {
 
 
 
-
-////////////////////////////////////////////////////////////
-////////////////////   minigame   ///////////////////
-////////////////////////////////////////////////////////////
-
-// use similar code as checkMainAchievement
-// function checkMinigame () {
-//   for (const achievement of minigameObj) {
-//     const { bossReqApps, bossIcon, bossMessage, unlocked }= achievement;
-//     if ( bossReqApps && jobApplications >= bossReqApps && !unlocked) {
-//       showMinigameNotification(bossIcon, bossMessage) 
-//       achievement.unlocked = true;
-//     }
-//   }
-// }
-
-const minigameContainer = document.getElementById("minigame-container")
-const minigameBackground = document.getElementById("minigame-background")
-
-
-/// LOOK AT TOGGLE ACHIEVEMENTS PAGE TO MAKE UI APPEAR
-
-function showMinigameNotification () {
-  minigameContainer.style.display = (minigameContainer.style.display === "none") ? "flex" : "none";
-  minigameBackground.style.display = (minigameBackground.style.display === "none") ? "flex" : "none";
-  console.log("showMinigameNotification function works")
-
-  // const iconElement = document.createElement("img");
-  // iconElement.className = "bossIcon";
-  // iconElement.src = bossIcon;
-
-  // minigameContainer.appendChild(iconElement)
-  
-  // MAKE BOXES IF NEEDED AFTER UI IS DECIDE
-  const closeButton = document.createElement("button");
-  closeButton.textContent = "X";
-  closeButton.className = "div-close-button";
-  closeButton.addEventListener("click", showMinigameNotification);
-  minigameContainer.appendChild(closeButton)
-}
-
-
-function checkMinigame() {
-// FUTURE: Make 3 different checks for subsequent minibosses
-  if (jobApplications > 50) {
-    showMinigameNotification();
-    clearInterval(minigameInterval);
-  }
-}
-const minigameInterval = setInterval(checkMinigame, 1000);
-
-
-
-// THANK YOU FOR PLAYING OUR DEMO SCREEN
-// make a window popup and a close button 
-// for the player to continue mindlessly play
-
-const thankYouScreen = document.getElementById("thankYouScreen");
-const thankYouScreenBackground = document.getElementById("thankYouScreenBackground");
-
-function showThankYou () {
-  thankYouScreen.style.display = (thankYouScreen.style.display === "none") ? "flex" : "none";
-  thankYouScreenBackground.style.display = (thankYouScreenBackground.style.display === "none") ? "flex" : "none";
-  const thankYouBox = document.createElement("div");
-  thankYouBox.className = "thankYouBox"
-
-
-  const closeButton = document.createElement("button");
-  closeButton.textContent = "Continue playing";
-  closeButton.className = "div-close-button";
-  closeButton.addEventListener("click", showThankYou);
-  thankYouScreen.appendChild(closeButton)
-
-}
-
-// setTimeout (showThankYou, 1000)
-
-function checkDemo() {
-  if (jobApplications > 100) {
-    showThankYou();
-    clearInterval(checkDemoInterval); // Clear the interval to stop the function from running again
-  }
-}
-const checkDemoInterval = setInterval(checkDemo, 1000);
-
 // Initialize the game
 updateShop();
 updateJobApplications();
@@ -1358,6 +1365,7 @@ updateJobPostings();
 
 setInterval(autoGenerateJobApplications, universalInterval);
 setInterval(checkMainAchievement, universalInterval);
+setInterval(checkCutscene, universalInterval);
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 55000);
 

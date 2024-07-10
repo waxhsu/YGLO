@@ -31,7 +31,8 @@ html:active, #close-all:active {
 
 
 /* CUTSCENE STUFF */
-#cutscene-container {
+#cutscene {
+  display: none;
   border: black 3px solid;
   background: white;
   display: flex;
@@ -46,7 +47,8 @@ html:active, #close-all:active {
   padding: 3.5%
 }
 
-#cutscene-container-background {
+#cutscene-background {
+  display: none;
   opacity: 45%;
   background: black;
   z-index: 8999;
