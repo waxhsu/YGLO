@@ -80,6 +80,17 @@ titleContainer.addEventListener("click", clickToSkipTitle)
 function clickToSkipTitle () {
   titleContainer.parentNode.removeChild(titleContainer);
   playBackgroundMusic()
+
+  updateShop();
+  updateJobApplications();
+  updateAPSDisplay();
+  updateJobPostings();
+
+  setInterval(autoGenerateJobApplications, universalInterval);
+  setInterval(checkMainAchievement, universalInterval);
+  setInterval(checkCutscene, universalInterval);
+  setTimeout(randomRejection, 15000);
+  setTimeout(randomEvent, 55000);
 }
 
 
@@ -1411,14 +1422,5 @@ document.getElementById("close-all").addEventListener("click", function () {
 
 
 // Initialize the game
-updateShop();
-updateJobApplications();
-updateAPSDisplay();
-updateJobPostings();
 
-setInterval(autoGenerateJobApplications, universalInterval);
-setInterval(checkMainAchievement, universalInterval);
-setInterval(checkCutscene, universalInterval);
-setTimeout(randomRejection, 15000);
-setTimeout(randomEvent, 55000);
 
