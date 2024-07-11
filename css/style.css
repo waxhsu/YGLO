@@ -353,6 +353,7 @@ ul, li {
 }
 
 .click-button {
+  /* position: relative; */
   margin: 15px;
   padding: 20px 30px;
   font-size: 35px;
@@ -361,6 +362,10 @@ ul, li {
   border-radius: 25px;
   font-family: 'Pixelify Sans', sans-serif;
   transition: transform 0.1s;
+}
+
+#attach-button {
+  position: relative;
 }
 
 .greyed-out {
@@ -583,6 +588,13 @@ ul, li {
 
 
 
+.attention {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 7000;
+}
+
 
   
 
@@ -712,6 +724,10 @@ ul, li {
   background-color: #f9f9f9;
   border-radius: 15px;
   transition: transform 0.1s;
+}
+
+#tryHarder {
+  position: relative;
 }
 
 

@@ -1,15 +1,5 @@
-import { 
-  shopObj, 
-  mainAchievementsObj, 
-  upgradeAchievementsObj, 
-  randomEventPool, 
-  randomRejectionPool, 
-} from './data.js';
-
-import { 
-  cutsceneObj,
-  minigameObj,
-} from './storyObj.js';
+import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool, } from './data.js';
+import { cutsceneObj, minigameObj } from './storyObj.js';
 
 
 
@@ -62,41 +52,32 @@ tooltips.forEach(tooltip => {
 
 
 
-/////////// INTRO SCREENS ////////
-const videoElement = document.getElementById("intro-video");
-const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro)
+// /////////// INTRO SCREENS ////////
+// const videoElement = document.getElementById("intro-video");
+// const videoContainer = document.getElementById("video-container");
+// videoContainer.addEventListener("click", clickToSkipIntro)
 
-videoElement.addEventListener("ended", clickToSkipIntro);
+// videoElement.addEventListener("ended", clickToSkipIntro);
 
-function clickToSkipIntro () {
-  videoContainer.parentNode.removeChild(videoContainer);
-}
+// function clickToSkipIntro () {
+//   videoContainer.parentNode.removeChild(videoContainer);
+// }
 
 
-const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clickToSkipTitle)
+// const titleContainer = document.getElementById("title-container");
+// titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clickToSkipTitle () {
-  titleContainer.parentNode.removeChild(titleContainer);
-  playBackgroundMusic()
+// function clickToSkipTitle () {
+//   titleContainer.parentNode.removeChild(titleContainer);
+//   playBackgroundMusic()
 
-  updateShop();
-  updateJobApplications();
-  updateAPSDisplay();
-  updateJobPostings();
+// }
 
-  setInterval(autoGenerateJobApplications, universalInterval);
-  setInterval(checkMainAchievement, universalInterval);
-  setInterval(checkCutscene, universalInterval);
-  setTimeout(randomRejection, 15000);
-  setTimeout(randomEvent, 55000);
-}
 
 
 
 ////////////////////////////////////////////////////////////
-////////////////////   minigame   ///////////////////
+////////////////////   minigame   //////////////////////////
 ////////////////////////////////////////////////////////////
 
 // use similar code as cutscene~~~~~~~~~~~~~~~~~~
@@ -263,14 +244,19 @@ const bgm = [
 
 
 
-
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+////// UNCOMMENT bgMusic.play() FOR LAUNCH //////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 // Function to play background music and set up mute toggle
 function playBackgroundMusic() {
-    bgMusic.muted = false; // Set music to be muted by default
-    bgMusic.play();
+    // bgMusic.play();
     muteButton.addEventListener('click', toggleMute);
+    console.log("music is playing")
 }
 
+playBackgroundMusic()
 
 
 
@@ -308,8 +294,16 @@ function toggleMute() {
 const soundButton = document.getElementById('soundToggleBtn');
 const soundIcon = document.getElementById('muteSoundIcon');
 
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 ////// CHANGE THIS TO TRUE AFTER LAUNCH ////////
-let isSoundOn = true;
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+let isSoundOn = false;
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 ////////////////////////////////////////////////
 
 // Function to toggle sound state and update sound icon
@@ -455,6 +449,27 @@ function calculateTotalClicksPerSecond() {
 
 
 
+
+
+////////////////////////////////////////////////////////////
+///////////////////   TEST TEST TEST    //////////////////
+////////////////////////////////////////////////////////////
+
+
+function createAttentionElement() {
+  const attentionElement = document.createElement("img");
+  attentionElement.className = "attention";
+  attentionElement.src = './img/gameIcons/attention.gif';
+  return attentionElement;
+}
+
+
+
+
+
+
+
+
 ////////////////////////////////////////////////////////////
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
@@ -467,36 +482,23 @@ const tryHarder = {
   count: 0,
 };
 
-const tryHarderElement = document.getElementById("tryHarder");
+const tryHarderButton = document.getElementById("tryHarder");
 
 function unlockTryHarder() {
-  if (motivation >= tryHarder.cost) {
-    tryHarderElement.addEventListener("click", updateTryHarder);
-    tryHarderElement.classList.remove("greyed-out");
+  if (appliedWithoutCV === tryHarder.cost) {
+    tryHarderButton.addEventListener("click", updateTryHarder);
+    tryHarderButton.classList.remove("greyed-out");
+
+    if (!tryHarderButton.querySelector('.attention')) {
+      const attentionElement = createAttentionElement();
+      tryHarderButton.appendChild(attentionElement);
+    }
   }
 }
 
-
-function updateTryHarder() {
-  const costElement = document.getElementById("tryHarder-cost");
-  const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
-  costElement.textContent = `cost: ${formattedCostValue}`;
-
-  const apsElement = document.getElementById("tryHarder-aps");
-  const formattedClickValue = formatLargeNumberWithDecimals(tryHarder.clickValue);
-  apsElement.textContent = `+${formattedClickValue} apps/click`;
-
-  const countElement = document.getElementById("tryHarder-count");
-  countElement.textContent = `x${tryHarder.count}`;
-
-  
-}
-
-const tryHarderButton = document.getElementById("tryHarder");
 tryHarderButton.addEventListener("click", buyTryHarder);
 
-
-function buyTryHarder() {
+function buyTryHarder(event) {
   if (motivation >= tryHarder.cost) {
     tryHarder.cost = Math.floor(tryHarder.cost * 1.125);
     motivation -= tryHarder.cost;
@@ -511,8 +513,29 @@ function buyTryHarder() {
     applyParticle("+1", event.clientX, event.clientY, "try-harder");
     updateShop();
 
+    const attentionElement = tryHarderButton.querySelector('.attention');
+    if (attentionElement) {
+      tryHarderButton.removeChild(attentionElement);
+    }
   }
 }
+
+
+
+function updateTryHarder() {
+  const costElement = document.getElementById("tryHarder-cost");
+  const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
+  costElement.textContent = `cost: ${formattedCostValue}`;
+
+  const apsElement = document.getElementById("tryHarder-aps");
+  const formattedClickValue = formatLargeNumberWithDecimals(tryHarder.clickValue);
+  apsElement.textContent = `+${formattedClickValue} apps/click`;
+
+  const countElement = document.getElementById("tryHarder-count");
+  countElement.textContent = `x${tryHarder.count}`;  
+}
+
+
 
 
 
@@ -697,11 +720,13 @@ function displayNextJobDetail() {
   displayJobDetail(nextIndex);
 }
 
+
+
+
+
 ////////////////////////////////////////////////////////////
 ///////////////////   ATTACHMENTS  PAGE   //////////////////
 ////////////////////////////////////////////////////////////
-
-
 
 
 import { coverLetterPool } from './coverLetterPool.js';
@@ -715,6 +740,17 @@ function unlockAttachPage() {
   if (appliedWithoutCV === 5) {
     attachButton.addEventListener("click", toggleAttachPage);
     attachButton.classList.remove("greyed-out");
+    /////////////////////////////////////////
+    ///// USE IN OTHER ATTENTION ITEMS //////
+    /////////////////////////////////////////
+    if (!attachButton.querySelector('.attention')) {
+      const attentionElement = createAttentionElement();
+      attachButton.appendChild(attentionElement);
+    }
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    
   }
 }
 
@@ -727,6 +763,19 @@ function toggleAttachPage() {
   attachPage.style.display = (attachPage.style.display === "none") ? "flex" : "none";
   const achievementsList = document.getElementById("achievements-list");
   achievementsList.innerHTML = "";
+    /////////////////////////////////////////
+    ///// USE IN OTHER ATTENTION ITEMS //////
+    /////////////////////////////////////////
+  const attentionElement = attachButton.querySelector('.attention');
+  if (attentionElement) {
+    attachButton.removeChild(attentionElement);
+  }
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    /////////////////////////////////////////
+    
+
+
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -734,13 +783,10 @@ function toggleAttachPage() {
   closeButton.addEventListener("click", toggleAttachPage);
   attachPage.appendChild(closeButton);
 
-
   // Get the textBox element
   const textBox = document.getElementById("textBox");
-
   // Make the textbox read-only
   textBox.readOnly = true;
-
   // Add keypress event listener
   document.addEventListener("keypress", showNextLetter);
 }
@@ -1420,7 +1466,34 @@ document.getElementById("close-all").addEventListener("click", function () {
 });
 
 
+////////////////////////////////////////////////////////////
+//////////////////// ATTENTION TO UNLOCKS //////////////////
+////////////////////////////////////////////////////////////
+
+const attentionElement = document.createElement("img");
+attentionElement.className = "attention";
+attentionElement.src = './img/gameIcons/attention.gif'
+
+// function checkAttention () {
+//   if (appliedWithoutCV === 5) {
+//     attachButton.appendChild(attentionElement)
+//   }
+// }
+
+
+
 
 // Initialize the game
 
+// BRING THIS UP TO function skipTitleScreen
+updateShop();
+updateJobApplications();
+updateAPSDisplay();
+updateJobPostings();
+
+setInterval(autoGenerateJobApplications, universalInterval);
+setInterval(checkMainAchievement, universalInterval);
+setInterval(checkCutscene, universalInterval);
+setTimeout(randomRejection, 15000);
+setTimeout(randomEvent, 55000);
 
