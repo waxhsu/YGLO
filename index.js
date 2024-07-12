@@ -55,7 +55,7 @@ tooltips.forEach(tooltip => {
 // /////////// INTRO SCREENS ////////
 const videoElement = document.getElementById("intro-video");
 const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro)
+videoContainer.addEventListener("click", clickToSkipIntro);
 
 videoElement.addEventListener("ended", clickToSkipIntro);
 
