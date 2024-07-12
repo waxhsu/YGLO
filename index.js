@@ -53,25 +53,25 @@ tooltips.forEach(tooltip => {
 
 
 // /////////// INTRO SCREENS ////////
-// const videoElement = document.getElementById("intro-video");
-// const videoContainer = document.getElementById("video-container");
-// videoContainer.addEventListener("click", clickToSkipIntro)
+const videoElement = document.getElementById("intro-video");
+const videoContainer = document.getElementById("video-container");
+videoContainer.addEventListener("click", clickToSkipIntro)
 
-// videoElement.addEventListener("ended", clickToSkipIntro);
+videoElement.addEventListener("ended", clickToSkipIntro);
 
-// function clickToSkipIntro () {
-//   videoContainer.parentNode.removeChild(videoContainer);
-// }
+function clickToSkipIntro () {
+  videoContainer.parentNode.removeChild(videoContainer);
+}
 
 
-// const titleContainer = document.getElementById("title-container");
-// titleContainer.addEventListener("click", clickToSkipTitle)
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clickToSkipTitle)
 
-// function clickToSkipTitle () {
-//   titleContainer.parentNode.removeChild(titleContainer);
-//   playBackgroundMusic()
+function clickToSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+  playBackgroundMusic()
 
-// }
+}
 
 
 
@@ -1136,7 +1136,10 @@ function toggleAchievementsPage() {
   displayAchievements(mainAchievementsObj);
   displayAchievements(upgradeAchievementsObj);
 
-  achievementsButton.addEventListener("onclick", (achievementsButton.removeChild(attentionElement)))
+  const attentionElement = achievementsButton.querySelector('.attention');
+  if (attentionElement) {
+    achievementsButton.removeChild(attentionElement);
+  }
 }
 
 
@@ -1157,6 +1160,10 @@ function displayAchievements(achievementsArray) {
 
       achievementListDiv.appendChild(iconImage);
       achievementListDiv.appendChild(tooltip);
+
+      iconImage.appendChild(attentionElement);
+      
+      
     } else {
       const questionMark = document.createElement("img");
       questionMark.className = "question-mark";
