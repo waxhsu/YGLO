@@ -1106,6 +1106,8 @@ function showAchievement(message1, message2, icon) {
   notification.appendChild(messageContainer);
   notification.appendChild(closeButton);
   notificationBox.appendChild(notification);
+
+  achievementsButton.appendChild(attentionElement);
 }
 
 
@@ -1133,6 +1135,8 @@ function toggleAchievementsPage() {
 
   displayAchievements(mainAchievementsObj);
   displayAchievements(upgradeAchievementsObj);
+
+  achievementsButton.addEventListener("onclick", (achievementsButton.removeChild(attentionElement)))
 }
 
 
