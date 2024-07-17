@@ -5,14 +5,14 @@
 </head>
 
 <!-- GAME INTRO VIDEO and START SCREEN -->
-
+<!-- 
 <div id="video-container">
 	<video id="intro-video" src="./img/introduction/yglo_intro.mp4" autoplay muted></video>
 
 </div>
 <div id="title-container">
 	<img id="intro-title" src="./img/introduction/Start_Screen.gif"></img>
-</div>
+</div> -->
 
 
 
@@ -180,33 +180,17 @@
 				<!-- Displays random notifications from achievements and random events -->
 				<div id="rightUI">
 					<h1 class="banner">Notification</h1>
-					<button id="close-all">Close all</button>
 					<div id="rightTopUI">
 						<div id="notification-box"></div>
+						<button id="close-all">Close all</button>
 					</div>
 
 				<!-- Displays shop items that enhances gameplay -->
-					<h1 class="shopBanner">The Frick Shop</h1>
+					<h1 class="banner">The Frick Shop</h1>
 					<div id="rightBottomUI">
-						<div id="tryHarder" class="tooltip greyed-out">
-							<div class="title-container">
-								<div class="item-name">Try Harder</div>
-							</div>
-				<!-- tryHarder is different from the forEach shop items -->
-							<div class="detail-container">	
-								<img class="shop-icon" src="./img/shopIcons/0_tryHarder.png"></img>
-								<div class="info-container">
-									<div id="tryHarder-cost" class="item-cost">cost: 15</div>
-									<div id="tryHarder-aps" class="item-aps tooltipText">+1 apps/click</div>
-									<div id="tryHarder-count" class="item-count">x0</div>
-								</div>
-							</div>
-						</div>
-				<!-- The rest of the shop items that enchances gameplay -->
-						<div id="shop">
-						</div>
-
+						<div id="shop"></div>
 					</div>
+
 				</div>
 			</div>
 		</div>

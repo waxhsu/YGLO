@@ -1,12 +1,13 @@
 const shopObj = [
-    // {
-    //   id: 0,
-    //   icon: "./img/shopIcons/0_tryHarder.png",
-    //   name: "Try Harder",
-    //   cost: 15,
-    //   clicksPerSecond: 1,
-    //   count: 0,
-    // },
+    {
+      id: 0,
+      icon: "./img/shopIcons/0_tryHarder.png",
+      name: "Try Harder",
+      cost: 5,
+      clicksPerSecond: 0,
+      clickValue: 1,
+      count: 0,
+    },
     {
       id: 1,
       icon: "./img/shopIcons/1_linkIndeed.png",
@@ -14,43 +15,38 @@ const shopObj = [
       cost: 100,
       clicksPerSecond: 8,
       count: 0,
-      unlocked: false,
     },
     {
       id: 2,
-      icon: "./img/shopIcons/2_sixerr.png",
-      name: "Outsource to Sixerr",
+      icon: "./img/shopIcons/5_someGuy.png",
+      name: "Network Events",
       cost: 1100,
       clicksPerSecond: 47,
       count: 0,
-      unlocked: false,
     },
     {
       id: 3,
       icon: "./img/shopIcons/3_jobPortal.png",
-      name: "Job Portal",
+      name: "Buy a plant",
       cost: 12000,
       clicksPerSecond: 260,
       count: 0,
-      unlocked: false,
     },
     {
       id: 4,
       icon: "./img/shopIcons/4_unemployment.png",
-      name: "Unemployed on a Monday",
+      name: "Hit the Gym",
       cost: 130000,
       clicksPerSecond: 1400,
       count: 0,
-      unlocked: false,
     },
     {
       id: 5,
-      icon: "./img/shopIcons/5_someGuy.png",
-      name: "Time Machine",
+      icon: "./img/shopIcons/2_sixerr.png",
+      name: "Outsource Your Apps",
       cost: 14000000,
       clicksPerSecond: 5600,
       count: 0,
-      unlocked: false,
     },
   ];
 
@@ -298,90 +294,88 @@ const mainAchievementsObj = [
       message2: "*slaps belly and spits out tooth* well if it isn't my belly??",
       displayed: false,
     },
-
-    // TRY HARDER [0]
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 1, 
-      message1: "Own 1 Try Harder",
-      message2: "Your first time actually trying!",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 10,
-      message1: "Own 10 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 50,
-      message1: "Own 50 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 100,
-      message1: "Own 100 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false, 
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 500,
-      message1: "Own 500 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 1000,
-      message1: "Own 1000 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 2500,
-      message1: "Own 2500 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 5000,
-      message1: "Own 5000 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    },
-    { 
-      icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
-      iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-      tryHarders: 10000,
-      message1: "Own 10000 Try Harders",
-      message2: "insert funny excerpt",
-      displayed: false,
-    }
-
   ];
 
 const upgradeAchievementsObj = [
 
-// LinkIndeed PREMIUM [0]
-{ 
+   // TRY HARDER [0]
+   { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     upgrade0: 1, 
+    message1: "Own 1 Try Harder",
+    message2: "Your first time actually trying!",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 10,
+    message1: "Own 10 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 50,
+    message1: "Own 50 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 100,
+    message1: "Own 100 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false, 
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 500,
+    message1: "Own 500 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 1000,
+    message1: "Own 1000 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 2500,
+    message1: "Own 2500 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 5000,
+    message1: "Own 5000 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+  { 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade0: 10000,
+    message1: "Own 10000 Try Harders",
+    message2: "insert funny excerpt",
+    displayed: false,
+  },
+// LinkIndeed PREMIUM [1]
+{ 
+    icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
+    iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
+    upgrade1: 1, 
     message1: "Own 1 LinkIndeed Premium",
     message2: "$40 a month huh?",
     displayed: false,
@@ -390,14 +384,14 @@ const upgradeAchievementsObj = [
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
     message1: "Bill Gates thanks you",
-    upgrade0: 10,
+    upgrade1: 10,
     message2: "Own 10 LinkIndeed Premiums",
     displayed: false,
 },
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade0: 50,
+    upgrade1: 50,
     message1: "Own 50 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
@@ -405,7 +399,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade0: 100,
+    upgrade1: 100,
     message1: "Own 100 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
@@ -413,18 +407,18 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade0: 500,
+    upgrade1: 500,
     message1: "Own 500 LinkIndeed Premiums",
     message2: "insert funny excerpt",
     displayed: false,
 },
 
 
-// NETWORK EVENTS [1]
+// NETWORK EVENTS [2]
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade1: 1, 
+    upgrade2: 1, 
     message1: "First awkward network event!",
     message2: "TEST0",
     displayed: false,
@@ -432,7 +426,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade1: 2,
+    upgrade2: 2,
     message1: "Attend 2 network events",
     message2: "TEST1",
     displayed: false,
@@ -440,7 +434,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade1: 3,
+    upgrade2: 3,
     message1: "Attend 3 network events",
     message2: "insert funny excerpt",
     displayed: false,
@@ -448,7 +442,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade1: 4,
+    upgrade2: 4,
     message1: "Attend 100 network events",
     message2: "insert funny excerpt",
     displayed: false,
@@ -456,7 +450,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade1: 5,
+    upgrade2: 5,
     message1: "Attend 500 network events",
     message2: "insert funny excerpt",
     displayed: false,
@@ -464,11 +458,11 @@ const upgradeAchievementsObj = [
 
 
 
-//  BUY A PLANT [2]
+//  BUY A PLANT [3]
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade2: 1, 
+    upgrade3: 1, 
     message1: "Bought 1 plants",
     message2: "insert funny excerpt",
     displayed: false,
@@ -476,7 +470,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade2: 2,
+    upgrade3: 2,
     message1: "Bought 2 plants",
     message2: "insert funny excerpt",
     displayed: false,
@@ -484,7 +478,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade2: 3,
+    upgrade3: 3,
     message1: "Bought 25 plants",
     message2: "insert funny excerpt",
     displayed: false,
@@ -492,7 +486,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade2: 4,
+    upgrade3: 4,
     message1: "Bought 100 plants",
     message2: "insert funny excerpt",
     displayed: false,
@@ -500,7 +494,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade2: 5,
+    upgrade3: 5,
     message1: "Bought 500 plants",
     message2: "insert funny excerpt",
     displayed: false,
@@ -508,11 +502,11 @@ const upgradeAchievementsObj = [
 
 // ADD MORE IF NEEDED
 
-//  GO TO THE GYM [3]
+//  GO TO THE GYM [4]
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade3: 1, 
+    upgrade4: 1, 
     message1: "Go to the gym once a week",
     message2: "insert funny excerpt",
     displayed: false,
@@ -520,7 +514,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade3: 2,
+    upgrade4: 2,
     message1: "Gym 5 days/week",
     message2: "insert funny excerpt",
     displayed: false,
@@ -528,7 +522,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade3: 3, 
+    upgrade4: 3, 
     message1: "Gym 10 days/week",
     message2: "insert funny excerpt",
     displayed: false,
@@ -536,7 +530,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade3: 4,
+    upgrade4: 4,
     message1: "Gym 50 days/week",
     message2: "insert funny excerpt",
     displayed: false,
@@ -544,17 +538,17 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade3: 5,
+    upgrade4: 5,
     message1: "Gym 100 days/week",
     message2: "insert funny excerpt",
     displayed: false,
 },
 
-//  ANOTHER MUNDANE RELATABLE THING [4]
+//  OUTSOURCE TO SIXXER [5]
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade4: 1, 
+    upgrade5: 1, 
     message1: "[VERB] 1 [ITEM NAME]",
     message2: "funny excerpt",
     displayed: false,
@@ -562,7 +556,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade4: 2,
+    upgrade5: 2,
     message1: "[VERB] 2 [ITEM NAME]",
     message2: "funny excerpt",
     displayed: false,
@@ -570,7 +564,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade4: 3, 
+    upgrade5: 3, 
     message1: "[VERB] 3 [ITEM NAME]",
     message2: "funny excerpt",
     displayed: false,
@@ -578,7 +572,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade4: 4,
+    upgrade5: 4,
     message1: "[VERB] 4 [ITEM NAME]",
     message2: "funny excerpt",
     displayed: false,
@@ -586,7 +580,7 @@ const upgradeAchievementsObj = [
 { 
     icon: "./img/achievementIcons/upgrade/icon_upgrade_achievement.png",
     iconFalse: "./img/achievementIcons/upgrade/icon_upgrade_achievement_false.png",
-    upgrade4: 5, 
+    upgrade5: 5, 
     message1: "[VERB] 5 [ITEM NAME]",
     message2: "funny excerpt",
     displayed: false,

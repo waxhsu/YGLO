@@ -6,7 +6,7 @@ import { cutsceneObj, minigameObj } from './storyObj.js';
 // Initialize variables
 let timer = null;
 let jobApplications = 0;
-let motivation = 0;
+let motivation = 1000;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
 
@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1;
+let clickValue = 10;
 
 let universalInterval = 1000;
 
@@ -55,23 +55,23 @@ tooltips.forEach(tooltip => {
 // /////////// INTRO SCREENS ////////
 const videoElement = document.getElementById("intro-video");
 const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro);
+// videoContainer.addEventListener("click", clickToSkipIntro);
 
-videoElement.addEventListener("ended", clickToSkipIntro);
+// videoElement.addEventListener("ended", clickToSkipIntro);
 
-function clickToSkipIntro () {
-  videoContainer.parentNode.removeChild(videoContainer);
-}
+// function clickToSkipIntro () {
+//   videoContainer.parentNode.removeChild(videoContainer);
+// }
 
 
-const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clickToSkipTitle)
+// const titleContainer = document.getElementById("title-container");
+// titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clickToSkipTitle () {
-  titleContainer.parentNode.removeChild(titleContainer);
-  playBackgroundMusic()
+// function clickToSkipTitle () {
+//   titleContainer.parentNode.removeChild(titleContainer);
+//   playBackgroundMusic()
 
-}
+// }
 
 
 
@@ -427,9 +427,7 @@ function updateJobApplications() {
 function updateMotivation() {
   const motivationElement = document.getElementById("motivation-value");
   const formattedValue = formatLargeNumberAll(motivation);
-  motivationElement.textContent = formattedValue;
-  // updateShop();
-  
+  motivationElement.textContent = formattedValue;  
 }
 
 function updateRejection() {
@@ -474,68 +472,83 @@ function createAttentionElement() {
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
 
-const tryHarder = {
-  name: "Try Harder",
-  icon: "./img/shopIcons/0_tryHarder.png",
-  cost: 15,
-  clickValue: 1.1,
-  count: 0,
-};
 
-const tryHarderButton = document.getElementById("tryHarder");
-
-function unlockTryHarder() {
-  if (appliedWithoutCV === tryHarder.cost) {
-    tryHarderButton.addEventListener("click", updateTryHarder);
-    tryHarderButton.classList.remove("greyed-out");
-
-    if (!tryHarderButton.querySelector('.attention')) {
-      const attentionElement = createAttentionElement();
-      tryHarderButton.appendChild(attentionElement);
-    }
-  }
-}
-
-tryHarderButton.addEventListener("click", buyTryHarder);
-
-function buyTryHarder(event) {
-  if (motivation >= tryHarder.cost) {
-    tryHarder.cost = Math.floor(tryHarder.cost * 1.125);
-    motivation -= tryHarder.cost;
-    tryHarder.count += 1;
-
-    // FIGURE OUT THE MATH FOR THIS
-    tryHarder.clickValue = tryHarder.clickValue * 1.15;
-    clickValue = tryHarder.clickValue;
-    playRandomClickSound();
-    updateMotivation();
-    updateTryHarder();
-    applyParticle("+1", event.clientX, event.clientY, "try-harder");
-    updateShop();
-
-    const attentionElement = tryHarderButton.querySelector('.attention');
-    if (attentionElement) {
-      tryHarderButton.removeChild(attentionElement);
-    }
-  }
-}
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+// THIS TestHARDER IS SEPARATE FROM THE SHOP OBJ
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 
+// const testHarder = {
+//   name: "Try Harder",
+//   icon: "./img/shopIcons/0_testHarder.png",
+//   cost: 5,
+//   clickValue: 1.1,
+//   count: 0,
+// };
 
-function updateTryHarder() {
-  const costElement = document.getElementById("tryHarder-cost");
-  const formattedCostValue = formatLargeNumberAll(tryHarder.cost);
-  costElement.textContent = `cost: ${formattedCostValue}`;
+// const testHarderButton = document.getElementById("testHarder");
 
-  const apsElement = document.getElementById("tryHarder-aps");
-  const formattedClickValue = formatLargeNumberWithDecimals(tryHarder.clickValue);
-  apsElement.textContent = `+${formattedClickValue} apps/click`;
+// function unlockTestHarder() {
+//   if (appliedWithoutCV === 1) {
+//     testHarderButton.addEventListener("click", updateTestHarder);
+//     testHarderButton.classList.remove("greyed-out");
 
-  const countElement = document.getElementById("tryHarder-count");
-  countElement.textContent = `x${tryHarder.count}`;  
-}
+//     if (!testHarderButton.querySelector('.attention')) {
+//       const attentionElement = createAttentionElement();
+//       testHarderButton.appendChild(attentionElement);
+//     }
+//   }
+// }
+
+// testHarderButton.addEventListener("click", buyTestHarder);
+
+// function buyTestHarder(event) {
+//   if (motivation >= testHarder.cost) {
+//     testHarder.cost = Math.floor(testHarder.cost * 2);
+//     motivation -= testHarder.cost;
+//     testHarder.count += 1;
+
+//     // FIGURE OUT THE MATH FOR THIS
+//     // FIGURE OUT THE MATH FOR THIS
+//     // FIGURE OUT THE MATH FOR THIS
+//     // FIGURE OUT THE MATH FOR THIS
+//     testHarder.clickValue += testHarder.clickValue;
+//     clickValue = testHarder.clickValue;
+//     playRandomClickSound();
+//     updateMotivation();
+//     updateTestHarder();
+//     applyParticle("+1", event.clientX, event.clientY, "try-harder");
+//     updateShop();
+
+//     const attentionElement = testHarderButton.querySelector('.attention');
+//     if (attentionElement) {
+//       testHarderButton.removeChild(attentionElement);
+//     }
+//   }
+// }
 
 
+
+// function updateTestHarder() {
+//   const costElement = document.getElementById("testHarder-cost");
+//   const formattedCostValue = formatLargeNumberAll(testHarder.cost);
+//   costElement.textContent = `cost: ${formattedCostValue}`;
+
+//   const apsElement = document.getElementById("testHarder-aps");
+//   const formattedClickValue = formatLargeNumberWithDecimals(testHarder.clickValue);
+//   apsElement.textContent = `+${formattedClickValue} apps/click`;
+
+//   const countElement = document.getElementById("testHarder-count");
+//   countElement.textContent = `x${testHarder.count}`;  
+// }
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
 
 
@@ -588,8 +601,11 @@ function updateShop() {
 
     const clicksPerSecondElement = document.createElement("div");
     clicksPerSecondElement.className = "item-aps tooltipText";
-    clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/s`;
-
+    if (index === 0) {
+      clicksPerSecondElement.textContent = `+${shop.clickValue} click power`;
+    } else {
+      clicksPerSecondElement.textContent = `+${shop.clicksPerSecond} apps/s`;
+    }
     const countElement = document.createElement("div");
     countElement.className = "item-count";
     countElement.textContent = `x${shop.count}`;
@@ -607,8 +623,8 @@ function updateShop() {
     shopItem.appendChild(titleContainer);
     shopItem.appendChild(detailContainer);
 
-
-    if (index <= 1 || shopObj[index - 1].count >= 1) {
+/////////////////////////////////// change
+    if (index <= 15 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
@@ -622,18 +638,37 @@ function updateShop() {
 
 // Function to buy an AutoApplication
 function buyAutoApplication(app) {
-  if (motivation >= app.cost) {
-    app.cost = Math.floor(app.cost * 1.15);
-    motivation -= app.cost;
-    app.count += 1;
-    playRandomClickSound();
-    updateMotivation();
-    updateShop();
-    calculateTotalClicksPerSecond();
-    updateAPSDisplay(); 
-    // updateShopUpgrades();
-    updateShopCount(); 
-    applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
+  if (app.id === 0) {
+    if (motivation >= app.cost) {
+
+      /// FIGURE OUT MATH ///
+      app.cost = Math.floor(app.cost * 1.15);
+      motivation -= app.cost;
+      app.count += 1;
+
+      app.clickValue += app.clickValue;
+      clickValue = app.clickValue;
+      playRandomClickSound();
+      updateMotivation();
+      updateShop();
+      calculateTotalClicksPerSecond();
+      updateAPSDisplay();
+      updateShopCount(); 
+      applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
+    }
+  } else {
+    if (motivation >= app.cost) {
+      app.cost = Math.floor(app.cost * 1.15);
+      motivation -= app.cost;
+      app.count += 1;
+      playRandomClickSound();
+      updateMotivation();
+      updateShop();
+      calculateTotalClicksPerSecond();
+      updateAPSDisplay();
+      updateShopCount(); 
+      applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
+    }
   }
 }
 
@@ -663,12 +698,10 @@ function applyJobApplication() {
   updateJobApplications();
   updateMotivation();
   updateShop();
-  // updateRejection();
-  cycleJobPostings(); //wtf
+  cycleJobPostings();
   updateJobPostings();
   playRandomClickSound();
   unlockAttachPage();
-  unlockTryHarder();
 
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
@@ -1014,15 +1047,14 @@ function cycleJobPostings() {
 
 function checkMainAchievement() {
   for (const achievement of mainAchievementsObj) {
-    const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, tryHarders, displayed, message1, message2, icon } = achievement;
+    const { clicks, apps, rejections, badEvents, goodEvents, totalRandom, testHarders, displayed, message1, message2, icon } = achievement;
     if ((
       (clicks && appliedWithoutCV >= clicks) ||
       (apps && jobApplications >= apps) ||
       (rejections && totalRejections >= rejections) || 
       (badEvents && badRandomEvents >= badEvents) ||
       (goodEvents && goodRandomEvents >= goodEvents) ||
-      (totalRandom && totalRandomEvents >= totalRandom) ||
-      (tryHarders && tryHarder.count >= tryHarders)
+      (totalRandom && totalRandomEvents >= totalRandom)
       ) 
     && !displayed) {
       showAchievement(message1, message2, icon);
