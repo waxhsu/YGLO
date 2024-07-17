@@ -12,7 +12,6 @@ body {
   font-size: 25px;
   overflow: hidden;
   background-color: #fffdef;
-  max-height: 800px;
   height: 100%;
   margin: auto;
   width: 80%;
@@ -194,28 +193,9 @@ color: red;
   margin: 0 0;
   font-size: 30px;
   background-color: #83ffd6 ;
-  padding: 5px 0 0 10px;
+  padding: 5px 0 0 5px;
   color: black;
 }
-.shopBanner {
-  margin: 0 0;
-  font-size: 30px;
-  background-color: #FF80FB ; 
-  padding: 5px 0 0 10px;
-  color: black;
-}
-
-#close-all {
-  position: absolute;
-  bottom: 53.5%;
-  right: 0;
-  z-index: 1001;
-  border-radius: 50px;
-  background-color: red;
-  color: white;
-  font-family: 'Pixelify Sans', sans-serif;
-}
-
 
 ul, li {
   margin: 0;
@@ -232,10 +212,10 @@ ul, li {
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #topUI {
-  min-height: 64px;
+  max-height: 7vh;
   display: flex;
   justify-content: space-between;
-  background-color: #FF80FB;
+  /* background-color: #FF80FB; */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Adjust values as needed */
   z-index: 8000;
 }
@@ -302,7 +282,7 @@ ul, li {
 #rightUI {
   min-width: 25%;
   max-width: 25%;
-  min-height: 95%;
+  /* min-height: 95%; */
 }
 
 #rightTopUI {
@@ -311,11 +291,24 @@ ul, li {
   margin: 0 0 2px;
 }
 
+#close-all {
+  position: fixed;
+  bottom: 58.5vh;
+  right: 10%;
+  z-index: 1001;
+  border-radius: 50px;
+  background-color: red;
+  color: white;
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
 #rightBottomUI{
   /* border: green solid 2px; */
-  /* max-height: 48%;  */
-  max-height: 56vh; 
-  min-height: 56vh; 
+  max-height: 58%; 
+  /* max-height: none; */
+  /* max-height: 16vh;  */
+  /* min-height: 56vh;  */
+  /* bottom: auto; */
   margin: 0 0 2px;
 }
 
@@ -323,6 +316,9 @@ ul, li {
   overflow-y: auto; 
 }
 
+#shop {
+  /* overflow-y: auto; */
+}
 
 #topCenterUI, #bottomCenterUI {
   display: flex;
@@ -714,9 +710,7 @@ ul, li {
   border: blue 3px solid;
 } */
 
-
-
-#tryHarder, .shop-item {
+.shop-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -725,10 +719,6 @@ ul, li {
   background-color: #f9f9f9;
   border-radius: 15px;
   transition: transform 0.1s;
-}
-
-#tryHarder {
-  position: relative;
 }
 
 
