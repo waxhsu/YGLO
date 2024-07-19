@@ -6,7 +6,7 @@ import { cutsceneObj, minigameObj } from './storyObj.js';
 // Initialize variables
 let timer = null;
 let jobApplications = 0;
-let motivation = 1000;
+let motivation = 0;
 let autoApplications = [];
 let totalClicksPerSecond = 0;
 
@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 10;
+let clickValue = 50;
 
 let universalInterval = 1000;
 
@@ -466,8 +466,6 @@ function createAttentionElement() {
 
 
 
-
-
 ////////////////////////////////////////////////////////////
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
@@ -623,6 +621,12 @@ function updateShop() {
     shopItem.appendChild(titleContainer);
     shopItem.appendChild(detailContainer);
 
+
+    if (motivation >= shop.cost && !shop.unlocked) {
+      shop.unlocked = true;  // Mark as unlocked
+      const attentionElement = createAttentionElement();
+      shopItem.appendChild(attentionElement);
+    }
 /////////////////////////////////// change
     if (index <= 15 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
@@ -766,11 +770,12 @@ import { coverLetterPool } from './coverLetterPool.js';
 
 const attachPage = document.getElementById("attach-page");
 const attachButton = document.getElementById("attach-button");
+const clickButtonBox = document.getElementById("click-button-box");
 
 
 
 function unlockAttachPage() {
-  if (appliedWithoutCV === 5) {
+  if (appliedWithoutCV === 1) {
     attachButton.addEventListener("click", toggleAttachPage);
     attachButton.classList.remove("greyed-out");
     /////////////////////////////////////////
