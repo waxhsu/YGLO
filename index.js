@@ -770,9 +770,6 @@ import { coverLetterPool } from './coverLetterPool.js';
 
 const attachPage = document.getElementById("attach-page");
 const attachButton = document.getElementById("attach-button");
-const clickButtonBox = document.getElementById("click-button-box");
-
-
 
 function unlockAttachPage() {
   if (appliedWithoutCV === 1) {

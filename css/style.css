@@ -286,20 +286,23 @@ ul, li {
 }
 
 #rightTopUI {
+  display: flex;
+  position: relative;
   max-height: 30.5vh; 
   min-height: 30.5vh; 
   margin: 0 0 2px;
 }
 
 #close-all {
-  position: fixed;
-  bottom: 58.5vh;
+  position: absolute;
   right: 10%;
   z-index: 1001;
   border-radius: 50px;
   background-color: red;
   color: white;
   font-family: 'Pixelify Sans', sans-serif;
+  bottom: 0;
+  right: 0;
 }
 
 #rightBottomUI{
