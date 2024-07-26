@@ -1,19 +1,19 @@
 const cutsceneObj = [
     {
         id: 0,
-        clicksReq: 10,
+        clicksReq: 20,
         file: "./img/cutscene/0.png",
         displayed: false,
         },
     {
         id: 1,
-        clicksReq: 14,
+        clicksReq: 25,
         file: "./img/cutscene/1.png",
         displayed: false,
     },
     {
         id: 2,
-        clicksReq: 16,
+        clicksReq: 30,
         file: "./img/cutscene/2.gif",
         displayed: false,
     },

@@ -1115,7 +1115,7 @@ function showAchievement(message1, message2, icon) {
   playRandomInboxSound();
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = "#83ffd6"
+  // notification.style.backgroundColor = "#83ffd6"
 
   const iconElement = document.createElement("img");
   iconElement.className = "icon";
@@ -1304,7 +1304,7 @@ function showBadRandomEvent(randomEvent, motivationRandomCalc, jobAppRandomCalc)
   badRandomEvents += 1;
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = randomEvent.color;
+  // notification.style.backgroundColor = randomEvent.color;
 
   const iconElement = document.createElement("img");
   iconElement.className = "icon";
@@ -1451,7 +1451,7 @@ function showRandomRejection(rejectionEvent, motivationRejectCalc) {
 
   const notification = document.createElement("div");
   notification.className = "notification";
-  notification.style.backgroundColor = rejectionEvent.color;
+  // notification.style.backgroundColor = rejectionEvent.color;
   
   const iconElement = document.createElement("img");
   iconElement.className = "icon";
