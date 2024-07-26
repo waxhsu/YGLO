@@ -224,8 +224,8 @@ function showCutscene(file) {
 //////// SOUND AND BGM /////////
 const muteButton = document.getElementById("muteToggleBtn");
 const muteIcon = document.getElementById("muteBGMIcon");
-// let bgMusic = new Audio('./bgm/bgm0_dungeon.mp3');
-let bgMusic = new Audio('./bgm/bgm1_feelgood.mp3');
+let bgMusic = new Audio('./bgm/bgm0_dungeon.mp3');
+// let bgMusic = new Audio('./bgm/bgm1_feelgood.mp3');
 
 
 const bgm = [
