@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 50;
+let clickValue = 1;
 
 let universalInterval = 1000;
 
@@ -55,23 +55,22 @@ tooltips.forEach(tooltip => {
 // /////////// INTRO SCREENS ////////
 const videoElement = document.getElementById("intro-video");
 const videoContainer = document.getElementById("video-container");
-// videoContainer.addEventListener("click", clickToSkipIntro);
+videoContainer.addEventListener("click", clickToSkipIntro);
 
-// videoElement.addEventListener("ended", clickToSkipIntro);
+videoElement.addEventListener("ended", clickToSkipIntro);
 
-// function clickToSkipIntro () {
-//   videoContainer.parentNode.removeChild(videoContainer);
-// }
+function clickToSkipIntro () {
+  videoContainer.parentNode.removeChild(videoContainer);
+}
 
 
-// const titleContainer = document.getElementById("title-container");
-// titleContainer.addEventListener("click", clickToSkipTitle)
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clickToSkipTitle)
 
-// function clickToSkipTitle () {
-//   titleContainer.parentNode.removeChild(titleContainer);
-//   playBackgroundMusic()
-
-// }
+function clickToSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+  playBackgroundMusic()
+}
 
 
 
@@ -115,7 +114,9 @@ function checkMinigame() {
     clearInterval(minigameInterval);
   }
 }
-const minigameInterval = setInterval(checkMinigame, 1000);
+
+///UNCOMMENT FOR GAME
+// const minigameInterval = setInterval(checkMinigame, 1000);
 
 
 
@@ -141,6 +142,7 @@ function showThankYou () {
 
 }
 
+///UNCOMMENT FOR GAME
 // setTimeout (showThankYou, 1000)
 
 function checkDemo() {
@@ -149,7 +151,7 @@ function checkDemo() {
     clearInterval(checkDemoInterval); // Clear the interval to stop the function from running again
   }
 }
-const checkDemoInterval = setInterval(checkDemo, 1000);
+// const checkDemoInterval = setInterval(checkDemo, 1000);
 
 
 
@@ -199,6 +201,8 @@ function showCutscene(file) {
   cutsceneBox.appendChild(cutsceneElement);
 }
 
+///UNCOMMENT FOR GAME
+// setInterval(checkCutscene, universalInterval);
 // cutscene showing is tied to the totalManual clicks.
 
 
@@ -251,12 +255,12 @@ const bgm = [
 /////////////////////////////////////////////////
 // Function to play background music and set up mute toggle
 function playBackgroundMusic() {
-    // bgMusic.play();
+    bgMusic.play();
     muteButton.addEventListener('click', toggleMute);
     console.log("music is playing")
 }
 
-playBackgroundMusic()
+
 
 
 
@@ -300,7 +304,7 @@ const soundIcon = document.getElementById('muteSoundIcon');
 ////// CHANGE THIS TO TRUE AFTER LAUNCH ////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-let isSoundOn = false;
+let isSoundOn = true;
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -623,9 +627,13 @@ function updateShop() {
 
 
     if (motivation >= shop.cost && !shop.unlocked) {
-      shop.unlocked = true;  // Mark as unlocked
+      // shop.unlocked = true;  // Mark as unlocked
       const attentionElement = createAttentionElement();
       shopItem.appendChild(attentionElement);
+      if (!shopItem.querySelector('.attention')) {
+        // const attentionElement = createAttentionElement();
+        shopItem.appendChild(attentionElement);
+      }
     }
 /////////////////////////////////// change
     if (index <= 15 || shopObj[index - 1].count >= 1) {
@@ -688,6 +696,7 @@ function autoGenerateJobApplications() {
   updateRejection();
   updateJobApplications();
   updateAPSDisplay();
+  // updateShop(); 
 }
 
 ////////////////////////////////////////////////////////////
@@ -1538,7 +1547,8 @@ updateJobPostings();
 
 setInterval(autoGenerateJobApplications, universalInterval);
 setInterval(checkMainAchievement, universalInterval);
-setInterval(checkCutscene, universalInterval);
+
+
 setTimeout(randomRejection, 15000);
 setTimeout(randomEvent, 55000);
 

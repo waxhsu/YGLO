@@ -286,7 +286,6 @@ ul, li {
 }
 
 #rightTopUI {
-  display: flex;
   position: relative;
   max-height: 30.5vh; 
   min-height: 30.5vh; 
@@ -764,6 +763,8 @@ ul, li {
 }
 
 .title-container {
+  /* display: flex; */
+  /* flex-direction: column-reverse; */
   padding: 2px;
 }
 
