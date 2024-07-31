@@ -51,28 +51,34 @@ tooltips.forEach(tooltip => {
 });
 
 
-
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////// !!! UNCOMMENT AFTER LAUNCH //////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 // /////////// INTRO SCREENS ////////
-const videoElement = document.getElementById("intro-video");
-const videoContainer = document.getElementById("video-container");
-videoContainer.addEventListener("click", clickToSkipIntro);
-
-videoElement.addEventListener("ended", clickToSkipIntro);
-
-function clickToSkipIntro () {
-  videoContainer.parentNode.removeChild(videoContainer);
-}
+// const videoElement = document.getElementById("intro-video");
+// const videoContainer = document.getElementById("video-container");
+// videoContainer.addEventListener("click", clickToSkipIntro);
+// videoElement.addEventListener("ended", clickToSkipIntro);
 
 
-const titleContainer = document.getElementById("title-container");
-titleContainer.addEventListener("click", clickToSkipTitle)
+// const titleContainer = document.getElementById("title-container");
+// titleContainer.addEventListener("click", clickToSkipTitle)
 
-function clickToSkipTitle () {
-  titleContainer.parentNode.removeChild(titleContainer);
-  playBackgroundMusic()
-}
+// function clickToSkipIntro () {
+//   videoContainer.parentNode.removeChild(videoContainer);
+// }
 
+// function clickToSkipTitle () {
+//   titleContainer.parentNode.removeChild(titleContainer);
+//   playBackgroundMusic()
+// }
 
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////////////////
@@ -114,8 +120,8 @@ function checkMinigame() {
     clearInterval(minigameInterval);
   }
 }
-
-///UNCOMMENT FOR GAME
+/////////////////////////////////
+/// !!! UNCOMMENT FOR GAME
 // const minigameInterval = setInterval(checkMinigame, 1000);
 
 
@@ -142,16 +148,13 @@ function showThankYou () {
 
 }
 
-///UNCOMMENT FOR GAME
-// setTimeout (showThankYou, 1000)
-
 function checkDemo() {
-  if (jobApplications > 100) {
+  if (jobApplications > 10000) {
     showThankYou();
     clearInterval(checkDemoInterval); // Clear the interval to stop the function from running again
   }
 }
-// const checkDemoInterval = setInterval(checkDemo, 1000);
+const checkDemoInterval = setInterval(checkDemo, 1000);
 
 
 
@@ -171,11 +174,11 @@ function checkCutscene() {
   }
 }
 
-const cutsceneBox = document.getElementById("cutscene-box");
+const cutsceneBox = document.getElementById("cutsceneBox");
 
 // Function to display cutscene on the main page
 function showCutscene(file) {
-  const cutsceneElement = document.getElementById("cutscene");
+  const cutsceneElement = document.getElementById("cutscene-container");
   const cutsceneBackground = document.getElementById("cutscene-background");
 
   cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
@@ -201,12 +204,22 @@ function showCutscene(file) {
   cutsceneBox.appendChild(cutsceneElement);
 }
 
-///UNCOMMENT FOR GAME
-// setInterval(checkCutscene, universalInterval);
+
+
+
+
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////// !!! UNCOMMENT AFTER LAUNCH //////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+setInterval(checkCutscene, 100);
 // cutscene showing is tied to the totalManual clicks.
-
-
-
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 
 
 
@@ -301,10 +314,10 @@ const soundIcon = document.getElementById('muteSoundIcon');
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-////// CHANGE THIS TO TRUE AFTER LAUNCH ////////
+//// !!! CHANGE THIS TO TRUE AFTER LAUNCH //////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-let isSoundOn = true;
+let isSoundOn = false;
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -627,16 +640,30 @@ function updateShop() {
 
 
     if (motivation >= shop.cost && !shop.unlocked) {
-      // shop.unlocked = true;  // Mark as unlocked
-      const attentionElement = createAttentionElement();
-      shopItem.appendChild(attentionElement);
       if (!shopItem.querySelector('.attention')) {
-        // const attentionElement = createAttentionElement();
+        const attentionElement = createAttentionElement();
         shopItem.appendChild(attentionElement);
       }
     }
-/////////////////////////////////// change
-    if (index <= 15 || shopObj[index - 1].count >= 1) {
+
+    shopItem.addEventListener("click", () => {
+      buyAutoApplication(shop);
+      shop.unlocked = true;  // Mark as unlocked
+      const attention = shopItem.querySelector('.attention');
+      if (attention) {
+        attention.remove();  // Remove attention element on click
+      }
+    });
+
+
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    //////////// !!! change ////////////
+    if (index <= 1 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
@@ -1033,22 +1060,6 @@ function cycleJobPostings() {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1538,8 +1549,11 @@ attentionElement.src = './img/gameIcons/attention.gif'
 
 
 // Initialize the game
-
-// BRING THIS UP TO function skipTitleScreen
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+/// !!! BRING THIS UP TO function skipTitleScreen ///
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 updateShop();
 updateJobApplications();
 updateAPSDisplay();
