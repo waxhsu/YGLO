@@ -3,9 +3,15 @@ const shopObj = [
       id: 0,
       icon: "./img/shopIcons/0_tryHarder.png",
       name: "Try Harder",
-      cost: 5,
+      cost: 10,
       clicksPerSecond: 0,
-      clickValue: 1,
+      clickValue: 0.05,
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
       count: 0,
       unlocked: false,
     },

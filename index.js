@@ -122,6 +122,9 @@ function checkMinigame() {
 }
 /////////////////////////////////
 /// !!! UNCOMMENT FOR GAME
+/// !!! UNCOMMENT FOR GAME
+/// !!! UNCOMMENT FOR GAME
+/// !!! UNCOMMENT FOR GAME
 // const minigameInterval = setInterval(checkMinigame, 1000);
 
 
@@ -263,7 +266,7 @@ const bgm = [
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-////// UNCOMMENT bgMusic.play() FOR LAUNCH //////
+////// !!! UNCOMMENT bgMusic.play() FOR LAUNCH //////
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // Function to play background music and set up mute toggle
@@ -467,7 +470,7 @@ function calculateTotalClicksPerSecond() {
 
 
 ////////////////////////////////////////////////////////////
-///////////////////   TEST TEST TEST    //////////////////
+///////////////////   ATTENTION ELEMENT   //////////////////
 ////////////////////////////////////////////////////////////
 
 
@@ -486,85 +489,6 @@ function createAttentionElement() {
 ////////////////////////////////////////////////////////////
 ///////////////////     SHOP STUFF    //////////////////////
 ////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-// THIS TestHARDER IS SEPARATE FROM THE SHOP OBJ
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-
-// const testHarder = {
-//   name: "Try Harder",
-//   icon: "./img/shopIcons/0_testHarder.png",
-//   cost: 5,
-//   clickValue: 1.1,
-//   count: 0,
-// };
-
-// const testHarderButton = document.getElementById("testHarder");
-
-// function unlockTestHarder() {
-//   if (appliedWithoutCV === 1) {
-//     testHarderButton.addEventListener("click", updateTestHarder);
-//     testHarderButton.classList.remove("greyed-out");
-
-//     if (!testHarderButton.querySelector('.attention')) {
-//       const attentionElement = createAttentionElement();
-//       testHarderButton.appendChild(attentionElement);
-//     }
-//   }
-// }
-
-// testHarderButton.addEventListener("click", buyTestHarder);
-
-// function buyTestHarder(event) {
-//   if (motivation >= testHarder.cost) {
-//     testHarder.cost = Math.floor(testHarder.cost * 2);
-//     motivation -= testHarder.cost;
-//     testHarder.count += 1;
-
-//     // FIGURE OUT THE MATH FOR THIS
-//     // FIGURE OUT THE MATH FOR THIS
-//     // FIGURE OUT THE MATH FOR THIS
-//     // FIGURE OUT THE MATH FOR THIS
-//     testHarder.clickValue += testHarder.clickValue;
-//     clickValue = testHarder.clickValue;
-//     playRandomClickSound();
-//     updateMotivation();
-//     updateTestHarder();
-//     applyParticle("+1", event.clientX, event.clientY, "try-harder");
-//     updateShop();
-
-//     const attentionElement = testHarderButton.querySelector('.attention');
-//     if (attentionElement) {
-//       testHarderButton.removeChild(attentionElement);
-//     }
-//   }
-// }
-
-
-
-// function updateTestHarder() {
-//   const costElement = document.getElementById("testHarder-cost");
-//   const formattedCostValue = formatLargeNumberAll(testHarder.cost);
-//   costElement.textContent = `cost: ${formattedCostValue}`;
-
-//   const apsElement = document.getElementById("testHarder-aps");
-//   const formattedClickValue = formatLargeNumberWithDecimals(testHarder.clickValue);
-//   apsElement.textContent = `+${formattedClickValue} apps/click`;
-
-//   const countElement = document.getElementById("testHarder-count");
-//   countElement.textContent = `x${testHarder.count}`;  
-// }
-
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
 
 
 
@@ -681,12 +605,27 @@ function buyAutoApplication(app) {
     if (motivation >= app.cost) {
 
       /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+
       app.cost = Math.floor(app.cost * 1.15);
       motivation -= app.cost;
       app.count += 1;
 
       app.clickValue += app.clickValue;
-      clickValue = app.clickValue;
+      clickValue = clickValue + app.clickValue;
+
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+      /// FIGURE OUT MATH ///
+
+
       playRandomClickSound();
       updateMotivation();
       updateShop();
@@ -731,7 +670,8 @@ function autoGenerateJobApplications() {
 ////////////////////////////////////////////////////////////
 
 function applyJobApplication() {
-  motivation += clickValue * 1.0012^(jobApplications*0.05);
+  motivation += clickValue * 1.0000012;
+  // motivation += clickValue * 0.0000012^((jobApplications*0.00005)/10);
   appliedWithoutCV += 1;
   totalApplied += 1;
   jobApplications += clickValue
@@ -742,6 +682,15 @@ function applyJobApplication() {
   updateJobPostings();
   playRandomClickSound();
   unlockAttachPage();
+
+  
+  console.log(`____________`);
+  console.log(`click value ${clickValue}`);
+  // console.log(`currency: ${motivation += clickValue * 1.0000012^(jobApplications*0.00005)/10}`);
+  // console.log(`jobapps: ${(jobApplications*1.00005)/10}`)
+  // console.log(`jobapps: ${jobApplications}`)
+
+  
 
   currentLetterIndex = 0;
   currentParagraphIndex = 0;
