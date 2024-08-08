@@ -2,19 +2,37 @@ const cutsceneObj = [
     {
         id: 0,
         clicksReq: 10,
-        file: "./img/cutscene/0.png",
+        file: "./img/cutscene/cutscene0_v1.mp4",
         displayed: false,
         },
     {
         id: 1,
-        clicksReq: 20,
-        file: "./img/cutscene/1.png",
+        clicksReq: 11,
+        file: "./img/cutscene/cutscene1_v1.mp4",
         displayed: false,
     },
     {
         id: 2,
-        clicksReq: 30,
-        file: "./img/cutscene/2.png",
+        clicksReq: 12,
+        file: "./img/cutscene/cutscene2_v1.mp4",
+        displayed: false,
+    },
+    {
+        id: 3,
+        clicksReq: 13,
+        file: "./img/cutscene/cutscene3_v1.mp4",
+        displayed: false,
+    },
+    {
+        id: 4,
+        clicksReq: 14,
+        file: "./img/cutscene/cutscene4_v1.mp4",
+        displayed: false,
+    },
+    {
+        id: 5,
+        clicksReq: 15,
+        file: "./img/cutscene/cutscene5_v1.mp4",
         displayed: false,
     },
     ]
