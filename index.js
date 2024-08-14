@@ -163,14 +163,59 @@ const checkDemoInterval = setInterval(checkDemo, 1000);
 
 //////// CUTSCENE FUNCTION ////////
 
+// function checkCutscene() {
+//   for (const cutscene of cutsceneObj) {
+//     const { clicksReq, file, displayed } = cutscene;
+//     if ((
+//       // add as many parameters needed for cutscene
+//       (clicksReq && appliedWithoutCV >= clicksReq) 
+//       ) 
+//     && !displayed) {
+//       showCutscene(file);
+//       cutscene.displayed = true;
+//     }
+//   }
+// }
+
+// const cutsceneBox = document.getElementById("cutsceneBox");
+
+// // Function to display cutscene on the main page
+// function showCutscene(file) {
+//   const cutsceneElement = document.getElementById("cutscene-container");
+//   const cutsceneBackground = document.getElementById("cutscene-background");
+
+//   cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
+//   cutsceneBackground.style.display = (cutsceneBackground.style.display === "none") ? "flex" : "none";
+
+//   cutsceneElement.innerHTML = "";
+
+//   const cutsceneFileElement = document.createElement("img");
+//   cutsceneFileElement.className = "cutscene-file";
+//   cutsceneFileElement.src = file;
+
+//   const closeButton = document.createElement("button");
+//   closeButton.textContent = "X";
+//   closeButton.className = "nofade-close-button";
+
+//   closeButton.addEventListener("click", () => {
+//     cutsceneElement.style.display = "none";
+//     cutsceneBackground.style.display = "none";
+//   });
+
+//   cutsceneElement.appendChild(cutsceneFileElement);
+//   cutsceneElement.appendChild(closeButton);
+//   cutsceneBox.appendChild(cutsceneElement);
+// }
+
+
 function checkCutscene() {
   for (const cutscene of cutsceneObj) {
     const { clicksReq, file, displayed } = cutscene;
-    if ((
-      // add as many parameters needed for cutscene
+    if (
+      // Add as many parameters needed for cutscene
       (clicksReq && appliedWithoutCV >= clicksReq) 
-      ) 
-    && !displayed) {
+      && !displayed
+    ) {
       showCutscene(file);
       cutscene.displayed = true;
     }
@@ -189,9 +234,11 @@ function showCutscene(file) {
 
   cutsceneElement.innerHTML = "";
 
-  const cutsceneFileElement = document.createElement("img");
-  cutsceneFileElement.className = "cutscene-file";
-  cutsceneFileElement.src = file;
+  const videoElement = document.createElement("video");
+  videoElement.className = "cutscene-file";
+  videoElement.src = file;
+  videoElement.controls = true;
+  videoElement.autoplay = true;
 
   const closeButton = document.createElement("button");
   closeButton.textContent = "X";
@@ -200,15 +247,13 @@ function showCutscene(file) {
   closeButton.addEventListener("click", () => {
     cutsceneElement.style.display = "none";
     cutsceneBackground.style.display = "none";
+    videoElement.pause(); // Pause the video when closing
   });
 
-  cutsceneElement.appendChild(cutsceneFileElement);
+  cutsceneElement.appendChild(videoElement);
   cutsceneElement.appendChild(closeButton);
   cutsceneBox.appendChild(cutsceneElement);
 }
-
-
-
 
 
 
@@ -587,7 +632,7 @@ function updateShop() {
     //////////// !!! change ////////////
     //////////// !!! change ////////////
     //////////// !!! change ////////////
-    if (index <= 1 || shopObj[index - 1].count >= 1) {
+    if (index <= 15 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);

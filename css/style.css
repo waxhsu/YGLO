@@ -67,6 +67,10 @@ html:active, #close-all:active {
   height: 100%;
 }
 
+.cutscene-file {
+  width: 100%;
+  height: auto;
+}
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -308,7 +312,7 @@ ul, li {
   background-color: red;
   color: white;
   font-family: 'Pixelify Sans', sans-serif;
-  bottom: 0;
+  bottom: 0.2vh;
   right: 0;
 }
 
