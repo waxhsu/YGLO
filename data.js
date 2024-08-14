@@ -26,7 +26,7 @@ const shopObj = [
     },
     {
       id: 2,
-      icon: "./img/shopIcons/5_someGuy.png",
+      icon: "./img/shopIcons/2_someGuy.png",
       name: "Network Events",
       cost: 1100,
       clicksPerSecond: 47,
@@ -35,7 +35,7 @@ const shopObj = [
     },
     {
       id: 3,
-      icon: "./img/shopIcons/3_jobPortal.png",
+      icon: "./img/shopIcons/3_plant.png",
       name: "Buy a plant",
       cost: 12000,
       clicksPerSecond: 260,
@@ -44,7 +44,7 @@ const shopObj = [
     },
     {
       id: 4,
-      icon: "./img/shopIcons/4_unemployment.png",
+      icon: "./img/shopIcons/4_gym.png",
       name: "Hit the Gym",
       cost: 130000,
       clicksPerSecond: 1400,
@@ -53,7 +53,7 @@ const shopObj = [
     },
     {
       id: 5,
-      icon: "./img/shopIcons/2_sixerr.png",
+      icon: "./img/shopIcons/5_sixerr.png",
       name: "Outsource Your Apps",
       cost: 14000000,
       clicksPerSecond: 5600,
@@ -601,143 +601,142 @@ const upgradeAchievementsObj = [
 
 const randomEventPool = [
 // Random NEGATIVE events
-    {
+  {
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "#ff5aff",
     message1: "you shit your pants",
-    },
-    {
+  },
+  {
     icon: "./img/randomIcons/icon_randomevent_bad.png",
     color: "#ff5aff",
     message1: "you missed the bus by 2 seconds",
-    },
+  },
 
 
 // Random POSITIVE events
-{
+  {
     icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "#73ddff",
     message1: "you found a dollar",
-},
-{
+  },
+  {
     icon: "./img/randomIcons/icon_randomevent_good.png",
     color: "#73ddff",
     message1: "a cat snuggled on you",
-},
-
-  ];
+  },
+];
 
 const randomRejectionPool = [
-    {
-      id: 0,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Thank you for your interest, unfortunately..",
-    },
-    {
-      id: 1,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Your app was impressive, but..",
-    },
-    {
-      id: 2,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We appreciate your effort, but..",
-    },
-    {
-      id: 3,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Despite your skills, unfortunately..",
-    },
-    {
-      id: 4,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Regrettably, your submission falls short..",
-    },
-    {
-      id: 5,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We regret to inform you, but..",
-    },
-    {
-      id: 6,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Your application was considered, however..",
-    },
-    {
-      id: 7,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Despite your potential, we must..",
-    },
-    {
-      id: 8,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We regretfully inform you that..",
-    },
-    {
-      id: 9,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Despite your efforts, we must..",
-    },
-    {
-      id: 10,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We appreciate your interest, however..",
-    },
-    {
-      id: 11,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Your skills are commendable, but..",
-    },
-    {
-      id: 12,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We regret to inform you that..",
-    },
-    {
-      id: 13,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Despite your dedication, unfortunately..",
-    },
-    {
-      id: 14,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Regrettably, your application did not meet..",
-    },
-    {
-      id: 15,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "We regretfully inform you that..",
-    },
-    {
-      id: 16,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Despite your potential, we must..",
-    },
-    {
-      id: 17,
-      icon: "./img/randomIcons/icon_rejection.png",
-      color: "#ffd740ff",
-      message1: "Thank you for your submission, unfortunately..",
-    },
-    // Add more rejection events as needed
-  ];
+  {
+    id: 0,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Thank you for your interest, unfortunately..",
+  },
+  {
+    id: 1,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Your app was impressive, but..",
+  },
+  {
+    id: 2,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We appreciate your effort, but..",
+  },
+  {
+    id: 3,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Despite your skills, unfortunately..",
+  },
+  {
+    id: 4,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Regrettably, your submission falls short..",
+  },
+  {
+    id: 5,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We regret to inform you, but..",
+  },
+  {
+    id: 6,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Your application was considered, however..",
+  },
+  {
+    id: 7,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Despite your potential, we must..",
+  },
+  {
+    id: 8,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We regretfully inform you that..",
+  },
+  {
+    id: 9,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Despite your efforts, we must..",
+  },
+  {
+    id: 10,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We appreciate your interest, however..",
+  },
+  {
+    id: 11,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Your skills are commendable, but..",
+  },
+  {
+    id: 12,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We regret to inform you that..",
+  },
+  {
+    id: 13,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Despite your dedication, unfortunately..",
+  },
+  {
+    id: 14,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Regrettably, your application did not meet..",
+  },
+  {
+    id: 15,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "We regretfully inform you that..",
+  },
+  {
+    id: 16,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Despite your potential, we must..",
+  },
+  {
+    id: 17,
+    icon: "./img/randomIcons/icon_rejection.png",
+    color: "#ffd740ff",
+    message1: "Thank you for your submission, unfortunately..",
+  },
+  // Add more rejection events as needed
+];
 
 
 
