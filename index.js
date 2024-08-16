@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1;
+let clickValue = 1000;
 
 let universalInterval = 1000;
 

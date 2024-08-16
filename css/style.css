@@ -30,6 +30,38 @@ html:active, #close-all:active {
 }
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@ button and particles @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+.particle-container {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  /* background-color: #000000; */
+  color: #000000;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Add the following rule to center the particle */
+.particle-center {
+  transform: translate(-50%, -50%);
+}
+
+
+.attention {
+  position: absolute;
+  right: 0;
+  z-index: 7000;
+}
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ CUTSCENE @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -165,9 +197,9 @@ color: red;
 
 
 
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@  TOOLTIP  @@@@@@@@@@@@@@@@@@@@@@@@@@*/
-/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@  TOOLTIP AND LABELS @@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 .tooltipText {
   display: flex;
@@ -201,6 +233,7 @@ color: red;
 
 
 .banner {
+  position: relative;
   margin: 0 0;
   font-size: 30px;
   background-color: #83ffd6 ;
@@ -218,12 +251,43 @@ ul, li {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ LAYOUT OF PAGE @@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ LAYOUT OF PAGE @@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ LAYOUT OF PAGE @@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@ LAYOUT OF PAGE @@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@ LAYOUT OF PAGE @@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
+
+/* @@@@@@@@ TOP UI LAYOUT @@@@@ TOP UI LAYOUT @@@@@ TOP UI LAYOUT @@@@@@@ */
+/* @@@@@@@@ TOP UI LAYOUT @@@@@ TOP UI LAYOUT @@@@@ TOP UI LAYOUT @@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 #topUI {
-  max-height: 7vh;
+  padding-top: 4px;
+  min-height: 62.5px;
+  max-height: 62.5px;
   display: flex;
   justify-content: space-between;
   background-color: #eeeeee;
@@ -231,6 +295,24 @@ ul, li {
   z-index: 8000;
   /* border-radius: 0 0 10px 10px; */
 }
+
+
+#soundButtonBox {
+  display: flex;
+  flex-direction: column;
+  font-size: 5;
+}
+
+#muteBGMIcon, #muteSoundIcon {
+  
+}
+
+#soundToggleBtn, #muteToggleBtn {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
 
 .inGameValue, .value-display, .value-display-text {
   display: flex;
@@ -240,10 +322,15 @@ ul, li {
   /* font-size: 2.5vh; */
 }
 
-.value-display {
-  font-size: 27.5px;
-}
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@ GENERAL LAYOUT OF THE PAGE @@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@ GENERAL LAYOUT OF THE PAGE @@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@ GENERAL LAYOUT OF THE PAGE @@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@ GENERAL LAYOUT OF THE PAGE @@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 #centerUIStart {
   display: flex;
@@ -277,6 +364,7 @@ ul, li {
   /* max-height: fit-content; */
   /* margin: .25vh .25vw; */
   overflow: hidden;
+  position: relative;
 }
 
 #leftUI {
@@ -302,18 +390,6 @@ ul, li {
   max-height: 30.5vh; 
   min-height: 30.5vh; 
   margin: 0 0 2px;
-}
-
-#close-all {
-  position: absolute;
-  right: 10%;
-  z-index: 1001;
-  border-radius: 50px;
-  background-color: red;
-  color: white;
-  font-family: 'Pixelify Sans', sans-serif;
-  bottom: 0.2vh;
-  right: 0;
 }
 
 #rightBottomUI{
@@ -346,10 +422,79 @@ ul, li {
   min-height: 300px; */
 }
 
+/* @   LEFT UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @   LEFT UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @   LEFT UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @   LEFT UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@ apply and attach button @@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@ job posting @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@ job posting @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@ job posting @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+.clicked-posting{
+  animation: blinker 1.5s infinite;
+  /* color: red; */
+  }
+  
+  @keyframes blinker {
+    0% {
+      background-color: rgb(161, 161, 161);
+    }
+    
+    50% {
+      background-color: rgb(161, 161, 161);
+    }
+    
+    100% {
+      background-color: rgb(161, 161, 161);
+    }
+  }
+  
+
+.job-posting-item {
+  display: flex;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.job-posting-box {
+  width: 100%
+}
+
+
+.job-posting-title, .job-posting-company, .job-posting-location, .job-posting-pay {
+  padding: 1%;
+}
+
+.job-posting-title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.job-posting-company {
+  color: #000000;
+  font-size: 17.5px;
+}
+
+.job-posting-pay, .job-posting-location {
+  color: #555;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@   CENTER UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@   CENTER UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@   CENTER UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@   CENTER UI LAYOUT   @@@@@@@@@@@@@@@@@@@@@@@ */
+
+/* @@@@@@@@@@@@@@@@@@@@@@@ apply and attach button @@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@ apply and attach button @@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@ apply and attach button @@@@@@@@@@@@@@@@@@@@@@@ */
 
 #attach-page, #achievements-page {
   top: 55px;
@@ -416,6 +561,54 @@ ul, li {
     }
   }
 
+  
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@  job description  @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@  job description  @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@  job description  @@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+
+.job-detail-row {
+  display: flex;
+  align-items: center;
+}
+
+.highlight-icon {
+  max-height: 25px;
+  max-width: 25px;
+  min-width: 25px;
+  padding: 0 2% 0 0;
+  margin: 0 0 1% 0;
+}
+
+.job-detail-highlight {
+  padding: 0 0 2px;
+}
+
+#job-detail-title {
+  font-size: 35px;
+}
+
+#job-detail-place {
+  font-size: 18px;
+}
+
+#job-detail-highlight-box{
+  margin: 2% 0 0 0;
+  font-size: 18px;
+}
+
+#job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
+  font-size: 17.5px;
+  padding-top: 15px;
+  padding-bottom: 30px;
+}
+
+#job-detail-about{
+  margin: 7.5px 0 0 7.5px;
+}
+
+
 
 #attach-page {
   display: flex;
@@ -430,81 +623,16 @@ ul, li {
 }
 
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@ achievements page @@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-#achievements-page {
-  display: flex;
-  flex-direction: column;
-  border: grey 2px solid;
-  position: fixed;
-  max-width: 80%;
-  min-width: 80%;
-  max-height: 80%;
-  min-height: 60%;
-  /* top: 2.5%; */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 7001;
-  padding: 3.5%
-}
-
-#achievements-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 1.5vh 0;
-}
-
-.achievementTooltip {
-  display: flex;
-  visibility: hidden;
-  background-color: #555;
-  min-width: max-content;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px;
-  position: absolute;
-  z-index: 9998;
-  transition: opacity 0.3s;
-}
-
-.achievement-item{
-  max-height: 95px;
-  max-width: 95px;
-  min-width: 95px;
-  display: flex;
-  justify-content: center;
-}
-
-.achievement-item:hover  .achievementTooltip {
-  visibility: visible;
-  opacity: 1;
-}
-
-.achievement-item:hover{
-  visibility: visible;
-  opacity: 1;
-  filter: brightness(90%);
-  transform: scale(0.96);
-}
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  RIGHT UI LAYOUT  @ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  RIGHT UI LAYOUT  @ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  RIGHT UI LAYOUT  @ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  RIGHT UI LAYOUT  @ */
 
-.question-mark:hover {
-  filter: brightness(80%);
-  transform: scale(0.96);
-}
-
-
-
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ notification @@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ notification @@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ notification @@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ notification @@@ */
 
 #notification-box {
   z-index: 1001;
@@ -598,127 +726,23 @@ ul, li {
   opacity: 1; 
 }
 
-
-
-.attention {
+#close-all {
   position: absolute;
+  right: 10%;
+  z-index: 1001;
+  border-radius: 50px;
+  background-color: red;
+  color: white;
+  font-family: 'Pixelify Sans', sans-serif;
+  top: 32.5vh;
   right: 0;
-  z-index: 7000;
-}
-
-  
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ job posting @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-.clicked-posting{
-  animation: blinker 1.5s infinite;
-  /* color: red; */
-  }
-  
-  @keyframes blinker {
-    0% {
-      background-color: rgb(161, 161, 161);
-    }
-    
-    50% {
-      background-color: rgb(161, 161, 161);
-    }
-    
-    100% {
-      background-color: rgb(161, 161, 161);
-    }
-  }
-  
-
-.job-posting-item {
-  display: flex;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.job-posting-box {
-  width: 100%
-}
-
-
-.job-posting-title, .job-posting-company, .job-posting-location, .job-posting-pay {
-  padding: 1%;
-}
-
-.job-posting-title {
-  font-weight: bold;
-  font-size: 20px;
-}
-
-.job-posting-company {
-  color: #000000;
-  font-size: 17.5px;
-}
-
-.job-posting-pay, .job-posting-location {
-  color: #555;
-  font-weight: bold;
-  font-size: 15px;
 }
 
 
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ job details @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@ highlight container @@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
-.job-detail-row {
-  display: flex;
-  align-items: center;
-}
-
-.highlight-icon {
-  max-height: 25px;
-  max-width: 25px;
-  min-width: 25px;
-  padding: 0 2% 0 0;
-  margin: 0 0 1% 0;
-}
-
-.job-detail-highlight {
-  padding: 0 0 2px;
-}
-
-#job-detail-title {
-  font-size: 35px;
-}
-
-#job-detail-place {
-  font-size: 18px;
-}
-
-#job-detail-highlight-box{
-  margin: 2% 0 0 0;
-  font-size: 18px;
-}
-
-#job-detail-about, #job-detail-responsibilities, #job-detail-qualifications {
-  font-size: 17.5px;
-  padding-top: 15px;
-  padding-bottom: 30px;
-}
-
-#job-detail-about{
-  margin: 7.5px 0 0 7.5px;
-}
-
-
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@ update shop @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ update shop @@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ update shop @@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ update shop @@@ */
 
 .shop-item {
   display: flex;
@@ -791,47 +815,119 @@ ul, li {
 }
 
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@ button and particles @@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 
-#soundButtonBox {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ achievements page @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ achievements page @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ achievements page @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@ achievements page @@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+#achievements-page {
   display: flex;
   flex-direction: column;
-  font-size: 5;
-}
-
-#soundToggleBtn, #muteToggleBtn {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-}
-
-
-.particle-container {
+  border: grey 2px solid;
   position: fixed;
-  top: 0%;
-  left: 0%;
-  pointer-events: none;
+  max-width: 80%;
+  min-width: 80%;
+  max-height: 80%;
+  min-height: 60%;
+  /* top: 2.5%; */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 7001;
+  padding: 3.5%
 }
 
-.particle {
+#achievements-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1.5vh 0;
+}
+
+.achievementTooltip {
+  display: flex;
+  visibility: hidden;
+  background-color: #555;
+  min-width: max-content;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
   position: absolute;
-  /* background-color: #000000; */
-  color: #000000;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  z-index: 9998;
+  transition: opacity 0.3s;
 }
 
-/* Add the following rule to center the particle */
-.particle-center {
-  transform: translate(-50%, -50%);
+.achievement-item{
+  max-height: 95px;
+  max-width: 95px;
+  min-width: 95px;
+  display: flex;
+  justify-content: center;
 }
+
+.achievement-item:hover  .achievementTooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.achievement-item:hover{
+  visibility: visible;
+  opacity: 1;
+  filter: brightness(90%);
+  transform: scale(0.96);
+}
+
+
+
+.question-mark:hover {
+  filter: brightness(80%);
+  transform: scale(0.96);
+}
+
+
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ minigame @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ minigame @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ minigame @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ minigame @@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
