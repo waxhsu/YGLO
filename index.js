@@ -56,24 +56,51 @@ tooltips.forEach(tooltip => {
 ////// !!! UNCOMMENT AFTER LAUNCH //////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-// /////////// INTRO SCREENS ////////
-// const videoElement = document.getElementById("intro-video");
-// const videoContainer = document.getElementById("video-container");
-// videoContainer.addEventListener("click", clickToSkipIntro);
-// videoElement.addEventListener("ended", clickToSkipIntro);
 
 
-// const titleContainer = document.getElementById("title-container");
-// titleContainer.addEventListener("click", clickToSkipTitle)
+const loadingElement = document.getElementById("loading-screen");
+const loadingContainer = document.getElementById("loading-container");
 
-// function clickToSkipIntro () {
-//   videoContainer.parentNode.removeChild(videoContainer);
-// }
+loadingContainer.addEventListener("click", clickToIntroVideo);
 
-// function clickToSkipTitle () {
-//   titleContainer.parentNode.removeChild(titleContainer);
-//   playBackgroundMusic()
-// }
+function clickToIntroVideo (){
+  loadingContainer.parentNode.removeChild(loadingContainer);
+  videoElement.play();
+}
+
+
+
+const videoElement = document.getElementById("intro-video");
+const videoContainer = document.getElementById("video-container");
+videoContainer.addEventListener("click", clickToSkipIntro);
+videoElement.addEventListener("ended", clickToSkipIntro);
+function clickToSkipIntro () {
+  videoContainer.parentNode.removeChild(videoContainer);
+  }
+
+
+const titleContainer = document.getElementById("title-container");
+titleContainer.addEventListener("click", clickToSkipTitle);
+  
+function clickToSkipTitle () {
+  titleContainer.parentNode.removeChild(titleContainer);
+  playBackgroundMusic()
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+updateShop();
+updateJobApplications();
+updateAPSDisplay();
+updateJobPostings();
+
+setInterval(autoGenerateJobApplications, universalInterval);
+setInterval(checkMainAchievement, universalInterval);
+
+
+setTimeout(randomRejection, 15000);
+setTimeout(randomEvent, 55000);
+
+
+}
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -218,6 +245,8 @@ function checkCutscene() {
     ) {
       showCutscene(file);
       cutscene.displayed = true;
+      toggleMute();
+      toggleSound();
     }
   }
 }
@@ -248,6 +277,8 @@ function showCutscene(file) {
     cutsceneElement.style.display = "none";
     cutsceneBackground.style.display = "none";
     videoElement.pause(); // Pause the video when closing
+    toggleMute();
+    toggleSound();
   });
 
   cutsceneElement.appendChild(videoElement);
@@ -279,8 +310,6 @@ setInterval(checkCutscene, 100);
 
 
 
-
-// SEE cycleJobPostings for reference
 ////!REFACTOR SO IT TOGGLES WITH PROFILE PIC
 //////// SOUND AND BGM /////////
 const muteButton = document.getElementById("muteToggleBtn");
@@ -365,7 +394,7 @@ const soundIcon = document.getElementById('muteSoundIcon');
 //// !!! CHANGE THIS TO TRUE AFTER LAUNCH //////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-let isSoundOn = false;
+let isSoundOn = true;
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -1546,17 +1575,3 @@ attentionElement.src = './img/gameIcons/attention.gif'
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 /// !!! BRING THIS UP TO function skipTitleScreen ///
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-updateShop();
-updateJobApplications();
-updateAPSDisplay();
-updateJobPostings();
-
-setInterval(autoGenerateJobApplications, universalInterval);
-setInterval(checkMainAchievement, universalInterval);
-
-
-setTimeout(randomRejection, 15000);
-setTimeout(randomEvent, 55000);
-
