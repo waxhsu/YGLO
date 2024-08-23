@@ -1,5 +1,5 @@
 import { shopObj, mainAchievementsObj, upgradeAchievementsObj, randomEventPool, randomRejectionPool, } from './data.js';
-import { cutsceneObj, minigameObj } from './storyObj.js';
+// import { cutsceneObj, minigameObj } from './storyObj.js';
 
 
 
@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1000;
+let clickValue = 1e9;
 
 let universalInterval = 1000;
 
@@ -65,8 +65,8 @@ loadingContainer.addEventListener("click", clickToIntroVideo);
 
 function clickToIntroVideo (){
   loadingContainer.parentNode.removeChild(loadingContainer);
-  videoElement.play();
-}
+videoElement.play();
+  }
 
 
 
@@ -76,31 +76,29 @@ videoContainer.addEventListener("click", clickToSkipIntro);
 videoElement.addEventListener("ended", clickToSkipIntro);
 function clickToSkipIntro () {
   videoContainer.parentNode.removeChild(videoContainer);
-  }
+}
 
 
 const titleContainer = document.getElementById("title-container");
 titleContainer.addEventListener("click", clickToSkipTitle);
-  
+
 function clickToSkipTitle () {
   titleContainer.parentNode.removeChild(titleContainer);
   playBackgroundMusic()
+  ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-////////////////////////////////////////////////
-updateShop();
-updateJobApplications();
-updateAPSDisplay();
-updateJobPostings();
+  updateShop();
+  updateJobApplications();
+  updateAPSDisplay();
+  updateJobPostings();
 
-setInterval(autoGenerateJobApplications, universalInterval);
-setInterval(checkMainAchievement, universalInterval);
-
-
-setTimeout(randomRejection, 15000);
-setTimeout(randomEvent, 55000);
-
-
+  setInterval(autoGenerateJobApplications, universalInterval);
+  setInterval(checkMainAchievement, universalInterval);
+  setTimeout(randomRejection, 15000);
+  setTimeout(randomEvent, 55000);
 }
+
+
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -235,65 +233,78 @@ const checkDemoInterval = setInterval(checkDemo, 1000);
 // }
 
 
-function checkCutscene() {
-  for (const cutscene of cutsceneObj) {
-    const { clicksReq, file, displayed } = cutscene;
-    if (
-      // Add as many parameters needed for cutscene
-      (clicksReq && appliedWithoutCV >= clicksReq) 
-      && !displayed
-    ) {
-      showCutscene(file);
-      cutscene.displayed = true;
-      toggleMute();
-      toggleSound();
-    }
-  }
-}
+// function checkCutscene() {
+//   for (const cutscene of cutsceneObj) {
+//     const { clicksReq, file, displayed } = cutscene;
+//     if (
+//       // Add as many parameters needed for cutscene
+//       (clicksReq && appliedWithoutCV >= clicksReq) 
+//       && !displayed
+//     ) {
+//       showCutscene(file);
+//       cutscene.displayed = true;
+
+//     }
+//   }
+// }
 
 const cutsceneBox = document.getElementById("cutsceneBox");
 
 // Function to display cutscene on the main page
 function showCutscene(file) {
+
+  if (isSoundOn) {
+    bgMusic.pause();
+    isSoundOn = false; // Set sound state to off
+  }
+
   const cutsceneElement = document.getElementById("cutscene-container");
   const cutsceneBackground = document.getElementById("cutscene-background");
-
-  cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
-  cutsceneBackground.style.display = (cutsceneBackground.style.display === "none") ? "flex" : "none";
-
-  cutsceneElement.innerHTML = "";
+    cutsceneElement.style.display = (cutsceneElement.style.display === "none") ? "flex" : "none";
+    cutsceneBackground.style.display = (cutsceneBackground.style.display === "none") ? "flex" : "none";
+    cutsceneElement.innerHTML = "";
 
   const videoElement = document.createElement("video");
-  videoElement.className = "cutscene-file";
-  videoElement.src = file;
-  videoElement.controls = true;
-  videoElement.autoplay = true;
+    videoElement.className = "cutscene-file";
+    videoElement.src = file;
+    videoElement.controls = true;
+    videoElement.autoplay = true;
 
-  const closeButton = document.createElement("button");
-  closeButton.textContent = "X";
-  closeButton.className = "nofade-close-button";
+    const closeButton = document.createElement("button");
+    closeButton.textContent = "X";
+    closeButton.className = "nofade-close-button";
 
-  closeButton.addEventListener("click", () => {
-    cutsceneElement.style.display = "none";
-    cutsceneBackground.style.display = "none";
-    videoElement.pause(); // Pause the video when closing
-    toggleMute();
-    toggleSound();
-  });
 
-  cutsceneElement.appendChild(videoElement);
-  cutsceneElement.appendChild(closeButton);
-  cutsceneBox.appendChild(cutsceneElement);
+    closeButton.addEventListener("click", () => {
+      cutsceneElement.style.display = "none";
+      cutsceneBackground.style.display = "none";
+      videoElement.pause(); // Pause the video when closing
+
+      if (!isSoundOn) {
+        bgMusic.play();
+        isSoundOn = true; // Set sound state back to on
+      }
+    });
+
+    cutsceneElement.appendChild(videoElement);
+    cutsceneElement.appendChild(closeButton);
+    cutsceneBox.appendChild(cutsceneElement);
 }
 
 
+
+
+// // if (bgMusic.muted = false){ 
+// //   toggleMute();
+// // };
+// toggleSound();
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////// !!! UNCOMMENT AFTER LAUNCH //////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-setInterval(checkCutscene, 100);
+// setInterval(checkCutscene, 100);
 // cutscene showing is tied to the totalManual clicks.
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -339,13 +350,13 @@ const bgm = [
 
 
 /////////////////////////////////////////////////
-/////////////////////////////////////////////////
-////// !!! UNCOMMENT bgMusic.play() FOR LAUNCH //////
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // Function to play background music and set up mute toggle
 function playBackgroundMusic() {
-    bgMusic.play();
+  /////////////////////////////////////////////////
+  ////// !!! UNCOMMENT bgMusic.play() FOR LAUNCH //////
+  // bgMusic.play();
+  /////////////////////////////////////////////////
+  /////////////////////////////////////////////////
     muteButton.addEventListener('click', toggleMute);
     console.log("music is playing")
 }
@@ -384,39 +395,29 @@ function toggleMute() {
     }
 }
 
-
-const soundButton = document.getElementById('soundToggleBtn');
-const soundIcon = document.getElementById('muteSoundIcon');
-
-
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 //// !!! CHANGE THIS TO TRUE AFTER LAUNCH //////
+let isSoundOn = false;
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-let isSoundOn = true;
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////////////////////////////////////////
+
+const soundButton = document.getElementById('soundToggleBtn');
+const soundIcon = document.getElementById('muteSoundIcon');
+soundButton.addEventListener('click', toggleSound);
 
 // Function to toggle sound state and update sound icon
 function toggleSound() {
-  isSoundOn = !isSoundOn;
-  updateSoundIcon();
-}
-
-// Function to update sound icon based on sound state
-function updateSoundIcon() {
   if (isSoundOn) {
-    soundIcon.src = "./img/gameIcons/testOn.png";
+      // If sound is currently on, turn it off
+      isSoundOn = false;
+      soundIcon.src = "./img/gameIcons/testOff.png"; // Update icon to sound off
   } else {
-    soundIcon.src = "./img/gameIcons/testOff.png";
+      // If sound is currently off, turn it on
+      isSoundOn = true;
+      soundIcon.src = "./img/gameIcons/testOn.png"; // Update icon to sound on
   }
 }
-
-// Event listener for sound button
-soundButton.addEventListener('click', toggleSound);
 
 // Audio files for click sounds
 const clickSounds = [
@@ -481,6 +482,7 @@ function formatLargeNumberAll(value) {
   }
 }
 
+// 
 function formatLargeNumberWithDecimals(value) {
   if (value < 100) {
     // Return the value rounded to 3 decimal places
@@ -490,9 +492,9 @@ function formatLargeNumberWithDecimals(value) {
     return formatNumberWithCommas(Math.round(value));
   } else {
     // Determine whether it's in millions, billions, or trillions and return accordingly
-    const million = 1000000;
-    const billion = 1000000000;
-    const trillion = 1000000000000;
+    const million = 1e6;
+    const billion = 1e9;
+    const trillion = 1e12;
 
     if (value < billion) {
       return `${(value / million).toFixed(3)} million`;
@@ -626,12 +628,10 @@ function updateShop() {
     titleContainer.appendChild(nameElement)
     detailContainer.appendChild(iconElement)
     detailContainer.appendChild(infoContainer)
-    
 
     infoContainer.appendChild(costElement);
     infoContainer.appendChild(clicksPerSecondElement);
     infoContainer.appendChild(countElement);
-
 
     shopItem.appendChild(titleContainer);
     shopItem.appendChild(detailContainer);
@@ -644,6 +644,11 @@ function updateShop() {
       }
     }
 
+    if (shop.count === 1 && !shop.displayed && !shop.unlocked){
+      showCutscene(shop.file);
+      shop.displayed = true;
+    }
+
     shopItem.addEventListener("click", () => {
       buyAutoApplication(shop);
       shop.unlocked = true;  // Mark as unlocked
@@ -654,14 +659,7 @@ function updateShop() {
     });
 
 
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    //////////// !!! change ////////////
-    if (index <= 15 || shopObj[index - 1].count >= 1) {
+    if (index <= 0 || shopObj[index - 1].count >= 1) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);

@@ -1,41 +1,41 @@
-const cutsceneObj = [
-    {
-        id: 0,
-        clicksReq: 10,
-        file: "./img/cutscene/cutscene0_v1.mp4",
-        displayed: false,
-        },
-    {
-        id: 1,
-        clicksReq: 11,
-        file: "./img/cutscene/cutscene1_v1.mp4",
-        displayed: false,
-    },
-    {
-        id: 2,
-        clicksReq: 12,
-        file: "./img/cutscene/cutscene2_v1.mp4",
-        displayed: false,
-    },
-    {
-        id: 3,
-        clicksReq: 13,
-        file: "./img/cutscene/cutscene3_v1.mp4",
-        displayed: false,
-    },
-    {
-        id: 4,
-        clicksReq: 14,
-        file: "./img/cutscene/cutscene4_v1.mp4",
-        displayed: false,
-    },
-    {
-        id: 5,
-        clicksReq: 15,
-        file: "./img/cutscene/cutscene5_v1.mp4",
-        displayed: false,
-    },
-    ]
+// const cutsceneObj = [
+//     {
+//         id: 0,
+//         clicksReq: 10,
+//         file: "./img/cutscene/cutscene0_v1.mp4",
+//         displayed: false,
+//         },
+//     {
+//         id: 1,
+//         clicksReq: 11,
+//         file: "./img/cutscene/cutscene1_v1.mp4",
+//         displayed: false,
+//     },
+//     {
+//         id: 2,
+//         clicksReq: 12,
+//         file: "./img/cutscene/cutscene2_v1.mp4",
+//         displayed: false,
+//     },
+//     {
+//         id: 3,
+//         clicksReq: 13,
+//         file: "./img/cutscene/cutscene3_v1.mp4",
+//         displayed: false,
+//     },
+//     {
+//         id: 4,
+//         clicksReq: 14,
+//         file: "./img/cutscene/cutscene4_v1.mp4",
+//         displayed: false,
+//     },
+//     {
+//         id: 5,
+//         clicksReq: 15,
+//         file: "./img/cutscene/cutscene5_v1.mp4",
+//         displayed: false,
+//     },
+//     ]
   
 const minigameObj = [
     // check requirements for minigames
@@ -69,5 +69,6 @@ const minigameObj = [
   
     ];
     
-    export { cutsceneObj, minigameObj };
-    
+export { 
+    // cutsceneObj,
+        minigameObj };
