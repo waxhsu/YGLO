@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1e9;
+let clickValue = 1000;
 
 let universalInterval = 1000;
 
@@ -354,7 +354,7 @@ const bgm = [
 function playBackgroundMusic() {
   /////////////////////////////////////////////////
   ////// !!! UNCOMMENT bgMusic.play() FOR LAUNCH //////
-  // bgMusic.play();
+  bgMusic.play();
   /////////////////////////////////////////////////
   /////////////////////////////////////////////////
     muteButton.addEventListener('click', toggleMute);
@@ -398,7 +398,7 @@ function toggleMute() {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 //// !!! CHANGE THIS TO TRUE AFTER LAUNCH //////
-let isSoundOn = false;
+let isSoundOn = true;
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 
