@@ -18,7 +18,7 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1000;
+let clickValue = 1;
 
 let universalInterval = 1000;
 
@@ -659,7 +659,8 @@ function updateShop() {
     });
 
 
-    if (index <= 0 || shopObj[index - 1].count >= 1) {
+    // THIS IS WHERE YOU CHANGE THE SHOP UNLOCK REQUIREMENTS
+    if (index <= 0 || shopObj[index - 1].count >= 5) {
       // Display the first item or the item after the one with count >= 10
       shopItem.addEventListener("click", () => buyAutoApplication(shop));
       shopElement.appendChild(shopItem);
@@ -673,6 +674,7 @@ function updateShop() {
 
 // Function to buy an AutoApplication
 function buyAutoApplication(app) {
+// TRY HARDER ITEM
   if (app.id === 0) {
     if (motivation >= app.cost) {
 
@@ -687,7 +689,7 @@ function buyAutoApplication(app) {
       motivation -= app.cost;
       app.count += 1;
 
-      app.clickValue += app.clickValue;
+      // app.clickValue += app.clickValue;
       clickValue = clickValue + app.clickValue;
 
       /// FIGURE OUT MATH ///
@@ -707,8 +709,9 @@ function buyAutoApplication(app) {
       applyParticle(`+1`, event.clientX, event.clientY, "shop-item");
     }
   } else {
+  // EVERYTHING ELSE IN THE SHOP
     if (motivation >= app.cost) {
-      app.cost = Math.floor(app.cost * 1.15);
+      app.cost = Math.floor(app.cost * 1.25);
       motivation -= app.cost;
       app.count += 1;
       playRandomClickSound();
@@ -734,7 +737,7 @@ function autoGenerateJobApplications() {
   updateRejection();
   updateJobApplications();
   updateAPSDisplay();
-  // updateShop(); 
+  updateShop(); 
 }
 
 ////////////////////////////////////////////////////////////
@@ -770,8 +773,10 @@ function applyJobApplication() {
   textBox.value = "";
   
   displayNextJobDetail();
-  applyParticle(`+${formatLargeNumberAll(clickValue)}`, event.clientX, event.clientY, "apply-button");
+  // applyParticle(`+${formatLargeNumberAll(clickValue)}`, event.clientX, event.clientY, "apply-button");
+  applyParticle(`+${formatLargeNumberWithDecimals(clickValue)}`, event.clientX, event.clientY, "apply-button");
 }
+// ADD IF/THEN STATEMENT IF VALUE IS LESS THAN 100 TO USE formatLargeNumberWithDecimals
 
 
 function applyParticle(textContent, x, y, targetElementId) {

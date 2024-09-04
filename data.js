@@ -8,9 +8,8 @@ const shopObj = [
       clickValue: 0.05,
       count: 0,
       unlocked: false,
-
-      // file: "./img/cutscene/cutscene0_v1.mp4",
-      file: "./img/cutscene/cutscene1_v1.mp4",
+      file: "./img/cutscene/cutscene0_v1.mp4",
+      // file: "./img/cutscene/cutscene1_v1.mp4",
       displayed: false,
     },
     {
@@ -22,8 +21,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
       
-      // file: "./img/cutscene/cutscene1_v1.mp4",
-      file: "./img/cutscene/cutscene2_v1.mp4",
+      file: "./img/cutscene/cutscene1_v1.mp4",
+      // file: "./img/cutscene/cutscene2_v1.mp4",
       displayed: false,
     },
     {
@@ -35,8 +34,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      // file: "./img/cutscene/cutscene2_v1.mp4",
-      file: "./img/cutscene/cutscene3_v1.mp4",
+      file: "./img/cutscene/cutscene2_v1.mp4",
+      // file: "./img/cutscene/cutscene3_v1.mp4",
       displayed: false,
     },
     {
@@ -48,8 +47,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      // file: "./img/cutscene/cutscene3_v1.mp4",
-      file: "./img/cutscene/cutscene4_v1.mp4",
+      file: "./img/cutscene/cutscene3_v1.mp4",
+      // file: "./img/cutscene/cutscene4_v1.mp4",
       displayed: false,
     },
     {
@@ -61,8 +60,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      // file: "./img/cutscene/cutscene4_v1.mp4",
-      file: "./img/cutscene/cutscene5_v1.mp4",
+      file: "./img/cutscene/cutscene4_v1.mp4",
+      // file: "./img/cutscene/cutscene5_v1.mp4",
       displayed: false,
     },
     {
@@ -74,7 +73,7 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      // file: "./img/cutscene/cutscene5_v1.mp4",
+      file: "./img/cutscene/cutscene5_v1.mp4",
       // file: "./img/cutscene/cutscene6_v1.mp4",
       // PERHAPS FILE THAT SHOWS THE ENDING?
       displayed: false,
