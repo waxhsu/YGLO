@@ -3,13 +3,13 @@ const shopObj = [
       id: 0,
       icon: "./img/shopIcons/0_tryHarder.png",
       name: "Try Harder",
-      cost: 10,
+      cost: 75,
       clicksPerSecond: 0,
       clickValue: 0.05,
       count: 0,
       unlocked: false,
-      file: "./img/cutscene/cutscene0_v1.mp4",
-      // file: "./img/cutscene/cutscene1_v1.mp4",
+      file: "./img/cutscene/cutscene0_v2.mp4",
+      // file: "./img/cutscene/cutscene1_v2.mp4",
       displayed: false,
     },
     {
@@ -21,8 +21,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
       
-      file: "./img/cutscene/cutscene1_v1.mp4",
-      // file: "./img/cutscene/cutscene2_v1.mp4",
+      file: "./img/cutscene/cutscene1_v2.mp4",
+      // file: "./img/cutscene/cutscene2_v2.mp4",
       displayed: false,
     },
     {
@@ -34,8 +34,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      file: "./img/cutscene/cutscene2_v1.mp4",
-      // file: "./img/cutscene/cutscene3_v1.mp4",
+      file: "./img/cutscene/cutscene2_v2.mp4",
+      // file: "./img/cutscene/cutscene3_v2.mp4",
       displayed: false,
     },
     {
@@ -47,8 +47,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      file: "./img/cutscene/cutscene3_v1.mp4",
-      // file: "./img/cutscene/cutscene4_v1.mp4",
+      file: "./img/cutscene/cutscene3_v2.mp4",
+      // file: "./img/cutscene/cutscene4_v2.mp4",
       displayed: false,
     },
     {
@@ -60,8 +60,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      file: "./img/cutscene/cutscene4_v1.mp4",
-      // file: "./img/cutscene/cutscene5_v1.mp4",
+      file: "./img/cutscene/cutscene4_v2.mp4",
+      // file: "./img/cutscene/cutscene5_v2.mp4",
       displayed: false,
     },
     {
@@ -73,8 +73,8 @@ const shopObj = [
       count: 0,
       unlocked: false,
 
-      file: "./img/cutscene/cutscene5_v1.mp4",
-      // file: "./img/cutscene/cutscene6_v1.mp4",
+      file: "./img/cutscene/cutscene5_v2.mp4",
+      // file: "./img/cutscene/cutscene6_v2.mp4",
       // PERHAPS FILE THAT SHOWS THE ENDING?
       displayed: false,
     },
