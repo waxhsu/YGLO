@@ -18,9 +18,10 @@ let totalRejections = 0;
 let goodRandomEvents = 0;
 let badRandomEvents = 0;
 let totalRandomEvents = 0;
-let clickValue = 1;
+let clickValue = 10;
 
-let universalInterval = 1000;
+let timerCountdown = 60;
+let universalInterval = 500;
 
 
 const tooltips = document.querySelectorAll('.tooltip');
@@ -91,6 +92,7 @@ function clickToSkipTitle () {
   updateJobApplications();
   updateAPSDisplay();
   updateJobPostings();
+  resetActivityTimer();
 
   setInterval(autoGenerateJobApplications, universalInterval);
   setInterval(checkMainAchievement, universalInterval);
@@ -757,6 +759,11 @@ function applyJobApplication() {
   updateJobPostings();
   playRandomClickSound();
   unlockAttachPage();
+
+  
+  // makes sure that autoGenerateApps return to the same value
+  calculateTotalClicksPerSecond();
+  resetActivityTimer();
 
   
   console.log(`____________`);
@@ -1570,6 +1577,52 @@ attentionElement.src = './img/gameIcons/attention.gif'
 //     attachButton.appendChild(attentionElement)
 //   }
 // }
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+//////////////////// INACTIVE PUNISHMENT //////////////////
+////////////////////////////////////////////////////////////
+
+
+let timeRemaining = timerCountdown;
+
+function resetActivityTimer() {
+  clearInterval(timer);  // Clear any existing timer
+  timeRemaining = timerCountdown;    // Reset the timer to 60 seconds
+  updateTimerDisplay();  // Immediately update the display
+  timer = setInterval(activityTimer, 1000);  // Start the timer
+}
+
+// Function that runs every second for the countdown
+function activityTimer() {
+  timeRemaining--;
+
+  if (timeRemaining <= -1) {
+    timeRemaining = 0;  // Ensure the timer stays at 0
+    setMotivationToZero();  // Keep setting motivation to zero
+    clearInterval(timer);  // Stop the countdown
+  } else {
+    updateTimerDisplay();  // Update the displayed timer value
+    
+  }
+}
+
+// Function to set motivation to zero when the timer reaches 0
+function setMotivationToZero() {
+  motivation = 0;
+  totalClicksPerSecond = 0;
+  updateMotivation();  // Update the motivation display if necessary
+}
+
+// Function to update the HTML display of the timer
+function updateTimerDisplay() {
+  const timerElement = document.getElementById("timer-value");
+  timerElement.textContent = timeRemaining;
+}
 
 
 
