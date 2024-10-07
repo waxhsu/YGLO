@@ -93,7 +93,6 @@ function clickToSkipTitle () {
   updateAPSDisplay();
   updateJobPostings();
   resetActivityTimer();
-
   setInterval(autoGenerateJobApplications, universalInterval);
   setInterval(checkMainAchievement, universalInterval);
   setTimeout(randomRejection, 15000);
@@ -368,12 +367,21 @@ function playBackgroundMusic() {
 
 
 function updateProfilePic () {
+  const profilePicture = document.getElementById('profile-picture-img');
+    if (totalClicksPerSecond <= 10) {
+      profilePicture.src = "./img/ppIcons/pp_sad.gif";
+    } else if (motivation >= 20 && motivation <= 100) {
+      profilePicture.src = "./img/ppIcons/pp_fire.gif";
+    } else {
+      profilePicture.src = "./img/ppIcons/pp_idle.gif";
+    }
+  }
 
+
+
+function checkProfilePicStatus () {
+  
 }
-
-
-
-
 
 
 
@@ -1615,6 +1623,7 @@ function activityTimer() {
 function setMotivationToZero() {
   motivation = 0;
   totalClicksPerSecond = 0;
+  updateProfilePic();
   updateMotivation();  // Update the motivation display if necessary
 }
 
